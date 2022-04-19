@@ -6,7 +6,7 @@
         <input @change="inputFileUploadEvent" type="file" name="file" id="file" class="form-control w100-100px" multiple>
       </div>
       <div @drop="fileDropEvent($event)" id="fileDrop" class="d-flex justify-content-center file-drop mt-3">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center px-1">
           <strong>드래그 앤 드랍으로 업로드 할 수 있습니다.</strong>
         </div>
       </div>

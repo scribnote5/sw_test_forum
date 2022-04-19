@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -151,34 +150,34 @@ public class CweGuidelineService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("cwe_guideline")) {
             for (String hashTag : hashTags.split("#")) {
                 cweGuidelineDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
         }
 
         // projectName 설정
-        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectName()) {
+        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectNameByTableName("cwe_guideline")) {
             cweGuidelineDto.getAutoCompleteProjectName().add(projectName);
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("cwe_guideline")) {
             cweGuidelineDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("cwe_guideline")) {
             cweGuidelineDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("cwe_guideline")) {
             cweGuidelineDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("cwe_guideline")) {
             cweGuidelineDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -279,18 +278,21 @@ public class CweGuidelineService {
 
         HashTags persistHashTags = hashTagsRepository.getById(cweGuidelineDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("cwe_guideline")
                 .content(cweGuidelineDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         ProjectInformation persistProjectInformation = projectInformationRepository.getById(cweGuidelineDto.getProjectInformationIdx());
         persistProjectInformation.update(ProjectInformation.builder()
+                .tableName("cwe_guideline")
                 .projectName(cweGuidelineDto.getProjectName())
                 .build());
         projectInformationRepository.save(persistProjectInformation);
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(cweGuidelineDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("cwe_guideline")
                 .toolName(cweGuidelineDto.getToolName())
                 .toolNote(cweGuidelineDto.getToolNote())
                 .build());
@@ -298,6 +300,7 @@ public class CweGuidelineService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(cweGuidelineDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("cwe_guideline")
                 .compilerName(cweGuidelineDto.getCompilerName())
                 .compilerNote(cweGuidelineDto.getCompilerNote())
                 .build());
@@ -317,5 +320,19 @@ public class CweGuidelineService {
         projectInformationRepository.deleteById(cweGuidelineDto.getProjectInformationIdx());
         toolInformationRepository.deleteById(cweGuidelineDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(cweGuidelineDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * CWE 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param cweIdx
+     * @param cweDto
+     * @return
+     */
+    public CweDto findCweGuidelineListWhenDelete(long cweIdx, CweDto cweDto) {
+        List<CweGuidelineDto> cweGuidelineDtoList = cweGuidelineRepositoryImpl.findAllWhenDelete(cweIdx);
+        cweDto = CweMapper.INSTANCE.toDtoByGuideline(cweDto, cweGuidelineDtoList);
+
+        return cweDto;
     }
 }

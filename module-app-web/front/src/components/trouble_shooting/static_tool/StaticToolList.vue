@@ -37,12 +37,11 @@
           <!-- staticToolListByPriority -->
           <tr v-for="(staticTool, i) in staticToolListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ staticTool.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ staticTool.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/static-tool/read/' + staticTool.idx">{{ staticTool.title }}</router-link>
               <span class="comment-count">{{ staticTool.commentDtoCount }}</span>
               <img v-if="staticTool.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -80,12 +79,11 @@
           <!-- staticToolList -->
           <tr v-for="(staticTool, i) in staticToolList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ staticTool.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ staticToolList.totalElements - staticToolList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ staticTool.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ staticToolList.totalElements - staticToolList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="staticTool.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/static-tool/read/' + staticTool.idx"> {{ staticTool.title }}</router-link>
               <span class="comment-count">{{ staticTool.commentDtoCount }}</span>
               <img v-if="staticTool.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

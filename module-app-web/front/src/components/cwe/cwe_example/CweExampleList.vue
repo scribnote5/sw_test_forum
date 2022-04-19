@@ -38,13 +38,18 @@
           <!-- cweExampleList -->
           <tr v-for="(cweExample, i) in cweExampleList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ cweExample.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">
+              <img v-if="cweExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+              <span v-else>{{ cweExampleList.totalElements - cweExampleList.pageable.offset - i }}</span>
+            </td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ cweExample.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">
+                <img v-if="cweExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+                <span v-else>{{ cweExampleList.totalElements - cweExampleList.pageable.offset - i }}. </span>
+              </span>
               <!-- 공통 -->
-              <img v-if="cweExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
-              <router-link :to= "cweIdx === 0 ? ('/cwe-example/read/' + cweExample.idx) : ('/cwe-example/read/from-rule-list/' + cweExample.idx)">
+              <router-link :to="cweIdx === 0 ? ('/cwe-example/read/' + cweExample.idx) : ('/cwe-example/read/from-rule-list/' + cweExample.idx)">
                 <span v-if="cweIdx === 0">{{ cweExample.cweRule }} - </span>{{ cweExample.title }}
               </router-link>
               <span class="comment-count">{{ cweExample.commentDtoCount }}</span>

@@ -56,7 +56,7 @@
           <tr>
             <th>도구 정보<span class="recommended-field">*</span></th>
             <td style="overflow: visible">
-              <input type="text" name="toolName" v-model="toolName" class="form-control" placeholder="STATIC 4.3.2">>
+              <input type="text" name="toolName" v-model="toolName" class="form-control" placeholder="STATIC 4.3.2">
               <p id="toolNameErrorMessage" class="error-message"></p>
 
               <input type="text" name="toolNote" v-model="toolNote" class="form-control" placeholder="STATIC Analysis Agent v1.2.2 p4">
@@ -114,7 +114,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/metric-guideline/list/' + metricIdx">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>

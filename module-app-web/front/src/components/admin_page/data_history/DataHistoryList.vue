@@ -23,7 +23,7 @@
             <option value="UPDATE">수정</option>
             <option value="DELETE">삭제</option>
             <option value="LIKE">좋아요</option>
-            <option value="CANCEL LIKE">좋아요 취소</option>
+            <option value="CANCEL_LIKE">좋아요 취소</option>
             <option value="ETC">기타</option>
           </select>
           <img :src="require(`@/assets/images/search-main-black.svg`)" @click="searchList({page: 1})" class="cursor-pointer">
@@ -47,10 +47,10 @@
           <!-- dataHistoryList -->
           <tr v-for="(dataHistory, i) in dataHistoryList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ dataHistory.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ dataHistoryList.totalElements - dataHistoryList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ dataHistory.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ dataHistoryList.totalElements - dataHistoryList.pageable.offset - i }}. </span>
               <!-- 공통 -->
               <router-link :to="'/data-history/read/' + dataHistory.idx"> {{ dataHistory.message }}</router-link>
               <img v-if="dataHistory.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -63,7 +63,7 @@
                   <span v-if="dataHistory.auditType == 'UPDATE'" class="mobile-content">수정</span>
                   <span v-if="dataHistory.auditType == 'DELETE'" class="mobile-content">삭제</span>
                   <span v-if="dataHistory.auditType == 'LIKE'" class="mobile-content">좋아요</span>
-                  <span v-if="dataHistory.auditType == 'CANCEL LIKE'" class="mobile-content">좋아요 취소</span>
+                  <span v-if="dataHistory.auditType == 'CANCEL_LIKE'" class="mobile-content">좋아요 취소</span>
                   <span v-if="dataHistory.auditType == 'ETC'" class="mobile-content">기타</span> &nbsp;
                   <span class="mobile-content">{{ dataHistory.createdDate }}</span> &nbsp;
                   <span class="mobile-content"> 조회수: {{ dataHistory.views }}</span> &nbsp;
@@ -78,7 +78,7 @@
               <span v-if="dataHistory.auditType == 'UPDATE'">수정</span>
               <span v-if="dataHistory.auditType == 'DELETE'">삭제</span>
               <span v-if="dataHistory.auditType == 'LIKE'" class="mobile-content">좋아요</span>
-              <span v-if="dataHistory.auditType == 'CANCEL LIKE'" class="mobile-content">좋아요 취소</span>
+              <span v-if="dataHistory.auditType == 'CANCEL_LIKE'" class="mobile-content">좋아요 취소</span>
               <span v-if="dataHistory.auditType == 'ETC'" class="mobile-content">기타</span>
             </td>
             <td class="d-none d-lg-table-cell">{{ dataHistory.createdByUser.department }} {{ dataHistory.createdByUser.name }}</td>

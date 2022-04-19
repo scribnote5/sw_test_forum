@@ -14,7 +14,7 @@
         <input type="text" name="hashTag" v-model="hashTag" id="hashTag" class="form-control" placeholder="#태그 이름↵(마지막 문자 # 사용 불가)"/>
       </div>
       <div class="d-flex">
-        <button @click="hashTagsAddEvent()" class="btn btn-sm btn-outline-main-blue">등록<img :src="require(`@/assets/images/write-main-blue.svg`)" class="ms-2"></button>
+        <button @click="hashTagsClickEvent()" class="btn btn-sm btn-outline-main-blue">등록<img :src="require(`@/assets/images/write-main-blue.svg`)" class="ms-2"></button>
       </div>
     </div>
 
@@ -180,8 +180,8 @@ export default {
       }
     }
 
-    /* hash tags add event */
-    const hashTagsAddEvent = () => {
+    /* hash tags click event */
+    const hashTagsClickEvent = () => {
       hashTagId = isEmpty(props.hashTags) ? hashTagId : hashTagId + (hashTagId < props.hashTags.split('#').length ? props.hashTags.split('#').length : 0);
       // 기존 정규식(특수 문자 허용 x, 공백만 허용)
       // let regExp = /^[#][a-zA-Zㄱ-힣0-9\s|s]*$/;
@@ -204,6 +204,7 @@ export default {
           cancelHashTagEvent(tempHashTagId);
         }
 
+        document.getElementById("hashTagsErrorMessage").innerText = "";
         document.getElementsByName("hashTag")[0].value = "";
         hashTagId++;
       } else {
@@ -211,6 +212,7 @@ export default {
         document.getElementsByName("hashTag")[0].focus();
       }
     }
+
 
     /* hash tag를 취소하는 경우 */
     const cancelHashTagEvent = (hashTagId) => {
@@ -222,7 +224,7 @@ export default {
       hashTag,
 
       // function
-      isEmpty, hashTagsAddEvent, cancelHashTagEvent
+      isEmpty, hashTagsClickEvent, cancelHashTagEvent
     }
   }
 }

@@ -36,13 +36,12 @@
           <!-- cweListByPriority -->
           <tr v-for="(cwe, i) in cweListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ cwe.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ cwe.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
-              <Frequency page-information="list" :frequency="cwe.frequency"> </Frequency>
+              <Frequency page-information="list" :frequency="cwe.frequency"></Frequency>
               <router-link :to="'/cwe/read/' + cwe.idx">{{ cwe.title }}</router-link>
               <span class="comment-count">{{ cwe.commentDtoCount }}</span>
               <img v-if="cwe.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -68,13 +67,12 @@
           <!-- cweList -->
           <tr v-for="(cwe, i) in cweList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ cwe.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ cweList.totalElements - cweList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ cwe.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ cweList.totalElements - cweList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="cwe.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
-              <Frequency page-information="list" :frequency="cwe.frequency"> </Frequency>
+              <Frequency page-information="list" :frequency="cwe.frequency"></Frequency>
               <router-link :to="'/cwe/read/' + cwe.idx"> {{ cwe.title }}</router-link>
               <span class="comment-count">{{ cwe.commentDtoCount }}</span>
               <img v-if="cwe.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

@@ -13,13 +13,23 @@ import com.suresoft.sw_test_forum.misra_c.misra_c.dto.mapper.MisraCMapper;
 import com.suresoft.sw_test_forum.misra_c.misra_c.repository.MisraCCommentRepositoryImpl;
 import com.suresoft.sw_test_forum.misra_c.misra_c.repository.MisraCRepository;
 import com.suresoft.sw_test_forum.misra_c.misra_c.repository.MisraCRepositoryImpl;
+import com.suresoft.sw_test_forum.misra_c.misra_c_example.dto.MisraCExampleDto;
+import com.suresoft.sw_test_forum.misra_c.misra_c_example.repository.MisraCExampleRepository;
+import com.suresoft.sw_test_forum.misra_c.misra_c_example.service.MisraCExampleCommentService;
+import com.suresoft.sw_test_forum.misra_c.misra_c_example.service.MisraCExampleService;
+import com.suresoft.sw_test_forum.misra_c.misra_c_guideline.dto.MisraCGuidelineDto;
+import com.suresoft.sw_test_forum.misra_c.misra_c_guideline.repository.MisraCGuidelineRepository;
+import com.suresoft.sw_test_forum.misra_c.misra_c_guideline.service.MisraCGuidelineAttachedFileService;
+import com.suresoft.sw_test_forum.misra_c.misra_c_guideline.service.MisraCGuidelineCommentService;
+import com.suresoft.sw_test_forum.misra_c.misra_c_guideline.service.MisraCGuidelineLikeService;
+import com.suresoft.sw_test_forum.misra_c.misra_c_guideline.service.MisraCGuidelineService;
 import com.suresoft.sw_test_forum.util.AuthorityUtil;
 import com.suresoft.sw_test_forum.util.NewIconCheck;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,8 +40,16 @@ public class MisraCService {
     private final MisraCRepository misraCRepository;
     private final MisraCRepositoryImpl misraCRepositoryImpl;
     private final MisraCCommentRepositoryImpl misraCCommentRepositoryImpl;
+    private final MisraCExampleRepository misraCExampleRepository;
+    private final MisraCGuidelineRepository misraCGuidelineRepository;
     private final HashTagsRepository hashTagsRepository;
     private final HashTagsRepositoryImpl hashTagsRepositoryImpl;
+    private final MisraCExampleService misraCExampleService;
+    private final MisraCExampleCommentService misraCExampleCommentService;
+    private final MisraCGuidelineService misraCGuidelineService;
+    private final MisraCGuidelineAttachedFileService misraCGuidelineAttachedFileService;
+    private final MisraCGuidelineCommentService misraCGuidelineCommentService;
+    private final MisraCGuidelineLikeService misraCGuidelineLikeService;
     private final UserService userService;
     @Value("${module.name}")
     private String moduleName;
@@ -39,14 +57,30 @@ public class MisraCService {
     public MisraCService(MisraCRepository misraCRepository,
                          MisraCRepositoryImpl misraCRepositoryImpl,
                          MisraCCommentRepositoryImpl misraCCommentRepositoryImpl,
+                         MisraCExampleRepository misraCExampleRepository,
+                         MisraCGuidelineRepository misraCGuidelineRepository,
                          HashTagsRepository hashTagsRepository,
                          HashTagsRepositoryImpl hashTagsRepositoryImpl,
+                         @Lazy MisraCExampleService misraCExampleService,
+                         MisraCExampleCommentService misraCExampleCommentService,
+                         @Lazy MisraCGuidelineService misraCGuidelineService,
+                         MisraCGuidelineAttachedFileService misraCGuidelineAttachedFileService,
+                         MisraCGuidelineCommentService misraCGuidelineCommentService,
+                         MisraCGuidelineLikeService misraCGuidelineLikeService,
                          UserService userService) {
         this.misraCRepository = misraCRepository;
         this.misraCRepositoryImpl = misraCRepositoryImpl;
         this.misraCCommentRepositoryImpl = misraCCommentRepositoryImpl;
+        this.misraCExampleRepository = misraCExampleRepository;
+        this.misraCGuidelineRepository = misraCGuidelineRepository;
         this.hashTagsRepository = hashTagsRepository;
         this.hashTagsRepositoryImpl = hashTagsRepositoryImpl;
+        this.misraCExampleService = misraCExampleService;
+        this.misraCExampleCommentService = misraCExampleCommentService;
+        this.misraCGuidelineService = misraCGuidelineService;
+        this.misraCGuidelineAttachedFileService = misraCGuidelineAttachedFileService;
+        this.misraCGuidelineCommentService = misraCGuidelineCommentService;
+        this.misraCGuidelineLikeService = misraCGuidelineLikeService;
         this.userService = userService;
     }
 
@@ -126,7 +160,7 @@ public class MisraCService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("misra_c")) {
             for (String hashTag : hashTags.split("#")) {
                 misraCDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
@@ -242,6 +276,7 @@ public class MisraCService {
 
         HashTags persistHashTags = hashTagsRepository.getById(misraCDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("misra_c")
                 .content(misraCDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
@@ -252,10 +287,28 @@ public class MisraCService {
      *
      * @param idx
      */
-    public void deleteMisraCByIdx(long idx) {
+    @Transactional
+    public void deleteRelatedMisraCByIdx(long idx) throws Exception {
         MisraCDto misraCDto = misraCRepositoryImpl.findByIdx(idx);
+        misraCDto = misraCExampleService.findMisraCExampleListWhenDelete(idx, misraCDto);
+        misraCDto = misraCGuidelineService.findMisraCGuidelineListWhenDelete(idx, misraCDto);
 
+        // 삭제
         misraCRepository.deleteById(idx);
+        misraCExampleRepository.deleteAllByMisraCIdx(idx);
+        misraCGuidelineRepository.deleteAllByMisraCIdx(idx);
         hashTagsRepository.deleteById(misraCDto.getHashTagsIdx());
+
+        // example 연관 데이터 삭제
+        for (MisraCExampleDto exampleDto : misraCDto.getMisraCExampleDtoList()) {
+            misraCExampleCommentService.deleteAllByMisraCExampleIdx(exampleDto.getIdx());
+        }
+
+        // guideline 연관 데이터 삭제
+        for (MisraCGuidelineDto guidelineDto : misraCDto.getMisraCGuidelineDtoList()) {
+            misraCGuidelineAttachedFileService.deleteAllAttachedFile(guidelineDto.getIdx());
+            misraCGuidelineLikeService.deleteAllByMisraCGuidelineIdx(guidelineDto.getIdx());
+            misraCGuidelineCommentService.deleteAllByMisraCGuidelineIdx(guidelineDto.getIdx());
+        }
     }
 }

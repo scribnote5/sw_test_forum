@@ -36,12 +36,11 @@
           <!-- metricListByPriority -->
           <tr v-for="(metric, i) in metricListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ metric.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ metric.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <Frequency page-information="list" :frequency="metric.frequency"></Frequency>
               <router-link :to="'/metric/read/' + metric.idx">{{ metric.title }}</router-link>
               <span class="comment-count">{{ metric.commentDtoCount }}</span>
@@ -68,12 +67,11 @@
           <!-- metricList -->
           <tr v-for="(metric, i) in metricList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ metric.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ metricList.totalElements - metricList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ metric.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ metricList.totalElements - metricList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="metric.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <Frequency page-information="list" :frequency="metric.frequency"></Frequency>
               <router-link :to="'/metric/read/' + metric.idx"> {{ metric.title }}</router-link>
               <span class="comment-count">{{ metric.commentDtoCount }}</span>

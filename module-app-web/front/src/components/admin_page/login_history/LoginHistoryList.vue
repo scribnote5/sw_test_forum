@@ -40,10 +40,10 @@
           <!-- loginHistoryList -->
           <tr v-for="(loginHistory, i) in loginHistoryList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ loginHistory.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ loginHistoryList.totalElements - loginHistoryList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ loginHistory.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ loginHistoryList.totalElements - loginHistoryList.pageable.offset - i }}. </span>
               <!-- 공통 -->
               <router-link :to="'/login-history/read/' + loginHistory.idx"> {{ loginHistory.message }}</router-link>
               <img v-if="loginHistory.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

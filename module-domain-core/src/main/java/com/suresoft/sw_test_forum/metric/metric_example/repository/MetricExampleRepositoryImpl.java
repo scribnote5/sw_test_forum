@@ -20,6 +20,7 @@ import static com.suresoft.sw_test_forum.admin_page.user.domain.QUser.user;
 import static com.suresoft.sw_test_forum.common.domain.QCompilerInformation.compilerInformation;
 import static com.suresoft.sw_test_forum.common.domain.QToolInformation.toolInformation;
 import static com.suresoft.sw_test_forum.metric.metric_example.domain.QMetricExample.metricExample;
+import static com.suresoft.sw_test_forum.metric.metric_guideline.domain.QMetricGuideline.metricGuideline;
 
 @Repository
 @Transactional
@@ -265,5 +266,24 @@ public class MetricExampleRepositoryImpl extends QuerydslRepositorySupport {
                 .set(metricExample.views, metricExample.views.add(1))
                 .where(metricExample.idx.eq(idx))
                 .execute();
+    }
+
+    /**
+     * 메트릭 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param metricIdx
+     * @return
+     */
+    public List<MetricExampleDto> findAllWhenDelete(long metricIdx) {
+        JPQLQuery<MetricExampleDto> query = queryFactory.select(
+                        Projections.bean(
+                                MetricExampleDto.class,
+                                metricExample.idx
+                        )
+                )
+                .from(metricExample)
+                .where(metricGuideline.metricIdx.eq(metricIdx));
+
+        return query.fetch();
     }
 }

@@ -36,10 +36,10 @@
           <!-- userList -->
           <tr v-for="(user, i) in userList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ user.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ userList.totalElements - userList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ user.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ userList.totalElements - userList.pageable.offset - i }}. </span>
               <!-- 공통 -->
               <router-link :to="'/user/read/' + user.idx"> {{ user.name }}</router-link>
               <img v-if="user.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

@@ -150,34 +150,34 @@ public class MisraCppGuidelineService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("misra_cpp_guideline")) {
             for (String hashTag : hashTags.split("#")) {
                 misraCppGuidelineDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
         }
 
         // projectName 설정
-        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectName()) {
+        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectNameByTableName("misra_cpp_guideline")) {
             misraCppGuidelineDto.getAutoCompleteProjectName().add(projectName);
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("misra_cpp_guideline")) {
             misraCppGuidelineDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("misra_cpp_guideline")) {
             misraCppGuidelineDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("misra_cpp_guideline")) {
             misraCppGuidelineDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("misra_cpp_guideline")) {
             misraCppGuidelineDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -278,18 +278,21 @@ public class MisraCppGuidelineService {
 
         HashTags persistHashTags = hashTagsRepository.getById(misraCppGuidelineDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("misra_cpp_guideline")
                 .content(misraCppGuidelineDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         ProjectInformation persistProjectInformation = projectInformationRepository.getById(misraCppGuidelineDto.getProjectInformationIdx());
         persistProjectInformation.update(ProjectInformation.builder()
+                .tableName("misra_cpp_guideline")
                 .projectName(misraCppGuidelineDto.getProjectName())
                 .build());
         projectInformationRepository.save(persistProjectInformation);
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(misraCppGuidelineDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("misra_cpp_guideline")
                 .toolName(misraCppGuidelineDto.getToolName())
                 .toolNote(misraCppGuidelineDto.getToolNote())
                 .build());
@@ -297,6 +300,7 @@ public class MisraCppGuidelineService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(misraCppGuidelineDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("misra_cpp_guideline")
                 .compilerName(misraCppGuidelineDto.getCompilerName())
                 .compilerNote(misraCppGuidelineDto.getCompilerNote())
                 .build());
@@ -316,5 +320,19 @@ public class MisraCppGuidelineService {
         projectInformationRepository.deleteById(misraCppGuidelineDto.getProjectInformationIdx());
         toolInformationRepository.deleteById(misraCppGuidelineDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(misraCppGuidelineDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * MISRA CPP 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param misraCppIdx
+     * @param misraCppDto
+     * @return
+     */
+    public MisraCppDto findMisraCppGuidelineListWhenDelete(long misraCppIdx, MisraCppDto misraCppDto) {
+        List<MisraCppGuidelineDto> misraCppGuidelineDtoList = misraCppGuidelineRepositoryImpl.findAllWhenDelete(misraCppIdx);
+        misraCppDto = MisraCppMapper.INSTANCE.toDtoByGuideline(misraCppDto, misraCppGuidelineDtoList);
+
+        return misraCppDto;
     }
 }

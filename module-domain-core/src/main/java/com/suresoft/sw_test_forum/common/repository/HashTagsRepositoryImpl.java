@@ -44,11 +44,12 @@ public class HashTagsRepositoryImpl extends QuerydslRepositorySupport {
      *
      * @return
      */
-    public List<String> findDistinctHashTags() {
+    public List<String> findDistinctHashTagsByTableName(String tableName) {
         return queryFactory.select(
                         hashTags.content
                 )
                 .distinct().from(hashTags)
+                .where(hashTags.tableName.eq(tableName))
                 .fetch();
     }
 }

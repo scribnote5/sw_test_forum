@@ -142,6 +142,7 @@ public class MisraCGuidelineController {
         misraCGuidelineService.deleteMisraCGuidelineByIdx(idx);
         misraCGuidelineAttachedFileService.deleteAllAttachedFile(idx);
         misraCGuidelineCommentService.deleteAllByMisraCGuidelineIdx(idx);
+        misraCGuidelineLikeService.deleteAllByMisraCGuidelineIdx(idx);
 
         return new ResponseEntity("{}", HttpStatus.OK);
     }

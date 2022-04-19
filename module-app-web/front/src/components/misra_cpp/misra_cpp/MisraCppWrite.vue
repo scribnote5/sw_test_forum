@@ -21,7 +21,7 @@
             <th>제목<span class="required-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <div class="autoComplete_wrapper">
-                <input type="text" name="title" id="title" v-model="title" class="form-control" placeholder="[MISRA_C++_2008_00_01_01] 미달성 코드(unreachable code)가 있으면 안된다.">
+                <input type="text" name="title" id="title" v-model="title" class="form-control" placeholder="[00_01_01] 미달성 코드(unreachable code) 제거">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
             </td>
@@ -74,7 +74,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/misra-cpp/list'">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>

@@ -7,7 +7,7 @@
       </div>
       <div class="d-flex justify-content-between mt-3">
         <div @drop="fileDropEvent($event)" id="fileDrop" class="d-flex justify-content-center image-file-drop">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center px-1">
             <strong>드래그 앤 드랍으로 업로드 할 수 있습니다.</strong>
           </div>
         </div>

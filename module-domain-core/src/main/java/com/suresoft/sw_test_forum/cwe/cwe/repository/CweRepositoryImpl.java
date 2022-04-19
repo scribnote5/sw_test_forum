@@ -103,7 +103,7 @@ public class CweRepositoryImpl extends QuerydslRepositorySupport {
                 .from(cwe)
                 .join(hashTags).on(cwe.hashTagsIdx.eq(hashTags.idx))
                 .where(searchCondition(cweSearchDto))
-                .orderBy(cwe.idx.desc());
+                .orderBy(cwe.title.desc());
 
         long totalCount = query.fetchCount();
         List<CweDto> results = getQuerydsl().applyPagination(pageable, query).fetch();

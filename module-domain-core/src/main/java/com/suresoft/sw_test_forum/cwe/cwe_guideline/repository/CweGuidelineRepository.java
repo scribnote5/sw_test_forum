@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CweGuidelineRepository extends JpaRepository<CweGuideline, Long> {
-
+    public void deleteAllByCweIdx(long cweIdx);
 }

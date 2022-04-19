@@ -94,8 +94,6 @@ export default {
           });
 
       if (isExit) return false;
-
-      localStorage.setItem("result", "/notice/write-success");
       router.go(0);
     }
 
@@ -120,7 +118,6 @@ export default {
         if (result.isConfirmed) {
           axios.delete(process.env.VUE_APP_MODULE_APP_API_URL + "/api/" + props.path + "/" + idx)
               .then((response) => {
-                localStorage.setItem("result", "/notice/delete-success");
                 router.go(0);
               })
               .catch((error) => {
@@ -163,8 +160,6 @@ export default {
           });
 
       if (isExit) return false;
-
-      localStorage.setItem("result", "/notice/update-success");
       router.go(0);
     }
 

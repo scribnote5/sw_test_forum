@@ -1,5 +1,7 @@
 package com.suresoft.sw_test_forum.misra_cpp.misra_cpp.service;
 
+import com.suresoft.sw_test_forum.admin_page.user.domain.User;
+import com.suresoft.sw_test_forum.admin_page.user.service.UserService;
 import com.suresoft.sw_test_forum.common.domain.HashTags;
 import com.suresoft.sw_test_forum.common.dto.PriorityDto;
 import com.suresoft.sw_test_forum.common.repository.HashTagsRepository;
@@ -11,15 +13,23 @@ import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.dto.mapper.MisraCppMapper;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.repository.MisraCppCommentRepositoryImpl;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.repository.MisraCppRepository;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.repository.MisraCppRepositoryImpl;
-import com.suresoft.sw_test_forum.admin_page.user.domain.User;
-import com.suresoft.sw_test_forum.admin_page.user.service.UserService;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.dto.MisraCppExampleDto;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.repository.MisraCppExampleRepository;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.service.MisraCppExampleCommentService;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.service.MisraCppExampleService;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_guideline.dto.MisraCppGuidelineDto;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_guideline.repository.MisraCppGuidelineRepository;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_guideline.service.MisraCppGuidelineAttachedFileService;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_guideline.service.MisraCppGuidelineCommentService;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_guideline.service.MisraCppGuidelineLikeService;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_guideline.service.MisraCppGuidelineService;
 import com.suresoft.sw_test_forum.util.AuthorityUtil;
 import com.suresoft.sw_test_forum.util.NewIconCheck;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,8 +40,16 @@ public class MisraCppService {
     private final MisraCppRepository misraCppRepository;
     private final MisraCppRepositoryImpl misraCppRepositoryImpl;
     private final MisraCppCommentRepositoryImpl misraCppCommentRepositoryImpl;
+    private final MisraCppExampleRepository misraCppExampleRepository;
+    private final MisraCppGuidelineRepository misraCppGuidelineRepository;
     private final HashTagsRepository hashTagsRepository;
     private final HashTagsRepositoryImpl hashTagsRepositoryImpl;
+    private final MisraCppExampleService misraCppExampleService;
+    private final MisraCppExampleCommentService misraCppExampleCommentService;
+    private final MisraCppGuidelineService misraCppGuidelineService;
+    private final MisraCppGuidelineAttachedFileService misraCppGuidelineAttachedFileService;
+    private final MisraCppGuidelineCommentService misraCppGuidelineCommentService;
+    private final MisraCppGuidelineLikeService misraCppGuidelineLikeService;
     private final UserService userService;
     @Value("${module.name}")
     private String moduleName;
@@ -39,14 +57,30 @@ public class MisraCppService {
     public MisraCppService(MisraCppRepository misraCppRepository,
                            MisraCppRepositoryImpl misraCppRepositoryImpl,
                            MisraCppCommentRepositoryImpl misraCppCommentRepositoryImpl,
+                           MisraCppExampleRepository misraCppExampleRepository,
+                           MisraCppGuidelineRepository misraCppGuidelineRepository,
                            HashTagsRepository hashTagsRepository,
                            HashTagsRepositoryImpl hashTagsRepositoryImpl,
+                           @Lazy MisraCppExampleService misraCppExampleService,
+                           MisraCppExampleCommentService misraCppExampleCommentService,
+                           @Lazy MisraCppGuidelineService misraCppGuidelineService,
+                           MisraCppGuidelineAttachedFileService misraCppGuidelineAttachedFileService,
+                           MisraCppGuidelineCommentService misraCppGuidelineCommentService,
+                           MisraCppGuidelineLikeService misraCppGuidelineLikeService,
                            UserService userService) {
         this.misraCppRepository = misraCppRepository;
         this.misraCppRepositoryImpl = misraCppRepositoryImpl;
         this.misraCppCommentRepositoryImpl = misraCppCommentRepositoryImpl;
+        this.misraCppExampleRepository = misraCppExampleRepository;
+        this.misraCppGuidelineRepository = misraCppGuidelineRepository;
         this.hashTagsRepository = hashTagsRepository;
         this.hashTagsRepositoryImpl = hashTagsRepositoryImpl;
+        this.misraCppExampleService = misraCppExampleService;
+        this.misraCppExampleCommentService = misraCppExampleCommentService;
+        this.misraCppGuidelineService = misraCppGuidelineService;
+        this.misraCppGuidelineAttachedFileService = misraCppGuidelineAttachedFileService;
+        this.misraCppGuidelineCommentService = misraCppGuidelineCommentService;
+        this.misraCppGuidelineLikeService = misraCppGuidelineLikeService;
         this.userService = userService;
     }
 
@@ -126,7 +160,7 @@ public class MisraCppService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("misra_cpp")) {
             for (String hashTag : hashTags.split("#")) {
                 misraCppDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
@@ -242,6 +276,7 @@ public class MisraCppService {
 
         HashTags persistHashTags = hashTagsRepository.getById(misraCppDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("misra_cpp")
                 .content(misraCppDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
@@ -252,10 +287,43 @@ public class MisraCppService {
      *
      * @param idx
      */
+    @Transactional
     public void deleteMisraCppByIdx(long idx) {
         MisraCppDto misraCppDto = misraCppRepositoryImpl.findByIdx(idx);
 
         misraCppRepository.deleteById(idx);
+        misraCppExampleRepository.deleteAllByMisraCppIdx(idx);
+        misraCppGuidelineRepository.deleteAllByMisraCppIdx(idx);
         hashTagsRepository.deleteById(misraCppDto.getHashTagsIdx());
+    }
+
+    /**
+     * 삭제
+     *
+     * @param idx
+     */
+    @Transactional
+    public void deleteRelatedMisraCppByIdx(long idx) throws Exception {
+        MisraCppDto misraCppDto = misraCppRepositoryImpl.findByIdx(idx);
+        misraCppDto = misraCppExampleService.findMisraCppExampleListWhenDelete(idx, misraCppDto);
+        misraCppDto = misraCppGuidelineService.findMisraCppGuidelineListWhenDelete(idx, misraCppDto);
+
+        // 삭제
+        misraCppRepository.deleteById(idx);
+        misraCppExampleRepository.deleteAllByMisraCppIdx(idx);
+        misraCppGuidelineRepository.deleteAllByMisraCppIdx(idx);
+        hashTagsRepository.deleteById(misraCppDto.getHashTagsIdx());
+
+        // example 연관 데이터 삭제
+        for (MisraCppExampleDto exampleDto : misraCppDto.getMisraCppExampleDtoList()) {
+            misraCppExampleCommentService.deleteAllByMisraCppExampleIdx(exampleDto.getIdx());
+        }
+
+        // guideline 연관 데이터 삭제
+        for (MisraCppGuidelineDto guidelineDto : misraCppDto.getMisraCppGuidelineDtoList()) {
+            misraCppGuidelineAttachedFileService.deleteAllAttachedFile(guidelineDto.getIdx());
+            misraCppGuidelineLikeService.deleteAllByMisraCppGuidelineIdx(guidelineDto.getIdx());
+            misraCppGuidelineCommentService.deleteAllByMisraCppGuidelineIdx(guidelineDto.getIdx());
+        }
     }
 }

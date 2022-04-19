@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -240,7 +239,7 @@ public class UserService implements UserDetailsService {
             User createdByUser = findUserByIdxAndSetUserWhenEmpty(userDto.getCreatedByIdx());
             User lastModifiedByUser = findUserByIdxAndSetUserWhenEmpty(userDto.getLastModifiedByIdx());
 
-            userDto.setAccess(AuthorityUtil.isAccessInGeneral(createdByUser.getUsername(), createdByUser.getAuthorityType().getAuthorityType()));
+            userDto.setAccess(AuthorityUtil.isAccessInUser(createdByUser.getUsername(), createdByUser.getAuthorityType().getAuthorityType(), userDto.getUsername()));
             userDto.setCreatedByUser(createdByUser);
             userDto.setLastModifiedByUser(lastModifiedByUser);
 

@@ -40,10 +40,10 @@
           <!-- cweGuidelineList -->
           <tr v-for="(cweGuideline, i) in cweGuidelineList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ cweGuideline.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ cweGuidelineList.totalElements - cweGuidelineList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ cweGuideline.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ cweGuidelineList.totalElements - cweGuidelineList.pageable.offset - i }}. </span>
               <!-- 공통 -->
               <router-link :to= "cweIdx === 0 ? ('/cwe-guideline/read/' + cweGuideline.idx) : ('/cwe-guideline/read/from-rule-list/' + cweGuideline.idx)">
                 <span v-if="cweIdx === 0">{{ cweGuideline.cweRule }} - </span>{{ cweGuideline.title }}

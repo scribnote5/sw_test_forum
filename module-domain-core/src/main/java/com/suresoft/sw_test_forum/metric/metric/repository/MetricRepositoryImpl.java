@@ -103,7 +103,7 @@ public class MetricRepositoryImpl extends QuerydslRepositorySupport {
                 .from(metric)
                 .join(hashTags).on(metric.hashTagsIdx.eq(hashTags.idx))
                 .where(searchCondition(metricSearchDto))
-                .orderBy(metric.idx.desc());
+                .orderBy(metric.title.desc());
 
         long totalCount = query.fetchCount();
         List<MetricDto> results = getQuerydsl().applyPagination(pageable, query).fetch();

@@ -189,7 +189,7 @@ public class MetricController {
      */
     @DeleteMapping("/{idx}")
     public ResponseEntity deleteMetric(@PathVariable("idx") long idx) throws Exception {
-        metricService.deleteMetricByIdx(idx);
+        metricService.deleteRelatedMetricByIdx(idx);
         metricAttachedFileService.deleteAllAttachedFile(idx);
         metricCommentService.deleteAllByMetricIdx(idx);
 

@@ -266,4 +266,23 @@ public class CweExampleRepositoryImpl extends QuerydslRepositorySupport {
                 .where(cweExample.idx.eq(idx))
                 .execute();
     }
+
+    /**
+     * CWE 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param cweIdx
+     * @return
+     */
+    public List<CweExampleDto> findAllWhenDelete(long cweIdx) {
+        JPQLQuery<CweExampleDto> query = queryFactory.select(
+                        Projections.bean(
+                                CweExampleDto.class,
+                                cweExample.idx
+                        )
+                )
+                .from(cweExample)
+                .where(cweExample.cweIdx.eq(cweIdx));
+
+        return query.fetch();
+    }
 }

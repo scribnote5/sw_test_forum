@@ -189,7 +189,7 @@ public class CweController {
      */
     @DeleteMapping("/{idx}")
     public ResponseEntity deleteCwe(@PathVariable("idx") long idx) throws Exception {
-        cweService.deleteCweByIdx(idx);
+        cweService.deleteRelatedCweByIdx(idx);
         cweAttachedFileService.deleteAllAttachedFile(idx);
         cweCommentService.deleteAllByCweIdx(idx);
 

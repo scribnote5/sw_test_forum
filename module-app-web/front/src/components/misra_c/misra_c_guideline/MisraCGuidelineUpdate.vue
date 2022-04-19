@@ -56,7 +56,7 @@
           <tr>
             <th>도구 정보<span class="recommended-field">*</span></th>
             <td style="overflow: visible">
-              <input type="text" name="toolName" v-model="toolName" class="form-control">
+              <input type="text" name="toolName" v-model="toolName" class="form-control" placeholder="STATIC 4.3.2">
               <p id="toolNameErrorMessage" class="error-message"></p>
 
               <input type="text" name="toolNote" v-model="toolNote" class="form-control" placeholder="STATIC Analysis Agent v1.2.2 p4">
@@ -66,7 +66,7 @@
           <tr>
             <th>컴파일러<span class="recommended-field">*</span></th>
             <td style="overflow: visible">
-              <input type="text" name="compilerName" v-model="compilerName" class="form-control">
+              <input type="text" name="compilerName" v-model="compilerName" class="form-control" placeholder="G++ 4.3">
               <p id="compilerNameErrorMessage" class="error-message"></p>
 
               <input type="text" name="compilerNote" v-model="compilerNote" class="form-control" placeholder="Qt 5.15">
@@ -114,7 +114,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/misra-c-guideline/list/' + misraCIdx">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>
@@ -237,7 +237,7 @@ export default {
             // autoComplete 설정
             createAutoComplete(response.data.autoCompleteTitle, "title", title);
             createHashTagsAutoComplete(response.data.autoCompleteHashTags, "hashTag");
-            createAutoComplete(response.data.autoCompleteToolName, "projectName", projectName);
+            createAutoComplete(response.data.autoCompleteProjectName, "projectName", projectName);
             createAutoComplete(response.data.autoCompleteToolName, "toolName", toolName);
             createAutoComplete(response.data.autoCompleteToolNote, "toolNote", toolNote);
             createAutoComplete(response.data.autoCompleteCompilerName, "compilerName", compilerName);

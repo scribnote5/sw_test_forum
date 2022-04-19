@@ -61,6 +61,44 @@
         </li>
 
         <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#fx-cop-collapse" aria-expanded="false">
+            FxCop 정리
+          </button>
+          <div class="collapse" id="fx-cop-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <router-link to="/fx-cop/list" class="link-dark rounded">FxCop 규칙</router-link>
+              </li>
+              <li>
+                <router-link to="/fx-cop-example/list" class="link-dark rounded">FxCop 예제 코드</router-link>
+              </li>
+              <li>
+                <router-link to="/fx-cop-guideline/list" class="link-dark rounded">FxCop 가이드라인 사례</router-link>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#style-cop-collapse" aria-expanded="false">
+            StyleCop 정리
+          </button>
+          <div class="collapse" id="style-cop-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <router-link to="/style-cop/list" class="link-dark rounded">StyleCop 규칙</router-link>
+              </li>
+              <li>
+                <router-link to="/style-cop-example/list" class="link-dark rounded">StyleCop 예제 코드</router-link>
+              </li>
+              <li>
+                <router-link to="/style-cop-guideline/list" class="link-dark rounded">StyleCop 가이드라인 사례</router-link>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#metric-collapse" aria-expanded="false">
             메트릭 정리
           </button>
@@ -136,7 +174,7 @@
                 <router-link to="/data-history/list" class="link-dark rounded">데이터 기록</router-link>
               </li>
             </ul>
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <ul v-if="loginUserInfo.username === 'root'" class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li>
                 <router-link to="/setting/update" class="link-dark rounded">설정</router-link>
               </li>
@@ -221,3 +259,22 @@
 }
 </style>
 
+<script>
+// vue.js
+import {useRouter} from "vue-router";
+
+// utils
+import vueCookies from "vue-cookies";
+
+export default {
+  setup() {
+    // vue.js
+    const router = useRouter();
+    const loginUserInfo = vueCookies.get('loginUserInfo');
+
+    return {
+      loginUserInfo
+    }
+  }
+}
+</script>

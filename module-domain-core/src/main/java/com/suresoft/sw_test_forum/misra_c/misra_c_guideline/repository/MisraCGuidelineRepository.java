@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MisraCGuidelineRepository extends JpaRepository<MisraCGuideline, Long> {
-
+    public void deleteAllByMisraCIdx(long misraCIdx);
 }

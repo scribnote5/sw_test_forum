@@ -13,13 +13,23 @@ import com.suresoft.sw_test_forum.metric.metric.dto.mapper.MetricMapper;
 import com.suresoft.sw_test_forum.metric.metric.repository.MetricCommentRepositoryImpl;
 import com.suresoft.sw_test_forum.metric.metric.repository.MetricRepository;
 import com.suresoft.sw_test_forum.metric.metric.repository.MetricRepositoryImpl;
+import com.suresoft.sw_test_forum.metric.metric_example.dto.MetricExampleDto;
+import com.suresoft.sw_test_forum.metric.metric_example.repository.MetricExampleRepository;
+import com.suresoft.sw_test_forum.metric.metric_example.service.MetricExampleCommentService;
+import com.suresoft.sw_test_forum.metric.metric_example.service.MetricExampleService;
+import com.suresoft.sw_test_forum.metric.metric_guideline.dto.MetricGuidelineDto;
+import com.suresoft.sw_test_forum.metric.metric_guideline.repository.MetricGuidelineRepository;
+import com.suresoft.sw_test_forum.metric.metric_guideline.service.MetricGuidelineAttachedFileService;
+import com.suresoft.sw_test_forum.metric.metric_guideline.service.MetricGuidelineCommentService;
+import com.suresoft.sw_test_forum.metric.metric_guideline.service.MetricGuidelineLikeService;
+import com.suresoft.sw_test_forum.metric.metric_guideline.service.MetricGuidelineService;
 import com.suresoft.sw_test_forum.util.AuthorityUtil;
 import com.suresoft.sw_test_forum.util.NewIconCheck;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,8 +40,16 @@ public class MetricService {
     private final MetricRepository metricRepository;
     private final MetricRepositoryImpl metricRepositoryImpl;
     private final MetricCommentRepositoryImpl metricCommentRepositoryImpl;
+    private final MetricExampleRepository metricExampleRepository;
+    private final MetricGuidelineRepository metricGuidelineRepository;
     private final HashTagsRepository hashTagsRepository;
     private final HashTagsRepositoryImpl hashTagsRepositoryImpl;
+    private final MetricExampleService metricExampleService;
+    private final MetricExampleCommentService metricExampleCommentService;
+    private final MetricGuidelineService metricGuidelineService;
+    private final MetricGuidelineAttachedFileService metricGuidelineAttachedFileService;
+    private final MetricGuidelineCommentService metricGuidelineCommentService;
+    private final MetricGuidelineLikeService metricGuidelineLikeService;
     private final UserService userService;
     @Value("${module.name}")
     private String moduleName;
@@ -39,14 +57,30 @@ public class MetricService {
     public MetricService(MetricRepository metricRepository,
                          MetricRepositoryImpl metricRepositoryImpl,
                          MetricCommentRepositoryImpl metricCommentRepositoryImpl,
+                         MetricExampleRepository metricExampleRepository,
+                         MetricGuidelineRepository metricGuidelineRepository,
                          HashTagsRepository hashTagsRepository,
                          HashTagsRepositoryImpl hashTagsRepositoryImpl,
+                         @Lazy MetricExampleService metricExampleService,
+                         MetricExampleCommentService metricExampleCommentService,
+                         @Lazy MetricGuidelineService metricGuidelineService,
+                         MetricGuidelineAttachedFileService metricGuidelineAttachedFileService,
+                         MetricGuidelineCommentService metricGuidelineCommentService,
+                         MetricGuidelineLikeService metricGuidelineLikeService,
                          UserService userService) {
         this.metricRepository = metricRepository;
         this.metricRepositoryImpl = metricRepositoryImpl;
         this.metricCommentRepositoryImpl = metricCommentRepositoryImpl;
+        this.metricExampleRepository = metricExampleRepository;
+        this.metricGuidelineRepository = metricGuidelineRepository;
         this.hashTagsRepository = hashTagsRepository;
         this.hashTagsRepositoryImpl = hashTagsRepositoryImpl;
+        this.metricExampleService = metricExampleService;
+        this.metricExampleCommentService = metricExampleCommentService;
+        this.metricGuidelineService = metricGuidelineService;
+        this.metricGuidelineAttachedFileService = metricGuidelineAttachedFileService;
+        this.metricGuidelineCommentService = metricGuidelineCommentService;
+        this.metricGuidelineLikeService = metricGuidelineLikeService;
         this.userService = userService;
     }
 
@@ -126,7 +160,7 @@ public class MetricService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("metric")) {
             for (String hashTag : hashTags.split("#")) {
                 metricDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
@@ -233,6 +267,7 @@ public class MetricService {
 
         HashTags persistHashTags = hashTagsRepository.getById(metricDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("metric")
                 .content(metricDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
@@ -243,10 +278,28 @@ public class MetricService {
      *
      * @param idx
      */
-    public void deleteMetricByIdx(long idx) {
+    @Transactional
+    public void deleteRelatedMetricByIdx(long idx) throws Exception {
         MetricDto metricDto = metricRepositoryImpl.findByIdx(idx);
+        metricDto = metricExampleService.findMetricExampleListWhenDelete(idx, metricDto);
+        metricDto = metricGuidelineService.findMetricGuidelineListWhenDelete(idx, metricDto);
 
+        // 삭제
         metricRepository.deleteById(idx);
+        metricExampleRepository.deleteAllByMetricIdx(idx);
+        metricGuidelineRepository.deleteAllByMetricIdx(idx);
         hashTagsRepository.deleteById(metricDto.getHashTagsIdx());
+
+        // example 연관 데이터 삭제
+        for (MetricExampleDto exampleDto : metricDto.getMetricExampleDtoList()) {
+            metricExampleCommentService.deleteAllByMetricExampleIdx(exampleDto.getIdx());
+        }
+
+        // guideline 연관 데이터 삭제
+        for (MetricGuidelineDto guidelineDto : metricDto.getMetricGuidelineDtoList()) {
+            metricGuidelineAttachedFileService.deleteAllAttachedFile(guidelineDto.getIdx());
+            metricGuidelineLikeService.deleteAllByMetricGuidelineIdx(guidelineDto.getIdx());
+            metricGuidelineCommentService.deleteAllByMetricGuidelineIdx(guidelineDto.getIdx());
+        }
     }
 }

@@ -2,6 +2,7 @@ import {toast} from "@/assets/plugins/sweetalert2/sweetalert2"
 import {isEmpty} from "@/utils/empty-util.js"
 import {fileUpload} from "@/assets/plugins/file-upload/file-upload";
 import axios from "axios";
+import router from "@/router";
 
 /* 에러 메시지 검사 */
 const parseErrorMsg = (msg) => {
@@ -12,12 +13,17 @@ const parseErrorMsg = (msg) => {
     if (!isEmpty(msg)) {
         // 로그인 페이지 에러 처리
         if (!isEmpty(msg.data)) {
-            console.error("msg.data.message 처리")
-            alertMsg = msg.data.message;
-        } else if (isEmpty(msg.message)) {
+            if (!isEmpty(msg.data.message)) {
+                console.error("msg.data 처리")
+                alertMsg = msg.data.message;
+            } else {
+                console.error("else msg.data 처리")
+                alertMsg = msg.data;
+            }
+        } else if (!isEmpty(msg.message)) {
             console.error("msg.message 처리")
-            alertMsg = msg;
-        } else if (isEmpty(msg.errors)) {
+            alertMsg = msg.message;
+        } else if (!isEmpty(msg.errors)) {
             console.error("msg.errors 처리")
             alertMsg = msg.message;
         } else {
@@ -34,6 +40,11 @@ const parseErrorMsg = (msg) => {
         title: "에러가 발생하였습니다.",
         html: alertMsg
     })
+
+    // 2.5초 이후, 이전 페이지로 이동
+    setTimeout(function () {
+        router.go(-1);
+    }, 2500);
 }
 
 /* 배열 요소가 empty인 경우를 제외하여 배열 길이를 계산 */

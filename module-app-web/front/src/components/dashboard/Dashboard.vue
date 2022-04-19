@@ -79,7 +79,7 @@
               </h5>
               <div v-for="(diskUtil, i) in diskUtilList" :key="i">
                 <span class="memory-name me-1">{{ diskUtil.driverName }}</span>
-                <span class="memory-space">{{ diskUtil.totalSize }} / {{ diskUtil.usedSize }}</span> 사용
+                <span class="memory-space">{{ diskUtil.usedSize }} / {{ diskUtil.totalSize }}</span> 사용
               </div>
             </div>
           </div>
@@ -270,7 +270,9 @@
                         <span v-if="dataHistory.auditType == 'SELECT'" class="mobile-content">조회</span>
                         <span v-if="dataHistory.auditType == 'INSERT'" class="mobile-content">등록</span>
                         <span v-if="dataHistory.auditType == 'UPDATE'" class="mobile-content">수정</span>
-                        <span v-if="dataHistory.auditType == 'DELETE'" class="mobile-content">삭제</span> &nbsp;
+                        <span v-if="dataHistory.auditType == 'DELETE'" class="mobile-content">삭제</span>
+                        <span v-if="dataHistory.auditType == 'LIKE'" class="mobile-content">좋아요</span>
+                        <span v-if="dataHistory.auditType == 'CANCEL_LIKE'" class="mobile-content">좋아요 취소</span>&nbsp;
                         <span class="mobile-content">{{ dataHistory.createdDate }}</span> &nbsp;
                       </div>
                     </div>
@@ -282,6 +284,8 @@
                     <span v-if="dataHistory.auditType == 'INSERT'">등록</span>
                     <span v-if="dataHistory.auditType == 'UPDATE'">수정</span>
                     <span v-if="dataHistory.auditType == 'DELETE'">삭제</span>
+                    <span v-if="dataHistory.auditType == 'LIKE'">좋아요</span>
+                    <span v-if="dataHistory.auditType == 'CANCEL_LIKE'">좋아요 취소</span>
                   </td>
                   <td class="d-none d-lg-table-cell text-center">{{ dataHistory.createdDate }}</td>
                 </tr>
@@ -324,7 +328,8 @@
 }
 
 .memory-space {
-  color: $darkest-main-grey;
+  margin-left: 5px;
+  color: $darker-main-grey;
 }
 </style>
 

@@ -40,12 +40,12 @@
           <!-- metricGuidelineList -->
           <tr v-for="(metricGuideline, i) in metricGuidelineList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ metricGuideline.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ metricGuidelineList.totalElements - metricGuidelineList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ metricGuideline.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ metricGuidelineList.totalElements - metricGuidelineList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <router-link :to= "metricIdx === 0 ? ('/metric-guideline/read/' + metricGuideline.idx) : ('/metric-guideline/read/from-rule-list/' + metricGuideline.idx)">
+              <router-link :to="metricIdx === 0 ? ('/metric-guideline/read/' + metricGuideline.idx) : ('/metric-guideline/read/from-rule-list/' + metricGuideline.idx)">
                 <span v-if="metricIdx === 0">{{ metricGuideline.metricRule }} - </span>{{ metricGuideline.title }}
               </router-link>
               <span class="comment-count">{{ metricGuideline.commentDtoCount }}</span>

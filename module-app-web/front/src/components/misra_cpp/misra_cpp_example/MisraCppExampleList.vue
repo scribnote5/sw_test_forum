@@ -38,12 +38,17 @@
           <!-- misraCppExampleList -->
           <tr v-for="(misraCppExample, i) in misraCppExampleList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ misraCppExample.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">
+              <img v-if="misraCppExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+              <span v-else>{{ misraCppExampleList.totalElements - misraCppExampleList.pageable.offset - i }}</span>
+            </td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ misraCppExample.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">
+                <img v-if="misraCppExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+                <span v-else>{{ misraCppExampleList.totalElements - misraCppExampleList.pageable.offset - i }}. </span>
+              </span>
               <!-- 공통 -->
-              <img v-if="misraCppExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to= "misraCppIdx === 0 ? ('/misra-cpp-example/read/' + misraCppExample.idx) : ('/misra-cpp-example/read/from-rule-list/' + misraCppExample.idx)">
                 <span v-if="misraCppIdx === 0">{{ misraCppExample.misraCppRule }} - </span>{{ misraCppExample.title }}
               </router-link>

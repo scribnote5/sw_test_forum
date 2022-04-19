@@ -24,9 +24,9 @@ public class GeoLocationService {
             ipAddress = InetAddress.getByName(ip);
             cityResponse = databaseReader.city(ipAddress);
 
-            String continent = (cityResponse.getContinent() != null) ? cityResponse.getContinent().getName() : "";
-            String country = (cityResponse.getCountry() != null) ? cityResponse.getCountry().getName() : "";
-            String city = cityResponse.getCity().getName();
+            String continent = (cityResponse.getContinent() != null) ? cityResponse.getContinent().getName() : " No Data";
+            String country = (cityResponse.getCountry() != null) ? cityResponse.getCountry().getName() : " No Data";
+            String city = (cityResponse.getCity().getName() != null) ? cityResponse.getCity().getName() : " No Data";
 
             location = country + ": " + city;
         }

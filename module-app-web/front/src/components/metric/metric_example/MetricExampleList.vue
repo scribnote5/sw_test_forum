@@ -38,13 +38,18 @@
           <!-- metricExampleList -->
           <tr v-for="(metricExample, i) in metricExampleList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ metricExample.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">
+              <img v-if="metricExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+              <span v-else>{{ metricExampleList.totalElements - metricExampleList.pageable.offset - i }}</span>
+            </td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ metricExample.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">
+                <img v-if="metricExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+                <span v-else>{{ metricExampleList.totalElements - metricExampleList.pageable.offset - i }}. </span>
+              </span>
               <!-- 공통 -->
-              <img v-if="metricExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
-              <router-link :to= "metricIdx === 0 ? ('/metric-example/read/' + metricExample.idx) : ('/metric-example/read/from-rule-list/' + metricExample.idx)">
+              <router-link :to="metricIdx === 0 ? ('/metric-example/read/' + metricExample.idx) : ('/metric-example/read/from-rule-list/' + metricExample.idx)">
                 <span v-if="metricIdx === 0">{{ metricExample.metricRule }} - </span>{{ metricExample.title }}
               </router-link>
               <span class="comment-count">{{ metricExample.commentDtoCount }}</span>

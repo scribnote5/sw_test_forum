@@ -55,6 +55,36 @@ import CweGuidelineWrite from '../components/cwe/cwe_guideline/CweGuidelineWrite
 import CweGuidelineUpdate from '../components/cwe/cwe_guideline/CweGuidelineUpdate.vue'
 import CweGuidelineRead from '../components/cwe/cwe_guideline/CweGuidelineRead.vue'
 
+import StyleCopList from '../components/style_cop/style_cop/StyleCopList.vue'
+import StyleCopWrite from '../components/style_cop/style_cop/StyleCopWrite.vue'
+import StyleCopUpdate from '../components/style_cop/style_cop/StyleCopUpdate.vue'
+import StyleCopRead from '../components/style_cop/style_cop/StyleCopRead.vue'
+
+import StyleCopExampleList from '../components/style_cop/style_cop_example/StyleCopExampleList.vue'
+import StyleCopExampleWrite from '../components/style_cop/style_cop_example/StyleCopExampleWrite.vue'
+import StyleCopExampleUpdate from '../components/style_cop/style_cop_example/StyleCopExampleUpdate.vue'
+import StyleCopExampleRead from '../components/style_cop/style_cop_example/StyleCopExampleRead.vue'
+
+import StyleCopGuidelineList from '../components/style_cop/style_cop_guideline/StyleCopGuidelineList.vue'
+import StyleCopGuidelineWrite from '../components/style_cop/style_cop_guideline/StyleCopGuidelineWrite.vue'
+import StyleCopGuidelineUpdate from '../components/style_cop/style_cop_guideline/StyleCopGuidelineUpdate.vue'
+import StyleCopGuidelineRead from '../components/style_cop/style_cop_guideline/StyleCopGuidelineRead.vue'
+
+import FxCopList from '../components/fx_cop/fx_cop/FxCopList.vue'
+import FxCopWrite from '../components/fx_cop/fx_cop/FxCopWrite.vue'
+import FxCopUpdate from '../components/fx_cop/fx_cop/FxCopUpdate.vue'
+import FxCopRead from '../components/fx_cop/fx_cop/FxCopRead.vue'
+
+import FxCopExampleList from '../components/fx_cop/fx_cop_example/FxCopExampleList.vue'
+import FxCopExampleWrite from '../components/fx_cop/fx_cop_example/FxCopExampleWrite.vue'
+import FxCopExampleUpdate from '../components/fx_cop/fx_cop_example/FxCopExampleUpdate.vue'
+import FxCopExampleRead from '../components/fx_cop/fx_cop_example/FxCopExampleRead.vue'
+
+import FxCopGuidelineList from '../components/fx_cop/fx_cop_guideline/FxCopGuidelineList.vue'
+import FxCopGuidelineWrite from '../components/fx_cop/fx_cop_guideline/FxCopGuidelineWrite.vue'
+import FxCopGuidelineUpdate from '../components/fx_cop/fx_cop_guideline/FxCopGuidelineUpdate.vue'
+import FxCopGuidelineRead from '../components/fx_cop/fx_cop_guideline/FxCopGuidelineRead.vue'
+
 import MetricList from '../components/metric/metric/MetricList.vue'
 import MetricWrite from '../components/metric/metric/MetricWrite.vue'
 import MetricUpdate from '../components/metric/metric/MetricUpdate.vue'
@@ -190,7 +220,7 @@ const routes = [
         path: '/misra-c-example/update/:idx',
         name: 'MisraCExampleUpdate',
         component: MisraCExampleUpdate,
-        meta: {title: 'SW Test Forum - MISRA C 에제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - MISRA C 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-guideline/list',
@@ -262,7 +292,7 @@ const routes = [
         path: '/misra-cpp-example/list/:misraCppIdx',
         name: 'MisraCppExampleListByMisraCppIdx',
         component: MisraCppExampleList,
-        meta: {title: 'SW Test Forum - MISRA C++ 에제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - MISRA C++ 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-example/write/:misraCppIdx',
@@ -286,7 +316,7 @@ const routes = [
         path: '/misra-cpp-example/update/:idx',
         name: 'MisraCppExampleUpdate',
         component: MisraCppExampleUpdate,
-        meta: {title: 'SW Test Forum - MISRA C++ 에제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - MISRA C++ 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/list',
@@ -375,7 +405,7 @@ const routes = [
     {
         path: '/cwe-example/read/from-rule-list/:idx',
         name: 'CweExampleReadFromRuleList',
-        component: CweGuidelineRead,
+        component: CweExampleRead,
         meta: {title: 'SW Test Forum - CWE 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
@@ -419,6 +449,198 @@ const routes = [
         name: 'CweGuidelineUpdate',
         component: CweGuidelineUpdate,
         meta: {title: 'SW Test Forum - CWE 가이드라인 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop/list',
+        name: 'StyleCopList',
+        component: StyleCopList,
+        meta: {title: 'SW Test Forum - StyleCop 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop/write',
+        name: 'StyleCopWrite',
+        component: StyleCopWrite,
+        meta: {title: 'SW Test Forum - StyleCop 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop/read/:idx',
+        name: 'StyleCopRead',
+        component: StyleCopRead,
+        meta: {title: 'SW Test Forum - StyleCop 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop/update/:idx',
+        name: 'StyleCopUpdate',
+        component: StyleCopUpdate,
+        meta: {title: 'SW Test Forum - StyleCop 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-example/list',
+        name: 'StyleCopExampleList',
+        component: StyleCopExampleList,
+        meta: {title: 'SW Test Forum - StyleCop 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-example/list/:styleCopIdx',
+        name: 'StyleCopExampleListByStyleCopIdx',
+        component: StyleCopExampleList,
+        meta: {title: 'SW Test Forum - StyleCop 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-example/write/:styleCopIdx',
+        name: 'StyleCopExampleWrite',
+        component: StyleCopExampleWrite,
+        meta: {title: 'SW Test Forum - StyleCop 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-example/read/:idx',
+        name: 'StyleCopExampleRead',
+        component: StyleCopExampleRead,
+        meta: {title: 'SW Test Forum - StyleCop 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-example/read/from-rule-list/:idx',
+        name: 'StyleCopExampleReadFromRuleList',
+        component: StyleCopExampleRead,
+        meta: {title: 'SW Test Forum - StyleCop 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/style-cop-example/update/:idx',
+        name: 'StyleCopExampleUpdate',
+        component: StyleCopExampleUpdate,
+        meta: {title: 'SW Test Forum - StyleCop 예제 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-guideline/list',
+        name: 'StyleCopGuidelineList',
+        component: StyleCopGuidelineList,
+        meta: {title: 'SW Test Forum - StyleCop 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-guideline/list/:styleCopIdx',
+        name: 'StyleCopGuidelineListByStyleCopIdx',
+        component: StyleCopGuidelineList,
+        meta: {title: 'SW Test Forum - StyleCop 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-guideline/write/:styleCopIdx',
+        name: 'StyleCopGuidelineWrite',
+        component: StyleCopGuidelineWrite,
+        meta: {title: 'SW Test Forum - StyleCop 가이드라인 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-guideline/read/:idx',
+        name: 'StyleCopGuidelineRead',
+        component: StyleCopGuidelineRead,
+        meta: {title: 'SW Test Forum - StyleCop 가이드라인 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/style-cop-guideline/read/from-rule-list/:idx',
+        name: 'StyleCopGuidelineReadFromRuleList',
+        component: StyleCopGuidelineRead,
+        meta: {title: 'SW Test Forum - StyleCop 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/style-cop-guideline/update/:idx',
+        name: 'StyleCopGuidelineUpdate',
+        component: StyleCopGuidelineUpdate,
+        meta: {title: 'SW Test Forum - StyleCop 가이드라인 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop/list',
+        name: 'FxCopList',
+        component: FxCopList,
+        meta: {title: 'SW Test Forum - FxCop 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop/write',
+        name: 'FxCopWrite',
+        component: FxCopWrite,
+        meta: {title: 'SW Test Forum - FxCop 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop/read/:idx',
+        name: 'FxCopRead',
+        component: FxCopRead,
+        meta: {title: 'SW Test Forum - FxCop 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop/update/:idx',
+        name: 'FxCopUpdate',
+        component: FxCopUpdate,
+        meta: {title: 'SW Test Forum - FxCop 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-example/list',
+        name: 'FxCopExampleList',
+        component: FxCopExampleList,
+        meta: {title: 'SW Test Forum - FxCop 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-example/list/:fxCopIdx',
+        name: 'FxCopExampleListByFxCopIdx',
+        component: FxCopExampleList,
+        meta: {title: 'SW Test Forum - FxCop 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-example/write/:fxCopIdx',
+        name: 'FxCopExampleWrite',
+        component: FxCopExampleWrite,
+        meta: {title: 'SW Test Forum - FxCop 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-example/read/:idx',
+        name: 'FxCopExampleRead',
+        component: FxCopExampleRead,
+        meta: {title: 'SW Test Forum - FxCop 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-example/read/from-rule-list/:idx',
+        name: 'FxCopExampleReadFromRuleList',
+        component: FxCopExampleRead,
+        meta: {title: 'SW Test Forum - FxCop 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/fx-cop-example/update/:idx',
+        name: 'FxCopExampleUpdate',
+        component: FxCopExampleUpdate,
+        meta: {title: 'SW Test Forum - FxCop 예제 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-guideline/list',
+        name: 'FxCopGuidelineList',
+        component: FxCopGuidelineList,
+        meta: {title: 'SW Test Forum - FxCop 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-guideline/list/:fxCopIdx',
+        name: 'FxCopGuidelineListByFxCopIdx',
+        component: FxCopGuidelineList,
+        meta: {title: 'SW Test Forum - FxCop 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-guideline/write/:fxCopIdx',
+        name: 'FxCopGuidelineWrite',
+        component: FxCopGuidelineWrite,
+        meta: {title: 'SW Test Forum - FxCop 가이드라인 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-guideline/read/:idx',
+        name: 'FxCopGuidelineRead',
+        component: FxCopGuidelineRead,
+        meta: {title: 'SW Test Forum - FxCop 가이드라인 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/fx-cop-guideline/read/from-rule-list/:idx',
+        name: 'FxCopGuidelineReadFromRuleList',
+        component: FxCopGuidelineRead,
+        meta: {title: 'SW Test Forum - FxCop 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/fx-cop-guideline/update/:idx',
+        name: 'FxCopGuidelineUpdate',
+        component: FxCopGuidelineUpdate,
+        meta: {title: 'SW Test Forum - FxCop 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/metric/list',
@@ -516,6 +738,7 @@ const routes = [
         component: MetricGuidelineUpdate,
         meta: {title: 'SW Test Forum - 가이드라인 수정', layoutView: true, authRequired: true}
     },
+
     {
         path: '/static-tool/list',
         name: 'StaticToolList',

@@ -26,7 +26,8 @@ public class ModuleApiApplication {
 //                            .title("게시글" + index)
 //                            .content("컨텐츠" + index)
 //                            .activeStatus(ActiveStatus.ACTIVE)
-//                            .createdBy(1)
+//                            .createdByIdx(1)
+//                            .priority(6)
 //                            .build()));
         };
     }

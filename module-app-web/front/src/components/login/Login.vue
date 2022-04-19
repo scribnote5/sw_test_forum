@@ -442,7 +442,6 @@ export default {
             loginResultType = 'SUCCESS';
           })
           .catch((error) => {
-            console.log(error)
             parseErrorMsg(error.response);
             loginResultType = 'FAIL';
           })

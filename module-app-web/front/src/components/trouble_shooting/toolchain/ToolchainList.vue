@@ -37,12 +37,11 @@
           <!-- toolchainListByPriority -->
           <tr v-for="(toolchain, i) in toolchainListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ toolchain.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ toolchain.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/toolchain/read/' + toolchain.idx">{{ toolchain.title }}</router-link>
               <span class="comment-count">{{ toolchain.commentDtoCount }}</span>
               <img v-if="toolchain.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -80,12 +79,11 @@
           <!-- toolchainList -->
           <tr v-for="(toolchain, i) in toolchainList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ toolchain.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ toolchainList.totalElements - toolchainList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ toolchain.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ toolchainList.totalElements - toolchainList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="toolchain.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/toolchain/read/' + toolchain.idx"> {{ toolchain.title }}</router-link>
               <span class="comment-count">{{ toolchain.commentDtoCount }}</span>
               <img v-if="toolchain.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

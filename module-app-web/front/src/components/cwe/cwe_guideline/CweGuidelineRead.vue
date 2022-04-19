@@ -90,13 +90,13 @@
           <!-- 공통 -->
           <tr>
             <td colspan="2">
-              <div class="content ck-content" v-html="cweGuideline.content"></div>
+              <CodeMirror pageInformation="read" :nonCompliantExampleValue="nonCompliantExample" :compliantExampleValue="compliantExample" :badCasePositionList="badCasePositionList" :goodCasePositionList="goodCasePositionList"
+                          mode="text/x-csrc"></CodeMirror>
             </td>
           </tr>
           <tr>
             <td colspan="2">
-              <CodeMirror pageInformation="read" :nonCompliantExampleValue="nonCompliantExample" :compliantExampleValue="compliantExample" :badCasePositionList="badCasePositionList" :goodCasePositionList="goodCasePositionList"
-                          mode="text/x-csrc"></CodeMirror>
+              <div class="content ck-content" v-html="cweGuideline.content"></div>
             </td>
           </tr>
           <tr>
@@ -110,13 +110,16 @@
 
       <Comment path="cwe-guideline-comments" idxName="cweGuidelineIdx" :idx="cweGuideline.idx" :commentList="cweGuideline.commentDtoList"></Comment>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between flex-column flex-md-row mx-3 my-5">
         <div class="d-flex">
-          <router-link :to="this.$route.meta.fromRuleList ? '/cwe-guideline/list/' + cweGuideline.cweIdx : '/cwe-guideline/list'">
+          <router-link :to="this.$route.meta.fromRuleList ? '/cwe-guideline/list/' + cweGuideline.cweIdx : '/cwe-guideline/list'" class="me-2">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>
           </router-link>
+          <router-link :to="'/cwe/read/' + cweGuideline.cweIdx" class="ms-2">
+            <button class="btn btn-main-dark-cyan d-flex align-items-center">규칙 이동<img :src="require(`@/assets/images/rewind-white.svg`)" class="ms-2"></button>
+          </router-link>
         </div>
-        <div class="d-flex" v-if="cweGuideline.access">
+        <div class="d-flex mt-2 mt-md-0" v-if="cweGuideline.access">
           <router-link :to="'/cwe-guideline/update/' + idx" class="me-2">
             <button class="btn btn-main-blue d-flex align-items-center">수정<img :src="require(`@/assets/images/update-white.svg`)" class="ms-2"></button>
           </router-link>

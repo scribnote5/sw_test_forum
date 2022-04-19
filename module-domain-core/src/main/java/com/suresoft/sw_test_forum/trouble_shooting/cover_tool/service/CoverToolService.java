@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -146,7 +145,7 @@ public class CoverToolService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("cover_tool")) {
             for (String hashTag : hashTags.split("#")) {
                 coverToolDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
@@ -158,22 +157,22 @@ public class CoverToolService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("cover_tool")) {
             coverToolDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("cover_tool")) {
             coverToolDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("cover_tool")) {
             coverToolDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("cover_tool")) {
             coverToolDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -287,18 +286,21 @@ public class CoverToolService {
 
         HashTags persistHashTags = hashTagsRepository.getById(coverToolDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("cover_tool")
                 .content(coverToolDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         IdeInformation persistIdeInformation = ideInformationRepository.getById(coverToolDto.getIdeInformationIdx());
         persistIdeInformation.update(IdeInformation.builder()
+                .tableName("cover_tool")
                 .ideName(coverToolDto.getIdeName())
                 .build());
         ideInformationRepository.save(persistIdeInformation);
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(coverToolDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("cover_tool")
                 .toolName(coverToolDto.getToolName())
                 .toolNote(coverToolDto.getToolNote())
                 .build());
@@ -306,6 +308,7 @@ public class CoverToolService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(coverToolDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("cover_tool")
                 .compilerName(coverToolDto.getCompilerName())
                 .compilerNote(coverToolDto.getCompilerNote())
                 .build());

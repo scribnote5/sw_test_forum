@@ -266,4 +266,24 @@ public class MisraCppExampleRepositoryImpl extends QuerydslRepositorySupport {
                 .where(misraCppExample.idx.eq(idx))
                 .execute();
     }
+
+
+    /**
+     * MISRA CPP 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param misraCppIdx
+     * @return
+     */
+    public List<MisraCppExampleDto> findAllWhenDelete(long misraCppIdx) {
+        JPQLQuery<MisraCppExampleDto> query = queryFactory.select(
+                        Projections.bean(
+                                MisraCppExampleDto.class,
+                                misraCppExample.idx
+                        )
+                )
+                .from(misraCppExample)
+                .where(misraCppExample.misraCppIdx.eq(misraCppIdx));
+
+        return query.fetch();
+    }
 }

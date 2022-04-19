@@ -40,12 +40,12 @@
           <!-- misraCppGuidelineList -->
           <tr v-for="(misraCppGuideline, i) in misraCppGuidelineList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ misraCppGuideline.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraCppGuidelineList.totalElements - misraCppGuidelineList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ misraCppGuideline.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ misraCppGuidelineList.totalElements - misraCppGuidelineList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <router-link :to= "misraCppIdx === 0 ? ('/misra-cpp-guideline/read/' + misraCppGuideline.idx) : ('/misra-cpp-guideline/read/from-rule-list/' + misraCppGuideline.idx)">
+              <router-link :to="misraCppIdx === 0 ? ('/misra-cpp-guideline/read/' + misraCppGuideline.idx) : ('/misra-cpp-guideline/read/from-rule-list/' + misraCppGuideline.idx)">
                 <span v-if="misraCppIdx === 0">{{ misraCppGuideline.misraCppRule }} - </span>{{ misraCppGuideline.title }}
               </router-link>
               <span class="comment-count">{{ misraCppGuideline.commentDtoCount }}</span>

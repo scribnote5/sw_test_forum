@@ -34,67 +34,65 @@
           </thead>
           <tbody>
           <!-- misraCListByPriority -->
-          <tr v-for="(misraC, i) in misraCListByPriority" :key="i">
+          <tr v-for="(styleCop, i) in misraCListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ misraC.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ misraC.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
-              <Frequency page-information="list" :frequency="misraC.frequency"> </Frequency>
-              <router-link :to="'/misra-c/read/' + misraC.idx">{{ misraC.title }}</router-link>
-              <span class="comment-count">{{ misraC.commentDtoCount }}</span>
-              <img v-if="misraC.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
+              <Frequency page-information="list" :frequency="styleCop.frequency"> </Frequency>
+              <router-link :to="'/misra-c/read/' + styleCop.idx">{{ styleCop.title }}</router-link>
+              <span class="comment-count">{{ styleCop.commentDtoCount }}</span>
+              <img v-if="styleCop.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
               <!-- Mobile -->
               <div class="d-inline d-lg-none">
                 <div>
-                  <span class="mobile-content">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }} </span> <br>
-                  <span class="mobile-content">{{ misraC.createdDate }}</span> &nbsp;
-                  <span class="mobile-content"> 조회수: {{ misraC.views }}</span> &nbsp;
-                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags></span>
+                  <span class="mobile-content">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }} </span> <br>
+                  <span class="mobile-content">{{ styleCop.createdDate }}</span> &nbsp;
+                  <span class="mobile-content"> 조회수: {{ styleCop.views }}</span> &nbsp;
+                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags></span>
                 </div>
               </div>
             </td>
             <!-- Desktop -->
-            <td class="d-none d-lg-table-cell">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }}</td>
+            <td class="d-none d-lg-table-cell">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }}</td>
             <td class="d-none d-lg-table-cell text-start">
-              <HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags>
+              <HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags>
             </td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraC.createdDate }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraC.views }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ styleCop.createdDate }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ styleCop.views }}</td>
           </tr>
 
           <!-- misraCList -->
-          <tr v-for="(misraC, i) in misraCList.content" :key="i">
+          <tr v-for="(styleCop, i) in misraCList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ misraC.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraCList.totalElements - misraCList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ misraC.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ misraCList.totalElements - misraCList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="misraC.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
-              <Frequency page-information="list" :frequency="misraC.frequency"> </Frequency>
-              <router-link :to="'/misra-c/read/' + misraC.idx"> {{ misraC.title }}</router-link>
-              <span class="comment-count">{{ misraC.commentDtoCount }}</span>
-              <img v-if="misraC.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
+              <Frequency page-information="list" :frequency="styleCop.frequency"> </Frequency>
+              <router-link :to="'/misra-c/read/' + styleCop.idx"> {{ styleCop.title }}</router-link>
+              <span class="comment-count">{{ styleCop.commentDtoCount }}</span>
+              <img v-if="styleCop.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
               <!-- Mobile -->
               <div class="d-inline d-lg-none">
                 <div>
-                  <span class="mobile-content">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }} </span> <br>
-                  <span class="mobile-content">{{ misraC.createdDate }}</span> &nbsp;
-                  <span class="mobile-content">조회수: {{ misraC.views }}</span> &nbsp;
-                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags></span>
+                  <span class="mobile-content">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }} </span> <br>
+                  <span class="mobile-content">{{ styleCop.createdDate }}</span> &nbsp;
+                  <span class="mobile-content">조회수: {{ styleCop.views }}</span> &nbsp;
+                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags></span>
                 </div>
               </div>
             </td>
             <!-- Desktop -->
-            <td class="d-none d-lg-table-cell">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }}</td>
+            <td class="d-none d-lg-table-cell">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }}</td>
             <td class="d-none d-lg-table-cell text-start">
-              <HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags>
+              <HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags>
             </td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraC.createdDate }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraC.views }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ styleCop.createdDate }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ styleCop.views }}</td>
           </tr>
 
           <tr v-if="misraCList.content.length === 0">
@@ -190,8 +188,8 @@ export default {
             .then((response) => {
               misraCListByPriority.value = response.data;
               // dayjs
-              for (const misraC of misraCListByPriority.value) {
-                misraC.createdDate = dayjs(misraC.createdDate).format("YYYY.MM.DD.");
+              for (const styleCop of misraCListByPriority.value) {
+                styleCop.createdDate = dayjs(styleCop.createdDate).format("YYYY.MM.DD.");
               }
             })
             .catch((error) => {
@@ -221,8 +219,8 @@ export default {
             endNumber.value = (misraCList.value.totalPages > startNumber.value + 9) ? startNumber.value + 9 : (misraCList.value.totalPages == 0 ? 1 : misraCList.value.totalPages);
 
             // dayjs
-            for (const misraC of misraCList.value.content) {
-              misraC.createdDate = dayjs(misraC.createdDate).format("YYYY.MM.DD.");
+            for (const styleCop of misraCList.value.content) {
+              styleCop.createdDate = dayjs(styleCop.createdDate).format("YYYY.MM.DD.");
             }
           })
           .catch((error) => {

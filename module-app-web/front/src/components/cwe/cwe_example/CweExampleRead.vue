@@ -82,13 +82,16 @@
 
       <Comment path="cwe-example-comments" idxName="cweExampleIdx" :idx="cweExample.idx" :commentList="cweExample.commentDtoList"></Comment>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between flex-column flex-md-row mx-3 my-5">
         <div class="d-flex">
-          <router-link :to="this.$route.meta.fromRuleList ? '/cwe-example/list/' + cweExample.cweIdx : '/cwe-example/list'">
+          <router-link :to="this.$route.meta.fromRuleList ? '/cwe-example/list/' + cweExample.cweIdx : '/cwe-example/list'" class="me-2">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>
           </router-link>
+          <router-link :to="'/cwe/read/' + cweExample.cweIdx" class="ms-2">
+            <button class="btn btn-main-dark-cyan d-flex align-items-center">규칙 이동<img :src="require(`@/assets/images/rewind-white.svg`)" class="ms-2"></button>
+          </router-link>
         </div>
-        <div class="d-flex" v-if="cweExample.access">
+        <div class="d-flex mt-2 mt-md-0" v-if="cweExample.access">
           <router-link :to="'/cwe-example/update/' + idx" class="me-2">
             <button class="btn btn-main-blue d-flex align-items-center">수정<img :src="require(`@/assets/images/update-white.svg`)" class="ms-2"></button>
           </router-link>

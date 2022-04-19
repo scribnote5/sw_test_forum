@@ -266,4 +266,23 @@ public class MisraCExampleRepositoryImpl extends QuerydslRepositorySupport {
                 .where(misraCExample.idx.eq(idx))
                 .execute();
     }
+
+    /**
+     * MISRA C 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param misraCIdx
+     * @return
+     */
+    public List<MisraCExampleDto> findAllWhenDelete(long misraCIdx) {
+        JPQLQuery<MisraCExampleDto> query = queryFactory.select(
+                        Projections.bean(
+                                MisraCExampleDto.class,
+                                misraCExample.idx
+                        )
+                )
+                .from(misraCExample)
+                .where(misraCExample.misraCIdx.eq(misraCIdx));
+
+        return query.fetch();
+    }
 }

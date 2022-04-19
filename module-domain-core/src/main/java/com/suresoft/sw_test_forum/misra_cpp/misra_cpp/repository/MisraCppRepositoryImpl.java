@@ -103,7 +103,7 @@ public class MisraCppRepositoryImpl extends QuerydslRepositorySupport {
                 .from(misraCpp)
                 .join(hashTags).on(misraCpp.hashTagsIdx.eq(hashTags.idx))
                 .where(searchCondition(misraCppSearchDto))
-                .orderBy(misraCpp.idx.desc());
+                .orderBy(misraCpp.title.desc());
 
         long totalCount = query.fetchCount();
         List<MisraCppDto> results = getQuerydsl().applyPagination(pageable, query).fetch();

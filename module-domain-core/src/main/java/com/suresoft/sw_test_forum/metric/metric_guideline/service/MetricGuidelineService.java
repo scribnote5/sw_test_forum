@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -151,34 +150,34 @@ public class MetricGuidelineService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("metric_guideline")) {
             for (String hashTag : hashTags.split("#")) {
                 metricGuidelineDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
         }
 
         // projectName 설정
-        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectName()) {
+        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectNameByTableName("metric_guideline")) {
             metricGuidelineDto.getAutoCompleteProjectName().add(projectName);
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("metric_guideline")) {
             metricGuidelineDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("metric_guideline")) {
             metricGuidelineDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("metric_guideline")) {
             metricGuidelineDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("metric_guideline")) {
             metricGuidelineDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -270,18 +269,21 @@ public class MetricGuidelineService {
 
         HashTags persistHashTags = hashTagsRepository.getById(metricGuidelineDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("metric_guideline")
                 .content(metricGuidelineDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         ProjectInformation persistProjectInformation = projectInformationRepository.getById(metricGuidelineDto.getProjectInformationIdx());
         persistProjectInformation.update(ProjectInformation.builder()
+                .tableName("metric_guideline")
                 .projectName(metricGuidelineDto.getProjectName())
                 .build());
         projectInformationRepository.save(persistProjectInformation);
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(metricGuidelineDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("metric_guideline")
                 .toolName(metricGuidelineDto.getToolName())
                 .toolNote(metricGuidelineDto.getToolNote())
                 .build());
@@ -289,6 +291,7 @@ public class MetricGuidelineService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(metricGuidelineDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("metric_guideline")
                 .compilerName(metricGuidelineDto.getCompilerName())
                 .compilerNote(metricGuidelineDto.getCompilerNote())
                 .build());
@@ -308,5 +311,19 @@ public class MetricGuidelineService {
         projectInformationRepository.deleteById(metricGuidelineDto.getProjectInformationIdx());
         toolInformationRepository.deleteById(metricGuidelineDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(metricGuidelineDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * 메트릭 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param metricIdx
+     * @param metricDto
+     * @return
+     */
+    public MetricDto findMetricGuidelineListWhenDelete(long metricIdx, MetricDto metricDto) {
+        List<MetricGuidelineDto> metricGuidelineDtoList = metricGuidelineRepositoryImpl.findAllWhenDelete(metricIdx);
+        metricDto = MetricMapper.INSTANCE.toDtoByGuideline(metricDto, metricGuidelineDtoList);
+
+        return metricDto;
     }
 }

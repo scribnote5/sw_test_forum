@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MetricGuidelineRepository extends JpaRepository<MetricGuideline, Long> {
-
+    public void deleteAllByMetricIdx(long metricIdx);
 }

@@ -148,22 +148,22 @@ public class MetricExampleService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("metric_example")) {
             metricExampleDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("metric_example")) {
             metricExampleDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("metric_example")) {
             metricExampleDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("metric_example")) {
             metricExampleDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -266,6 +266,7 @@ public class MetricExampleService {
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(metricExampleDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("metric_example")
                 .toolName(metricExampleDto.getToolName())
                 .toolNote(metricExampleDto.getToolNote())
                 .build());
@@ -273,6 +274,7 @@ public class MetricExampleService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(metricExampleDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("metric_example")
                 .compilerName(metricExampleDto.getCompilerName())
                 .compilerNote(metricExampleDto.getCompilerNote())
                 .build());
@@ -290,5 +292,19 @@ public class MetricExampleService {
         metricExampleRepository.deleteById(idx);
         toolInformationRepository.deleteById(metricExampleDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(metricExampleDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * 메트릭 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param metricIdx
+     * @param metricDto
+     * @return
+     */
+    public MetricDto findMetricExampleListWhenDelete(long metricIdx, MetricDto metricDto) {
+        List<MetricExampleDto> metricExampleDtoList = metricExampleRepositoryImpl.findAllWhenDelete(metricIdx);
+        metricDto = MetricMapper.INSTANCE.toDtoByExample(metricDto, metricExampleDtoList);
+
+        return metricDto;
     }
 }

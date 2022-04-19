@@ -108,7 +108,7 @@
 
       <Comment path="misra-cpp-comments" idxName="misraCppIdx" :idx="misraCpp.idx" :commentList="misraCpp.commentDtoList"></Comment>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/misra-cpp/list'">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>

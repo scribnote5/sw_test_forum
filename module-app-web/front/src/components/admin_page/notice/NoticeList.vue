@@ -34,12 +34,11 @@
           <!-- noticeListByPriority -->
           <tr v-for="(notice, i) in noticeListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ notice.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ notice.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/> </span>
               <!-- 공통 -->
-              <img v-if="notice.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/notice/read/' + notice.idx"> {{ notice.title }}</router-link>
               <span class="comment-count">{{ notice.commentDtoCount }}</span>
               <img v-if="notice.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -61,12 +60,11 @@
           <!-- noticeList -->
           <tr v-for="(notice, i) in noticeList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ notice.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ noticeList.totalElements - noticeList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ notice.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ noticeList.totalElements - noticeList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="notice.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/notice/read/' + notice.idx"> {{ notice.title }}</router-link>
               <span class="comment-count">{{ notice.commentDtoCount }}</span>
               <img v-if="notice.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

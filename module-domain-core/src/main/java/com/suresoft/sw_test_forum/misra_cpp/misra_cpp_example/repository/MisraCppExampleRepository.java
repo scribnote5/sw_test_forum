@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MisraCppExampleRepository extends JpaRepository<MisraCppExample, Long> {
-
+    public void deleteAllByMisraCppIdx(long misraCppIdx);
 }

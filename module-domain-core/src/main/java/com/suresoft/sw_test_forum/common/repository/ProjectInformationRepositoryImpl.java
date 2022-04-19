@@ -44,11 +44,12 @@ public class ProjectInformationRepositoryImpl extends QuerydslRepositorySupport 
      *
      * @return
      */
-    public List<String> findDistinctProjectName() {
+    public List<String> findDistinctProjectNameByTableName(String tableName) {
         return queryFactory.select(
                         projectInformation.projectName
                 )
                 .distinct().from(projectInformation)
+                .where(projectInformation.tableName.eq(tableName))
                 .fetch();
     }
 }

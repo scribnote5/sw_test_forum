@@ -36,32 +36,36 @@
           <tbody>
 
           <!-- misraCExampleList -->
-          <tr v-for="(misraCExample, i) in misraCExampleList.content" :key="i">
+          <tr v-for="(styleCopExample, i) in misraCExampleList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ misraCExample.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">
+              <img v-if="styleCopExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+              <span v-else>{{ misraCExampleList.totalElements - misraCExampleList.pageable.offset - i }}</span></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ misraCExample.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">
+                <img v-if="styleCopExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+                <span v-else>{{ misraCExampleList.totalElements - misraCExampleList.pageable.offset - i }}. </span>
+              </span>
               <!-- 공통 -->
-              <img v-if="misraCExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
-              <router-link :to= "misraCIdx === 0 ? ('/misra-c-example/read/' + misraCExample.idx) : ('/misra-c-example/read/from-rule-list/' + misraCExample.idx)">
-                <span v-if="misraCIdx === 0">{{ misraCExample.misraCRule }} - </span>{{ misraCExample.title }}
+              <router-link :to="misraCIdx === 0 ? ('/misra-c-example/read/' + styleCopExample.idx) : ('/misra-c-example/read/from-rule-list/' + styleCopExample.idx)">
+                <span v-if="misraCIdx === 0">{{ styleCopExample.misraCRule }} - </span>{{ styleCopExample.title }}
               </router-link>
-              <span class="comment-count">{{ misraCExample.commentDtoCount }}</span>
-              <img v-if="misraCExample.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
+              <span class="comment-count">{{ styleCopExample.commentDtoCount }}</span>
+              <img v-if="styleCopExample.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
               <!-- Mobile -->
               <div class="d-inline d-lg-none">
                 <div>
-                  <span class="mobile-content">{{ misraCExample.createdByUser.department }} {{ misraCExample.createdByUser.name }} </span> <br>
-                  <span class="mobile-content">{{ misraCExample.createdDate }}</span> &nbsp;
-                  <span class="mobile-content"> 조회수: {{ misraCExample.views }}</span> &nbsp;
+                  <span class="mobile-content">{{ styleCopExample.createdByUser.department }} {{ styleCopExample.createdByUser.name }} </span> <br>
+                  <span class="mobile-content">{{ styleCopExample.createdDate }}</span> &nbsp;
+                  <span class="mobile-content"> 조회수: {{ styleCopExample.views }}</span> &nbsp;
                 </div>
               </div>
             </td>
             <!-- Desktop -->
-            <td class="d-none d-lg-table-cell">{{ misraCExample.createdByUser.department }} {{ misraCExample.createdByUser.name }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraCExample.createdDate }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraCExample.views }}</td>
+            <td class="d-none d-lg-table-cell">{{ styleCopExample.createdByUser.department }} {{ styleCopExample.createdByUser.name }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ styleCopExample.createdDate }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ styleCopExample.views }}</td>
           </tr>
 
           <tr v-if="misraCExampleList.content.length === 0">
@@ -192,8 +196,8 @@ export default {
             endNumber.value = (misraCExampleList.value.totalPages > startNumber.value + 9) ? startNumber.value + 9 : (misraCExampleList.value.totalPages == 0 ? 1 : misraCExampleList.value.totalPages);
 
             // dayjs
-            for (const misraCExample of misraCExampleList.value.content) {
-              misraCExample.createdDate = dayjs(misraCExample.createdDate).format("YYYY.MM.DD.");
+            for (const styleCopExample of misraCExampleList.value.content) {
+              styleCopExample.createdDate = dayjs(styleCopExample.createdDate).format("YYYY.MM.DD.");
             }
           })
           .catch((error) => {

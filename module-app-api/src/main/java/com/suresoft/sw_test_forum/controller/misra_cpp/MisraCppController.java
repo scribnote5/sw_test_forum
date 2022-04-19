@@ -189,7 +189,7 @@ public class MisraCppController {
      */
     @DeleteMapping("/{idx}")
     public ResponseEntity deleteMisraCpp(@PathVariable("idx") long idx) throws Exception {
-        misraCppService.deleteMisraCppByIdx(idx);
+        misraCppService.deleteRelatedMisraCppByIdx(idx);
         misraCppAttachedFileService.deleteAllAttachedFile(idx);
         misraCppCommentService.deleteAllByMisraCppIdx(idx);
 

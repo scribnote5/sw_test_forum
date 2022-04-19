@@ -103,7 +103,7 @@ public class MisraCRepositoryImpl extends QuerydslRepositorySupport {
                 .from(misraC)
                 .join(hashTags).on(misraC.hashTagsIdx.eq(hashTags.idx))
                 .where(searchCondition(misraCSearchDto))
-                .orderBy(misraC.idx.desc());
+                .orderBy(misraC.title.desc());
 
         long totalCount = query.fetchCount();
         List<MisraCDto> results = getQuerydsl().applyPagination(pageable, query).fetch();

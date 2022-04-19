@@ -1,6 +1,9 @@
 ###  package-lock.json ###
 package-lock.json
 
+### upload file ###
+/upload/**
+
 ### GeoIP2 ###
 # **/maxmind/**
 

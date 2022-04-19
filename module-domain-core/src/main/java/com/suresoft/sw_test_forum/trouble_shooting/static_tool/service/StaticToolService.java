@@ -1,5 +1,7 @@
 package com.suresoft.sw_test_forum.trouble_shooting.static_tool.service;
 
+import com.suresoft.sw_test_forum.admin_page.user.domain.User;
+import com.suresoft.sw_test_forum.admin_page.user.service.UserService;
 import com.suresoft.sw_test_forum.common.domain.CompilerInformation;
 import com.suresoft.sw_test_forum.common.domain.HashTags;
 import com.suresoft.sw_test_forum.common.domain.IdeInformation;
@@ -13,15 +15,12 @@ import com.suresoft.sw_test_forum.trouble_shooting.static_tool.dto.mapper.Static
 import com.suresoft.sw_test_forum.trouble_shooting.static_tool.repository.StaticToolCommentRepositoryImpl;
 import com.suresoft.sw_test_forum.trouble_shooting.static_tool.repository.StaticToolRepository;
 import com.suresoft.sw_test_forum.trouble_shooting.static_tool.repository.StaticToolRepositoryImpl;
-import com.suresoft.sw_test_forum.admin_page.user.domain.User;
-import com.suresoft.sw_test_forum.admin_page.user.service.UserService;
 import com.suresoft.sw_test_forum.util.AuthorityUtil;
 import com.suresoft.sw_test_forum.util.NewIconCheck;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -146,7 +145,7 @@ public class StaticToolService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("static_tool")) {
             for (String hashTag : hashTags.split("#")) {
                 staticToolDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
@@ -158,22 +157,22 @@ public class StaticToolService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("static_tool")) {
             staticToolDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("static_tool")) {
             staticToolDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("static_tool")) {
             staticToolDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("static_tool")) {
             staticToolDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -287,18 +286,21 @@ public class StaticToolService {
 
         HashTags persistHashTags = hashTagsRepository.getById(staticToolDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("static_tool")
                 .content(staticToolDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         IdeInformation persistIdeInformation = ideInformationRepository.getById(staticToolDto.getIdeInformationIdx());
         persistIdeInformation.update(IdeInformation.builder()
+                .tableName("static_tool")
                 .ideName(staticToolDto.getIdeName())
                 .build());
         ideInformationRepository.save(persistIdeInformation);
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(staticToolDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("static_tool")
                 .toolName(staticToolDto.getToolName())
                 .toolNote(staticToolDto.getToolNote())
                 .build());
@@ -306,6 +308,7 @@ public class StaticToolService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(staticToolDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("static_tool")
                 .compilerName(staticToolDto.getCompilerName())
                 .compilerNote(staticToolDto.getCompilerNote())
                 .build());

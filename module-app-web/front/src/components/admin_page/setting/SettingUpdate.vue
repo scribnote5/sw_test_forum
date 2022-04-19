@@ -69,7 +69,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-end mx-4 my-5">
+      <div class="d-flex justify-content-end mx-3 my-5">
         <div class="d-flex">
           <button @click="updatePost()" class="btn btn-main-blue d-flex align-items-center me-2">수정 완료<img :src="require(`@/assets/images/update-white.svg`)" class="ms-2"></button>
         </div>

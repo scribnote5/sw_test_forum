@@ -1,5 +1,7 @@
 package com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.service;
 
+import com.suresoft.sw_test_forum.admin_page.user.domain.User;
+import com.suresoft.sw_test_forum.admin_page.user.service.UserService;
 import com.suresoft.sw_test_forum.common.domain.CompilerInformation;
 import com.suresoft.sw_test_forum.common.domain.ToolInformation;
 import com.suresoft.sw_test_forum.common.dto.PriorityDto;
@@ -7,25 +9,22 @@ import com.suresoft.sw_test_forum.common.repository.CompilerInformationRepositor
 import com.suresoft.sw_test_forum.common.repository.CompilerInformationRepositoryImpl;
 import com.suresoft.sw_test_forum.common.repository.ToolInformationRepository;
 import com.suresoft.sw_test_forum.common.repository.ToolInformationRepositoryImpl;
-import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.domain.MisraCppExample;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.dto.MisraCppDto;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.dto.mapper.MisraCppMapper;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.service.MisraCppService;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.domain.MisraCppExample;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.dto.MisraCppExampleDto;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.dto.MisraCppExampleSearchDto;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.dto.mapper.MisraCppExampleMapper;
-import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.dto.mapper.MisraCppMapper;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.repository.MisraCppExampleCommentRepositoryImpl;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.repository.MisraCppExampleRepository;
 import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.repository.MisraCppExampleRepositoryImpl;
-import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.service.MisraCppService;
-import com.suresoft.sw_test_forum.admin_page.user.domain.User;
-import com.suresoft.sw_test_forum.admin_page.user.service.UserService;
 import com.suresoft.sw_test_forum.util.AuthorityUtil;
 import com.suresoft.sw_test_forum.util.NewIconCheck;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -149,22 +148,22 @@ public class MisraCppExampleService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("misra_cpp_example")) {
             misraCppExampleDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("misra_cpp_example")) {
             misraCppExampleDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("misra_cpp_example")) {
             misraCppExampleDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("misra_cpp_example")) {
             misraCppExampleDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -267,6 +266,7 @@ public class MisraCppExampleService {
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(misraCppExampleDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("misra_cpp_example")
                 .toolName(misraCppExampleDto.getToolName())
                 .toolNote(misraCppExampleDto.getToolNote())
                 .build());
@@ -274,6 +274,7 @@ public class MisraCppExampleService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(misraCppExampleDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("misra_cpp_example")
                 .compilerName(misraCppExampleDto.getCompilerName())
                 .compilerNote(misraCppExampleDto.getCompilerNote())
                 .build());
@@ -291,5 +292,19 @@ public class MisraCppExampleService {
         misraCppExampleRepository.deleteById(idx);
         toolInformationRepository.deleteById(misraCppExampleDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(misraCppExampleDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * MISRA CPP 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param misraCppIdx
+     * @param misraCppDto
+     * @return
+     */
+    public MisraCppDto findMisraCppExampleListWhenDelete(long misraCppIdx, MisraCppDto misraCppDto) {
+        List<MisraCppExampleDto> misraCppExampleDtoList = misraCppExampleRepositoryImpl.findAllWhenDelete(misraCppIdx);
+        misraCppDto = MisraCppMapper.INSTANCE.toDtoByExample(misraCppDto, misraCppExampleDtoList);
+
+        return misraCppDto;
     }
 }

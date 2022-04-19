@@ -36,12 +36,11 @@
           <!-- misraCppListByPriority -->
           <tr v-for="(misraCpp, i) in misraCppListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ misraCpp.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ misraCpp.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <Frequency page-information="list" :frequency="misraCpp.frequency"></Frequency>
               <router-link :to="'/misra-cpp/read/' + misraCpp.idx">{{ misraCpp.title }}</router-link>
               <span class="comment-count">{{ misraCpp.commentDtoCount }}</span>
@@ -68,12 +67,11 @@
           <!-- misraCppList -->
           <tr v-for="(misraCpp, i) in misraCppList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ misraCpp.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraCppList.totalElements - misraCppList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ misraCpp.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ misraCppList.totalElements - misraCppList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="misraCpp.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <Frequency page-information="list" :frequency="misraCpp.frequency"></Frequency>
               <router-link :to="'/misra-cpp/read/' + misraCpp.idx"> {{ misraCpp.title }}</router-link>
               <span class="comment-count">{{ misraCpp.commentDtoCount }}</span>

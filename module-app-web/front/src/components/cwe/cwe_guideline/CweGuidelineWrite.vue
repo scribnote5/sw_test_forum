@@ -94,7 +94,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/cwe-guideline/list/' + cweIdx">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>
@@ -182,7 +182,7 @@ export default {
             // autoComplete 설정
             createAutoComplete(response.data.autoCompleteTitle, "title", title);
             createHashTagsAutoComplete(response.data.autoCompleteHashTags, "hashTag");
-            createAutoComplete(response.data.autoCompleteToolName, "projectName", projectName);
+            createAutoComplete(response.data.autoCompleteProjectName, "projectName", projectName);
             createAutoComplete(response.data.autoCompleteToolName, "toolName", toolName);
             createAutoComplete(response.data.autoCompleteToolNote, "toolNote", toolNote);
             createAutoComplete(response.data.autoCompleteCompilerName, "compilerName", compilerName);

@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -151,34 +150,34 @@ public class MisraCGuidelineService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("misra_c_guideline")) {
             for (String hashTag : hashTags.split("#")) {
                 misraCGuidelineDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
         }
 
         // projectName 설정
-        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectName()) {
+        for (String projectName : projectInformationRepositoryImpl.findDistinctProjectNameByTableName("misra_c_guideline")) {
             misraCGuidelineDto.getAutoCompleteProjectName().add(projectName);
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("misra_c_guideline")) {
             misraCGuidelineDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("misra_c_guideline")) {
             misraCGuidelineDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("misra_c_guideline")) {
             misraCGuidelineDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("misra_c_guideline")) {
             misraCGuidelineDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -279,18 +278,21 @@ public class MisraCGuidelineService {
 
         HashTags persistHashTags = hashTagsRepository.getById(misraCGuidelineDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("misra_c_guideline")
                 .content(misraCGuidelineDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         ProjectInformation persistProjectInformation = projectInformationRepository.getById(misraCGuidelineDto.getProjectInformationIdx());
         persistProjectInformation.update(ProjectInformation.builder()
+                .tableName("misra_c_guideline")
                 .projectName(misraCGuidelineDto.getProjectName())
                 .build());
         projectInformationRepository.save(persistProjectInformation);
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(misraCGuidelineDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("misra_c_guideline")
                 .toolName(misraCGuidelineDto.getToolName())
                 .toolNote(misraCGuidelineDto.getToolNote())
                 .build());
@@ -298,6 +300,7 @@ public class MisraCGuidelineService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(misraCGuidelineDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("misra_c_guideline")
                 .compilerName(misraCGuidelineDto.getCompilerName())
                 .compilerNote(misraCGuidelineDto.getCompilerNote())
                 .build());
@@ -317,5 +320,19 @@ public class MisraCGuidelineService {
         projectInformationRepository.deleteById(misraCGuidelineDto.getProjectInformationIdx());
         toolInformationRepository.deleteById(misraCGuidelineDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(misraCGuidelineDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * MISRA C 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param misraCIdx
+     * @param misraCDto
+     * @return
+     */
+    public MisraCDto findMisraCGuidelineListWhenDelete(long misraCIdx, MisraCDto misraCDto) {
+        List<MisraCGuidelineDto> misraCGuidelineDtoList = misraCGuidelineRepositoryImpl.findAllWhenDelete(misraCIdx);
+        misraCDto = MisraCMapper.INSTANCE.toDtoByGuideline(misraCDto, misraCGuidelineDtoList);
+
+        return misraCDto;
     }
 }

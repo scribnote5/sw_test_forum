@@ -142,6 +142,7 @@ public class MetricGuidelineController {
         metricGuidelineService.deleteMetricGuidelineByIdx(idx);
         metricGuidelineAttachedFileService.deleteAllAttachedFile(idx);
         metricGuidelineCommentService.deleteAllByMetricGuidelineIdx(idx);
+        metricGuidelineLikeService.deleteAllByMetricGuidelineIdx(idx);
 
         return new ResponseEntity("{}", HttpStatus.OK);
     }

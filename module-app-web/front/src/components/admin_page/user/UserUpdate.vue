@@ -74,7 +74,7 @@
             <td>
               <select v-model="authorityType" class="form-select">
                 <option v-if="accessorAuthorityType === 'ROOT'" value="MANAGER">관리자</option>
-                <option v-if="accessorAuthorityType === 'MANAGER'" value="GENERAL">일반 회원</option>
+                <option v-if="accessorAuthorityType === 'ROOT' || accessorAuthorityType === 'MANAGER'" value="GENERAL">일반 회원</option>
                 <option value="READER">읽기 회원</option>
                 <option value="NON_USER">비회원</option>
               </select>
@@ -126,7 +126,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/user/list'">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>

@@ -45,14 +45,14 @@ public class CweExampleService {
     private String moduleName;
 
     public CweExampleService(CweExampleRepository cweExampleRepository,
-                                  CweExampleRepositoryImpl cweExampleRepositoryImpl,
-                                  CweExampleCommentRepositoryImpl cweExampleCommentRepositoryImpl,
-                                  ToolInformationRepository toolInformationRepository,
-                                  ToolInformationRepositoryImpl toolInformationRepositoryImpl,
-                                  CompilerInformationRepository compilerInformationRepository,
-                                  CompilerInformationRepositoryImpl compilerInformationRepositoryImpl,
-                                  UserService userService,
-                                  CweService cweService) {
+                             CweExampleRepositoryImpl cweExampleRepositoryImpl,
+                             CweExampleCommentRepositoryImpl cweExampleCommentRepositoryImpl,
+                             ToolInformationRepository toolInformationRepository,
+                             ToolInformationRepositoryImpl toolInformationRepositoryImpl,
+                             CompilerInformationRepository compilerInformationRepository,
+                             CompilerInformationRepositoryImpl compilerInformationRepositoryImpl,
+                             UserService userService,
+                             CweService cweService) {
         this.cweExampleRepository = cweExampleRepository;
         this.cweExampleRepositoryImpl = cweExampleRepositoryImpl;
         this.cweExampleCommentRepositoryImpl = cweExampleCommentRepositoryImpl;
@@ -148,22 +148,22 @@ public class CweExampleService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("cwe_example")) {
             cweExampleDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("cwe_example")) {
             cweExampleDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("cwe_example")) {
             cweExampleDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("cwe_example")) {
             cweExampleDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -266,6 +266,7 @@ public class CweExampleService {
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(cweExampleDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("cwe_example")
                 .toolName(cweExampleDto.getToolName())
                 .toolNote(cweExampleDto.getToolNote())
                 .build());
@@ -273,6 +274,7 @@ public class CweExampleService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(cweExampleDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("cwe_example")
                 .compilerName(cweExampleDto.getCompilerName())
                 .compilerNote(cweExampleDto.getCompilerNote())
                 .build());
@@ -290,5 +292,19 @@ public class CweExampleService {
         cweExampleRepository.deleteById(idx);
         toolInformationRepository.deleteById(cweExampleDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(cweExampleDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * CWE 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param cweIdx
+     * @param cweDto
+     * @return
+     */
+    public CweDto findCweExampleListWhenDelete(long cweIdx, CweDto cweDto) {
+        List<CweExampleDto> cweExampleDtoList = cweExampleRepositoryImpl.findAllWhenDelete(cweIdx);
+        cweDto = CweMapper.INSTANCE.toDtoByExample(cweDto, cweExampleDtoList);
+
+        return cweDto;
     }
 }

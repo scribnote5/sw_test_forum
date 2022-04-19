@@ -18,7 +18,7 @@
         </div>
 
         <div class="d-flex align-items-center">
-          <span class="login-user-info d-none d-lg-flex">{{ loginUserInfo.department }} {{ loginUserInfo.name }}</span>
+          <span class="login-user-info d-none d-lg-flex">{{ loginUserInfo.department }} {{ loginUserInfo.name }}, {{ loginUserInfo.username }}</span>
           <div class="dropdown-wrapper">
             <span class="dropdown">
               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

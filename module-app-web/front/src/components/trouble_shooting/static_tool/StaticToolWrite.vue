@@ -67,10 +67,10 @@
           <tr>
             <th>컴파일러<span class="recommended-field">*</span></th>
             <td style="overflow: visible">
-              <input type="text" name="compilerName" id="compilerName" v-model="compilerName" class="form-control" placeholder="Visual Studio 2017">
+              <input type="text" name="compilerName" v-model="compilerName" class="form-control" placeholder="Visual Studio 2017">
               <p id="compilerNameErrorMessage" class="error-message"></p>
 
-              <input type="text" name="compilerNote" id="compilerNote" v-model="compilerNote" class="form-control" placeholder="Qt 5.15">
+              <input type="text" name="compilerNote" v-model="compilerNote" class="form-control" placeholder="Qt 5.15">
               <p id="compilerNoteErrorMessage" class="error-message"></p>
             </td>
           </tr>
@@ -90,7 +90,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/static-tool/list'">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>

@@ -231,4 +231,23 @@ public class CweGuidelineRepositoryImpl extends QuerydslRepositorySupport {
                 .where(cweGuideline.idx.eq(idx))
                 .execute();
     }
+
+    /**
+     * CWE 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param cweIdx
+     * @return
+     */
+    public List<CweGuidelineDto> findAllWhenDelete(long cweIdx) {
+        JPQLQuery<CweGuidelineDto> query = queryFactory.select(
+                        Projections.bean(
+                                CweGuidelineDto.class,
+                                cweGuideline.idx
+                        )
+                )
+                .from(cweGuideline)
+                .where(cweGuideline.cweIdx.eq(cweIdx));
+
+        return query.fetch();
+    }
 }

@@ -231,4 +231,24 @@ public class MisraCGuidelineRepositoryImpl extends QuerydslRepositorySupport {
                 .where(misraCGuideline.idx.eq(idx))
                 .execute();
     }
+
+    /**
+     * MISRA C 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param misraCIdx
+     * @return
+     */
+    public List<MisraCGuidelineDto> findAllWhenDelete(long misraCIdx) {
+        JPQLQuery<MisraCGuidelineDto> query = queryFactory.select(
+                        Projections.bean(
+                                MisraCGuidelineDto.class,
+                                misraCGuideline.idx
+                        )
+                )
+                .from(misraCGuideline)
+                .where(misraCGuideline.misraCIdx.eq(misraCIdx));
+
+        return query.fetch();
+    }
+
 }

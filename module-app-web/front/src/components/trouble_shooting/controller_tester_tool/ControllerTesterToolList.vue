@@ -37,12 +37,11 @@
           <!-- controllerTesterToolListByPriority -->
           <tr v-for="(controllerTesterTool, i) in controllerTesterToolListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ controllerTesterTool.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ controllerTesterTool.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/controller-tester-tool/read/' + controllerTesterTool.idx">{{ controllerTesterTool.title }}</router-link>
               <span class="comment-count">{{ controllerTesterTool.commentDtoCount }}</span>
               <img v-if="controllerTesterTool.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -80,12 +79,11 @@
           <!-- controllerTesterToolList -->
           <tr v-for="(controllerTesterTool, i) in controllerTesterToolList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ controllerTesterTool.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ controllerTesterToolList.totalElements - controllerTesterToolList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ controllerTesterTool.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ controllerTesterToolList.totalElements - controllerTesterToolList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="controllerTesterTool.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/controller-tester-tool/read/' + controllerTesterTool.idx"> {{ controllerTesterTool.title }}</router-link>
               <span class="comment-count">{{ controllerTesterTool.commentDtoCount }}</span>
               <img v-if="controllerTesterTool.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

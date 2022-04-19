@@ -43,12 +43,11 @@
           <!-- storageListByPriority -->
           <tr v-for="(storage, i) in storageListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ storage.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ storage.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img v-if="storage.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/storage/read/' + storage.idx"> {{ storage.title }}</router-link>
               <span class="comment-count">{{ storage.commentDtoCount }}</span>
               <img v-if="storage.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -77,12 +76,11 @@
           <!-- storageList -->
           <tr v-for="(storage, i) in storageList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ storage.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ storageList.totalElements - storageList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ storage.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ storageList.totalElements - storageList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="storage.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/storage/read/' + storage.idx"> {{ storage.title }}</router-link>
               <span class="comment-count">{{ storage.commentDtoCount }}</span>
               <img v-if="storage.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

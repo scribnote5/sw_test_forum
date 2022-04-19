@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -145,7 +144,7 @@ public class ToolchainService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("toolchain")) {
             for (String hashTag : hashTags.split("#")) {
                 toolchainDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
@@ -157,22 +156,22 @@ public class ToolchainService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("toolchain")) {
             toolchainDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("toolchain")) {
             toolchainDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("toolchain")) {
             toolchainDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("toolchain")) {
             toolchainDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -279,18 +278,21 @@ public class ToolchainService {
 
         HashTags persistHashTags = hashTagsRepository.getById(toolchainDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("toolchain")
                 .content(toolchainDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         IdeInformation persistIdeInformation = ideInformationRepository.getById(toolchainDto.getIdeInformationIdx());
         persistIdeInformation.update(IdeInformation.builder()
+                .tableName("toolchain")
                 .ideName(toolchainDto.getIdeName())
                 .build());
         ideInformationRepository.save(persistIdeInformation);
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(toolchainDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("toolchain")
                 .compilerName(toolchainDto.getCompilerName())
                 .compilerNote(toolchainDto.getCompilerNote())
                 .build());

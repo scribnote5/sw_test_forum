@@ -37,12 +37,11 @@
           <!-- coverToolListByPriority -->
           <tr v-for="(coverTool, i) in coverToolListByPriority" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ coverTool.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ coverTool.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/cover-tool/read/' + coverTool.idx">{{ coverTool.title }}</router-link>
               <span class="comment-count">{{ coverTool.commentDtoCount }}</span>
               <img v-if="coverTool.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -80,12 +79,11 @@
           <!-- coverToolList -->
           <tr v-for="(coverTool, i) in coverToolList.content" :key="i">
             <!-- Desktop 번호 -->
-            <td class="d-none d-lg-table-cell text-center">{{ coverTool.idx }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ coverToolList.totalElements - coverToolList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
-              <span class="d-inline d-lg-none mobile-number">{{ coverTool.idx }}. </span>
+              <span class="d-inline d-lg-none mobile-number">{{ coverToolList.totalElements - coverToolList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <img v-if="coverTool.priority <= 5" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <router-link :to="'/cover-tool/read/' + coverTool.idx"> {{ coverTool.title }}</router-link>
               <span class="comment-count">{{ coverTool.commentDtoCount }}</span>
               <img v-if="coverTool.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>

@@ -3,7 +3,7 @@
     <!-- Loading -->
     <Loading></Loading>
 
-    <Breadcrumb page="사용자" :paths="['사용자 페이지', '공지사항 보기']" title=""/>
+    <Breadcrumb page="사용자" :paths="['사용자 페이지', '사용자 보기']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -89,17 +89,14 @@
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
             <td colspan="2">
               <strong>재직여부: </strong>
-              <span v-if="user.authorityType == 'ROOT'">최고 관리자</span>
-              <span v-if="user.authorityType == 'MANAGER'">관리자</span>
-              <span v-if="user.authorityType == 'GENERAL'">일반 회원</span>
-              <span v-if="user.authorityType == 'READER'">읽기 회원</span>
-              <span v-if="user.authorityType == 'NON_USER'">비회원</span> <br>
+              <span v-if="user.userStatus == 'IN_OFFICE'">재직중</span>
+              <span v-if="user.userStatus == 'RETIREE'">퇴사</span> <br>
               <strong>권한: </strong>
               <span v-if="user.authorityType == 'ROOT'">최고 관리자</span>
               <span v-if="user.authorityType == 'MANAGER'">관리자</span>
               <span v-if="user.authorityType == 'GENERAL'">일반 회원</span>
               <span v-if="user.authorityType == 'READER'">읽기 회원</span>
-              <span v-if="user.authorityType == 'NON_USER'">비회원</span>
+              <span v-if="user.authorityType == 'NON_USER'">비회원</span> <br>
               <strong>연락처: </strong> {{ user.contact }}<br>
               <strong>이메일: </strong> {{ user.email }}<br>
               <strong>개인 이메일: </strong> {{ user.privateEmail }}<br>
@@ -116,7 +113,7 @@
         </table>
       </div>
 
-      <div class="d-flex justify-content-between mx-4 my-5">
+      <div class="d-flex justify-content-between mx-3 my-5">
         <div class="d-flex">
           <router-link :to="'/user/list'">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>

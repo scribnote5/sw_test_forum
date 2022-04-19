@@ -231,4 +231,23 @@ public class MetricGuidelineRepositoryImpl extends QuerydslRepositorySupport {
                 .where(metricGuideline.idx.eq(idx))
                 .execute();
     }
+
+    /**
+     * 메트릭 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param metricIdx
+     * @return
+     */
+    public List<MetricGuidelineDto> findAllWhenDelete(long metricIdx) {
+        JPQLQuery<MetricGuidelineDto> query = queryFactory.select(
+                        Projections.bean(
+                                MetricGuidelineDto.class,
+                                metricGuideline.idx
+                        )
+                )
+                .from(metricGuideline)
+                .where(metricGuideline.metricIdx.eq(metricIdx));
+
+        return query.fetch();
+    }
 }

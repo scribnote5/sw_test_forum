@@ -148,22 +148,22 @@ public class MisraCExampleService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("misra_c_example")) {
             misraCExampleDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("misra_c_example")) {
             misraCExampleDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("misra_c_example")) {
             misraCExampleDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("misra_c_example")) {
             misraCExampleDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -266,6 +266,7 @@ public class MisraCExampleService {
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(misraCExampleDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("misra_c_example")
                 .toolName(misraCExampleDto.getToolName())
                 .toolNote(misraCExampleDto.getToolNote())
                 .build());
@@ -273,6 +274,7 @@ public class MisraCExampleService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(misraCExampleDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("misra_c_example")
                 .compilerName(misraCExampleDto.getCompilerName())
                 .compilerNote(misraCExampleDto.getCompilerNote())
                 .build());
@@ -290,5 +292,19 @@ public class MisraCExampleService {
         misraCExampleRepository.deleteById(idx);
         toolInformationRepository.deleteById(misraCExampleDto.getToolInformationIdx());
         compilerInformationRepository.deleteById(misraCExampleDto.getCompilerInformationIdx());
+    }
+
+    /**
+     * MISRA C 읽기 페이지 일 때, 삭제를 위해 리스트 조회
+     *
+     * @param misraCIdx
+     * @param misraCDto
+     * @return
+     */
+    public MisraCDto findMisraCExampleListWhenDelete(long misraCIdx, MisraCDto misraCDto) {
+        List<MisraCExampleDto> misraCExampleDtoList = misraCExampleRepositoryImpl.findAllWhenDelete(misraCIdx);
+        misraCDto = MisraCMapper.INSTANCE.toDtoByExample(misraCDto, misraCExampleDtoList);
+
+        return misraCDto;
     }
 }

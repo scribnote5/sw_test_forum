@@ -142,6 +142,7 @@ public class CweGuidelineController {
         cweGuidelineService.deleteCweGuidelineByIdx(idx);
         cweGuidelineAttachedFileService.deleteAllAttachedFile(idx);
         cweGuidelineCommentService.deleteAllByCweGuidelineIdx(idx);
+        cweGuidelineLikeService.deleteAllByCweGuidelineIdx(idx);
 
         return new ResponseEntity("{}", HttpStatus.OK);
     }

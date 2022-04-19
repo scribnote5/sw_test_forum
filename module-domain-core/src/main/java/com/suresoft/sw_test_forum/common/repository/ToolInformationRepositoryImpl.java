@@ -45,11 +45,12 @@ public class ToolInformationRepositoryImpl extends QuerydslRepositorySupport {
      *
      * @return
      */
-    public List<String> findDistinctToolName() {
+    public List<String> findDistinctToolNameByTableName(String tableName) {
         return queryFactory.select(
                         toolInformation.toolName
                 )
                 .distinct().from(toolInformation)
+                .where(toolInformation.tableName.eq(tableName))
                 .fetch();
     }
 
@@ -58,11 +59,12 @@ public class ToolInformationRepositoryImpl extends QuerydslRepositorySupport {
      *
      * @return
      */
-    public List<String> findDistinctToolNote() {
+    public List<String> findDistinctToolNoteByTableName(String tableName) {
         return queryFactory.select(
                         toolInformation.toolNote
                 )
                 .distinct().from(toolInformation)
+                .where(toolInformation.tableName.eq(tableName))
                 .fetch();
     }
 }

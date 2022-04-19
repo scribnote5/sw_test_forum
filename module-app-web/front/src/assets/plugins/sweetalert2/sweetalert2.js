@@ -5,7 +5,7 @@ const toast = swal.mixin({
     width: 600,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 6000,
+    timer: 5000,
 
     didOpen: (toast) => {
         toast.addEventListener('mouseenter', swal.stopTimer)
@@ -32,7 +32,7 @@ const warning = swal.mixin({
     confirmButtonColor: 'rgb(250, 212, 179)',
 })
 
-function fireSuccessToast(index) {
+const fireSuccessToast = (index) => {
     /* sweetalert2 */
     switch (localStorage.getItem("result")) {
         case "/" + index + "/write-success" :

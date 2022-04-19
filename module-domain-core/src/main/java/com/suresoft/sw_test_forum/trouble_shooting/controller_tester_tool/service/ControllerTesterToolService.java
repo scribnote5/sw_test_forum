@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -45,17 +44,17 @@ public class ControllerTesterToolService {
     private String moduleName;
 
     public ControllerTesterToolService(ControllerTesterToolRepository controllerTesterToolRepository,
-                            ControllerTesterToolRepositoryImpl controllerTesterToolRepositoryImpl,
-                            ControllerTesterToolCommentRepositoryImpl controllerTesterToolCommentRepositoryImpl,
-                            HashTagsRepository hashTagsRepository,
-                            HashTagsRepositoryImpl hashTagsRepositoryImpl,
-                            IdeInformationRepository ideInformationRepository,
-                            IdeInformationRepositoryImpl ideInformationRepositoryImpl,
-                            ToolInformationRepository toolInformationRepository,
-                            ToolInformationRepositoryImpl toolInformationRepositoryImpl,
-                            CompilerInformationRepository compilerInformationRepository,
-                            CompilerInformationRepositoryImpl compilerInformationRepositoryImpl,
-                            UserService userService) {
+                                       ControllerTesterToolRepositoryImpl controllerTesterToolRepositoryImpl,
+                                       ControllerTesterToolCommentRepositoryImpl controllerTesterToolCommentRepositoryImpl,
+                                       HashTagsRepository hashTagsRepository,
+                                       HashTagsRepositoryImpl hashTagsRepositoryImpl,
+                                       IdeInformationRepository ideInformationRepository,
+                                       IdeInformationRepositoryImpl ideInformationRepositoryImpl,
+                                       ToolInformationRepository toolInformationRepository,
+                                       ToolInformationRepositoryImpl toolInformationRepositoryImpl,
+                                       CompilerInformationRepository compilerInformationRepository,
+                                       CompilerInformationRepositoryImpl compilerInformationRepositoryImpl,
+                                       UserService userService) {
         this.controllerTesterToolRepository = controllerTesterToolRepository;
         this.controllerTesterToolRepositoryImpl = controllerTesterToolRepositoryImpl;
         this.controllerTesterToolCommentRepositoryImpl = controllerTesterToolCommentRepositoryImpl;
@@ -146,7 +145,7 @@ public class ControllerTesterToolService {
         }
 
         // hashTags 설정
-        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTags()) {
+        for (String hashTags : hashTagsRepositoryImpl.findDistinctHashTagsByTableName("controller_tester_tool")) {
             for (String hashTag : hashTags.split("#")) {
                 controllerTesterToolDto.getAutoCompleteHashTags().add("#" + hashTag);
             }
@@ -158,22 +157,22 @@ public class ControllerTesterToolService {
         }
 
         // toolName 설정
-        for (String toolName : toolInformationRepositoryImpl.findDistinctToolName()) {
+        for (String toolName : toolInformationRepositoryImpl.findDistinctToolNameByTableName("controllerTester_tool")) {
             controllerTesterToolDto.getAutoCompleteToolName().add(toolName);
         }
 
         // toolNote 설정
-        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNote()) {
+        for (String toolNote : toolInformationRepositoryImpl.findDistinctToolNoteByTableName("controllerTester_tool")) {
             controllerTesterToolDto.getAutoCompleteToolNote().add(toolNote);
         }
 
         // compilerName 설정
-        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerName()) {
+        for (String compilerName : compilerInformationRepositoryImpl.findDistinctCompilerNameByTableName("controllerTester_tool")) {
             controllerTesterToolDto.getAutoCompleteCompilerName().add(compilerName);
         }
 
         // compilerNote 설정
-        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNote()) {
+        for (String compilerNote : compilerInformationRepositoryImpl.findDistinctCompilerNoteByTableName("controllerTester_tool")) {
             controllerTesterToolDto.getAutoCompleteCompilerNote().add(compilerNote);
         }
 
@@ -287,18 +286,21 @@ public class ControllerTesterToolService {
 
         HashTags persistHashTags = hashTagsRepository.getById(controllerTesterToolDto.getHashTagsIdx());
         persistHashTags.update(HashTags.builder()
+                .tableName("controller_tester_tool")
                 .content(controllerTesterToolDto.getHashTags())
                 .build());
         hashTagsRepository.save(persistHashTags);
 
         IdeInformation persistIdeInformation = ideInformationRepository.getById(controllerTesterToolDto.getIdeInformationIdx());
         persistIdeInformation.update(IdeInformation.builder()
+                .tableName("controllerTester_tool")
                 .ideName(controllerTesterToolDto.getIdeName())
                 .build());
         ideInformationRepository.save(persistIdeInformation);
 
         ToolInformation persistToolInformation = toolInformationRepository.getById(controllerTesterToolDto.getToolInformationIdx());
         persistToolInformation.update(ToolInformation.builder()
+                .tableName("controllerTester_tool")
                 .toolName(controllerTesterToolDto.getToolName())
                 .toolNote(controllerTesterToolDto.getToolNote())
                 .build());
@@ -306,6 +308,7 @@ public class ControllerTesterToolService {
 
         CompilerInformation persistCompilerInformation = compilerInformationRepository.getById(controllerTesterToolDto.getCompilerInformationIdx());
         persistCompilerInformation.update(CompilerInformation.builder()
+                .tableName("controllerTester_tool")
                 .compilerName(controllerTesterToolDto.getCompilerName())
                 .compilerNote(controllerTesterToolDto.getCompilerNote())
                 .build());

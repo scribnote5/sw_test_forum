@@ -45,11 +45,12 @@ public class CompilerInformationRepositoryImpl extends QuerydslRepositorySupport
      *
      * @return
      */
-    public List<String> findDistinctCompilerName() {
+    public List<String> findDistinctCompilerNameByTableName(String tableName) {
         return queryFactory.select(
                         compilerInformation.compilerName
                 )
                 .distinct().from(compilerInformation)
+                .where(compilerInformation.tableName.eq(tableName))
                 .fetch();
     }
 
@@ -58,11 +59,12 @@ public class CompilerInformationRepositoryImpl extends QuerydslRepositorySupport
      *
      * @return
      */
-    public List<String> findDistinctCompilerNote() {
+    public List<String> findDistinctCompilerNoteByTableName(String tableName) {
         return queryFactory.select(
                         compilerInformation.compilerNote
                 )
                 .distinct().from(compilerInformation)
+                .where(compilerInformation.tableName.eq(tableName))
                 .fetch();
     }
 }

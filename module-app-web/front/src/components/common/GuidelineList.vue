@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-hover mobile-table-list mt-2">
+    <table class="table table-hover mobile-table-list guideline-table-list mt-2">
       <thead>
       <tr class="d-none d-lg-table-row">
         <th style="width: 5%" class="text-center">번호</th>
@@ -15,10 +15,10 @@
       <tbody>
       <tr v-for="(guideline, i) in guidelineList" :key="i">
         <!-- Desktop 번호 -->
-        <td class="d-none d-lg-table-cell text-center">{{ guideline.idx }}</td>
+        <td class="d-none d-lg-table-cell text-center">{{ guidelineList.length - i }}</td>
         <td>
           <!-- Mobile -->
-          <span class="d-inline d-lg-none mobile-number">{{ guideline.idx }}. </span>
+          <span class="d-inline d-lg-none mobile-number">{{ guidelineList.length - i }}. </span>
           <!-- 공통 -->
           <router-link :to="'' + guideline.link"> {{ guideline.title }}</router-link>
           <span class="comment-count">{{ guideline.commentDtoCount }}</span>
@@ -72,7 +72,9 @@
 </template>
 
 <style lang="scss">
-
+.guideline-table-list td {
+  white-space: nowrap !important;
+}
 </style>
 
 <script>
