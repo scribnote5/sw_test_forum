@@ -21,7 +21,7 @@
             <th>제목<span class="required-field">*</span></th>
             <td style="overflow: visible">
               <div class="autoComplete_wrapper">
-                <input type="text" name="title" v-model="title" class="form-control" placeholder="[RTE_Buffer_Overrun] 배열 최대 범위보다 큰 요소 접근을 금지한다.">
+                <input type="text" name="title" v-model="title" class="form-control" placeholder="[Buffer_Overrun] 배열 최대 범위보다 큰 요소 접근을 금지">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
             </td>

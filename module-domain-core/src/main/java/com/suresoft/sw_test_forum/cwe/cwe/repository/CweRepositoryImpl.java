@@ -127,6 +127,9 @@ public class CweRepositoryImpl extends QuerydslRepositorySupport {
             case "HASH_TAGS":
                 result = hashTags.content.contains(cweSearchDto.getSearchKeyword());
                 break;
+            case "CWE_ID":
+                result = cwe.cweId.contains(cweSearchDto.getSearchKeyword());
+                break;
             case "CONTENT":
                 result = cwe.content.contains(cweSearchDto.getSearchKeyword());
                 break;

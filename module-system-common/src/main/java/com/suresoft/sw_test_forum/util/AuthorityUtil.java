@@ -178,7 +178,7 @@ public class AuthorityUtil {
     }
 
     /**
-     * [일반적인 상황에서 사용자 권한에 따른 접근 가능 여부]
+     * [사용자 페이지 접근에서 사용자 권한에 따른 접근 가능 여부]
      * <p>
      * 비인증 사용자인 경우 접근 불가
      * root: 모든 권한에 대한 접근 허용
@@ -188,17 +188,17 @@ public class AuthorityUtil {
      * @param username, authorityType
      * @return
      */
-    public static Boolean isAccessInUser(String username, String authorityType, String usernameInUserInfo) {
+    public static Boolean isAccessInUserPage(String createdByUsername, String authorityTypeInUserDto, String usernameInUserDto) {
         UserDetails userDetails = getCurrentUserDetails();
         String authenticationUsername = userDetails.getUsername().split("[|]")[1];
         boolean result = false;
 
         for (GrantedAuthority grantedAuthority : userDetails.getAuthorities()) {
             log.info("grantedAuthority.getAuthority(): " + grantedAuthority.getAuthority());
-            log.info("authorityType: " + authorityType);
-            log.info("username: " + username);
+            log.info("authorityTypeInUserDto: " + authorityTypeInUserDto);
+            log.info("createdByUsername: " + createdByUsername);
             log.info("authenticationUsername: " + authenticationUsername);
-            log.info("usernameInUserInfo: " + usernameInUserInfo);
+            log.info("usernameInUserDto: " + usernameInUserDto);
 
             switch (grantedAuthority.getAuthority()) {
                 // 로그인한 사용자의 권한: 최고 관리자
@@ -209,18 +209,17 @@ public class AuthorityUtil {
                 case "관리자":
                     // 사용자 정보에서의 username: root
                     // -> 접근 불가
-                    if ("root".equals(usernameInUserInfo)) {
+                    if ("root".equals(usernameInUserDto)) {
                         result = false;
                     }
                     // createdBy: root
                     // -> 접근 허용
-                    else if ("root".equals(username)) {
+                    else if ("root".equals(createdByUsername) && !"관리자".equals(authorityTypeInUserDto)) {
                         result = true;
                     }
-                    // username authority: 관리자
-                    // 로그인한 사용자의 username과 게시글 작성자의 username 다름
+                    // 로그인한 사용자의 username과 접근하려는 사용자의 username 다름
                     // -> 접근 불가
-                    else if ("관리자".equals(authorityType) && !authenticationUsername.equals(username)) {
+                    else if (!authenticationUsername.equals(usernameInUserDto)) {
                         result = false;
                     }
                     // 나머지 조건
@@ -232,7 +231,7 @@ public class AuthorityUtil {
                 default:
                     // 사용자 정보에서의 username과 로그인한 사용자의 username이 같음
                     // -> 접근 가능
-                    if (usernameInUserInfo.equals(authenticationUsername)) {
+                    if (usernameInUserDto.equals(authenticationUsername)) {
                         result = true;
                     }
                     // 로그인한 사용자의 username과 게시글 작성자의 username 다름

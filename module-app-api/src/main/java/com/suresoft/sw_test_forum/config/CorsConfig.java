@@ -9,6 +9,8 @@ import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 public class CorsConfig {
+    @Value("${localhost.url}")
+    private String localhostUrl;
     @Value("${module-app-web.url}")
     private String moduleAppWebUrl;
     @Value("${module-app-admin.url}")
@@ -20,6 +22,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
+        config.addAllowedOrigin(localhostUrl);
         config.addAllowedOrigin(moduleAppWebUrl);
         config.addAllowedOrigin(moduleAppAdminUrl);
         config.addExposedHeader("*");

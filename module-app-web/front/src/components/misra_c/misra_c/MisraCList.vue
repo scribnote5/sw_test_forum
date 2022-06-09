@@ -34,65 +34,65 @@
           </thead>
           <tbody>
           <!-- misraCListByPriority -->
-          <tr v-for="(styleCop, i) in misraCListByPriority" :key="i">
+          <tr v-for="(misraC, i) in misraCListByPriority" :key="i">
             <!-- Desktop 번호 -->
             <td class="d-none d-lg-table-cell text-center"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></td>
             <td>
               <!-- Mobile -->
               <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <Frequency page-information="list" :frequency="styleCop.frequency"> </Frequency>
-              <router-link :to="'/misra-c/read/' + styleCop.idx">{{ styleCop.title }}</router-link>
-              <span class="comment-count">{{ styleCop.commentDtoCount }}</span>
-              <img v-if="styleCop.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
+              <Frequency page-information="list" :frequency="misraC.frequency"></Frequency>
+              <router-link :to="'/misra-c/read/' + misraC.idx">{{ misraC.title }}</router-link>
+              <span class="comment-count">{{ misraC.commentDtoCount }}</span>
+              <img v-if="misraC.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
               <!-- Mobile -->
               <div class="d-inline d-lg-none">
                 <div>
-                  <span class="mobile-content">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }} </span> <br>
-                  <span class="mobile-content">{{ styleCop.createdDate }}</span> &nbsp;
-                  <span class="mobile-content"> 조회수: {{ styleCop.views }}</span> &nbsp;
-                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags></span>
+                  <span class="mobile-content">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }} </span> <br>
+                  <span class="mobile-content">{{ misraC.createdDate }}</span> &nbsp;
+                  <span class="mobile-content"> 조회수: {{ misraC.views }}</span> &nbsp;
+                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags></span>
                 </div>
               </div>
             </td>
             <!-- Desktop -->
-            <td class="d-none d-lg-table-cell">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }}</td>
+            <td class="d-none d-lg-table-cell">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }}</td>
             <td class="d-none d-lg-table-cell text-start">
-              <HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags>
+              <HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags>
             </td>
-            <td class="d-none d-lg-table-cell text-center">{{ styleCop.createdDate }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ styleCop.views }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraC.createdDate }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraC.views }}</td>
           </tr>
 
           <!-- misraCList -->
-          <tr v-for="(styleCop, i) in misraCList.content" :key="i">
+          <tr v-for="(misraC, i) in misraCList.content" :key="i">
             <!-- Desktop 번호 -->
             <td class="d-none d-lg-table-cell text-center">{{ misraCList.totalElements - misraCList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
               <span class="d-inline d-lg-none mobile-number">{{ misraCList.totalElements - misraCList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <Frequency page-information="list" :frequency="styleCop.frequency"> </Frequency>
-              <router-link :to="'/misra-c/read/' + styleCop.idx"> {{ styleCop.title }}</router-link>
-              <span class="comment-count">{{ styleCop.commentDtoCount }}</span>
-              <img v-if="styleCop.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
+              <Frequency page-information="list" :frequency="misraC.frequency"></Frequency>
+              <router-link :to="'/misra-c/read/' + misraC.idx"> {{ misraC.title }}</router-link>
+              <span class="comment-count">{{ misraC.commentDtoCount }}</span>
+              <img v-if="misraC.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
               <!-- Mobile -->
               <div class="d-inline d-lg-none">
                 <div>
-                  <span class="mobile-content">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }} </span> <br>
-                  <span class="mobile-content">{{ styleCop.createdDate }}</span> &nbsp;
-                  <span class="mobile-content">조회수: {{ styleCop.views }}</span> &nbsp;
-                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags></span>
+                  <span class="mobile-content">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }} </span> <br>
+                  <span class="mobile-content">{{ misraC.createdDate }}</span> &nbsp;
+                  <span class="mobile-content">조회수: {{ misraC.views }}</span> &nbsp;
+                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags></span>
                 </div>
               </div>
             </td>
             <!-- Desktop -->
-            <td class="d-none d-lg-table-cell">{{ styleCop.createdByUser.department }} {{ styleCop.createdByUser.name }}</td>
+            <td class="d-none d-lg-table-cell">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }}</td>
             <td class="d-none d-lg-table-cell text-start">
-              <HashTags pageInformation="list" :hash-tags="styleCop.hashTags"></HashTags>
+              <HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags>
             </td>
-            <td class="d-none d-lg-table-cell text-center">{{ styleCop.createdDate }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ styleCop.views }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraC.createdDate }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraC.views }}</td>
           </tr>
 
           <tr v-if="misraCList.content.length === 0">
@@ -130,7 +130,8 @@ import HashTags from '@/components/common/HashTags.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
 // vue.js
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount, onBeforeUnmount, ref} from 'vue'
+import {useStore} from "vuex";
 import axios from "axios";
 // day.js
 import dayjs from 'dayjs'
@@ -150,6 +151,8 @@ export default {
     Pagination
   },
   setup() {
+    // vue.js
+    const store = useStore();
     // variable
     let misraCListByPriority = ref([]);
     let misraCList = ref({content: {}});
@@ -157,13 +160,26 @@ export default {
     let endNumber = ref(0);
     let searchType = ref("TITLE");
     let searchKeyword = ref("");
+    let pageParam = {"page": 1};
     let access = ref("");
 
     // onBeforeMount, init
     onBeforeMount(async () => {
       fireSuccessToast("misra-c");
 
-      await searchList({"page": 1});
+      // 검색 정보 불러오기
+      if (store.state.pageInfo.pageName === "MisraCList") {
+        searchType.value = store.state.pageInfo.searchType;
+        searchKeyword.value = store.state.pageInfo.searchKeyword;
+        pageParam.page = store.state.pageInfo.page + 1;
+      }
+
+      await searchList(pageParam);
+
+      // 페이지 정보 불러오기
+      if (store.state.pageInfo.pageName === "MisraCList") {
+        misraCList.value.number = misraCList.value.number < endNumber.value ? store.state.pageInfo.page : 0;
+      }
 
       await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-c/list-access-authority",
           {},
@@ -188,8 +204,8 @@ export default {
             .then((response) => {
               misraCListByPriority.value = response.data;
               // dayjs
-              for (const styleCop of misraCListByPriority.value) {
-                styleCop.createdDate = dayjs(styleCop.createdDate).format("YYYY.MM.DD.");
+              for (const misraC of misraCListByPriority.value) {
+                misraC.createdDate = dayjs(misraC.createdDate).format("YYYY.MM.DD.");
               }
             })
             .catch((error) => {
@@ -219,8 +235,8 @@ export default {
             endNumber.value = (misraCList.value.totalPages > startNumber.value + 9) ? startNumber.value + 9 : (misraCList.value.totalPages == 0 ? 1 : misraCList.value.totalPages);
 
             // dayjs
-            for (const styleCop of misraCList.value.content) {
-              styleCop.createdDate = dayjs(styleCop.createdDate).format("YYYY.MM.DD.");
+            for (const misraC of misraCList.value.content) {
+              misraC.createdDate = dayjs(misraC.createdDate).format("YYYY.MM.DD.");
             }
           })
           .catch((error) => {
@@ -229,6 +245,18 @@ export default {
           .then(() => {
           });
     }
+
+    /* 페이지 검색 및 페이지 정보 저장 */
+    onBeforeUnmount(() => {
+      store.commit("pageInfo/setPageInfo",
+          {
+            searchType: searchType.value,
+            searchKeyword: searchKeyword.value,
+            page: misraCList.value.number,
+            pageName: 'MisraCList'
+          }
+      );
+    });
 
     return {
       // variable

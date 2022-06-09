@@ -41,7 +41,7 @@
               <!-- Mobile -->
               <span class="d-inline d-lg-none mobile-number"><img :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/></span>
               <!-- 공통 -->
-              <Frequency page-information="list" :frequency="styleCop.frequency"> </Frequency>
+              <Frequency page-information="list" :frequency="styleCop.frequency"></Frequency>
               <router-link :to="'/style-cop/read/' + styleCop.idx">{{ styleCop.title }}</router-link>
               <span class="comment-count">{{ styleCop.commentDtoCount }}</span>
               <img v-if="styleCop.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -72,7 +72,7 @@
               <!-- Mobile -->
               <span class="d-inline d-lg-none mobile-number">{{ styleCopList.totalElements - styleCopList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <Frequency page-information="list" :frequency="styleCop.frequency"> </Frequency>
+              <Frequency page-information="list" :frequency="styleCop.frequency"></Frequency>
               <router-link :to="'/style-cop/read/' + styleCop.idx"> {{ styleCop.title }}</router-link>
               <span class="comment-count">{{ styleCop.commentDtoCount }}</span>
               <img v-if="styleCop.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
@@ -130,7 +130,8 @@ import HashTags from '@/components/common/HashTags.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
 // vue.js
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount,onBeforeUnmount, ref} from 'vue'
+import {useStore} from "vuex";
 import axios from "axios";
 // day.js
 import dayjs from 'dayjs'
@@ -150,6 +151,8 @@ export default {
     Pagination
   },
   setup() {
+    // vue.js
+    const store = useStore();
     // variable
     let styleCopListByPriority = ref([]);
     let styleCopList = ref({content: {}});
@@ -157,13 +160,26 @@ export default {
     let endNumber = ref(0);
     let searchType = ref("TITLE");
     let searchKeyword = ref("");
+    let pageParam = {"page": 1};
     let access = ref("");
 
     // onBeforeMount, init
     onBeforeMount(async () => {
       fireSuccessToast("style-cop");
 
-      await searchList({"page": 1});
+      // 검색 정보 불러오기
+      if (store.state.pageInfo.pageName === "StyleCopList") {
+        searchType.value = store.state.pageInfo.searchType;
+        searchKeyword.value = store.state.pageInfo.searchKeyword;
+        pageParam.page = store.state.pageInfo.page + 1;
+      }
+
+      await searchList(pageParam);
+
+      // 페이지 정보 불러오기
+      if (store.state.pageInfo.pageName === "StyleCopList") {
+        styleCopList.value.number = styleCopList.value.number < endNumber.value ? store.state.pageInfo.page : 0;
+      }
 
       await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/style-cop/list-access-authority",
           {},
@@ -229,6 +245,19 @@ export default {
           .then(() => {
           });
     }
+
+    /* 페이지 검색 및 페이지 정보 저장 */
+    onBeforeUnmount(() => {
+      store.commit("pageInfo/setPageInfo",
+          {
+            searchType: searchType.value,
+            searchKeyword: searchKeyword.value,
+            page: styleCopList.value.number,
+            pageName: 'StyleCopList'
+          }
+      );
+    });
+
 
     return {
       // variable

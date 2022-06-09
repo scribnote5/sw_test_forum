@@ -75,7 +75,7 @@
             <td>
               <select v-model="authorityType" class="form-select">
                 <option v-if="accessorAuthorityType === 'ROOT'" value="MANAGER">관리자</option>
-                <option v-if="accessorAuthorityType === 'MANAGER'" value="GENERAL">일반 회원</option>
+                <option v-if="accessorAuthorityType === 'ROOT' || accessorAuthorityType === 'MANAGER'" value="GENERAL">일반 회원</option>
                 <option value="READER">읽기 회원</option>
                 <option value="NON_USER">비회원</option>
               </select>
@@ -188,7 +188,7 @@ export default {
     const department = ref("");
     const position = ref("E_ASSOCIATE_RESEARCH_ENGINEER");
     const userStatus = ref("IN_OFFICE");
-    const authorityType = ref("READER");
+    const authorityType = ref("GENERAL");
     const contact = ref("");
     const email = ref("");
     const privateEmail = ref("");
@@ -211,7 +211,6 @@ export default {
           })
           .catch((error) => {
             parseErrorMsg(error.response);
-            router.push("/user/list/");
           })
           .then(() => {
           });

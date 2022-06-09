@@ -4,6 +4,30 @@ import {fileUpload} from "@/assets/plugins/file-upload/file-upload";
 import axios from "axios";
 import router from "@/router";
 
+/* 로그인 에러 메시지 검사 */
+const parseLoginErrorMsg = (msg) => {
+    let alertMsg;
+
+    console.log(msg)
+
+    if (!isEmpty(msg.data.errors[0])) {
+        console.error("msg.data.errors 처리")
+        alertMsg = msg.data.message + "<br>" + msg.data.errors[0].reason;
+    } else if (!isEmpty(msg.data.message)) {
+        console.error("msg.data.message 처리")
+        alertMsg = msg.data.message;
+    } else {
+        alertMsg = "API 서버에 에러가 발생했습니다.\n"
+            + "(NetworkError: Failed to execute 'send' on 'XMLHttpRequest'.)";
+    }
+
+    toast.fire({
+        icon: "error",
+        title: "에러가 발생하였습니다.",
+        html: alertMsg
+    })
+}
+
 /* 에러 메시지 검사 */
 const parseErrorMsg = (msg) => {
     let alertMsg;
@@ -13,8 +37,11 @@ const parseErrorMsg = (msg) => {
     if (!isEmpty(msg)) {
         // 로그인 페이지 에러 처리
         if (!isEmpty(msg.data)) {
-            if (!isEmpty(msg.data.message)) {
-                console.error("msg.data 처리")
+            if (!isEmpty(msg.data.errors[0])) {
+                console.error("msg.data.errors 처리")
+                alertMsg = msg.data.message + "<br>" + msg.data.errors[0].reason;
+            } else if (!isEmpty(msg.data.message)) {
+                console.error("msg.data.message 처리")
                 alertMsg = msg.data.message;
             } else {
                 console.error("else msg.data 처리")
@@ -457,6 +484,7 @@ const validateByLessOneFileExist = (uploadedFileLength, uploadFileLength) => {
 }
 
 export {
+    parseLoginErrorMsg,
     parseErrorMsg,
     deleteArrayIndexIsEmpty,
     validateLength,

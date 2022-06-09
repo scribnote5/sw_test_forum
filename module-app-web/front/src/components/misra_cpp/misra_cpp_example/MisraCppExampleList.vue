@@ -106,8 +106,9 @@ import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
 // vue.js
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount, onBeforeUnmount, ref} from 'vue'
 import {useRoute} from "vue-router";
+import {useStore} from "vuex";
 import axios from "axios";
 // day.js
 import dayjs from 'dayjs'
@@ -127,6 +128,7 @@ export default {
   setup() {
     // vue.js
     const route = useRoute();
+    const store = useStore();
     const misraCppIdx = isEmpty(route.params.misraCppIdx) ? 0 : route.params.misraCppIdx;
     // variable
     let misraCppExampleListByPriority = ref([]);
@@ -136,6 +138,7 @@ export default {
     let searchType = ref("TITLE");
     let searchKeyword = ref("");
     let access = ref("");
+    let pageParam = {"page": 1};
     // misra cpp rule
     let misraCppRule = ref("");
 
@@ -160,7 +163,19 @@ export default {
         misraCppRule.value = "MISRA C++ 규칙 페이지에서만 예제 코드를 등록할 수 있습니다.";
       }
 
-      await searchList({"page": 1});
+      // 검색 정보 불러오기
+      if (store.state.pageInfo.pageName === "MisraCppExampleList") {
+        searchType.value = store.state.pageInfo.searchType;
+        searchKeyword.value = store.state.pageInfo.searchKeyword;
+        pageParam.page = store.state.pageInfo.page + 1;
+      }
+
+      await searchList(pageParam);
+
+      // 페이지 정보 불러오기
+      if (store.state.pageInfo.pageName === "MisraCppExampleList") {
+        misraCppExampleList.value.number = misraCppExampleList.value.number < endNumber.value ? store.state.pageInfo.page : 0;
+      }
 
       await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-cpp-examples/list-access-authority",
           {},
@@ -207,6 +222,18 @@ export default {
           .then(() => {
           });
     }
+
+    /* 페이지 검색 및 페이지 정보 저장 */
+    onBeforeUnmount(() => {
+      store.commit("pageInfo/setPageInfo",
+          {
+            searchType: searchType.value,
+            searchKeyword: searchKeyword.value,
+            page: misraCppExampleList.value.number,
+            pageName: 'MisraCppExampleList'
+          }
+      );
+    });
 
     return {
       // variable

@@ -120,8 +120,9 @@ import HashTags from '@/components/common/HashTags.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
 // vue.js
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount, onBeforeUnmount, ref} from 'vue'
 import {useRoute} from "vue-router";
+import {useStore} from "vuex";
 import axios from "axios";
 // day.js
 import dayjs from 'dayjs'
@@ -142,6 +143,7 @@ export default {
   setup() {
     // vue.js
     const route = useRoute();
+    const store = useStore();
     const metricIdx = isEmpty(route.params.metricIdx) ? 0 : route.params.metricIdx;
     // variable
     let metricGuidelineList = ref({content: {}});
@@ -149,6 +151,7 @@ export default {
     let endNumber = ref(0);
     let searchType = ref("TITLE");
     let searchKeyword = ref("");
+    let pageParam = {"page": 1};
     let access = ref("");
     // metric rule
     let metricRule = ref("");
@@ -174,7 +177,19 @@ export default {
         metricRule.value = "메트릭 규칙 페이지에서만 가이드라인을 등록할 수 있습니다.";
       }
 
-      await searchList({"page": 1});
+      // 검색 정보 불러오기
+      if (store.state.pageInfo.pageName === "MetricGuidelineList") {
+        searchType.value = store.state.pageInfo.searchType;
+        searchKeyword.value = store.state.pageInfo.searchKeyword;
+        pageParam.page = store.state.pageInfo.page + 1;
+      }
+
+      await searchList(pageParam);
+
+      // 페이지 정보 불러오기
+      if (store.state.pageInfo.pageName === "MetricGuidelineList") {
+        metricGuidelineList.value.number = metricGuidelineList.value.number < endNumber.value ? store.state.pageInfo.page : 0;
+      }
 
       await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/metric-guidelines/list-access-authority",
           {},
@@ -221,6 +236,19 @@ export default {
           .then(() => {
           });
     }
+
+    /* 페이지 검색 및 페이지 정보 저장 */
+    onBeforeUnmount(() => {
+      store.commit("pageInfo/setPageInfo",
+          {
+            searchType: searchType.value,
+            searchKeyword: searchKeyword.value,
+            page: metricGuidelineList.value.number,
+            pageName: 'MetricGuidelineList'
+          }
+      );
+    });
+
 
     return {
       // variable

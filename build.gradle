@@ -38,7 +38,7 @@ subprojects {
     apply plugin: "idea"
 
     // Java version
-    sourceCompatibility = 14
+    sourceCompatibility = 17
 
     repositories {
         google()
@@ -82,7 +82,7 @@ project(":module-system-common") {
 
 project(":module-domain-core") {
     dependencies {
-        compile project(":module-system-common")
+        implementation project(":module-system-common")
 
         implementation "org.apache.tika:tika-parsers:1.28"
         implementation "com.querydsl:querydsl-core"
@@ -93,8 +93,8 @@ project(":module-domain-core") {
 
 project("module-web-core") {
     dependencies {
-        compile project(":module-system-common")
-        compile project(":module-domain-core")
+        implementation project(":module-system-common")
+        implementation project(":module-domain-core")
     }
 }
 
@@ -106,9 +106,9 @@ project(":module-app-web") {
 
 project("module-app-api") {
     dependencies {
-        compile project(":module-system-common")
-        compile project(":module-domain-core")
-        compile project(":module-web-core")
+        implementation project(":module-system-common")
+        implementation project(":module-domain-core")
+        implementation project(":module-web-core")
 
         implementation "org.apache.commons:commons-text:1.9"
 

@@ -986,12 +986,14 @@ router.beforeEach(async function (to, from, next) {
         }
         // 권한이 없는 경우, Error401
         else {
-            await error.fire({
-                text: "로그인이 필요합니다.",
-            });
+            if(from.href !== "/login") {
+                await error.fire({
+                    text: "로그인이 필요합니다.",
+                });
 
-            next('/login');
-            //router.go(-1);
+                next('/login');
+                //router.go(-1);
+            }
         }
     } else {
         if (vueCookies.get('isHasToken')) {

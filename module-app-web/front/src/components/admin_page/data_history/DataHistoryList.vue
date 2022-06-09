@@ -112,7 +112,8 @@ import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
 // vue.js
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount,onBeforeUnmount, ref} from 'vue'
+import {useStore} from "vuex";
 import axios from "axios";
 // day.js
 import dayjs from 'dayjs'
@@ -129,6 +130,8 @@ export default {
     Pagination
   },
   setup() {
+    // vue.js
+    const store = useStore();
     // variable
     let dataHistoryList = ref({content: {}});
     let startNumber = ref(0);
@@ -136,6 +139,7 @@ export default {
     let searchType = ref("MESSAGE");
     let searchKeyword = ref("");
     let access = ref("");
+    let pageParam = {"page": 1};
     // previous searchType
     let previousSearchType;
 
@@ -143,7 +147,20 @@ export default {
     onBeforeMount(async () => {
       fireSuccessToast("dataHistory");
 
-      await searchList({"page": 1});
+      // 검색 정보 불러오기
+      if (store.state.pageInfo.pageName === "DataHistoryList") {
+        searchType.value = store.state.pageInfo.searchType;
+        previousSearchType = store.state.pageInfo.searchType;
+        searchKeyword.value = store.state.pageInfo.searchKeyword;
+        pageParam.page = store.state.pageInfo.page + 1;
+      }
+
+      await searchList(pageParam);
+
+      // 페이지 정보 불러오기
+      if (store.state.pageInfo.pageName === "DataHistoryList") {
+        dataHistoryList.value.number = dataHistoryList.value.number < endNumber.value ? store.state.pageInfo.page : 0;
+      }
     })
 
     /* searchType 변경될 때 */
@@ -185,6 +202,19 @@ export default {
           .then(() => {
           });
     }
+
+    /* 페이지 검색 및 페이지 정보 저장 */
+    onBeforeUnmount(() => {
+      store.commit("pageInfo/setPageInfo",
+          {
+            searchType: searchType.value,
+            searchKeyword: searchKeyword.value,
+            previousSearchType: previousSearchType,
+            page: dataHistoryList.value.number,
+            pageName: 'DataHistoryList'
+          }
+      );
+    });
 
     return {
       // variable

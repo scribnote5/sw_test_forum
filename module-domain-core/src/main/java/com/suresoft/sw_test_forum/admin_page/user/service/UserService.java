@@ -239,7 +239,7 @@ public class UserService implements UserDetailsService {
             User createdByUser = findUserByIdxAndSetUserWhenEmpty(userDto.getCreatedByIdx());
             User lastModifiedByUser = findUserByIdxAndSetUserWhenEmpty(userDto.getLastModifiedByIdx());
 
-            userDto.setAccess(AuthorityUtil.isAccessInUser(createdByUser.getUsername(), createdByUser.getAuthorityType().getAuthorityType(), userDto.getUsername()));
+            userDto.setAccess(AuthorityUtil.isAccessInUserPage(createdByUser.getUsername(), userDto.getAuthorityType().getAuthorityType(), userDto.getUsername()));
             userDto.setCreatedByUser(createdByUser);
             userDto.setLastModifiedByUser(lastModifiedByUser);
 

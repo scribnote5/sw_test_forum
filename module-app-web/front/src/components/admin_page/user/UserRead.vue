@@ -51,6 +51,12 @@
 
           <!-- Desktop -->
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
+            <th>아이디</th>
+            <td>
+              {{ user.username }}
+            </td>
+          </tr>
+          <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>재직 여부</th>
             <td>
               <span v-if="user.userStatus == 'IN_OFFICE'">재직중</span>
@@ -88,6 +94,7 @@
           <!-- Mobile -->
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
             <td colspan="2">
+              <strong>아이디: </strong> {{ user.username }} <br>
               <strong>재직여부: </strong>
               <span v-if="user.userStatus == 'IN_OFFICE'">재직중</span>
               <span v-if="user.userStatus == 'RETIREE'">퇴사</span> <br>

@@ -355,7 +355,7 @@ import {fileUpload} from "@/assets/plugins/file-upload/file-upload";
 import {convertFileSize} from "@/utils/converter-util";
 import {isEmpty} from "@/utils/empty-util";
 // utils
-import {deleteArrayIndexIsEmpty, parseErrorMsg, validateContact, validateEditor, validateEmail, validateLength, validateLengthAndIsEmpty, validatePassword, validateUsername} from "@/utils/validation-util";
+import {deleteArrayIndexIsEmpty, parseLoginErrorMsg, parseErrorMsg, validateContact, validateEditor, validateEmail, validateLength, validateLengthAndIsEmpty, validatePassword, validateUsername} from "@/utils/validation-util";
 import {createAutoComplete} from "@/assets/plugins/auto-complete/auto-complete";
 import {fireSuccessToast} from "@/assets/plugins/sweetalert2/sweetalert2";
 
@@ -406,7 +406,6 @@ export default {
           })
           .catch((error) => {
             parseErrorMsg(error.response);
-            router.push("/user/list/");
           })
           .then(() => {
           });
@@ -438,11 +437,10 @@ export default {
           .then((response) => {
             vueCookies.set('isHasToken', true);
             vueCookies.set('loginUserInfo', response.data);
-
             loginResultType = 'SUCCESS';
           })
           .catch((error) => {
-            parseErrorMsg(error.response);
+            parseLoginErrorMsg(error.response);
             loginResultType = 'FAIL';
           })
           .then(() => {
@@ -462,7 +460,11 @@ export default {
           .then(() => {
           });
 
-      if (loginResultType === 'SUCCESS') router.push("/dashboard");
+      if (loginResultType === 'SUCCESS') {
+        router.push("/dashboard");
+      } else {
+        router.push("/login");
+      }
     }
 
     /* 작성 */

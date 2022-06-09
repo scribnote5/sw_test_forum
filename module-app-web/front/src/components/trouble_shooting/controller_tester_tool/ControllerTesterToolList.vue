@@ -153,7 +153,8 @@ import HashTags from '@/components/common/HashTags.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
 // vue.js
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount, onBeforeUnmount, ref} from 'vue'
+import {useStore} from "vuex";
 import {useRoute} from "vue-router";
 import axios from "axios";
 // day.js
@@ -175,6 +176,7 @@ export default {
   setup() {
     // vue.js
     const route = useRoute();
+    const store = useStore();
     // variable
     let controllerTesterToolListByPriority = ref([]);
     let controllerTesterToolList = ref({content: {}});
@@ -182,13 +184,26 @@ export default {
     let endNumber = ref(0);
     let searchType = ref("TITLE");
     let searchKeyword = ref("");
+    let pageParam = {"page": 1};
     let access = ref("");
 
     // onBeforeMount, init
     onBeforeMount(async () => {
       fireSuccessToast("controller-tester-tool");
 
-      await searchList({"page": 1});
+      // 검색 정보 불러오기
+      if (store.state.pageInfo.pageName === "ControllerTesterToolList") {
+        searchType.value = store.state.pageInfo.searchType;
+        searchKeyword.value = store.state.pageInfo.searchKeyword;
+        pageParam.page = store.state.pageInfo.page + 1;
+      }
+
+      await searchList(pageParam);
+
+      // 페이지 정보 불러오기
+      if (store.state.pageInfo.pageName === "ControllerTesterToolList") {
+        controllerTesterToolList.value.number = controllerTesterToolList.value.number < endNumber.value ? store.state.pageInfo.page : 0;
+      }
 
       await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/controller-tester-tools/list-access-authority",
           {},
@@ -254,6 +269,18 @@ export default {
           .then(() => {
           });
     }
+
+    /* 페이지 검색 및 페이지 정보 저장 */
+    onBeforeUnmount(() => {
+      store.commit("pageInfo/setPageInfo",
+          {
+            searchType: searchType.value,
+            searchKeyword: searchKeyword.value,
+            page: controllerTesterToolList.value.number,
+            pageName: 'ControllerTesterToolList'
+          }
+      );
+    });
 
     return {
       // variable

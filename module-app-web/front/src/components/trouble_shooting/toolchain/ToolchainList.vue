@@ -153,8 +153,9 @@ import HashTags from '@/components/common/HashTags.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
 // vue.js
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount, onBeforeUnmount, ref} from 'vue'
 import {useRoute} from "vue-router";
+import {useStore} from "vuex";
 import axios from "axios";
 // day.js
 import dayjs from 'dayjs'
@@ -175,6 +176,7 @@ export default {
   setup() {
     // vue.js
     const route = useRoute();
+    const store = useStore();
     // variable
     let toolchainListByPriority = ref([]);
     let toolchainList = ref({content: {}});
@@ -182,13 +184,26 @@ export default {
     let endNumber = ref(0);
     let searchType = ref("TITLE");
     let searchKeyword = ref("");
+    let pageParam = {"page": 1};
     let access = ref("");
 
     // onBeforeMount, init
     onBeforeMount(async () => {
       fireSuccessToast("toolchain");
 
-      await searchList({"page": 1});
+      // 검색 정보 불러오기
+      if (store.state.pageInfo.pageName === "ToolchainList") {
+        searchType.value = store.state.pageInfo.searchType;
+        searchKeyword.value = store.state.pageInfo.searchKeyword;
+        pageParam.page = store.state.pageInfo.page + 1;
+      }
+
+      await searchList(pageParam);
+
+      // 페이지 정보 불러오기
+      if (store.state.pageInfo.pageName === "ToolchainList") {
+        toolchainList.value.number = toolchainList.value.number < endNumber.value ? store.state.pageInfo.page : 0;
+      }
 
       await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/toolchains/list-access-authority",
           {},
@@ -254,6 +269,18 @@ export default {
           .then(() => {
           });
     }
+
+    /* 페이지 검색 및 페이지 정보 저장 */
+    onBeforeUnmount(() => {
+      store.commit("pageInfo/setPageInfo",
+          {
+            searchType: searchType.value,
+            searchKeyword: searchKeyword.value,
+            page: toolchainList.value.number,
+            pageName: 'ToolchainList'
+          }
+      );
+    });
 
     return {
       // variable

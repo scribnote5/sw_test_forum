@@ -72,10 +72,13 @@
           <tr>
             <th>권한</th>
             <td>
-              <select v-model="authorityType" class="form-select">
-                <option v-if="accessorAuthorityType === 'ROOT'" value="MANAGER">관리자</option>
-                <option v-if="accessorAuthorityType === 'ROOT' || accessorAuthorityType === 'MANAGER'" value="GENERAL">일반 회원</option>
-                <option value="READER">읽기 회원</option>
+              <select v-if="accessorAuthorityType === 'ROOT' && username === 'root'" v-model="authorityType" class="form-select">
+                <option value="ROOT">최고 관리자(root)</option>
+              </select>
+              <select v-else v-model="authorityType" class="form-select">
+                <option v-if="accessorAuthorityType === 'ROOT' || accessorAuthorityType === 'MANAGER'" value="MANAGER">관리자</option>
+                <option v-if="accessorAuthorityType === 'ROOT' || accessorAuthorityType === 'MANAGER' || accessorAuthorityType === 'GENERAL'" value="GENERAL">일반 회원</option>
+                <option v-if="accessorAuthorityType === 'ROOT' || accessorAuthorityType === 'MANAGER' || accessorAuthorityType === 'GENERAL' || accessorAuthorityType === 'GENERAL'" value="READER">읽기 회원</option>
                 <option value="NON_USER">비회원</option>
               </select>
               <p id="authorityErrorMessage" class="error-message"></p>
