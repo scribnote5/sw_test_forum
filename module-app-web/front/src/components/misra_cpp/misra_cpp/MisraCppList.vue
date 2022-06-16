@@ -12,6 +12,7 @@
           <select v-model="searchType" class="form-select form-select-sm" style="width: auto">
             <option value="TITLE">제목</option>
             <option value="HASH_TAGS">해시태그</option>
+            <option value="QAC_TITLE">QAC 규칙</option>
             <option value="CONTENT">내용</option>
             <option value="CREATED_BY">작성자</option>
           </select>

@@ -18,7 +18,7 @@
             <th colspan="2" class="sub-item-title">CWE 규칙 정보</th>
           </tr>
           <tr>
-            <th>제목<span class="required-field">*</span></th>
+            <th>규칙<span class="required-field">*</span></th>
             <td style="overflow: visible">
               <div class="autoComplete_wrapper">
                 <input type="text" name="title" v-model="title" class="form-control" placeholder="[Buffer_Overrun] 배열 최대 범위보다 큰 요소 접근을 금지">
@@ -61,10 +61,17 @@
             </td>
           </tr>
           <tr>
-            <th>CWE ID<span class="recommended-field">*</span></th>
+            <th>STATIC 규칙<span class="recommended-field">*</span></th>
             <td>
-              <input type="text" name="cweId" v-model="cweId" class="form-control" placeholder="11, 13, 15">
-              <p id="cweIdErrorMessage" class="error-message"></p>
+              <input type="text" name="staticTitle" v-model="staticTitle" class="form-control" placeholder="CWE 규칙과 매핑되는 STATIC 규칙을 작성해주세요.">
+              <p id="staticTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
+            <th>CodeSonar 규칙<span class="recommended-field">*</span></th>
+            <td>
+              <input type="text" name="codeSonarTitle" v-model="codeSonarTitle" class="form-control" placeholder="CWE 규칙과 매핑되는 CodeSonar 규칙을 작성해주세요.">
+              <p id="codeSonarTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
           <tr>
@@ -177,7 +184,8 @@ export default {
     let hashTags = ref("");
     let hashTagsIdx = ref(0);
     let language = ref("");
-    let cweId = ref("");
+    let staticTitle = ref("");
+    let codeSonarTitle = ref("");
     let activeStatus = ref("");
     let createdByUser = ref([]);
     let createdDate = ref("");
@@ -200,7 +208,8 @@ export default {
             hashTags.value = response.data.hashTags;
             hashTagsIdx.value = response.data.hashTagsIdx;
             language.value = response.data.language;
-            cweId.value = response.data.cweId;
+            staticTitle.value = response.data.staticTitle;
+            codeSonarTitle.value = response.data.codeSonarTitle;
             vueEditorData.value = response.data.content;
 
             // autoComplete 설정
@@ -259,7 +268,8 @@ export default {
       if (!(validateLengthAndIsEmpty("title", title.value)
           && validateLength("hashTags", hashTags.value)
           && validateLength("language", language.value)
-          && validateLength("cweId", cweId.value)
+          && validateLength("staticTitle", staticTitle.value)
+          && validateLength("codeSonarTitle", codeSonarTitle.value)
       )) {
         return false;
       }
@@ -272,7 +282,8 @@ export default {
             hashTags: hashTags.value,
             hashTagsIdx: hashTagsIdx.value,
             language: language.value,
-            cweId: cweId.value,
+            staticTitle: staticTitle.value,
+            codeSonarTitle: codeSonarTitle.value,
             content: vueEditorData.value,
             activeStatus: activeStatus.value
           },
@@ -378,7 +389,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, language, cweId,
+      title, priority, frequency, hashTags, language, staticTitle, codeSonarTitle,
       priorityArray,
 
       // function
@@ -386,6 +397,5 @@ export default {
       updatePost, deletePost
     }
   }
-}
-;
+};
 </script>

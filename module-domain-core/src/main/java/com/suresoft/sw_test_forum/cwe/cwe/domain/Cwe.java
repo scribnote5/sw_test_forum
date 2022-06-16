@@ -30,7 +30,9 @@ public class Cwe extends CommonAudit {
     @Enumerated(EnumType.STRING)
     private CweLanguage language;
 
-    private String cweId;
+    private String staticTitle;
+
+    private String codeSonarTitle;
 
     private String content;
 
@@ -41,7 +43,8 @@ public class Cwe extends CommonAudit {
                Frequency frequency,
                long hashTagsIdx,
                CweLanguage language,
-               String cweId,
+               String staticTitle,
+               String codeSonarTitle,
                String content) {
         setIdx(idx);
         setCreatedDate(createdDate);
@@ -54,7 +57,8 @@ public class Cwe extends CommonAudit {
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
         this.language = language;
-        this.cweId = cweId;
+        this.staticTitle = staticTitle;
+        this.codeSonarTitle = codeSonarTitle;
         this.content = content;
     }
 
@@ -65,6 +69,8 @@ public class Cwe extends CommonAudit {
         this.frequency = cwe.getFrequency();
         this.hashTagsIdx = cwe.getHashTagsIdx();
         this.language = cwe.getLanguage();
+        this.staticTitle = cwe.getStaticTitle();
+        this.codeSonarTitle = cwe.getCodeSonarTitle();
         this.content = cwe.getContent();
     }
 }

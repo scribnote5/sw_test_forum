@@ -44,8 +44,11 @@ public class CweDto extends CommonDto {
     @NotNull(message = "'언어'는 NULL이 될 수 없습니다.")
     private CweLanguage language;
 
-    @Size(max = 255, message = "'CWE ID'의 길이는 255 보다 작아야 합니다.")
-    private String cweId;
+    @Size(max = 255, message = "'STATIC 규칙명'의 길이는 255 보다 작아야 합니다.")
+    private String staticTitle;
+
+    @Size(max = 255, message = "'CodeSonar 규칙명'의 길이는 255 보다 작아야 합니다.")
+    private String codeSonarTitle;
 
     @Editor(max = 16777215, message = "'에디터' 크기는 16777215Bytes(16MB) 보다 작아야 합니다.")
     private String content;

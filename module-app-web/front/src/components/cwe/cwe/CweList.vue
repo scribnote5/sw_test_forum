@@ -12,7 +12,8 @@
           <select v-model="searchType" class="form-select form-select-sm" style="width: auto">
             <option value="TITLE">제목</option>
             <option value="HASH_TAGS">해시태그</option>
-            <option value="CWE_ID">CWE ID</option>
+            <option value="STATIC_TITLE">STATIC 규칙</option>
+            <option value="CODE_SONAR_TITLE">CodeSonar 규칙</option>
             <option value="CONTENT">내용</option>
             <option value="CREATED_BY">작성자</option>
           </select>

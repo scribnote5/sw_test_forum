@@ -16,7 +16,8 @@ CREATE TABLE cwe
     frequency            varchar(255) null,
     hash_tags_idx        bigint default 0,
     language             varchar(255) null,
-    cwe_id               varchar(255) null,
+    static_title         varchar(255) null,
+    code_sonar_title      varchar(255) null,
     content              mediumtext null
 ) ENGINE = InnoDB
   DEFAULT CHARSET = UTF8;

@@ -79,6 +79,13 @@
             </td>
           </tr>
           <tr>
+            <th>QAC 규칙<span class="recommended-field">*</span></th>
+            <td>
+              <input type="text" name="qacTitle" v-model="qacTitle" class="form-control" placeholder="MISRA C 규칙과 매핑되는 QAC 규칙을 작성해주세요.">
+              <p id="qacTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
             <td colspan="2">
               <ckeditor id="content" :editor="vueEditor" v-model="vueEditorData" :config="vueEditorConfig" @blur="validateEditor"></ckeditor>
             </td>
@@ -190,6 +197,7 @@ export default {
     let category = ref("");
     let scope = ref("");
     let decidability = ref("");
+    let qacTitle = ref("");
     let activeStatus = ref("");
     let createdByUser = ref([]);
     let createdDate = ref("");
@@ -214,6 +222,7 @@ export default {
             category.value = response.data.category;
             scope.value = response.data.scope;
             decidability.value = response.data.decidability;
+            qacTitle.value = response.data.qacTitle;
             vueEditorData.value = response.data.content;
 
             // autoComplete 설정
@@ -274,6 +283,7 @@ export default {
           && validateLength("category", category.value)
           && validateLength("scope", scope.value)
           && validateLength("decidability", decidability.value)
+          && validateLength("qacTitle", qacTitle.value)
       )) {
         return false;
       }
@@ -288,6 +298,7 @@ export default {
             category: category.value,
             scope: scope.value,
             decidability: decidability.value,
+            qacTitle: qacTitle.value,
             content: vueEditorData.value,
             activeStatus: activeStatus.value
           },
@@ -393,7 +404,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, category, scope, decidability,
+      title, priority, frequency, hashTags, category, scope, decidability, qacTitle,
       priorityArray,
 
       // function

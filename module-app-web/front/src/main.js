@@ -26,7 +26,8 @@ axios.interceptors.request.use(
         // 오류 요청을 보내기전 수행할 일
         document.getElementById("loading-wrapper").style.visibility = "hidden";
         return Promise.reject(error);
-    });
+    }
+);
 
 // 응답 인터셉터 추가
 axios.interceptors.response.use(
@@ -39,7 +40,8 @@ axios.interceptors.response.use(
         // 오류 응답을 처리
         document.getElementById("loading-wrapper").style.visibility = "hidden";
         return Promise.reject(error);
-    });
+    }
+);
 
 const app = createApp(App);
 

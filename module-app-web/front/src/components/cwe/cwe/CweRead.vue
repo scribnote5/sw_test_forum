@@ -60,9 +60,15 @@
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>CWE ID</th>
+            <th>STATIC 규칙</th>
             <td>
-              {{ cwe.cweId }}
+              {{ cwe.staticTitle }}
+            </td>
+          </tr>
+          <tr class="d-none d-sm-none d-md-none d-lg-table-row">
+            <th>CodeSonar 규칙</th>
+            <td>
+              {{ cwe.codeSonarTitle }}
             </td>
           </tr>
 
@@ -79,8 +85,10 @@
               <span v-if="cwe.language == 'C_CPP'">C, C++</span>
               <span v-if="cwe.language == 'JAVA'">Java</span>
               <span v-if="cwe.language == 'ALL'">모든 언어</span><br>
-              <strong>CWE ID: </strong>
-              {{ cwe.cweId }}
+              <strong>STATIC 규칙: </strong>
+              {{ cwe.staticTitle }}<br>
+              <strong>CodeSonar 규칙: </strong>
+              {{ cwe.codeSonarTitle }}
             </td>
           </tr>
 

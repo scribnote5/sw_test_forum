@@ -56,7 +56,7 @@
               <select v-model="position" class="form-select">
                 <option value="A_EXECUTIVES">임원</option>
                 <option value="B_PRINCIPAL_RESEARCH_ENGINEER">수석연구원</option>
-                <option value="C_SENIOR_RESEARCH_ENGINEER">책임연구원</option>
+                <option value="C_SENIOR_RESEARCH_ENGINEER">전문연구원</option>
                 <option value="D_RESEARCH_ENGINEER">선임연구원</option>
                 <option value="E_ASSOCIATE_RESEARCH_ENGINEER">전임연구원</option>
                 <option value="F_GENERAL_MANAGER">부장</option>

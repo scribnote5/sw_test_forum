@@ -127,6 +127,9 @@ public class MisraCppRepositoryImpl extends QuerydslRepositorySupport {
             case "HASH_TAGS":
                 result = hashTags.content.contains(misraCppSearchDto.getSearchKeyword());
                 break;
+            case "QAC_TITLE":
+                result = misraCpp.qacTitle.contains(misraCppSearchDto.getSearchKeyword());
+                break;
             case "CONTENT":
                 result = misraCpp.content.contains(misraCppSearchDto.getSearchKeyword());
                 break;
@@ -171,6 +174,7 @@ public class MisraCppRepositoryImpl extends QuerydslRepositorySupport {
                                 hashTags.content.as("hashTags"),
                                 misraCpp.hashTagsIdx,
                                 misraCpp.category,
+                                misraCpp.qacTitle,
                                 misraCpp.content
                         )
                 )

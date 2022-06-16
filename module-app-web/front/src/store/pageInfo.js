@@ -9,12 +9,12 @@ export const pageInfo = {
     }),
     mutations: {
         setPageInfo(state, payload) {
-            console.log("\n\n\nsetPageInfo");
-            console.log(payload)
-            console.log(payload.searchType)
-            console.log(payload.searchKeyword)
-            console.log(payload.page)
-            console.log(payload.pageName)
+            // console.log("\n\n\nsetPageInfo");
+            // console.log(payload)
+            // console.log(payload.searchType)
+            // console.log(payload.searchKeyword)
+            // console.log(payload.page)
+            // console.log(payload.pageName)
 
             state.searchType = payload.searchType;
             state.previousSearchType = payload.previousSearchType;
@@ -25,13 +25,13 @@ export const pageInfo = {
     },
     getters: {
         getPageInfo(state) {
-            console.log("\n\n\ngetPageInfo");
-            console.log(state.searchType)
-            console.log(state.previousSearchType)
-            console.log(state.searchKeyword)
-            console.log(state.page)
-            console.log(state.pageName)
-            console.log("\n")
+            // console.log("\n\n\ngetPageInfo");
+            // console.log(state.searchType)
+            // console.log(state.previousSearchType)
+            // console.log(state.searchKeyword)
+            // console.log(state.page)
+            // console.log(state.pageName)
+            // console.log("\n")
         }
     },
     actions: {

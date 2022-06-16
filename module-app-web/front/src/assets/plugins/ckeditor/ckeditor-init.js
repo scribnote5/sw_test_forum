@@ -22,6 +22,7 @@ import FontBackgroundColor from "@ckeditor/ckeditor5-font/src/fontbackgroundcolo
 import FontFamily from "@ckeditor/ckeditor5-font/src/fontfamily";
 import FontSize from "@ckeditor/ckeditor5-font/src/fontsize";
 import FontColor from "@ckeditor/ckeditor5-font/src/fontcolor";
+import FindAndReplace from '@ckeditor/ckeditor5-find-and-replace/src/findandreplace';
 import Link from "@ckeditor/ckeditor5-link/src/link";
 import Linkimage from "@ckeditor/ckeditor5-link/src/linkimage";
 import AutoLink from "@ckeditor/ckeditor5-link/src/autolink";
@@ -34,7 +35,7 @@ import Indent from "@ckeditor/ckeditor5-indent/src/indent";
 import IndentBlock from "@ckeditor/ckeditor5-indent/src/indentblock";
 import MediaEmbed from "@ckeditor/ckeditor5-media-embed/src/mediaembed";
 import List from "@ckeditor/ckeditor5-list/src/list";
-import ListStyle from "@ckeditor/ckeditor5-list/src/liststyle";
+import ListProperties from "@ckeditor/ckeditor5-list/src/listproperties";
 import BlockQuote from "@ckeditor/ckeditor5-block-quote/src/blockquote";
 import RemoveFormat from "@ckeditor/ckeditor5-remove-format/src/removeformat";
 import WordCount from "@ckeditor/ckeditor5-word-count/src/wordcount";
@@ -70,24 +71,6 @@ const editorRuleData =
     '</p>' +
     '<hr>' +
     '<h5>' +
-    '    [위배 원인]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [위험 요인]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
     '    [상세 설명]' +
     '</h5>' +
     '<p>' +
@@ -95,39 +78,6 @@ const editorRuleData =
     '</p>' +
     '<p>' +
     '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [수정 방법]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [예외 사항]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [비고]' +
-    '</h5>' +
-    '<p>' +
-    '    예제) 문서화 규칙으로 도구 미지원 규칙입니다.' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [원문]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
     '</p>';
 
 let editorExampleData =
@@ -141,16 +91,7 @@ let editorExampleData =
     '    &nbsp;' +
     '</p>' +
     '<h5>' +
-    '    [수정 방법]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [비고]' +
+    '    [상세 설명]' +
     '</h5>' +
     '<p>' +
     '    -' +
@@ -167,19 +108,13 @@ let editorGuidelineData =
     '    &nbsp;' +
     '</p>' +
     '<h5>' +
-    '    [가이드라인 설명]' +
+    '    [상세 설명]' +
     '</h5>' +
     '<p>' +
     '    -' +
     '</p>' +
     '<p>' +
     '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [비고]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
     '</p>';
 
 let editorTroubleShootingData =
@@ -536,6 +471,7 @@ let editorConfig = {
         FontFamily,
         FontSize,
         FontColor,
+        FindAndReplace,
 
         Link,
         Linkimage,
@@ -555,7 +491,7 @@ let editorConfig = {
         MediaEmbed,
 
         List,
-        ListStyle,
+        ListProperties,
 
         BlockQuote,
         RemoveFormat,
@@ -604,6 +540,7 @@ let editorConfig = {
             'outdent',
             'indent',
             '|',
+            'findAndReplace',
             'imageInsert',
             'insertTable',
             '|',

@@ -82,6 +82,8 @@ spring:
         maintainTimeStats: false
 server:
   port: 8082
+localhost:
+  url: http://localhost:8080
 module-app-web:
   url: http://localhost:8080
 module-app-api:
@@ -100,58 +102,7 @@ module-app-admin:
 spring:
   config:
     activate:
-      on-profile: local
-#  jpa:
-#    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
-#    database-platform: org.hibernate.dialect.MariaDB103Dialect
-#    properties:
-#      hibernate:
-#        # sql 문을 가독성 좋게 출력한다.
-#        format_sql: true
-#        # sql 문을 보여준다.
-#        show_sql: true
-#        # sql 문 추가 죽석을 보여준다.
-#        use_sql_comment: true
-  datasource:
-    url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum
-    username: scribnote5
-    password: 123123123
-    driver-class-name: org.mariadb.jdbc.Driver
-    # spring boot 2.x에서는 connection pool로 HikariCP를 사용
-    # HikariCP 설정은 default value 값을 사용하며, HikariCP에서 추천하는 mysql 설정 적용
-    hikari:
-      data-source-properties:
-        cachePrepStmts: true
-        prepStmtCacheSize: 250
-        prepStmtCacheSqlLimit: 2048
-        useServerPrepStmts: true
-        useLocalSessionState: true
-        rewriteBatchedStatements: true
-        cacheResultSetMetadata: true
-        cacheServerConfiguration: true
-        elideSetAutoCommits: true
-        maintainTimeStats: false
-server:
-  port: 8082
-module-app-web:
-  url: http://localhost:8080
-module-app-admin:
-  url: http://localhost:8081
-module-app-api:
-  url: http://localhost:8082
----
-# sql 문의 조건을 출력한다.
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        type:
-#          descriptor:
-#            sql: trace
-spring:
-  config:
-    activate:
-      on-profile: backup
+      on-profile: local_hanwha
   #  jpa:
   #    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
   #    database-platform: org.hibernate.dialect.MariaDB103Dialect
@@ -164,7 +115,7 @@ spring:
   #        # sql 문 추가 죽석을 보여준다.
   #        use_sql_comment: true
   datasource:
-    url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum_backup
+    url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum_hanwha
     username: scribnote5
     password: 123123123
     driver-class-name: org.mariadb.jdbc.Driver
@@ -184,6 +135,61 @@ spring:
         maintainTimeStats: false
 server:
   port: 8082
+localhost:
+  url: http://localhost:8080
+module-app-web:
+  url: http://localhost:8080
+module-app-admin:
+  url: http://localhost:8081
+module-app-api:
+  url: http://localhost:8082
+---
+# sql 문의 조건을 출력한다.
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        type:
+#          descriptor:
+#            sql: trace
+spring:
+  config:
+    activate:
+      on-profile: local_hanwha_backup
+  #  jpa:
+  #    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
+  #    database-platform: org.hibernate.dialect.MariaDB103Dialect
+  #    properties:
+  #      hibernate:
+  #        # sql 문을 가독성 좋게 출력한다.
+  #        format_sql: true
+  #        # sql 문을 보여준다.
+  #        show_sql: true
+  #        # sql 문 추가 죽석을 보여준다.
+  #        use_sql_comment: true
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum_hanwha_backup
+    username: scribnote5
+    password: 123123123
+    driver-class-name: org.mariadb.jdbc.Driver
+    # spring boot 2.x에서는 connection pool로 HikariCP를 사용
+    # HikariCP 설정은 default value 값을 사용하며, HikariCP에서 추천하는 mysql 설정 적용
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+server:
+  port: 8082
+localhost:
+  url: http://localhost:8080
 module-app-web:
   url: http://localhost:8080
 module-app-admin:
@@ -194,11 +200,11 @@ module-app-api:
 spring:
   config:
     activate:
-      on-profile: prod
+      on-profile: prod_hanwha
   datasource:
     url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum
-    username: scribnote5
-    password: 123123123
+    username: root
+    password: vnawlf@10
     driver-class-name: org.mariadb.jdbc.Driver
     # spring boot 2.x에서는 connection pool로 HikariCP를 사용
     # HikariCP 설정은 default value 값을 사용하며, HikariCP에서 추천하는 mysql 설정 적용
@@ -216,9 +222,11 @@ spring:
         maintainTimeStats: false
 server:
   port: 8082
+localhost:
+  url: http://localhost:8080
 module-app-web:
-  url: http://203.234.19.85:8080
+  url: http://23.45.208.66:8080
 module-app-admin:
-  url: http://203.234.19.85:8081
+  url: http://23.45.208.66:8081
 module-app-api:
-  url: http://203.234.19.85:8082
+  url: http://23.45.208.66:8082

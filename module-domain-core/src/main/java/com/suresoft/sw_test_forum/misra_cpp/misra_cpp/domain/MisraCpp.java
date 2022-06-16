@@ -30,6 +30,8 @@ public class MisraCpp extends CommonAudit {
     @Enumerated(EnumType.STRING)
     private MisraCppCategory category;
 
+    private String qacTitle;
+
     private String content;
 
     @Builder
@@ -39,6 +41,7 @@ public class MisraCpp extends CommonAudit {
                     Frequency frequency,
                     long hashTagsIdx,
                     MisraCppCategory category,
+                    String qacTitle,
                     String content) {
         setIdx(idx);
         setCreatedDate(createdDate);
@@ -51,6 +54,7 @@ public class MisraCpp extends CommonAudit {
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
         this.category = category;
+        this.qacTitle = qacTitle;
         this.content = content;
     }
 
@@ -61,6 +65,7 @@ public class MisraCpp extends CommonAudit {
         this.frequency = misraCpp.getFrequency();
         this.hashTagsIdx = misraCpp.getHashTagsIdx();
         this.category = misraCpp.getCategory();
+        this.qacTitle = misraCpp.getQacTitle();
         this.content = misraCpp.getContent();
     }
 }

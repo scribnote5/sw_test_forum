@@ -127,8 +127,11 @@ public class CweRepositoryImpl extends QuerydslRepositorySupport {
             case "HASH_TAGS":
                 result = hashTags.content.contains(cweSearchDto.getSearchKeyword());
                 break;
-            case "CWE_ID":
-                result = cwe.cweId.contains(cweSearchDto.getSearchKeyword());
+            case "STATIC_TITLE":
+                result = cwe.staticTitle.contains(cweSearchDto.getSearchKeyword());
+                break;
+            case "CODE_SONAR_TITLE":
+                result = cwe.codeSonarTitle.contains(cweSearchDto.getSearchKeyword());
                 break;
             case "CONTENT":
                 result = cwe.content.contains(cweSearchDto.getSearchKeyword());
@@ -174,7 +177,8 @@ public class CweRepositoryImpl extends QuerydslRepositorySupport {
                                 hashTags.content.as("hashTags"),
                                 cwe.hashTagsIdx,
                                 cwe.language,
-                                cwe.cweId,
+                                cwe.staticTitle,
+                                cwe.codeSonarTitle,
                                 cwe.content
                         )
                 )

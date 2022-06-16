@@ -73,6 +73,12 @@
               <span v-if="misraC.decidability == 'UNDECIDEABLE'">Undecidable</span>
             </td>
           </tr>
+          <tr class="d-none d-sm-none d-md-none d-lg-table-row">
+            <th>QAC 규칙<span class="recommended-field">*</span></th>
+            <td>
+              {{misraC.qacTitle}}
+            </td>
+          </tr>
 
           <!-- Mobile -->
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
@@ -90,7 +96,9 @@
               <span v-if="misraC.scope == 'TRANSLATION_UNIT'">Translation Unit</span><br>
               <strong>Decidability: </strong>
               <span v-if="misraC.decidability == 'DECIDEABLE'">Decidable</span>
-              <span v-if="misraC.decidability == 'UNDECIDEABLE'">Undecidable</span>
+              <span v-if="misraC.decidability == 'UNDECIDEABLE'">Undecidable</span><br>
+              <strong>QAC 규칙: </strong>
+              {{ misraC.qacTitle }}
             </td>
           </tr>
 

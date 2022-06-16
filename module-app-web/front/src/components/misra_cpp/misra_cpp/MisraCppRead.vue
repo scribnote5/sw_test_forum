@@ -59,6 +59,12 @@
               <span v-if="misraCpp.category == 'DOCUMENT'">DOCUMENT</span>
             </td>
           </tr>
+          <tr class="d-none d-sm-none d-md-none d-lg-table-row">
+            <th>QAC 규칙<span class="recommended-field">*</span></th>
+            <td>
+              {{misraCpp.qacTitle}}
+            </td>
+          </tr>
 
           <!-- Mobile -->
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
@@ -71,6 +77,8 @@
               <span v-if="misraCpp.category == 'REQUIRED'">Required</span>
               <span v-if="misraCpp.category == 'ADVISORY'">Advisory</span>
               <span v-if="misraCpp.category == 'DOCUMENT'">DOCUMENT</span><br>
+              <strong>QAC 규칙: </strong>
+              {{ misraCpp.qacTitle }}
             </td>
           </tr>
 

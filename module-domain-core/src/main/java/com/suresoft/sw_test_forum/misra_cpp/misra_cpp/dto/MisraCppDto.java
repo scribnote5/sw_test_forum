@@ -44,6 +44,9 @@ public class MisraCppDto extends CommonDto {
     @NotNull(message = "'Category'는 NULL이 될 수 없습니다.")
     private MisraCppCategory category;
 
+    @Size(max = 255, message = "'QAC 규칙명'의 길이는 255 보다 작아야 합니다.")
+    private String qacTitle;
+
     @Editor(max = 16777215, message = "'에디터' 크기는 16777215Bytes(16MB) 보다 작아야 합니다.")
     private String content;
 

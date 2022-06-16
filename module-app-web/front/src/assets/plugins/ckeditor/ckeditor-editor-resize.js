@@ -27,12 +27,12 @@ class EditorResize extends Plugin {
                 editor.model.change(writer => {
                     if (isFullSize) {
                         document.styleSheets[0].deleteRule(0);
-                        document.styleSheets[0].deleteRule(0);
-                        document.styleSheets[0].deleteRule(0);
+                        document.styleSheets[0].deleteRule(1);
+                        document.styleSheets[0].deleteRule(2);
 
                         document.styleSheets[0].insertRule(
                             ".ck-editor__editable:not(.ck-editor__nested-editable) { " +
-                            "height: 550px; }");
+                            "height: 550px; }", 0);
 
                         view.set({
                             label: 'Extend editor',
@@ -42,18 +42,20 @@ class EditorResize extends Plugin {
                         isFullSize = false;
                         editor.editing.view.focus()
                     } else {
+                        document.styleSheets[0].deleteRule(0);
+
                         document.styleSheets[0].insertRule(
                             ".ck.ck-editor { " +
                             "position: fixed !important; " +
-                            "top: 0px ; " +
-                            "left: 0px ; " +
-                            "z-index: 1200 ; " +
-                            "width:" + window.innerWidth + "px !important; }");
+                            "top: 0px !important; " +
+                            "left: 0px !important; " +
+                            "z-index: 1200 !important; " +
+                            "width:" + window.innerWidth + "px !important; }", 0);
                         document.styleSheets[0].insertRule(
                             ".ck-editor__editable:not(.ck-editor__nested-editable) { " +
-                            "height: calc(" + window.innerHeight + "px - 77px) !important; }");
+                            "height: calc(" + window.innerHeight + "px - 77px) !important; }", 1);
                         document.styleSheets[0].insertRule(
-                            "body { overflow-y: hidden  }");
+                            "body { overflow-y: hidden !important }", 2);
 
                         view.set({
                             label: 'Shrink editor',

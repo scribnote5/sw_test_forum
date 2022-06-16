@@ -2,7 +2,7 @@ package com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.domain;
 
 import com.suresoft.sw_test_forum.common.domain.CommonAudit;
 import com.suresoft.sw_test_forum.common.domain.enums.ActiveStatus;
-import com.suresoft.sw_test_forum.misra_cpp.misra_cpp.listener.MisraCppCommentListener;
+import com.suresoft.sw_test_forum.misra_cpp.misra_cpp_example.listener.MisraCppExampleCommentListener;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "misra_cpp_example_comment")
-@EntityListeners(MisraCppCommentListener.class)
+@EntityListeners(MisraCppExampleCommentListener.class)
 public class MisraCppExampleComment extends CommonAudit {
     @Column(name = "misra_cpp_example_idx")
     private long misraCppExampleIdx;

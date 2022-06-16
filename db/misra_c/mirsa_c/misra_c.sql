@@ -18,6 +18,7 @@ CREATE TABLE misra_c
     category             varchar(255) null,
     scope                varchar(255) null,
     decidability         varchar(255) null,
+    qac_title            varchar(255) null,
     content              mediumtext   null
 ) ENGINE = InnoDB
   DEFAULT CHARSET = UTF8;

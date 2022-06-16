@@ -79,6 +79,13 @@
             </td>
           </tr>
           <tr>
+            <th>QAC 규칙<span class="recommended-field">*</span></th>
+            <td>
+              <input type="text" name="qacTitle" v-model="qacTitle" class="form-control" placeholder="MISRA C 규칙과 매핑되는 QAC 규칙을 작성해주세요.">
+              <p id="qacTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
             <td colspan="2">
               <ckeditor id="content" :editor="vueEditor" v-model="vueEditorData" :config="vueEditorConfig" @blur="validateEditor"></ckeditor>
             </td>
@@ -164,6 +171,7 @@ export default {
     const category = ref("MANDATORY");
     const scope = ref("SYSTEM");
     const decidability = ref("DECIDEABLE");
+    const qacTitle = ref("");
     const activeStatus = ref("ACTIVE");
     // priority array
     let priorityArray = ref([]);
@@ -230,6 +238,7 @@ export default {
           && validateLength("category", category.value)
           && validateLength("scope", scope.value)
           && validateLength("decidability", decidability.value)
+          && validateLength("qacTitle", qacTitle.value)
       )) {
         return false;
       }
@@ -243,6 +252,7 @@ export default {
             category: category.value,
             scope: scope.value,
             decidability: decidability.value,
+            qacTitle: qacTitle.value,
             content: vueEditorData,
             activeStatus: activeStatus.value
           },
@@ -304,7 +314,7 @@ export default {
     return {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
-      title, priority, frequency, hashTags, category, scope, decidability, activeStatus,
+      title, priority, frequency, hashTags, category, scope, decidability, qacTitle, activeStatus,
       priorityArray,
 
       // function

@@ -38,6 +38,8 @@ public class MisraC extends CommonAudit {
     @Enumerated(EnumType.STRING)
     private MisraCDecidability decidability;
 
+    private String qacTitle;
+
     private String content;
 
     @Builder
@@ -49,6 +51,7 @@ public class MisraC extends CommonAudit {
                   MisraCCategory category,
                   MisraCScope scope,
                   MisraCDecidability decidability,
+                  String qacTitle,
                   String content) {
         setIdx(idx);
         setCreatedDate(createdDate);
@@ -63,6 +66,7 @@ public class MisraC extends CommonAudit {
         this.category = category;
         this.scope = scope;
         this.decidability = decidability;
+        this.qacTitle = qacTitle;
         this.content = content;
     }
 
@@ -75,6 +79,7 @@ public class MisraC extends CommonAudit {
         this.category = misraC.getCategory();
         this.scope = misraC.getScope();
         this.decidability = misraC.getDecidability();
+        this.qacTitle = misraC.getQacTitle();
         this.content = misraC.getContent();
     }
 }

@@ -59,6 +59,13 @@
             </td>
           </tr>
           <tr>
+            <th>QAC 규칙<span class="recommended-field">*</span></th>
+            <td>
+              <input type="text" name="qacTitle" v-model="qacTitle" class="form-control" placeholder="MISRA C 규칙과 매핑되는 QAC 규칙을 작성해주세요.">
+              <p id="qacTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
             <td colspan="2">
               <ckeditor id="content" :editor="vueEditor" v-model="vueEditorData" :config="vueEditorConfig" @blur="validateEditor"></ckeditor>
             </td>
@@ -168,6 +175,7 @@ export default {
     let hashTags = ref("");
     let hashTagsIdx = ref(0);
     let category = ref("");
+    let qacTitle = ref("");
     let activeStatus = ref("");
     let createdByUser = ref([]);
     let createdDate = ref("");
@@ -248,6 +256,7 @@ export default {
       if (!(validateLengthAndIsEmpty("title", title.value)
           && validateLength("hashTags", hashTags.value)
           && validateLength("category", category.value)
+          && validateLength("qacTitle", qacTitle.value)
       )) {
         return false;
       }
@@ -260,6 +269,7 @@ export default {
             hashTags: hashTags.value,
             hashTagsIdx: hashTagsIdx.value,
             category: category.value,
+            qacTitle: qacTitle.value,
             content: vueEditorData.value,
             activeStatus: activeStatus.value
           },
@@ -365,7 +375,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, category,
+      title, priority, frequency, hashTags, category, qacTitle,
       priorityArray,
 
       // function
