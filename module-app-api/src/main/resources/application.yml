@@ -100,7 +100,7 @@ module-app-admin:
 spring:
   config:
     activate:
-      on-profile: local
+      on-profile: local_master
 #  jpa:
 #    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
 #    database-platform: org.hibernate.dialect.MariaDB103Dialect
@@ -133,6 +133,8 @@ spring:
         maintainTimeStats: false
 server:
   port: 8082
+localhost:
+  url: http://localhost:8080
 module-app-web:
   url: http://localhost:8080
 module-app-admin:
@@ -151,7 +153,7 @@ module-app-api:
 spring:
   config:
     activate:
-      on-profile: backup
+      on-profile: local_master_backup
   #  jpa:
   #    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
   #    database-platform: org.hibernate.dialect.MariaDB103Dialect
@@ -184,6 +186,8 @@ spring:
         maintainTimeStats: false
 server:
   port: 8082
+localhost:
+  url: http://localhost:8080
 module-app-web:
   url: http://localhost:8080
 module-app-admin:
@@ -194,7 +198,7 @@ module-app-api:
 spring:
   config:
     activate:
-      on-profile: prod
+      on-profile: prod_master
   datasource:
     url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum
     username: scribnote5
@@ -216,6 +220,8 @@ spring:
         maintainTimeStats: false
 server:
   port: 8082
+localhost:
+  url: http://localhost:8080
 module-app-web:
   url: http://203.234.19.85:8080
 module-app-admin:

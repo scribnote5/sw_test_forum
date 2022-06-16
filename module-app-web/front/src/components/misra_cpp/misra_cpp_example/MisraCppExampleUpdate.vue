@@ -52,7 +52,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <CodeMirror pageInformation="update" :nonCompliantExampleValue="nonCompliantExample" :compliantExampleValue="compliantExample" :badCasePositionList="badCasePositionList" mode="text/x-csrc"></CodeMirror>
+              <CodeMirror pageInformation="update" :nonCompliantExampleValue="nonCompliantExample" :compliantExampleValue="compliantExample" :badCasePositionList="badCasePositionList" :goodCasePositionList="goodCasePositionList" mode="text/x-csrc"></CodeMirror>
             </td>
           </tr>
           <tr>

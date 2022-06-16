@@ -68,10 +68,10 @@ const parseErrorMsg = (msg) => {
         html: alertMsg
     })
 
-    // 2.5초 이후, 이전 페이지로 이동
+    // 5초 이후, 이전 페이지로 이동
     setTimeout(function () {
         router.go(-1);
-    }, 2500);
+    }, 5000);
 }
 
 /* 배열 요소가 empty인 경우를 제외하여 배열 길이를 계산 */

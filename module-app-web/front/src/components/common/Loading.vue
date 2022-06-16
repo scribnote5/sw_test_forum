@@ -1,7 +1,6 @@
 <template>
   <div class="container-fluid">
     <div id="loading-wrapper">
-
       <img :src="require(`@/assets/images/loading.gif`)" id="loading" alt="Loading">
     </div>
   </div>
@@ -20,7 +19,6 @@
 </style>
 
 <script>
-// vue.js
 
 export default {
   name: "Loading"

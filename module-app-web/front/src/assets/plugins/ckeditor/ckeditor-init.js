@@ -22,6 +22,7 @@ import FontBackgroundColor from "@ckeditor/ckeditor5-font/src/fontbackgroundcolo
 import FontFamily from "@ckeditor/ckeditor5-font/src/fontfamily";
 import FontSize from "@ckeditor/ckeditor5-font/src/fontsize";
 import FontColor from "@ckeditor/ckeditor5-font/src/fontcolor";
+import FindAndReplace from '@ckeditor/ckeditor5-find-and-replace/src/findandreplace';
 import Link from "@ckeditor/ckeditor5-link/src/link";
 import Linkimage from "@ckeditor/ckeditor5-link/src/linkimage";
 import AutoLink from "@ckeditor/ckeditor5-link/src/autolink";
@@ -34,7 +35,7 @@ import Indent from "@ckeditor/ckeditor5-indent/src/indent";
 import IndentBlock from "@ckeditor/ckeditor5-indent/src/indentblock";
 import MediaEmbed from "@ckeditor/ckeditor5-media-embed/src/mediaembed";
 import List from "@ckeditor/ckeditor5-list/src/list";
-import ListStyle from "@ckeditor/ckeditor5-list/src/liststyle";
+import ListProperties from "@ckeditor/ckeditor5-list/src/listproperties";
 import BlockQuote from "@ckeditor/ckeditor5-block-quote/src/blockquote";
 import RemoveFormat from "@ckeditor/ckeditor5-remove-format/src/removeformat";
 import WordCount from "@ckeditor/ckeditor5-word-count/src/wordcount";
@@ -536,6 +537,7 @@ let editorConfig = {
         FontFamily,
         FontSize,
         FontColor,
+        FindAndReplace,
 
         Link,
         Linkimage,
@@ -555,7 +557,7 @@ let editorConfig = {
         MediaEmbed,
 
         List,
-        ListStyle,
+        ListProperties,
 
         BlockQuote,
         RemoveFormat,
@@ -604,6 +606,7 @@ let editorConfig = {
             'outdent',
             'indent',
             '|',
+            'findAndReplace',
             'imageInsert',
             'insertTable',
             '|',

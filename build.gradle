@@ -2,7 +2,7 @@
 buildscript {
     ext {
         // Spring Boot 버전 지정
-        springBootVersion = "2.6.2"
+        springBootVersion = "2.7.0"
 
         // 의존성 라이브러리를 다운받는 원격 저장소 설정
         repositories {
@@ -55,8 +55,8 @@ subprojects {
         runtimeOnly "org.springframework.boot:spring-boot-devtools"
 
         // Mapstruct
-        implementation "org.mapstruct:mapstruct:1.4.2.Final"
-        annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+        implementation "org.mapstruct:mapstruct:1.5.1.Final"
+        annotationProcessor "org.mapstruct:mapstruct-processor:1.5.1.Final"
 
         // lombok
         implementation "org.projectlombok:lombok"
@@ -84,10 +84,10 @@ project(":module-domain-core") {
     dependencies {
         implementation project(":module-system-common")
 
-        implementation "org.apache.tika:tika-parsers:1.28"
+        implementation "org.apache.tika:tika-parsers:1.28.3"
         implementation "com.querydsl:querydsl-core"
         implementation "com.querydsl:querydsl-jpa"
-        implementation "com.maxmind.geoip2:geoip2:2.16.1"
+        implementation "com.maxmind.geoip2:geoip2:3.0.1"
     }
 }
 
@@ -112,9 +112,9 @@ project("module-app-api") {
 
         implementation "org.apache.commons:commons-text:1.9"
 
-        implementation "io.jsonwebtoken:jjwt-api:0.11.2"
-        runtimeOnly "io.jsonwebtoken:jjwt-impl:0.11.2"
-        runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.2"
+        implementation "io.jsonwebtoken:jjwt-api:0.11.5"
+        runtimeOnly "io.jsonwebtoken:jjwt-impl:0.11.5"
+        runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.5"
     }
 }
 
