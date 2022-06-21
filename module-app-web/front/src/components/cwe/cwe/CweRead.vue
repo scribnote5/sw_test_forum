@@ -40,7 +40,7 @@
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>위배 빈도<span class="required-field">*</span></th>
+            <th>위배 빈도</th>
             <td>
               <Frequency pageInformation="read" :frequency="cwe.frequency"></Frequency>
             </td>

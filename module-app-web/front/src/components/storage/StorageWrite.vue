@@ -34,8 +34,10 @@
             <th>카테고리<span class="required-field">*</span></th>
             <td>
               <select v-model="category" @change="searchTypeChange($event)" class="form-select">
-                <option value="STUDY">스터디</option>
+                <option value="STATIC_TEST">정적시험</option>
+                <option value="DYNAMIC_TEST">동적시험</option>
                 <option value="FINAL_TEST">프로젝트 정보 및 실사</option>
+                <option value="STUDY">스터디</option>
                 <option value="EDUCATION">교육 자료</option>
                 <option value="REFERENCE">참고 자료</option>
                 <option value="ETC">기타 자료</option>

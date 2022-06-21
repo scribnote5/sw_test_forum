@@ -17,8 +17,10 @@
           </select>
           <input v-if="searchType !== 'CATEGORY'" v-on:keyup.enter="searchList" v-model="searchKeyword" name="inputSearchKeyword" type="search" class="custom-search-input ms-2" placeholder="검색어">
           <select v-if="searchType === 'CATEGORY'" v-on:keyup.enter="searchList" v-model="searchKeyword" name="selectSearchKeyword" class="form-select form-select-sm ms-2" style="width: auto">
-            <option value="STUDY">스터디</option>
+            <option value="STATIC_TEST">정적시험</option>
+            <option value="DYNAMIC_TEST">동적시험</option>
             <option value="FINAL_TEST">프로젝트 정보 및 실사</option>
+            <option value="STUDY">스터디</option>
             <option value="EDUCATION">교육 자료</option>
             <option value="REFERENCE">참고 자료</option>
             <option value="ETC">기타</option>
@@ -62,8 +64,10 @@
             </td>
             <!-- Desktop -->
             <td class="d-none d-lg-table-cell text-center">
-              <span v-if="storage.category == 'STUDY'">스터디</span>
+              <span v-if="storage.category == 'STATIC_TEST'">정적시험</span>
+              <span v-if="storage.category == 'DYNAMIC_TEST'">동적시험</span>
               <span v-if="storage.category == 'FINAL_TEST'">프로젝트 정보 및 실사</span>
+              <span v-if="storage.category == 'STUDY'">스터디</span>
               <span v-if="storage.category == 'EDUCATION'">교육 자료</span>
               <span v-if="storage.category == 'REFERENCE'">참고 자료</span>
               <span v-if="storage.category == 'ETC'">기타</span>
@@ -95,8 +99,10 @@
             </td>
             <!-- Desktop -->
             <td class="d-none d-lg-table-cell text-center">
-              <span v-if="storage.category == 'STUDY'">스터디</span>
+              <span v-if="storage.category == 'STATIC_TEST'">정적시험</span>
+              <span v-if="storage.category == 'DYNAMIC_TEST'">동적시험</span>
               <span v-if="storage.category == 'FINAL_TEST'">프로젝트 정보 및 실사</span>
+              <span v-if="storage.category == 'STUDY'">스터디</span>
               <span v-if="storage.category == 'EDUCATION'">교육 자료</span>
               <span v-if="storage.category == 'REFERENCE'">참고 자료</span>
               <span v-if="storage.category == 'ETC'">기타</span>

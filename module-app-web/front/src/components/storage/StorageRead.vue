@@ -42,8 +42,10 @@
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>우선순위</th>
             <td>
-              <span v-if="storage.category == 'STUDY'">스터디 자료</span>
+              <span v-if="storage.category == 'STATIC_TEST'">정적시험</span>
+              <span v-if="storage.category == 'DYNAMIC_TEST'">동적시험</span>
               <span v-if="storage.category == 'FINAL_TEST'">프로젝트 정보 및 실사 자료</span>
+              <span v-if="storage.category == 'STUDY'">스터디 자료</span>
               <span v-if="storage.category == 'EDUCATION'">교육 자료</span>
               <span v-if="storage.category == 'REFERENCE'">참고 자료</span>
               <span v-if="storage.category == 'ETC'">기타</span>
@@ -55,8 +57,10 @@
             <td colspan="2">
               <Priority pageInformation="read" :priority="storage.priority" :maxPriority=Number(6)></Priority>
               <strong>카테고리: </strong>
-              <span v-if="storage.category == 'STUDY'">스터디</span>
+              <span v-if="storage.category == 'STATIC_TEST'">정적시험</span>
+              <span v-if="storage.category == 'DYNAMIC_TEST'">동적시험</span>
               <span v-if="storage.category == 'FINAL_TEST'">프로젝트 정보 및 실사</span>
+              <span v-if="storage.category == 'STUDY'">스터디</span>
               <span v-if="storage.category == 'EDUCATION'">교육 자료</span>
               <span v-if="storage.category == 'REFERENCE'">참고 자료</span>
               <span v-if="storage.category == 'ETC'">기타</span>
