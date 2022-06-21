@@ -1,4 +1,7 @@
-###  package-lock.json ###
+### server-setting ###
+**/server-setting/**
+
+### package-lock.json ###
 package-lock.json
 
 ### upload file ###
