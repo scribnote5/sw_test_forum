@@ -46,7 +46,7 @@
               <input type="text" name="compilerName" v-model="compilerName" class="form-control" placeholder="GCC 9.3">
               <p id="compilerNameErrorMessage" class="error-message"></p>
 
-              <input type="text" name="compilerNote" v-model="compilerNote" class="form-control" placeholder="Qt 5.15">
+              <input type="text" name="compilerNote" v-model="compilerNote" class="form-control" placeholder="Hardware: TMS320F28xx">
               <p id="compilerNoteErrorMessage" class="error-message"></p>
             </td>
           </tr>

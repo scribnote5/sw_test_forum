@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="StyleCop 규칙" :paths="['StyleCop 규칙', 'StyleCop 규칙 보기']" :title="styleCop.title"/>
+    <Breadcrumb page="C# Coding Convention 규칙" :paths="['C# Coding Convention 규칙', 'C# Coding Convention 규칙 보기']" :title="styleCop.title"/>
 
     <div class="container-fluid">
       <div class="page-content">

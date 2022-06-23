@@ -36,36 +36,36 @@
           <tbody>
 
           <!-- misraCExampleList -->
-          <tr v-for="(misraCExample, i) in misraCExampleList.content" :key="i">
+          <tr v-for="(javaCodeConventionsExample, i) in misraCExampleList.content" :key="i">
             <!-- Desktop 번호 -->
             <td class="d-none d-lg-table-cell text-center">
-              <img v-if="misraCExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+              <img v-if="javaCodeConventionsExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
               <span v-else>{{ misraCExampleList.totalElements - misraCExampleList.pageable.offset - i }}</span></td>
             <td>
               <!-- Mobile -->
               <span class="d-inline d-lg-none mobile-number">
-                <img v-if="misraCExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
+                <img v-if="javaCodeConventionsExample.priority <= 3" :src="require(`@/assets/images/speaker.jpg`)" class="speaker-icon"/>
                 <span v-else>{{ misraCExampleList.totalElements - misraCExampleList.pageable.offset - i }}. </span>
               </span>
               <!-- 공통 -->
-              <router-link :to="misraCIdx === 0 ? ('/misra-c-example/read/' + misraCExample.idx) : ('/misra-c-example/read/from-rule-list/' + misraCExample.idx)">
-                <span v-if="misraCIdx === 0">{{ misraCExample.misraCRule }} - </span>{{ misraCExample.title }}
+              <router-link :to="misraCIdx === 0 ? ('/misra-c-example/read/' + javaCodeConventionsExample.idx) : ('/misra-c-example/read/from-rule-list/' + javaCodeConventionsExample.idx)">
+                <span v-if="misraCIdx === 0">{{ javaCodeConventionsExample.misraCRule }} - </span>{{ javaCodeConventionsExample.title }}
               </router-link>
-              <span class="comment-count">{{ misraCExample.commentDtoCount }}</span>
-              <img v-if="misraCExample.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
+              <span class="comment-count">{{ javaCodeConventionsExample.commentDtoCount }}</span>
+              <img v-if="javaCodeConventionsExample.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
               <!-- Mobile -->
               <div class="d-inline d-lg-none">
                 <div>
-                  <span class="mobile-content">{{ misraCExample.createdByUser.department }} {{ misraCExample.createdByUser.name }} </span> <br>
-                  <span class="mobile-content">{{ misraCExample.createdDate }}</span> &nbsp;
-                  <span class="mobile-content"> 조회수: {{ misraCExample.views }}</span> &nbsp;
+                  <span class="mobile-content">{{ javaCodeConventionsExample.createdByUser.department }} {{ javaCodeConventionsExample.createdByUser.name }} </span> <br>
+                  <span class="mobile-content">{{ javaCodeConventionsExample.createdDate }}</span> &nbsp;
+                  <span class="mobile-content"> 조회수: {{ javaCodeConventionsExample.views }}</span> &nbsp;
                 </div>
               </div>
             </td>
             <!-- Desktop -->
-            <td class="d-none d-lg-table-cell">{{ misraCExample.createdByUser.department }} {{ misraCExample.createdByUser.name }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraCExample.createdDate }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ misraCExample.views }}</td>
+            <td class="d-none d-lg-table-cell">{{ javaCodeConventionsExample.createdByUser.department }} {{ javaCodeConventionsExample.createdByUser.name }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ javaCodeConventionsExample.createdDate }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ javaCodeConventionsExample.views }}</td>
           </tr>
 
           <tr v-if="misraCExampleList.content.length === 0">
@@ -211,8 +211,8 @@ export default {
             endNumber.value = (misraCExampleList.value.totalPages > startNumber.value + 9) ? startNumber.value + 9 : (misraCExampleList.value.totalPages == 0 ? 1 : misraCExampleList.value.totalPages);
 
             // dayjs
-            for (const misraCExample of misraCExampleList.value.content) {
-              misraCExample.createdDate = dayjs(misraCExample.createdDate).format("YYYY.MM.DD.");
+            for (const javaCodeConventionsExample of misraCExampleList.value.content) {
+              javaCodeConventionsExample.createdDate = dayjs(javaCodeConventionsExample.createdDate).format("YYYY.MM.DD.");
             }
           })
           .catch((error) => {

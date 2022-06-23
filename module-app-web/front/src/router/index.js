@@ -40,6 +40,21 @@ import MisraCppGuidelineWrite from '../components/misra_cpp/misra_cpp_guideline/
 import MisraCppGuidelineUpdate from '../components/misra_cpp/misra_cpp_guideline/MisraCppGuidelineUpdate.vue'
 import MisraCppGuidelineRead from '../components/misra_cpp/misra_cpp_guideline/MisraCppGuidelineRead.vue'
 
+import JavaCodeConventionsList from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsList.vue'
+import JavaCodeConventionsWrite from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsWrite.vue'
+import JavaCodeConventionsUpdate from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsUpdate.vue'
+import JavaCodeConventionsRead from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsRead.vue'
+
+import JavaCodeConventionsExampleList from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleList.vue'
+import JavaCodeConventionsExampleWrite from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleWrite.vue'
+import JavaCodeConventionsExampleUpdate from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleUpdate.vue'
+import JavaCodeConventionsExampleRead from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleRead.vue'
+
+import JavaCodeConventionsGuidelineList from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineList.vue'
+import JavaCodeConventionsGuidelineWrite from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineWrite.vue'
+import JavaCodeConventionsGuidelineUpdate from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineUpdate.vue'
+import JavaCodeConventionsGuidelineRead from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineRead.vue'
+
 import CweList from '../components/cwe/cwe/CweList.vue'
 import CweWrite from '../components/cwe/cwe/CweWrite.vue'
 import CweUpdate from '../components/cwe/cwe/CweUpdate.vue'
@@ -340,7 +355,7 @@ const routes = [
         path: '/misra-cpp-guideline/read/:idx',
         name: 'MisraCppGuidelineRead',
         component: MisraCppGuidelineRead,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true }
+        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/read/from-rule-list/:idx',
@@ -353,6 +368,102 @@ const routes = [
         name: 'MisraCppGuidelineUpdate',
         component: MisraCppGuidelineUpdate,
         meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/list',
+        name: 'JavaCodeConventionsList',
+        component: JavaCodeConventionsList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/write',
+        name: 'JavaCodeConventionsWrite',
+        component: JavaCodeConventionsWrite,
+        meta: {title: 'SW Test Forum - Java Code Conventions 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/read/:idx',
+        name: 'JavaCodeConventionsRead',
+        component: JavaCodeConventionsRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/update/:idx',
+        name: 'JavaCodeConventionsUpdate',
+        component: JavaCodeConventionsUpdate,
+        meta: {title: 'SW Test Forum - Java Code Conventions 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/list',
+        name: 'JavaCodeConventionsExampleList',
+        component: JavaCodeConventionsExampleList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/list/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsExampleListByJavaCodeConventionsIdx',
+        component: JavaCodeConventionsExampleList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/write/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsExampleWrite',
+        component: JavaCodeConventionsExampleWrite,
+        meta: {title: 'SW Test Forum - Java Code Conventions 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/read/:idx',
+        name: 'JavaCodeConventionsExampleRead',
+        component: JavaCodeConventionsExampleRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/read/from-rule-list/:idx',
+        name: 'JavaCodeConventionsExampleReadFromRuleList',
+        component: JavaCodeConventionsExampleRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/java-code-conventions-example/update/:idx',
+        name: 'JavaCodeConventionsExampleUpdate',
+        component: JavaCodeConventionsExampleUpdate,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/list',
+        name: 'JavaCodeConventionsGuidelineList',
+        component: JavaCodeConventionsGuidelineList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/list/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsGuidelineListByJavaCodeConventionsIdx',
+        component: JavaCodeConventionsGuidelineList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/write/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsGuidelineWrite',
+        component: JavaCodeConventionsGuidelineWrite,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/read/:idx',
+        name: 'JavaCodeConventionsGuidelineRead',
+        component: JavaCodeConventionsGuidelineRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/read/from-rule-list/:idx',
+        name: 'JavaCodeConventionsGuidelineReadFromRuleList',
+        component: JavaCodeConventionsGuidelineRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/update/:idx',
+        name: 'JavaCodeConventionsGuidelineUpdate',
+        component: JavaCodeConventionsGuidelineUpdate,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe/list',
@@ -986,7 +1097,7 @@ router.beforeEach(async function (to, from, next) {
         }
         // 권한이 없는 경우, Error401
         else {
-            if(from.href !== "/login") {
+            if (from.href !== "/login") {
                 await error.fire({
                     text: "로그인이 필요합니다.",
                 });
