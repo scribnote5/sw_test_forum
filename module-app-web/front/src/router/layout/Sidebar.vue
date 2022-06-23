@@ -1,11 +1,11 @@
 <!-- https://getbootstrap.com/docs/5.0/examples/sidebars/ -->
 <template>
-  <aside id="sidebar" class="flex-shrink-0 justify-content-start p-1 d-none d-sm-none d-md-none d-lg-flex">
+  <aside id="sidebar" class="flex-shrink-0 justify-content-start p-3 d-none d-sm-none d-md-none d-lg-flex">
     <div style="width: 100%">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed me-2" data-bs-toggle="collapse" data-bs-target="#misra-c-collapse" aria-expanded="false">
-            &nbsp;MISRA C
+          <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#misra-c-collapse" aria-expanded="false">
+            MISRA C 정리
           </button>
           <div class="collapse" id="misra-c-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -24,7 +24,7 @@
 
         <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#misra-cpp-collapse" aria-controls="misra-cpp-collapse" aria-expanded="false">
-            &nbsp;MISRA C++
+            MISRA C++ 정리
           </button>
           <div class="collapse" id="misra-cpp-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -42,27 +42,8 @@
         </li>
 
         <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#java-code-conventions-collapse" aria-expanded="false">
-            &nbsp;Java Code Conventions
-          </button>
-          <div class="collapse" id="java-code-conventions-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <router-link to="/java-code-conventions/list" class="link-dark rounded">Java Code Conventions 규칙</router-link>
-              </li>
-              <li>
-                <router-link to="/java-code-conventions-example/list" class="link-dark rounded">Java Code Conventions 예제 코드</router-link>
-              </li>
-              <li>
-                <router-link to="/java-code-conventions-guideline/list" class="link-dark rounded">Java Code Conventions 가이드라인 사례</router-link>
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#cwe-collapse" aria-expanded="false">
-            &nbsp;CWE
+            CWE 정리
           </button>
           <div class="collapse" id="cwe-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -80,19 +61,19 @@
         </li>
 
         <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#fx-cop-collapse" aria-expanded="false" style="font-size: 14px">
-            &nbsp;.NET Framework Design Guideline
+          <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#fx-cop-collapse" aria-expanded="false">
+            FxCop 정리
           </button>
           <div class="collapse" id="fx-cop-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li>
-                <router-link to="/fx-cop/list" class="link-dark rounded">.NET Framework Design Guideline 규칙</router-link>
+                <router-link to="/fx-cop/list" class="link-dark rounded">FxCop 규칙</router-link>
               </li>
               <li>
-                <router-link to="/fx-cop-example/list" class="link-dark rounded">.NET Framework Design Guideline 예제 코드</router-link>
+                <router-link to="/fx-cop-example/list" class="link-dark rounded">FxCop 예제 코드</router-link>
               </li>
               <li>
-                <router-link to="/fx-cop-guideline/list" class="link-dark rounded">.NET Framework Design Guideline 가이드라인 사례</router-link>
+                <router-link to="/fx-cop-guideline/list" class="link-dark rounded">FxCop 가이드라인 사례</router-link>
               </li>
             </ul>
           </div>
@@ -100,18 +81,18 @@
 
         <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#style-cop-collapse" aria-expanded="false">
-            &nbsp;C# Coding Convention
+            StyleCop 정리
           </button>
           <div class="collapse" id="style-cop-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li>
-                <router-link to="/style-cop/list" class="link-dark rounded">C# Coding Convention 규칙</router-link>
+                <router-link to="/style-cop/list" class="link-dark rounded">StyleCop 규칙</router-link>
               </li>
               <li>
-                <router-link to="/style-cop-example/list" class="link-dark rounded">C# Coding Convention 예제 코드</router-link>
+                <router-link to="/style-cop-example/list" class="link-dark rounded">StyleCop 예제 코드</router-link>
               </li>
               <li>
-                <router-link to="/style-cop-guideline/list" class="link-dark rounded">C# Coding Convention 가이드라인 사례</router-link>
+                <router-link to="/style-cop-guideline/list" class="link-dark rounded">StyleCop 가이드라인 사례</router-link>
               </li>
             </ul>
           </div>
@@ -119,7 +100,7 @@
 
         <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#metric-collapse" aria-expanded="false">
-            &nbsp;메트릭
+            메트릭 정리
           </button>
           <div class="collapse" id="metric-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -138,7 +119,7 @@
 
         <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#troubleShooting" aria-expanded="false">
-            &nbsp;도구 트러블 슈팅
+            도구 트러블 슈팅
           </button>
           <div class="collapse" id="troubleShooting">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -161,7 +142,7 @@
         <li class="mb-1">
           <button class="btn btn-toggle align-items-center">
             <router-link to="/storage/list">
-              &nbsp;지식 저장소
+              지식 저장소
             </router-link>
           </button>
         </li>
@@ -170,7 +151,7 @@
 
         <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed me-1" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-            &nbsp;관리자 페이지
+            관리자 페이지
           </button>
           <div class="collapse" id="account-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -212,8 +193,8 @@
 
   .btn-toggle {
     display: inline-flex;
-    padding: .5rem .4rem;
-    font-size: $large-font-size;
+    padding: .4rem .5rem;
+    font-size: $larger-font-size;
     color: white;
     background-color: transparent;
     border: 0;
@@ -253,7 +234,7 @@
     margin-top: .125rem;
     margin-left: 1.25rem;
     color: $darker-custom-white;
-    font-size: $small-font-size;
+    font-size: $large-font-size;
     width: 90%;
   }
 

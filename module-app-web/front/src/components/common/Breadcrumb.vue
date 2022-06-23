@@ -68,12 +68,12 @@
 }
 
 .breadcrumbs ol li + li {
-  padding-left: 7px;
+  padding-left: 10px;
 }
 
 .breadcrumbs ol li + li::before {
   display: inline-block;
-  padding-right: 7px;
+  padding-right: 10px;
   color: rgba(250, 250, 250, 0.5);
   content: "〉";
   font-weight: $strong-font-weight;
@@ -88,17 +88,9 @@
     display: block;
   }
 
-  .breadcrumbs h2 {
-    font-size: 1.65rem;
-  }
-
-  .breadcrumbs h6 {
-    font-size: .85rem;
-  }
-
   .breadcrumbs ol li {
     display: block;
-    font-size: $smaller-font-size;
+    font-size: $small-font-size;
   }
 
   .breadcrumbs .title-padding-false {
@@ -106,7 +98,7 @@
   }
 
   .breadcrumbs .title-padding-true {
-    padding-top: 7px;
+    padding-top: 7.5px;
   }
 }
 </style>

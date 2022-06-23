@@ -66,10 +66,10 @@
           <tr>
             <th>컴파일러<span class="recommended-field">*</span></th>
             <td style="overflow: visible">
-              <input type="text" name="compilerName" v-model="compilerName" class="form-control" placeholder="GCC 9.3">
+              <input type="text" name="compilerName" v-model="compilerName" class="form-control" placeholder="G++ 4.3">
               <p id="compilerNameErrorMessage" class="error-message"></p>
 
-              <input type="text" name="compilerNote" v-model="compilerNote" class="form-control" placeholder="Hardware: TMS320F28xx">
+              <input type="text" name="compilerNote" v-model="compilerNote" class="form-control" placeholder="Qt 5.15">
               <p id="compilerNoteErrorMessage" class="error-message"></p>
             </td>
           </tr>
