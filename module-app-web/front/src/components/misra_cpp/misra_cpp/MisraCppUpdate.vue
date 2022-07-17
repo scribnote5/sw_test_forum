@@ -39,13 +39,13 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="update" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">MISRA C++ 가이드라인 표기 방식</th>
+            <th colspan="2" class="sub-item-title">MISRA C++ 표기 방식</th>
           </tr>
           <tr>
             <th>Category<span class="recommended-field">*</span></th>

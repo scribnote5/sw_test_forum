@@ -2,7 +2,7 @@ package com.suresoft.sw_test_forum.cwe.cwe_guideline.domain;
 
 import com.suresoft.sw_test_forum.common.domain.CommonAudit;
 import com.suresoft.sw_test_forum.common.domain.enums.ActiveStatus;
-import com.suresoft.sw_test_forum.cwe.cwe_guideline.listener.CweGuidelineListener;
+import com.suresoft.sw_test_forum.cwe.cwe_guideline.listener.CweGuidelineCommentListener;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "cwe_guideline_comment")
-@EntityListeners(CweGuidelineListener.class)
+@EntityListeners(CweGuidelineCommentListener.class)
 public class CweGuidelineComment extends CommonAudit {
     @Column(name = "cwe_guideline_idx")
     private long cweGuidelineIdx;

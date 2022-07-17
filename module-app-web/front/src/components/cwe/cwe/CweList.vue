@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 규칙" :paths="['CWE', 'CWE 규칙 리스트']" title=""/>
+    <Breadcrumb page="CWE C/C++ 규칙" :paths="['CWE C/C++', 'CWE C/C++ 규칙 리스트']" title=""/>
 
     <div class="container-fluid">
       <div class="page-search">
@@ -12,7 +12,6 @@
           <select v-model="searchType" class="form-select form-select-sm" style="width: auto">
             <option value="TITLE">제목</option>
             <option value="HASH_TAGS">해시태그</option>
-            <option value="CWE_ID">CWE ID</option>
             <option value="CONTENT">내용</option>
             <option value="CREATED_BY">작성자</option>
           </select>

@@ -70,7 +70,7 @@
               <strong>Category: </strong>
               <span v-if="misraCpp.category == 'REQUIRED'">Required</span>
               <span v-if="misraCpp.category == 'ADVISORY'">Advisory</span>
-              <span v-if="misraCpp.category == 'DOCUMENT'">DOCUMENT</span><br>
+              <span v-if="misraCpp.category == 'DOCUMENT'">DOCUMENT</span>
             </td>
           </tr>
 
@@ -90,7 +90,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">MISRA C++ 가이드라인 사례</th>
+            <th colspan="2" class="sub-item-title">MISRA C++ 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

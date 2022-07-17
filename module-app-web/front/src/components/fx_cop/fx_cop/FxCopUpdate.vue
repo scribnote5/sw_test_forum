@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="FxCop 규칙" :paths="['FxCop', 'FxCop 규칙 수정']" title=""/>
+    <Breadcrumb page=".NET Framework Design Guideline 규칙" :paths="['.NET Framework Design Guideline', '.NET Framework Design Guideline 규칙 수정']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">FxCop 규칙 정보</th>
+            <th colspan="2" class="sub-item-title">.NET Framework Design Guideline 규칙 정보</th>
           </tr>
           <tr>
             <th>제목<span class="required-field">*</span></th>
@@ -39,13 +39,13 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="update" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">FxCop 가이드라인 표기 방식</th>
+            <th colspan="2" class="sub-item-title">.NET Framework Design Guideline 표기 방식</th>
           </tr>
           <tr>
             <th>Category<span class="recommended-field">*</span></th>
@@ -73,6 +73,7 @@
               <select v-model="breakingChange" class="form-select">
                 <option value="NON_BREAKING">Non Breaking</option>
                 <option value="BREAKING">Breaking</option>
+                <option value="CHANGEABLE">상황에 따라 변경됨</option>
               </select>
               <p id="breakingChangeErrorMessage" class="error-message"></p>
             </td>

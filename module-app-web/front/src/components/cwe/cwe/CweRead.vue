@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 규칙" :paths="['CWE 규칙', 'CWE 규칙 보기']" :title="cwe.title"/>
+    <Breadcrumb page="CWE C/C++ 규칙" :paths="['CWE C/C++ 규칙', 'CWE C/C++ 규칙 보기']" :title="cwe.title"/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -51,20 +51,6 @@
               <HashTags pageInformation="read" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
-          <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>해당되는 언어</th>
-            <td>
-              <span v-if="cwe.language == 'C'">C</span>
-              <span v-if="cwe.language == 'CPP'">C++</span>
-              <span v-if="cwe.language == 'JAVA'">Java</span>
-            </td>
-          </tr>
-          <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>CWE ID</th>
-            <td>
-              {{ cwe.cweId }}
-            </td>
-          </tr>
 
           <!-- Mobile -->
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
@@ -73,14 +59,6 @@
               <Priority pageInformation="read" :priority="cwe.priority"></Priority>
               <strong>위배 빈도: </strong>
               <Frequency pageInformation="read" :frequency="cwe.frequency"></Frequency>
-              <strong>Category: </strong>
-              <span v-if="cwe.language == 'C'">C</span>
-              <span v-if="cwe.language == 'CPP'">C++</span>
-              <span v-if="cwe.language == 'C_CPP'">C, C++</span>
-              <span v-if="cwe.language == 'JAVA'">Java</span>
-              <span v-if="cwe.language == 'ALL'">모든 언어</span><br>
-              <strong>CWE ID: </strong>
-              {{ cwe.cweId }}
             </td>
           </tr>
 
@@ -92,7 +70,7 @@
           </tr>
 
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 규칙 예제</th>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 규칙 예제</th>
           </tr>
           <tr>
             <td colspan="2">
@@ -100,7 +78,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 가이드라인 사례</th>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

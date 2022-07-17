@@ -96,7 +96,7 @@ public class MisraCGuidelineService {
             misraCGuidelineDto.setCreatedByUser(createdByUser);
             misraCGuidelineDto.setCommentDtoCount(misraCGuidelineCommentRepositoryImpl.countAllByMisraCGuidelineCIdx(misraCGuidelineDto.getIdx()));
 
-            // MISRA C 예제 코드 리스트를 조회하는 경우(MISRA C 보기 페이지에서 이동하지 않음)
+            // MISRA C 가이드라인 idx로 규칙 제목 조회
             if (misraCGuidelineSearchDto.getMisraCIdx() == 0) {
                 misraCGuidelineDto.setMisraCRule(misraCService.findMisraCRuleByIdx(misraCGuidelineDto.getMisraCIdx()));
             }

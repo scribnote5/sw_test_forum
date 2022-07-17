@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 규칙" :paths="['CWE', 'CWE 규칙 수정']" title=""/>
+    <Breadcrumb page="CWE C/C++ 규칙" :paths="['CWE C/C++', 'CWE C/C++ 규칙 수정']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,13 +15,13 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 규칙 정보</th>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 규칙 정보</th>
           </tr>
           <tr>
-            <th>제목<span class="required-field">*</span></th>
+            <th>규칙<span class="required-field">*</span></th>
             <td style="overflow: visible">
               <div class="autoComplete_wrapper">
-                <input type="text" name="title" v-model="title" class="form-control" placeholder="[Buffer_Overrun] 배열 최대 범위보다 큰 요소 접근을 금지">
+                <input type="text" name="title" v-model="title" class="form-control" placeholder="[14] Compiler Removal of Code to Clear Buffers">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
             </td>
@@ -39,33 +39,13 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="update" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 가이드라인 표기 방식</th>
-          </tr>
-          <tr>
-            <th>해당되는 언어<span class="recommended-field">*</span></th>
-            <td>
-              <select v-model="language" class="form-select">
-                <option value="C">C</option>
-                <option value="CPP">C++</option>
-                <option value="C_CPP">C, C++</option>
-                <option value="JAVA">Java</option>
-                <option value="ALL">모든 언어</option>
-              </select>
-              <p id="languageErrorMessage" class="error-message"></p>
-            </td>
-          </tr>
-          <tr>
-            <th>CWE ID<span class="recommended-field">*</span></th>
-            <td>
-              <input type="text" name="cweId" v-model="cweId" class="form-control" placeholder="11, 13, 15">
-              <p id="cweIdErrorMessage" class="error-message"></p>
-            </td>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 표기 방식</th>
           </tr>
           <tr>
             <td colspan="2">
@@ -78,7 +58,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 규칙 부가정보</th>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 규칙 부가정보</th>
           </tr>
           <tr>
             <th>작성자</th>
@@ -176,8 +156,6 @@ export default {
     let frequency = ref("");
     let hashTags = ref("");
     let hashTagsIdx = ref(0);
-    let language = ref("");
-    let cweId = ref("");
     let activeStatus = ref("");
     let createdByUser = ref([]);
     let createdDate = ref("");
@@ -199,8 +177,6 @@ export default {
             frequency.value = response.data.frequency;
             hashTags.value = response.data.hashTags;
             hashTagsIdx.value = response.data.hashTagsIdx;
-            language.value = response.data.language;
-            cweId.value = response.data.cweId;
             vueEditorData.value = response.data.content;
 
             // autoComplete 설정
@@ -258,8 +234,6 @@ export default {
 
       if (!(validateLengthAndIsEmpty("title", title.value)
           && validateLength("hashTags", hashTags.value)
-          && validateLength("language", language.value)
-          && validateLength("cweId", cweId.value)
       )) {
         return false;
       }
@@ -271,8 +245,6 @@ export default {
             frequency: frequency.value,
             hashTags: hashTags.value,
             hashTagsIdx: hashTagsIdx.value,
-            language: language.value,
-            cweId: cweId.value,
             content: vueEditorData.value,
             activeStatus: activeStatus.value
           },
@@ -378,7 +350,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, language, cweId,
+      title, priority, frequency, hashTags,
       priorityArray,
 
       // function
@@ -386,6 +358,5 @@ export default {
       updatePost, deletePost
     }
   }
-}
-;
+};
 </script>

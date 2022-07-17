@@ -213,7 +213,7 @@ export default {
     /* searchType 변경될 때 */
     const searchTypeChange = (e) => {
       if (e.target.value === 'CATEGORY') {
-        searchKeyword.value = 'FINAL_TEST';
+        searchKeyword.value = 'STUDY';
       } else if (previousSearchType === 'CATEGORY' && e.target.value !== 'CATEGORY') {
         searchKeyword.value = '';
       }

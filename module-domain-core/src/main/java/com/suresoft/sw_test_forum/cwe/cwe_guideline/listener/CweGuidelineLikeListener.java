@@ -27,7 +27,7 @@ public class CweGuidelineLikeListener {
                 .lastModifiedByIdx(cweGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(cweGuidelineLike.getIdx())
-                .auditBoard("CWE 좋아요")
+                .auditBoard("CWE C/C++ 가이드라인 좋아요")
                 .auditType(AuditType.LIKE)
                 .message(AuditMessageUtil.getLikeAuditMessage(cweGuidelineLike.getCweGuidelineIdx()))
                 .build());
@@ -42,7 +42,7 @@ public class CweGuidelineLikeListener {
                 .lastModifiedByIdx(cweGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(cweGuidelineLike.getIdx())
-                .auditBoard("CWE 좋아요")
+                .auditBoard("CWE C/C++ 가이드라인 좋아요")
                 .auditType(AuditType.CANCEL_LIKE)
                 .message(AuditMessageUtil.getCancelLikeAuditMessage(cweGuidelineLike.getCweGuidelineIdx()))
                 .build());

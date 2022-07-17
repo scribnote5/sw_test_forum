@@ -96,7 +96,7 @@ public class MisraCppGuidelineService {
             misraCppGuidelineDto.setCreatedByUser(createdByUser);
             misraCppGuidelineDto.setCommentDtoCount(misraCppGuidelineCommentRepositoryImpl.countAllByMisraCppGuidelineCIdx(misraCppGuidelineDto.getIdx()));
 
-            // MISRA CPP 예제 코드 리스트를 조회하는 경우(MISRA CPP 보기 페이지에서 이동하지 않음)
+            // MISRA CPP 가이드라인 idx로 규칙 제목 조회
             if (misraCppGuidelineSearchDto.getMisraCppIdx() == 0) {
                 misraCppGuidelineDto.setMisraCppRule(misraCppService.findMisraCppRuleByIdx(misraCppGuidelineDto.getMisraCppIdx()));
             }

@@ -3,7 +3,6 @@ package com.suresoft.sw_test_forum.cwe.cwe.domain;
 import com.suresoft.sw_test_forum.common.domain.CommonAudit;
 import com.suresoft.sw_test_forum.common.domain.enums.ActiveStatus;
 import com.suresoft.sw_test_forum.common.domain.enums.Frequency;
-import com.suresoft.sw_test_forum.cwe.cwe.domain.enums.CweLanguage;
 import com.suresoft.sw_test_forum.cwe.cwe.listener.CweListener;
 import lombok.*;
 
@@ -27,11 +26,6 @@ public class Cwe extends CommonAudit {
 
     private long hashTagsIdx;
 
-    @Enumerated(EnumType.STRING)
-    private CweLanguage language;
-
-    private String cweId;
-
     private String content;
 
     @Builder
@@ -40,8 +34,6 @@ public class Cwe extends CommonAudit {
                long priority,
                Frequency frequency,
                long hashTagsIdx,
-               CweLanguage language,
-               String cweId,
                String content) {
         setIdx(idx);
         setCreatedDate(createdDate);
@@ -53,8 +45,6 @@ public class Cwe extends CommonAudit {
         this.priority = priority;
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
-        this.language = language;
-        this.cweId = cweId;
         this.content = content;
     }
 
@@ -64,7 +54,6 @@ public class Cwe extends CommonAudit {
         this.priority = cwe.getPriority();
         this.frequency = cwe.getFrequency();
         this.hashTagsIdx = cwe.getHashTagsIdx();
-        this.language = cwe.getLanguage();
         this.content = cwe.getContent();
     }
 }

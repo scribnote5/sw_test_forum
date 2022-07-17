@@ -4,8 +4,8 @@ DROP TABLE cwe;
 CREATE TABLE cwe
 (
     idx                  bigint auto_increment primary key,
-    created_date         datetime null,
-    last_modified_date   datetime null,
+    created_date         datetime     null,
+    last_modified_date   datetime     null,
     created_by_idx       bigint default 0,
     last_modified_by_idx bigint default 0,
     active_status        varchar(255) null,
@@ -15,9 +15,7 @@ CREATE TABLE cwe
     priority             bigint default 0,
     frequency            varchar(255) null,
     hash_tags_idx        bigint default 0,
-    language             varchar(255) null,
-    cwe_id               varchar(255) null,
-    content              mediumtext null
+    content              mediumtext   null
 ) ENGINE = InnoDB
   DEFAULT CHARSET = UTF8;
 

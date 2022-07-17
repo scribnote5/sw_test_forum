@@ -27,7 +27,7 @@ public class StyleCopGuidelineLikeListener {
                 .lastModifiedByIdx(styleCopGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(styleCopGuidelineLike.getIdx())
-                .auditBoard("StyleCop 좋아요")
+                .auditBoard("C# Coding Convention 가이드라인 좋아요")
                 .auditType(AuditType.LIKE)
                 .message(AuditMessageUtil.getLikeAuditMessage(styleCopGuidelineLike.getStyleCopGuidelineIdx()))
                 .build());
@@ -42,7 +42,7 @@ public class StyleCopGuidelineLikeListener {
                 .lastModifiedByIdx(styleCopGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(styleCopGuidelineLike.getIdx())
-                .auditBoard("StyleCop 좋아요")
+                .auditBoard("C# Coding Convention 가이드라인 좋아요")
                 .auditType(AuditType.CANCEL_LIKE)
                 .message(AuditMessageUtil.getCancelLikeAuditMessage(styleCopGuidelineLike.getStyleCopGuidelineIdx()))
                 .build());

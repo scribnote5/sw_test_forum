@@ -27,7 +27,7 @@ public class FxCopGuidelineLikeListener {
                 .lastModifiedByIdx(fxCopGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(fxCopGuidelineLike.getIdx())
-                .auditBoard("FxCop 좋아요")
+                .auditBoard(".Net Framework Design Guideline 가이드라인 좋아요")
                 .auditType(AuditType.LIKE)
                 .message(AuditMessageUtil.getLikeAuditMessage(fxCopGuidelineLike.getFxCopGuidelineIdx()))
                 .build());
@@ -42,7 +42,7 @@ public class FxCopGuidelineLikeListener {
                 .lastModifiedByIdx(fxCopGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(fxCopGuidelineLike.getIdx())
-                .auditBoard("FxCop 좋아요")
+                .auditBoard(".Net Framework Design Guideline 가이드라인 좋아요")
                 .auditType(AuditType.CANCEL_LIKE)
                 .message(AuditMessageUtil.getCancelLikeAuditMessage(fxCopGuidelineLike.getFxCopGuidelineIdx()))
                 .build());

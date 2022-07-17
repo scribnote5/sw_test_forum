@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="MISRA C 예제 코드" :subPage="misraCRule" :paths="['MISRA C', 'MISRA C 예제 코드 보기']" :title="styleCopExample.title"/>
+    <Breadcrumb page="MISRA C 예제 코드" :subPage="misraCRule" :paths="['MISRA C', 'MISRA C 예제 코드 보기']" :title="misraCExample.title"/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -16,18 +16,18 @@
           <tbody>
           <tr>
             <td colspan="2">
-              <h2 class="mobile-title">{{ styleCopExample.title }}</h2>
+              <h2 class="mobile-title">{{ misraCExample.title }}</h2>
             </td>
           </tr>
           <tr>
             <td colspan="2">
               <div class="float-end">
-                <strong class="additional-information-title">작성자: </strong><span class="additional-information-content">{{ styleCopExample.createdByUser.department }} {{ styleCopExample.createdByUser.name }}, </span>
-                <strong class="additional-information-title">작성일: </strong><span class="additional-information-content">{{ styleCopExample.createdDate }}</span><br>
+                <strong class="additional-information-title">작성자: </strong><span class="additional-information-content">{{ misraCExample.createdByUser.department }} {{ misraCExample.createdByUser.name }}, </span>
+                <strong class="additional-information-title">작성일: </strong><span class="additional-information-content">{{ misraCExample.createdDate }}</span><br>
 
-                <strong class="additional-information-title">최종 수정자: </strong><span class="additional-information-content">{{ styleCopExample.lastModifiedByUser.department }} {{ styleCopExample.lastModifiedByUser.name }}, </span>
-                <strong class="additional-information-title">최종 수정일: </strong><span class="additional-information-content">{{ styleCopExample.lastModifiedDate }}, </span>
-                <strong class="additional-information-title">조회수: </strong> <span class="additional-information-content">{{ styleCopExample.views }}</span>
+                <strong class="additional-information-title">최종 수정자: </strong><span class="additional-information-content">{{ misraCExample.lastModifiedByUser.department }} {{ misraCExample.lastModifiedByUser.name }}, </span>
+                <strong class="additional-information-title">최종 수정일: </strong><span class="additional-information-content">{{ misraCExample.lastModifiedDate }}, </span>
+                <strong class="additional-information-title">조회수: </strong> <span class="additional-information-content">{{ misraCExample.views }}</span>
               </div>
             </td>
           </tr>
@@ -35,21 +35,21 @@
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>우선순위</th>
             <td>
-              <Priority pageInformation="read" :priority="styleCopExample.priority" :maxPriority=Number(4)></Priority>
+              <Priority pageInformation="read" :priority="misraCExample.priority" :maxPriority=Number(4)></Priority>
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>도구 정보</th>
             <td>
-              {{ styleCopExample.toolName }}<br>
-              {{ styleCopExample.toolNote }}
+              {{ misraCExample.toolName }}<br>
+              {{ misraCExample.toolNote }}
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>컴파일러</th>
             <td>
-              {{ styleCopExample.compilerName }}<br>
-              {{ styleCopExample.compilerNote }}
+              {{ misraCExample.compilerName }}<br>
+              {{ misraCExample.compilerNote }}
             </td>
           </tr>
 
@@ -58,9 +58,9 @@
             <td colspan="2">
               <strong>MISRA C 규칙: </strong> {{ misraCRule }} <br>
               <strong>우선순위: </strong>
-              <Priority pageInformation="read" :priority="styleCopExample.priority" :maxPriority=Number(4)></Priority>
-              <strong>도구 정보: </strong> {{ styleCopExample.toolName }}, {{ styleCopExample.toolNote }} <br>
-              <strong>컴파일러: </strong> {{ styleCopExample.compilerName }}, {{ styleCopExample.compilerNote }}
+              <Priority pageInformation="read" :priority="misraCExample.priority" :maxPriority=Number(4)></Priority>
+              <strong>도구 정보: </strong> {{ misraCExample.toolName }}, {{ misraCExample.toolNote }} <br>
+              <strong>컴파일러: </strong> {{ misraCExample.compilerName }}, {{ misraCExample.compilerNote }}
             </td>
           </tr>
 
@@ -73,25 +73,25 @@
           </tr>
           <tr>
             <td colspan="2">
-              <div class="content ck-content" v-html="styleCopExample.content"></div>
+              <div class="content ck-content" v-html="misraCExample.content"></div>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
 
-      <Comment path="misra-c-example-comments" idxName="misraCExampleIdx" :idx="styleCopExample.idx" :commentList="styleCopExample.commentDtoList"></Comment>
+      <Comment path="misra-c-example-comments" idxName="misraCExampleIdx" :idx="misraCExample.idx" :commentList="misraCExample.commentDtoList"></Comment>
 
       <div class="d-flex justify-content-between flex-column flex-md-row mx-3 my-5">
         <div class="d-flex">
-          <router-link :to="this.$route.meta.fromRuleList ? '/misra-c-example/list/' + styleCopExample.misraCIdx : '/misra-c-example/list'" class="me-2">
+          <router-link :to="this.$route.meta.fromRuleList ? '/misra-c-example/list/' + misraCExample.misraCIdx : '/misra-c-example/list'" class="me-2">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>
           </router-link>
-          <router-link :to="'/misra-c/read/' + styleCopExample.misraCIdx" class="ms-2">
+          <router-link :to="'/misra-c/read/' + misraCExample.misraCIdx" class="ms-2">
             <button class="btn btn-main-dark-cyan d-flex align-items-center">규칙 이동<img :src="require(`@/assets/images/rewind-white.svg`)" class="ms-2"></button>
           </router-link>
         </div>
-        <div class="d-flex mt-2 mt-md-0" v-if="styleCopExample.access">
+        <div class="d-flex mt-2 mt-md-0" v-if="misraCExample.access">
           <router-link :to="'/misra-c-example/update/' + idx" class="me-2">
             <button class="btn btn-main-blue d-flex align-items-center">수정<img :src="require(`@/assets/images/update-white.svg`)" class="ms-2"></button>
           </router-link>
@@ -139,7 +139,7 @@ export default {
     const router = useRouter();
     const idx = route.params.idx;
     // variable
-    let styleCopExample = ref({createdByUser: {department: '', name: ''}, lastModifiedByUser: {department: '', name: ''}});
+    let misraCExample = ref({createdByUser: {department: '', name: ''}, lastModifiedByUser: {department: '', name: ''}});
     // codeMirror
     let compliantExample = ref("");
     let nonCompliantExample = ref("");
@@ -156,24 +156,24 @@ export default {
           {},
       )
           .then((response) => {
-            styleCopExample.value = response.data;
-            styleCopExample.value.content = styleCopExample.value.content;
+            misraCExample.value = response.data;
+            misraCExample.value.content = misraCExample.value.content;
 
             // codeMirror 설정
-            nonCompliantExample.value = styleCopExample.value.nonCompliantExample;
-            compliantExample.value = styleCopExample.value.compliantExample;
-            badCasePositionList.value = styleCopExample.value.badCasePositionList;
-            goodCasePositionList.value = styleCopExample.value.goodCasePositionList;
+            nonCompliantExample.value = misraCExample.value.nonCompliantExample;
+            compliantExample.value = misraCExample.value.compliantExample;
+            badCasePositionList.value = misraCExample.value.badCasePositionList;
+            goodCasePositionList.value = misraCExample.value.goodCasePositionList;
 
             // 댓글 설정
-            for (let comment of styleCopExample.value.commentDtoList) {
+            for (let comment of misraCExample.value.commentDtoList) {
               comment.content = comment.content.replace(/\n/g, "<br>");
               comment.createdDate = dayjs(comment.createdDate).format("YYYY.MM.DD. HH:mm");
             }
 
             // 공통 데이터 설정
-            styleCopExample.value.createdDate = dayjs(styleCopExample.value.createdDate).format("YYYY.MM.DD. HH:mm");
-            styleCopExample.value.lastModifiedDate = dayjs(styleCopExample.value.lastModifiedDate).format("YYYY.MM.DD. HH:mm");
+            misraCExample.value.createdDate = dayjs(misraCExample.value.createdDate).format("YYYY.MM.DD. HH:mm");
+            misraCExample.value.lastModifiedDate = dayjs(misraCExample.value.lastModifiedDate).format("YYYY.MM.DD. HH:mm");
           })
           .catch((error) => {
             parseErrorMsg(error.response);
@@ -181,7 +181,7 @@ export default {
           .then(() => {
           });
 
-      await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-c/misra-c-rule/" + styleCopExample.value.misraCIdx,
+      await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-c/misra-c-rule/" + misraCExample.value.misraCIdx,
           {},
       )
           .then((response) => {
@@ -208,7 +208,7 @@ export default {
           )
               .then((response) => {
                 localStorage.setItem("result", "/misra-c-example/delete-success");
-                router.push("/misra-c-example/list/" + styleCopExample.value.misraCIdx);
+                router.push("/misra-c-example/list/" + misraCExample.value.misraCIdx);
               })
               .catch((error) => {
                 parseErrorMsg(error.response);
@@ -223,7 +223,7 @@ export default {
 
     return {
       // variable
-      styleCopExample, idx, compliantExample, nonCompliantExample, badCasePositionList, goodCasePositionList, misraCRule,
+      misraCExample, idx, compliantExample, nonCompliantExample, badCasePositionList, goodCasePositionList, misraCRule,
 
       // function
       deletePost

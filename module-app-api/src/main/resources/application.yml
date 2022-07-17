@@ -101,17 +101,17 @@ spring:
   config:
     activate:
       on-profile: local_master
-#  jpa:
-#    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
-#    database-platform: org.hibernate.dialect.MariaDB103Dialect
-#    properties:
-#      hibernate:
-#        # sql 문을 가독성 좋게 출력한다.
-#        format_sql: true
-#        # sql 문을 보여준다.
-#        show_sql: true
-#        # sql 문 추가 죽석을 보여준다.
-#        use_sql_comment: true
+  #  jpa:
+  #    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
+  #    database-platform: org.hibernate.dialect.MariaDB103Dialect
+  #    properties:
+  #      hibernate:
+  #        # sql 문을 가독성 좋게 출력한다.
+  #        format_sql: true
+  #        # sql 문을 보여준다.
+  #        show_sql: true
+  #        # sql 문 추가 죽석을 보여준다.
+  #        use_sql_comment: true
   datasource:
     url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum
     username: scribnote5

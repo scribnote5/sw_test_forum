@@ -4,8 +4,8 @@ DROP TABLE misra_cpp;
 CREATE TABLE misra_cpp
 (
     idx                  bigint auto_increment primary key,
-    created_date         datetime null,
-    last_modified_date   datetime null,
+    created_date         datetime     null,
+    last_modified_date   datetime     null,
     created_by_idx       bigint default 0,
     last_modified_by_idx bigint default 0,
     active_status        varchar(255) null,
@@ -16,7 +16,7 @@ CREATE TABLE misra_cpp
     frequency            varchar(255) null,
     hash_tags_idx        bigint default 0,
     category             varchar(255) null,
-    content              mediumtext null
+    content              mediumtext   null
 ) ENGINE = InnoDB
   DEFAULT CHARSET = UTF8;
 

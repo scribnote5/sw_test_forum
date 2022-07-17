@@ -1,25 +1,24 @@
 <!-- https://getbootstrap.com/docs/5.0/examples/headers/ -->
 <template>
-  <header id="header" class="p-2 border-bottom">
-    <div class="container-fluid">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <div class="d-flex">
-          <div class="logo-wrapper border-end d-flex align-items-center">
-            <router-link to="/dashboard"><img :src="require(`@/assets/images/logo.png`)" class="logo"/></router-link>
+  <header id="header" class="p-2 border-bottom d-flex align-items-center">
+    <div class="container-fluid d-flex justify-content-between ">
+      <div class="d-flex align-items-center">
+        <div class="logo-wrapper border-end d-flex">
+          <router-link to="/dashboard"><img :src="require(`@/assets/images/logo.png`)" class="logo"/></router-link>
+        </div>
+        <div class="d-flex align-items-center ms-1">
+          <div id="showSidebar" class="icon-wrapper ms-2 d-md-flex d-lg-none">
+            <img @click="showSidebar()" :src="require(`@/assets/images/chevron-right-main-blue.svg`)" class="cursor-pointer" style="height: 24px;">
           </div>
-          <div class="d-flex align-items-center ms-1">
-            <div id="showSidebar" class="icon-wrapper ms-1 d-md-flex d-lg-none">
-              <img @click="showSidebar()" :src="require(`@/assets/images/chevron-right-main-blue.svg`)" class="cursor-pointer" style="height: 24px;">
-            </div>
-            <div id="hideSidebar" class="icon-wrapper ms-3 d-none d-lg-flex d-lg-flex">
-              <img @click="hideSidebar()" :src="require(`@/assets/images/chevron-left-main-blue.svg`)" class="cursor-pointer ">
-            </div>
+          <div id="hideSidebar" class="icon-wrapper ms-2 d-none d-lg-flex d-lg-flex">
+            <img @click="hideSidebar()" :src="require(`@/assets/images/chevron-left-main-blue.svg`)" class="cursor-pointer ">
           </div>
         </div>
+      </div>
 
-        <div class="d-flex align-items-center">
-          <span class="login-user-info d-none d-lg-flex">{{ loginUserInfo.department }} {{ loginUserInfo.name }}, {{ loginUserInfo.username }}</span>
-          <div class="dropdown-wrapper">
+      <div class="d-flex align-items-center">
+        <span class="login-user-info d-none d-lg-flex">{{ loginUserInfo.department }} {{ loginUserInfo.name }}, {{ loginUserInfo.username }}</span>
+        <div class="dropdown-wrapper">
             <span class="dropdown">
               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img :src="require(`@/assets/images/user-white.svg`)" class="cursor-pointer">
@@ -32,7 +31,6 @@
                 <li><span class="dropdown-item" @click="deAuthenticate()">로그아웃</span></li>
               </ul>
             </span>
-          </div>
         </div>
       </div>
     </div>
@@ -49,7 +47,7 @@
   width: 200px;
 
   .logo {
-    height: 50px;
+    height: 45px;
   }
 }
 

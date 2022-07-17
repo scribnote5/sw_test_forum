@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 public class Notice extends CommonAudit {
     private String title;
 
+
     private long priority;
 
     private String content;

@@ -110,7 +110,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">MISRA C 가이드라인 사례</th>
+            <th colspan="2" class="sub-item-title">MISRA C 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

@@ -5,7 +5,6 @@ import com.suresoft.sw_test_forum.common.dto.CommonDto;
 import com.suresoft.sw_test_forum.common.dto.PriorityDto;
 import com.suresoft.sw_test_forum.common.validation.Editor;
 import com.suresoft.sw_test_forum.cwe.cwe.domain.CweAttachedFile;
-import com.suresoft.sw_test_forum.cwe.cwe.domain.enums.CweLanguage;
 import com.suresoft.sw_test_forum.cwe.cwe_example.dto.CweExampleDto;
 import com.suresoft.sw_test_forum.cwe.cwe_guideline.dto.CweGuidelineDto;
 import lombok.Getter;
@@ -40,12 +39,6 @@ public class CweDto extends CommonDto {
 
     @NotNull(message = "'해시태그 idx'는 NULL이 될 수 없습니다.")
     private long hashTagsIdx;
-
-    @NotNull(message = "'언어'는 NULL이 될 수 없습니다.")
-    private CweLanguage language;
-
-    @Size(max = 255, message = "'CWE ID'의 길이는 255 보다 작아야 합니다.")
-    private String cweId;
 
     @Editor(max = 16777215, message = "'에디터' 크기는 16777215Bytes(16MB) 보다 작아야 합니다.")
     private String content;

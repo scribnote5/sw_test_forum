@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="StyleCop 규칙" :paths="['StyleCop', 'StyleCop 규칙 수정']" title=""/>
+    <Breadcrumb page="C# Coding Convention 규칙" :paths="['C# Coding Convention', 'C# Coding Convention 규칙 수정']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">StyleCop 규칙 정보</th>
+            <th colspan="2" class="sub-item-title">C# Coding Convention 규칙 정보</th>
           </tr>
           <tr>
             <th>제목<span class="required-field">*</span></th>
@@ -39,13 +39,13 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="update" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">StyleCop 가이드라인 표기 방식</th>
+            <th colspan="2" class="sub-item-title">C# Coding Convention 표기 방식</th>
           </tr>
           <tr>
             <th>Category<span class="recommended-field">*</span></th>

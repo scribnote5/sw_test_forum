@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 예제 코드" :subPage="cweRule" :paths="['CWE', 'CWE 예제 코드 보기']" :title="cweExample.title"/>
+    <Breadcrumb page="CWE C/C++ 예제 코드" :subPage="cweRule" :paths="['CWE C/C++', 'CWE C/C++ 예제 코드 보기']" :title="cweExample.title"/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -56,7 +56,7 @@
           <!-- Mobile -->
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
             <td colspan="2">
-              <strong>CWE 규칙: </strong> {{ cweRule }} <br>
+              <strong>CWE C/C++ 규칙: </strong> {{ cweRule }} <br>
               <strong>우선순위: </strong>
               <Priority pageInformation="read" :priority="cweExample.priority" :maxPriority=Number(4)></Priority>
               <strong>도구 정보: </strong> {{ cweExample.toolName }}, {{ cweExample.toolNote }} <br>
