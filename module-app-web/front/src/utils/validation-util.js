@@ -53,14 +53,17 @@ const parseErrorMsg = (msg) => {
         } else if (!isEmpty(msg.errors)) {
             console.error("msg.errors 처리")
             alertMsg = msg.message;
-        } else {
+        }  else {
             console.error("나머지 에러 처리")
-            alertMsg = msg.message + "\n" + msg.errors[0].field + ", " + msg.errors[0].reason;
+            alertMsg = msg.message;
+            // alertMsg = msg.message + "\n" + msg.errors[0].field + ", " + msg.errors[0].reason;
         }
     } else {
         alertMsg = "API 서버에 에러가 발생했습니다.\n"
             + "(NetworkError: Failed to execute 'send' on 'XMLHttpRequest'.)";
     }
+
+    alertMsg += "\n 잠시후 이전 페이지로 돌아갑니다."
 
     toast.fire({
         icon: "error",
@@ -71,7 +74,7 @@ const parseErrorMsg = (msg) => {
     // 5초 이후, 이전 페이지로 이동
     setTimeout(function () {
         router.go(-1);
-    }, 5000);
+    }, 6000);
 }
 
 /* 배열 요소가 empty인 경우를 제외하여 배열 길이를 계산 */

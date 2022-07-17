@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="StyleCop 예제 코드" :subPage="styleCopRule" :paths="['StyleCop', 'StyleCop 예제 코드 리스트']" title=""/>
+    <Breadcrumb page="C# Coding Convention 예제 코드" :subPage="styleCopRule" :paths="['C# Coding Convention', 'C# Coding Convention 예제 코드 리스트']" title=""/>
 
     <div class="container-fluid">
       <div class="page-search">
@@ -159,7 +159,7 @@ export default {
             .then(() => {
             });
       } else {
-        styleCopRule.value = "StyleCop 규칙 페이지에서만 예제 코드를 등록할 수 있습니다.";
+        styleCopRule.value = "C# Coding Convention 규칙 페이지에서만 예제 코드를 등록할 수 있습니다.";
       }
 
       // 검색 정보 불러오기

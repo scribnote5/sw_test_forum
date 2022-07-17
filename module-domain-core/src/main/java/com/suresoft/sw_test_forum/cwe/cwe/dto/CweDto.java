@@ -5,7 +5,6 @@ import com.suresoft.sw_test_forum.common.dto.CommonDto;
 import com.suresoft.sw_test_forum.common.dto.PriorityDto;
 import com.suresoft.sw_test_forum.common.validation.Editor;
 import com.suresoft.sw_test_forum.cwe.cwe.domain.CweAttachedFile;
-import com.suresoft.sw_test_forum.cwe.cwe.domain.enums.CweLanguage;
 import com.suresoft.sw_test_forum.cwe.cwe_example.dto.CweExampleDto;
 import com.suresoft.sw_test_forum.cwe.cwe_guideline.dto.CweGuidelineDto;
 import lombok.Getter;
@@ -28,6 +27,10 @@ public class CweDto extends CommonDto {
     @Size(max = 255, message = "'제목'의 길이는 255 보다 작아야 합니다.")
     private String title;
 
+    @NotBlank(message = "'원제'는 공란이 될 수 없습니다.")
+    @Size(max = 255, message = "'원제'의 길이는 255 보다 작아야 합니다.")
+    private String originalTitle;
+
     @Max(value = 6, message = "'우선순위'는 6 보다 작아야 합니다.")
     @Min(value = 1, message = "'우선순위'는 1 보다 커야 합니다.")
     private long priority;
@@ -40,9 +43,6 @@ public class CweDto extends CommonDto {
 
     @NotNull(message = "'해시태그 idx'는 NULL이 될 수 없습니다.")
     private long hashTagsIdx;
-
-    @NotNull(message = "'언어'는 NULL이 될 수 없습니다.")
-    private CweLanguage language;
 
     @Size(max = 255, message = "'STATIC 규칙명'의 길이는 255 보다 작아야 합니다.")
     private String staticTitle;

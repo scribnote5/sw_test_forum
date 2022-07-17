@@ -172,11 +172,11 @@ public class CweRepositoryImpl extends QuerydslRepositorySupport {
                                 cwe.views,
 
                                 cwe.title,
+                                cwe.originalTitle,
                                 cwe.priority,
                                 cwe.frequency,
                                 hashTags.content.as("hashTags"),
                                 cwe.hashTagsIdx,
-                                cwe.language,
                                 cwe.staticTitle,
                                 cwe.codeSonarTitle,
                                 cwe.content

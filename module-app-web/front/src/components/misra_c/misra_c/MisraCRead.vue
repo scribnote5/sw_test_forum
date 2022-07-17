@@ -17,6 +17,7 @@
           <tr>
             <td colspan="2">
               <h2 class="mobile-title">{{ misraC.title }}</h2>
+              <h5 class="mobile-original-title">{{ misraC.originalTitle }}</h5>
             </td>
           </tr>
           <tr>
@@ -40,7 +41,7 @@
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>위배 빈도<span class="required-field">*</span></th>
+            <th>위배 빈도</th>
             <td>
               <Frequency pageInformation="read" :frequency="misraC.frequency"></Frequency>
             </td>
@@ -74,9 +75,9 @@
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>QAC 규칙<span class="recommended-field">*</span></th>
+            <th>QAC 규칙</th>
             <td>
-              {{misraC.qacTitle}}
+              {{ misraC.qacTitle }}
             </td>
           </tr>
 
@@ -118,7 +119,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">MISRA C 가이드라인 사례</th>
+            <th colspan="2" class="sub-item-title">MISRA C 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

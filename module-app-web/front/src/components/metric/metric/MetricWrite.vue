@@ -45,9 +45,6 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">메트릭 가이드라인 표기 방식</th>
-          </tr>
-          <tr>
             <td colspan="2">
               <ckeditor id="content" :editor="vueEditor" v-model="vueEditorData" :config="vueEditorConfig" @blur="validateEditor"></ckeditor>
             </td>

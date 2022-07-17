@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="MISRA C 가이드라인" :subPage="misraCRule" :paths="['MISRA C', 'MISRA C 가이드라인 보기']" :title="styleCopGuideline.title"/>
+    <Breadcrumb page="MISRA C 가이드라인" :subPage="misraCRule" :paths="['MISRA C', 'MISRA C 가이드라인 보기']" :title="misraC.title"/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -16,19 +16,19 @@
           <tbody>
           <tr>
             <td colspan="2">
-              <h2 class="mobile-title">{{ styleCopGuideline.title }}</h2>
-              <Like :likeDto="styleCopGuideline.likeDto"></Like>
+              <h2 class="mobile-title">{{ misraC.title }}</h2>
+              <Like :likeDto="misraC.likeDto"></Like>
             </td>
           </tr>
           <tr>
             <td colspan="2">
               <div class="float-end">
-                <strong class="additional-information-title">작성자: </strong><span class="additional-information-content">{{ styleCopGuideline.createdByUser.department }} {{ styleCopGuideline.createdByUser.name }}, </span>
-                <strong class="additional-information-title">작성일: </strong><span class="additional-information-content">{{ styleCopGuideline.createdDate }}</span><br>
+                <strong class="additional-information-title">작성자: </strong><span class="additional-information-content">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }}, </span>
+                <strong class="additional-information-title">작성일: </strong><span class="additional-information-content">{{ misraC.createdDate }}</span><br>
 
-                <strong class="additional-information-title">최종 수정자: </strong><span class="additional-information-content">{{ styleCopGuideline.lastModifiedByUser.department }} {{ styleCopGuideline.lastModifiedByUser.name }}, </span>
-                <strong class="additional-information-title">최종 수정일: </strong><span class="additional-information-content">{{ styleCopGuideline.lastModifiedDate }}, </span>
-                <strong class="additional-information-title">조회수: </strong> <span class="additional-information-content">{{ styleCopGuideline.views }}</span>
+                <strong class="additional-information-title">최종 수정자: </strong><span class="additional-information-content">{{ misraC.lastModifiedByUser.department }} {{ misraC.lastModifiedByUser.name }}, </span>
+                <strong class="additional-information-title">최종 수정일: </strong><span class="additional-information-content">{{ misraC.lastModifiedDate }}, </span>
+                <strong class="additional-information-title">조회수: </strong> <span class="additional-information-content">{{ misraC.views }}</span>
               </div>
             </td>
           </tr>
@@ -42,32 +42,32 @@
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>프로젝트 정보</th>
             <td>
-              {{ styleCopGuideline.projectName }}
+              {{ misraC.projectName }}
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>가이드라인 결과</th>
             <td>
-              <span v-if="styleCopGuideline.guidelineResult == 'COMPLETED'">완료</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'EXCLUDE'">사전 제외</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'EXCEPTION'">예외 처리(사유서 처리)</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM'">도구 오탐(False Alarm)</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐(False Alarm) 패치 완료</span> <br>
-              {{ styleCopGuideline.guidelineResultNote }}
+              <span v-if="misraC.guidelineResult == 'COMPLETED'">완료</span>
+              <span v-if="misraC.guidelineResult == 'EXCLUDE'">사전 제외</span>
+              <span v-if="misraC.guidelineResult == 'EXCEPTION'">예외 처리(사유서 처리)</span>
+              <span v-if="misraC.guidelineResult == 'FALSE_ALARM'">도구 오탐(False Alarm)</span>
+              <span v-if="misraC.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐(False Alarm) 패치 완료</span> <br>
+              {{ misraC.guidelineResultNote }}
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>도구 정보</th>
             <td>
-              {{ styleCopGuideline.toolName }}<br>
-              {{ styleCopGuideline.toolNote }}
+              {{ misraC.toolName }}<br>
+              {{ misraC.toolNote }}
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>컴파일러</th>
             <td>
-              {{ styleCopGuideline.compilerName }}<br>
-              {{ styleCopGuideline.compilerNote }}
+              {{ misraC.compilerName }}<br>
+              {{ misraC.compilerNote }}
             </td>
           </tr>
 
@@ -75,15 +75,15 @@
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
             <td colspan="2">
               <strong>MISRA C 규칙: </strong> {{ misraCRule }} <br>
-              <strong>프로젝트 정보: </strong> {{ styleCopGuideline.projectName }}<br>
+              <strong>프로젝트 정보: </strong> {{ misraC.projectName }}<br>
               <strong>가이드라인 결과: </strong>
-              <span v-if="styleCopGuideline.guidelineResult == 'COMPLETED'">완료</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'EXCLUDE'">사전 제외</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'EXCEPTION'">예외 처리(사유서 처리)</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM'">도구 오탐(False Alarm)</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐(False Alarm) 패치 완료, </span> {{ styleCopGuideline.guidelineResultNote }} <br>
-              <strong>도구 정보: </strong> {{ styleCopGuideline.toolName }}, {{ styleCopGuideline.toolNote }} <br>
-              <strong>컴파일러: </strong> {{ styleCopGuideline.compilerName }}, {{ styleCopGuideline.compilerNote }}
+              <span v-if="misraC.guidelineResult == 'COMPLETED'">완료</span>
+              <span v-if="misraC.guidelineResult == 'EXCLUDE'">사전 제외</span>
+              <span v-if="misraC.guidelineResult == 'EXCEPTION'">예외 처리(사유서 처리)</span>
+              <span v-if="misraC.guidelineResult == 'FALSE_ALARM'">도구 오탐(False Alarm)</span>
+              <span v-if="misraC.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐(False Alarm) 패치 완료, </span> {{ misraC.guidelineResultNote }} <br>
+              <strong>도구 정보: </strong> {{ misraC.toolName }}, {{ misraC.toolNote }} <br>
+              <strong>컴파일러: </strong> {{ misraC.compilerName }}, {{ misraC.compilerNote }}
             </td>
           </tr>
 
@@ -96,7 +96,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <div class="content ck-content" v-html="styleCopGuideline.content"></div>
+              <div class="content ck-content" v-html="misraC.content"></div>
             </td>
           </tr>
           <tr>
@@ -108,18 +108,18 @@
         </table>
       </div>
 
-      <Comment path="misra-c-guideline-comments" idxName="misraCGuidelineIdx" :idx="styleCopGuideline.idx" :commentList="styleCopGuideline.commentDtoList"></Comment>
+      <Comment path="misra-c-guideline-comments" idxName="misraCGuidelineIdx" :idx="misraC.idx" :commentList="misraC.commentDtoList"></Comment>
 
       <div class="d-flex justify-content-between flex-column flex-md-row mx-3 my-5">
         <div class="d-flex">
-          <router-link :to="this.$route.meta.fromRuleList ? '/misra-c-guideline/list/' + styleCopGuideline.misraCIdx : '/misra-c-guideline/list'" class="me-2">
+          <router-link :to="this.$route.meta.fromRuleList ? '/misra-c-guideline/list/' + misraC.misraCIdx : '/misra-c-guideline/list'" class="me-2">
             <button class="btn btn-main-grey d-flex align-items-center">목록<img :src="require(`@/assets/images/list-white.svg`)" class="ms-2"></button>
           </router-link>
-          <router-link :to="'/misra-c/read/' + styleCopGuideline.misraCIdx" class="ms-2">
+          <router-link :to="'/misra-c/read/' + misraC.misraCIdx" class="ms-2">
             <button class="btn btn-main-dark-cyan d-flex align-items-center">규칙 이동<img :src="require(`@/assets/images/rewind-white.svg`)" class="ms-2"></button>
           </router-link>
         </div>
-        <div class="d-flex mt-2 mt-md-0" v-if="styleCopGuideline.access">
+        <div class="d-flex mt-2 mt-md-0" v-if="misraC.access">
           <router-link :to="'/misra-c-guideline/update/' + idx" class="me-2">
             <button class="btn btn-main-blue d-flex align-items-center">수정<img :src="require(`@/assets/images/update-white.svg`)" class="ms-2"></button>
           </router-link>
@@ -173,7 +173,7 @@ export default {
     const router = useRouter();
     const idx = route.params.idx;
     // variable
-    let styleCopGuideline = ref({createdByUser: {department: '', name: ''}, lastModifiedByUser: {department: '', name: ''}, likeDto: {likeCount: '', like: ''}});
+    let misraC = ref({createdByUser: {department: '', name: ''}, lastModifiedByUser: {department: '', name: ''}, likeDto: {likeCount: '', like: ''}});
     // hashTags
     let hashTags = ref("");
     // codeMirror
@@ -194,20 +194,20 @@ export default {
           {},
       )
           .then((response) => {
-            styleCopGuideline.value = response.data;
-            styleCopGuideline.value.content = styleCopGuideline.value.content;
+            misraC.value = response.data;
+            misraC.value.content = misraC.value.content;
 
             // hashTags 설정
-            hashTags.value = styleCopGuideline.value.hashTags;
+            hashTags.value = misraC.value.hashTags;
 
             // codeMirror 설정
-            nonCompliantExample.value = styleCopGuideline.value.nonCompliantExample;
-            compliantExample.value = styleCopGuideline.value.compliantExample;
-            badCasePositionList.value = styleCopGuideline.value.badCasePositionList;
-            goodCasePositionList.value = styleCopGuideline.value.goodCasePositionList;
+            nonCompliantExample.value = misraC.value.nonCompliantExample;
+            compliantExample.value = misraC.value.compliantExample;
+            badCasePositionList.value = misraC.value.badCasePositionList;
+            goodCasePositionList.value = misraC.value.goodCasePositionList;
 
             // 업로드 된 첨부 파일 설정
-            uploadedAttachedFileList.value = styleCopGuideline.value.attachedFileList;
+            uploadedAttachedFileList.value = misraC.value.attachedFileList;
             uploadedAttachedFileList.value.totalFileSize = 0;
             for (const uploadedAttachedFile of uploadedAttachedFileList.value) {
               uploadedAttachedFileList.value.totalFileSize += uploadedAttachedFile.fileSize;
@@ -217,18 +217,18 @@ export default {
             uploadedAttachedFileList.value.convertedTotalFileSize = convertFileSize(uploadedAttachedFileList.value.totalFileSize);
 
             // 댓글 설정
-            for (let comment of styleCopGuideline.value.commentDtoList) {
+            for (let comment of misraC.value.commentDtoList) {
               comment.content = comment.content.replace(/\n/g, "<br>");
               comment.createdDate = dayjs(comment.createdDate).format("YYYY.MM.DD. HH:mm");
             }
 
             // 좋아요 설정
-            styleCopGuideline.value.likeDto.guidelineIdx = styleCopGuideline.value.idx;
-            styleCopGuideline.value.likeDto.link = "/api/misra-c-guideline-likes/";
+            misraC.value.likeDto.guidelineIdx = misraC.value.idx;
+            misraC.value.likeDto.link = "/api/misra-c-guideline-likes/";
 
             // 공통 데이터 설정
-            styleCopGuideline.value.createdDate = dayjs(styleCopGuideline.value.createdDate).format("YYYY.MM.DD. HH:mm");
-            styleCopGuideline.value.lastModifiedDate = dayjs(styleCopGuideline.value.lastModifiedDate).format("YYYY.MM.DD. HH:mm");
+            misraC.value.createdDate = dayjs(misraC.value.createdDate).format("YYYY.MM.DD. HH:mm");
+            misraC.value.lastModifiedDate = dayjs(misraC.value.lastModifiedDate).format("YYYY.MM.DD. HH:mm");
           })
           .catch((error) => {
             parseErrorMsg(error.response);
@@ -236,7 +236,7 @@ export default {
           .then(() => {
           });
 
-      await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-c/misra-c-rule/" + styleCopGuideline.value.misraCIdx,
+      await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-c/misra-c-rule/" + misraC.value.misraCIdx,
           {},
       )
           .then((response) => {
@@ -278,7 +278,7 @@ export default {
 
     return {
       // variable
-      styleCopGuideline, idx, hashTags, compliantExample, nonCompliantExample, badCasePositionList, goodCasePositionList, uploadedAttachedFileList, misraCRule,
+      misraC, idx, hashTags, compliantExample, nonCompliantExample, badCasePositionList, goodCasePositionList, uploadedAttachedFileList, misraCRule,
 
       // function
       deletePost

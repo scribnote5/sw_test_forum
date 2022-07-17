@@ -20,6 +20,8 @@ import java.time.LocalDateTime;
 public class StyleCop extends CommonAudit {
     private String title;
 
+    private String originalTitle;
+
     private long priority;
 
     @Enumerated(EnumType.STRING)
@@ -35,6 +37,7 @@ public class StyleCop extends CommonAudit {
     @Builder
     public StyleCop(long idx, LocalDateTime createdDate, LocalDateTime lastModifiedDate, long createdByIdx, long lastModifiedByIdx, ActiveStatus activeStatus,
                     String title,
+                    String originalTitle,
                     long priority,
                     Frequency frequency,
                     long hashTagsIdx,
@@ -47,6 +50,7 @@ public class StyleCop extends CommonAudit {
         setLastModifiedByIdx(lastModifiedByIdx);
         setActiveStatus(activeStatus);
         this.title = title;
+        this.originalTitle = originalTitle;
         this.priority = priority;
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
@@ -57,6 +61,7 @@ public class StyleCop extends CommonAudit {
     public void update(StyleCop styleCop) {
         setActiveStatus(styleCop.getActiveStatus());
         this.title = styleCop.getTitle();
+        this.originalTitle = styleCop.getOriginalTitle();
         this.priority = styleCop.getPriority();
         this.frequency = styleCop.getFrequency();
         this.hashTagsIdx = styleCop.getHashTagsIdx();

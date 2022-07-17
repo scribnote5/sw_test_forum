@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 예제 코드" :subPage="cweRule" :paths="['CWE', 'CWE 에제 코드 수정']" title=""/>
+    <Breadcrumb page="CWE C/C++ 예제 코드" :subPage="cweRule" :paths="['CWE C/C++', 'CWE C/C++ 에제 코드 수정']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 예제 코드 정보</th>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 예제 코드 정보</th>
           </tr>
           <tr>
             <th>제목<span class="required-field">*</span></th>
@@ -31,7 +31,7 @@
             </td>
           </tr>
           <tr>
-            <th>도구 정보<span class="recommended-field">*</span></th>
+            <th>도구 정보<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <input type="text" name="toolName" v-model="toolName" class="form-control" placeholder="STATIC 4.3.2">
               <p id="toolNameErrorMessage" class="error-message"></p>
@@ -41,7 +41,7 @@
             </td>
           </tr>
           <tr>
-            <th>컴파일러<span class="recommended-field">*</span></th>
+            <th>컴파일러<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <input type="text" name="compilerName" v-model="compilerName" class="form-control" placeholder="Visual Studio 2017">
               <p id="compilerNameErrorMessage" class="error-message"></p>
@@ -62,7 +62,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 가이드라인 부가정보</th>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 가이드라인 부가정보</th>
           </tr>
           <tr>
             <th>작성자</th>

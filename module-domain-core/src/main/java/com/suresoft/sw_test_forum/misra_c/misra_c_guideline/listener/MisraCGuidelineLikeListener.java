@@ -27,7 +27,7 @@ public class MisraCGuidelineLikeListener {
                 .lastModifiedByIdx(misraCGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(misraCGuidelineLike.getIdx())
-                .auditBoard("MISRA C 좋아요")
+                .auditBoard("MISRA C 가이드라인 좋아요")
                 .auditType(AuditType.LIKE)
                 .message(AuditMessageUtil.getLikeAuditMessage(misraCGuidelineLike.getMisraCGuidelineIdx()))
                 .build());
@@ -42,7 +42,7 @@ public class MisraCGuidelineLikeListener {
                 .lastModifiedByIdx(misraCGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(misraCGuidelineLike.getIdx())
-                .auditBoard("MISRA C 좋아요")
+                .auditBoard("MISRA C 가이드라인 좋아요")
                 .auditType(AuditType.CANCEL_LIKE)
                 .message(AuditMessageUtil.getCancelLikeAuditMessage(misraCGuidelineLike.getMisraCGuidelineIdx()))
                 .build());

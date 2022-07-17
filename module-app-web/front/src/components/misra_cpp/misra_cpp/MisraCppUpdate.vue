@@ -27,6 +27,13 @@
             </td>
           </tr>
           <tr>
+            <th>원제<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[00_01_01] A project shall not contain unreachable code">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
             <th>우선순위<span class="required-field">*</span></th>
             <td>
               <Priority pageInformation="update" :priority=Number(priority) :maxPriority=Number(6) :priorityArray=priorityArray></Priority>
@@ -39,13 +46,13 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="update" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">MISRA C++ 가이드라인 표기 방식</th>
+            <th colspan="2" class="sub-item-title">MISRA C++ 표기 방식</th>
           </tr>
           <tr>
             <th>Category<span class="recommended-field">*</span></th>
@@ -170,6 +177,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     let title = ref("");
+    let originalTitle = ref("");
     let priority = ref(0);
     let frequency = ref("");
     let hashTags = ref("");
@@ -193,6 +201,7 @@ export default {
       )
           .then((response) => {
             title.value = response.data.title;
+            originalTitle.value = response.data.originalTitle;
             priority.value = response.data.priority;
             frequency.value = response.data.frequency;
             hashTags.value = response.data.hashTags;
@@ -254,6 +263,7 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value)
           && validateLength("hashTags", hashTags.value)
           && validateLength("category", category.value)
           && validateLength("qacTitle", qacTitle.value)
@@ -264,6 +274,7 @@ export default {
       axios.put(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-cpp/" + idx,
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -375,7 +386,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, category, qacTitle,
+      title, originalTitle, priority, frequency, hashTags, category, qacTitle,
       priorityArray,
 
       // function

@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="FxCop 가이드라인" :subPage="fxCopRule" :paths="['FxCop', 'FxCop 가이드라인 보기']" :title="fxCopGuideline.title"/>
+    <Breadcrumb page=".NET Framework Design Guideline 가이드라인" :subPage="fxCopRule" :paths="['.NET Framework Design Guideline', '.NET Framework Design Guideline 가이드라인 보기']" :title="fxCopGuideline.title"/>
 
     <div class="container-fluid">
       <div class="page-content">

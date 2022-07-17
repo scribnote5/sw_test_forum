@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 규칙" :paths="['CWE', 'CWE 규칙 작성']" title=""/>
+    <Breadcrumb page="CWE C/C++ 규칙" :paths="['CWE C/C++', 'CWE C/C++ 규칙 작성']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,15 +15,22 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 규칙 정보</th>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 규칙 정보</th>
           </tr>
           <tr>
             <th>규칙<span class="required-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <div class="autoComplete_wrapper">
-                <input type="text" name="title" id="title" v-model="title" class="form-control" placeholder="[Buffer_Overrun] 배열 최대 범위보다 큰 요소 접근을 금지">
+                <input type="text" name="title" id="title" v-model="title" class="form-control" placeholder="[14] 버퍼를 지우기 위한 컴파일러 코드 제거">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <th>원제<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[14] Compiler Removal of Code to Clear Buffers">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
           <tr>
@@ -45,32 +52,19 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">CWE 가이드라인 표기 방식</th>
-          </tr>
-          <tr>
-            <th>해당되는 언어<span class="recommended-field">*</span></th>
-            <td>
-              <select v-model="language" class="form-select">
-                <option value="C">C</option>
-                <option value="CPP">C++</option>
-                <option value="C_CPP">C, C++</option>
-                <option value="JAVA">Java</option>
-                <option value="ALL">모든 언어</option>
-              </select>
-              <p id="languageErrorMessage" class="error-message"></p>
-            </td>
+            <th colspan="2" class="sub-item-title">CWE C/C++ 표기 방식</th>
           </tr>
           <tr>
             <th>STATIC 규칙<span class="recommended-field">*</span></th>
             <td>
-              <input type="text" name="staticTitle" v-model="staticTitle" class="form-control" placeholder="CWE 규칙과 매핑되는 STATIC 규칙을 작성해주세요.">
+              <input type="text" name="staticTitle" v-model="staticTitle" class="form-control" placeholder="CWE C/C++ 규칙과 매핑되는 STATIC 규칙을 작성해주세요.">
               <p id="staticTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
           <tr>
             <th>CodeSonar 규칙<span class="recommended-field">*</span></th>
             <td>
-              <input type="text" name="codeSonarTitle" v-model="codeSonarTitle" class="form-control" placeholder="CWE 규칙과 매핑되는 CodeSonar 규칙을 작성해주세요.">
+              <input type="text" name="codeSonarTitle" v-model="codeSonarTitle" class="form-control" placeholder="CWE C/C++ 규칙과 매핑되는 CodeSonar 규칙을 작성해주세요.">
               <p id="codeSonarTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
@@ -152,13 +146,12 @@ export default {
     const vueEditor = editor;
     const vueEditorData = editorRuleData;
     const vueEditorConfig = editorConfig;
-
     // variable
     const title = ref("");
+    const originalTitle = ref("");
     const priority = ref(6);
     const frequency = ref("AVERAGE");
     const hashTags = ref("");
-    const language = ref("C");
     const staticTitle = ref("");
     const codeSonarTitle = ref("");
     const activeStatus = ref("ACTIVE");
@@ -223,8 +216,8 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value)
           && validateLength("hashTags", hashTags.value)
-          && validateLength("language", language.value)
           && validateLength("staticTitle", staticTitle.value)
           && validateLength("codeSonarTitle", codeSonarTitle.value)
       )) {
@@ -234,10 +227,10 @@ export default {
       isExit = await axios.post(process.env.VUE_APP_MODULE_APP_API_URL + "/api/cwe",
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
-            language: language.value,
             staticTitle: staticTitle.value,
             codeSonarTitle: codeSonarTitle.value,
             content: vueEditorData,
@@ -299,9 +292,10 @@ export default {
       router.push("/cwe/read/" + cweIdx);
     }
     return {
+
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
-      title, priority, frequency, hashTags, language, staticTitle, codeSonarTitle, activeStatus,
+      title, originalTitle, priority, frequency, hashTags, staticTitle, codeSonarTitle, activeStatus,
       priorityArray,
 
       // function

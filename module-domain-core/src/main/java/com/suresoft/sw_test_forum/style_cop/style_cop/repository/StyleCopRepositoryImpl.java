@@ -166,6 +166,7 @@ public class StyleCopRepositoryImpl extends QuerydslRepositorySupport {
                                 styleCop.views,
 
                                 styleCop.title,
+                                styleCop.originalTitle,
                                 styleCop.priority,
                                 styleCop.frequency,
                                 hashTags.content.as("hashTags"),

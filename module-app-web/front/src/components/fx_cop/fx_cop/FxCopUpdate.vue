@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="FxCop 규칙" :paths="['FxCop', 'FxCop 규칙 수정']" title=""/>
+    <Breadcrumb page=".NET Framework Design Guideline 규칙" :paths="['.NET Framework Design Guideline', '.NET Framework Design Guideline 규칙 수정']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">FxCop 규칙 정보</th>
+            <th colspan="2" class="sub-item-title">.NET Framework Design Guideline 규칙 정보</th>
           </tr>
           <tr>
             <th>제목<span class="required-field">*</span></th>
@@ -24,6 +24,13 @@
                 <input type="text" name="title" v-model="title" class="form-control" placeholder="[CA1045] 참조 형식으로 전달 금지">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <th>원제<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[CA1045] Do not pass types by reference">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
           <tr>
@@ -39,13 +46,13 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="update" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">FxCop 가이드라인 표기 방식</th>
+            <th colspan="2" class="sub-item-title">.NET Framework Design Guideline 표기 방식</th>
           </tr>
           <tr>
             <th>Category<span class="recommended-field">*</span></th>
@@ -73,6 +80,7 @@
               <select v-model="breakingChange" class="form-select">
                 <option value="NON_BREAKING">Non Breaking</option>
                 <option value="BREAKING">Breaking</option>
+                <option value="CHANGEABLE">상황에 따라 변경됨</option>
               </select>
               <p id="breakingChangeErrorMessage" class="error-message"></p>
             </td>
@@ -182,6 +190,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     let title = ref("");
+    let originalTitle = ref("");
     let priority = ref(0);
     let frequency = ref("");
     let hashTags = ref("");
@@ -206,6 +215,7 @@ export default {
       )
           .then((response) => {
             title.value = response.data.title;
+            originalTitle.value = response.data.originalTitle;
             priority.value = response.data.priority;
             frequency.value = response.data.frequency;
             hashTags.value = response.data.hashTags;
@@ -268,6 +278,7 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value)
           && validateLength("hashTags", hashTags.value)
           && validateLength("category", category.value)
           && validateLength("breakingChange", breakingChange.value)
@@ -278,6 +289,7 @@ export default {
       axios.put(process.env.VUE_APP_MODULE_APP_API_URL + "/api/fx-cop/" + idx,
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -389,7 +401,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, category, breakingChange,
+      title, originalTitle, priority, frequency, hashTags, category, breakingChange,
       priorityArray,
 
       // function

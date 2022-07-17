@@ -40,6 +40,21 @@ import MisraCppGuidelineWrite from '../components/misra_cpp/misra_cpp_guideline/
 import MisraCppGuidelineUpdate from '../components/misra_cpp/misra_cpp_guideline/MisraCppGuidelineUpdate.vue'
 import MisraCppGuidelineRead from '../components/misra_cpp/misra_cpp_guideline/MisraCppGuidelineRead.vue'
 
+import JavaCodeConventionsList from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsList.vue'
+import JavaCodeConventionsWrite from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsWrite.vue'
+import JavaCodeConventionsUpdate from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsUpdate.vue'
+import JavaCodeConventionsRead from '../components/java_code_conventions/java_code_conventions/JavaCodeConventionsRead.vue'
+
+import JavaCodeConventionsExampleList from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleList.vue'
+import JavaCodeConventionsExampleWrite from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleWrite.vue'
+import JavaCodeConventionsExampleUpdate from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleUpdate.vue'
+import JavaCodeConventionsExampleRead from '../components/java_code_conventions/java_code_conventions_example/JavaCodeConventionsExampleRead.vue'
+
+import JavaCodeConventionsGuidelineList from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineList.vue'
+import JavaCodeConventionsGuidelineWrite from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineWrite.vue'
+import JavaCodeConventionsGuidelineUpdate from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineUpdate.vue'
+import JavaCodeConventionsGuidelineRead from '../components/java_code_conventions/java_code_conventions_guideline/JavaCodeConventionsGuidelineRead.vue'
+
 import CweList from '../components/cwe/cwe/CweList.vue'
 import CweWrite from '../components/cwe/cwe/CweWrite.vue'
 import CweUpdate from '../components/cwe/cwe/CweUpdate.vue'
@@ -54,6 +69,21 @@ import CweGuidelineList from '../components/cwe/cwe_guideline/CweGuidelineList.v
 import CweGuidelineWrite from '../components/cwe/cwe_guideline/CweGuidelineWrite.vue'
 import CweGuidelineUpdate from '../components/cwe/cwe_guideline/CweGuidelineUpdate.vue'
 import CweGuidelineRead from '../components/cwe/cwe_guideline/CweGuidelineRead.vue'
+
+import CweJavaList from '../components/cwe_java/cwe_java/CweJavaList.vue'
+import CweJavaWrite from '../components/cwe_java/cwe_java/CweJavaWrite.vue'
+import CweJavaUpdate from '../components/cwe_java/cwe_java/CweJavaUpdate.vue'
+import CweJavaRead from '../components/cwe_java/cwe_java/CweJavaRead.vue'
+
+import CweJavaExampleList from '../components/cwe_java/cwe_java_example/CweJavaExampleList.vue'
+import CweJavaExampleWrite from '../components/cwe_java/cwe_java_example/CweJavaExampleWrite.vue'
+import CweJavaExampleUpdate from '../components/cwe_java/cwe_java_example/CweJavaExampleUpdate.vue'
+import CweJavaExampleRead from '../components/cwe_java/cwe_java_example/CweJavaExampleRead.vue'
+
+import CweJavaGuidelineList from '../components/cwe_java/cwe_java_guideline/CweJavaGuidelineList.vue'
+import CweJavaGuidelineWrite from '../components/cwe_java/cwe_java_guideline/CweJavaGuidelineWrite.vue'
+import CweJavaGuidelineUpdate from '../components/cwe_java/cwe_java_guideline/CweJavaGuidelineUpdate.vue'
+import CweJavaGuidelineRead from '../components/cwe_java/cwe_java_guideline/CweJavaGuidelineRead.vue'
 
 import StyleCopList from '../components/style_cop/style_cop/StyleCopList.vue'
 import StyleCopWrite from '../components/style_cop/style_cop/StyleCopWrite.vue'
@@ -340,7 +370,7 @@ const routes = [
         path: '/misra-cpp-guideline/read/:idx',
         name: 'MisraCppGuidelineRead',
         component: MisraCppGuidelineRead,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true }
+        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/read/from-rule-list/:idx',
@@ -353,6 +383,102 @@ const routes = [
         name: 'MisraCppGuidelineUpdate',
         component: MisraCppGuidelineUpdate,
         meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/list',
+        name: 'JavaCodeConventionsList',
+        component: JavaCodeConventionsList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/write',
+        name: 'JavaCodeConventionsWrite',
+        component: JavaCodeConventionsWrite,
+        meta: {title: 'SW Test Forum - Java Code Conventions 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/read/:idx',
+        name: 'JavaCodeConventionsRead',
+        component: JavaCodeConventionsRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions/update/:idx',
+        name: 'JavaCodeConventionsUpdate',
+        component: JavaCodeConventionsUpdate,
+        meta: {title: 'SW Test Forum - Java Code Conventions 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/list',
+        name: 'JavaCodeConventionsExampleList',
+        component: JavaCodeConventionsExampleList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/list/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsExampleListByJavaCodeConventionsIdx',
+        component: JavaCodeConventionsExampleList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/write/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsExampleWrite',
+        component: JavaCodeConventionsExampleWrite,
+        meta: {title: 'SW Test Forum - Java Code Conventions 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/read/:idx',
+        name: 'JavaCodeConventionsExampleRead',
+        component: JavaCodeConventionsExampleRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-example/read/from-rule-list/:idx',
+        name: 'JavaCodeConventionsExampleReadFromRuleList',
+        component: JavaCodeConventionsExampleRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/java-code-conventions-example/update/:idx',
+        name: 'JavaCodeConventionsExampleUpdate',
+        component: JavaCodeConventionsExampleUpdate,
+        meta: {title: 'SW Test Forum - Java Code Conventions 예제 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/list',
+        name: 'JavaCodeConventionsGuidelineList',
+        component: JavaCodeConventionsGuidelineList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/list/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsGuidelineListByJavaCodeConventionsIdx',
+        component: JavaCodeConventionsGuidelineList,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/write/:javaCodeConventionsIdx',
+        name: 'JavaCodeConventionsGuidelineWrite',
+        component: JavaCodeConventionsGuidelineWrite,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/read/:idx',
+        name: 'JavaCodeConventionsGuidelineRead',
+        component: JavaCodeConventionsGuidelineRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/read/from-rule-list/:idx',
+        name: 'JavaCodeConventionsGuidelineReadFromRuleList',
+        component: JavaCodeConventionsGuidelineRead,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/java-code-conventions-guideline/update/:idx',
+        name: 'JavaCodeConventionsGuidelineUpdate',
+        component: JavaCodeConventionsGuidelineUpdate,
+        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe/list',
@@ -451,196 +577,292 @@ const routes = [
         meta: {title: 'SW Test Forum - CWE 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
+        path: '/cwe-java/list',
+        name: 'CweJavaList',
+        component: CweJavaList,
+        meta: {title: 'SW Test Forum - CWE Java 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java/write',
+        name: 'CweJavaWrite',
+        component: CweJavaWrite,
+        meta: {title: 'SW Test Forum - CWE Java 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java/read/:idx',
+        name: 'CweJavaRead',
+        component: CweJavaRead,
+        meta: {title: 'SW Test Forum - CWE Java 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java/update/:idx',
+        name: 'CweJavaUpdate',
+        component: CweJavaUpdate,
+        meta: {title: 'SW Test Forum - CWE Java 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-example/list',
+        name: 'CweJavaExampleList',
+        component: CweJavaExampleList,
+        meta: {title: 'SW Test Forum - CWE Java 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-example/list/:cweJavaIdx',
+        name: 'CweJavaExampleListByCweJavaIdx',
+        component: CweJavaExampleList,
+        meta: {title: 'SW Test Forum - CWE Java 예제 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-example/write/:cweJavaIdx',
+        name: 'CweJavaExampleWrite',
+        component: CweJavaExampleWrite,
+        meta: {title: 'SW Test Forum - CWE Java 예제 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-example/read/:idx',
+        name: 'CweJavaExampleRead',
+        component: CweJavaExampleRead,
+        meta: {title: 'SW Test Forum - CWE Java 예제 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-example/read/from-rule-list/:idx',
+        name: 'CweJavaExampleReadFromRuleList',
+        component: CweJavaExampleRead,
+        meta: {title: 'SW Test Forum - CWE Java 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/cwe-java-example/update/:idx',
+        name: 'CweJavaExampleUpdate',
+        component: CweJavaExampleUpdate,
+        meta: {title: 'SW Test Forum - CWE Java 예제 수정', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-guideline/list',
+        name: 'CweJavaGuidelineList',
+        component: CweJavaGuidelineList,
+        meta: {title: 'SW Test Forum - CWE Java 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-guideline/list/:cweJavaIdx',
+        name: 'CweJavaGuidelineListByCweJavaIdx',
+        component: CweJavaGuidelineList,
+        meta: {title: 'SW Test Forum - CWE Java 가이드라인 리스트', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-guideline/write/:cweJavaIdx',
+        name: 'CweJavaGuidelineWrite',
+        component: CweJavaGuidelineWrite,
+        meta: {title: 'SW Test Forum - CWE Java 가이드라인 작성', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-guideline/read/:idx',
+        name: 'CweJavaGuidelineRead',
+        component: CweJavaGuidelineRead,
+        meta: {title: 'SW Test Forum - CWE Java 가이드라인 보기', layoutView: true, authRequired: true}
+    },
+    {
+        path: '/cwe-java-guideline/read/from-rule-list/:idx',
+        name: 'CweJavaGuidelineReadFromRuleList',
+        component: CweJavaGuidelineRead,
+        meta: {title: 'SW Test Forum - CWE Java 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+    },
+    {
+        path: '/cwe-java-guideline/update/:idx',
+        name: 'CweJavaGuidelineUpdate',
+        component: CweJavaGuidelineUpdate,
+        meta: {title: 'SW Test Forum - CWE Java 가이드라인 수정', layoutView: true, authRequired: true}
+    },
+    {
         path: '/style-cop/list',
         name: 'StyleCopList',
         component: StyleCopList,
-        meta: {title: 'SW Test Forum - StyleCop 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop/write',
         name: 'StyleCopWrite',
         component: StyleCopWrite,
-        meta: {title: 'SW Test Forum - StyleCop 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop/read/:idx',
         name: 'StyleCopRead',
         component: StyleCopRead,
-        meta: {title: 'SW Test Forum - StyleCop 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop/update/:idx',
         name: 'StyleCopUpdate',
         component: StyleCopUpdate,
-        meta: {title: 'SW Test Forum - StyleCop 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/list',
         name: 'StyleCopExampleList',
         component: StyleCopExampleList,
-        meta: {title: 'SW Test Forum - StyleCop 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/list/:styleCopIdx',
         name: 'StyleCopExampleListByStyleCopIdx',
         component: StyleCopExampleList,
-        meta: {title: 'SW Test Forum - StyleCop 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/write/:styleCopIdx',
         name: 'StyleCopExampleWrite',
         component: StyleCopExampleWrite,
-        meta: {title: 'SW Test Forum - StyleCop 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/read/:idx',
         name: 'StyleCopExampleRead',
         component: StyleCopExampleRead,
-        meta: {title: 'SW Test Forum - StyleCop 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/read/from-rule-list/:idx',
         name: 'StyleCopExampleReadFromRuleList',
         component: StyleCopExampleRead,
-        meta: {title: 'SW Test Forum - StyleCop 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/style-cop-example/update/:idx',
         name: 'StyleCopExampleUpdate',
         component: StyleCopExampleUpdate,
-        meta: {title: 'SW Test Forum - StyleCop 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/list',
         name: 'StyleCopGuidelineList',
         component: StyleCopGuidelineList,
-        meta: {title: 'SW Test Forum - StyleCop 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/list/:styleCopIdx',
         name: 'StyleCopGuidelineListByStyleCopIdx',
         component: StyleCopGuidelineList,
-        meta: {title: 'SW Test Forum - StyleCop 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/write/:styleCopIdx',
         name: 'StyleCopGuidelineWrite',
         component: StyleCopGuidelineWrite,
-        meta: {title: 'SW Test Forum - StyleCop 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/read/:idx',
         name: 'StyleCopGuidelineRead',
         component: StyleCopGuidelineRead,
-        meta: {title: 'SW Test Forum - StyleCop 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/read/from-rule-list/:idx',
         name: 'StyleCopGuidelineReadFromRuleList',
         component: StyleCopGuidelineRead,
-        meta: {title: 'SW Test Forum - StyleCop 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/style-cop-guideline/update/:idx',
         name: 'StyleCopGuidelineUpdate',
         component: StyleCopGuidelineUpdate,
-        meta: {title: 'SW Test Forum - StyleCop 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/list',
         name: 'FxCopList',
         component: FxCopList,
-        meta: {title: 'SW Test Forum - FxCop 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/write',
         name: 'FxCopWrite',
         component: FxCopWrite,
-        meta: {title: 'SW Test Forum - FxCop 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/read/:idx',
         name: 'FxCopRead',
         component: FxCopRead,
-        meta: {title: 'SW Test Forum - FxCop 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/update/:idx',
         name: 'FxCopUpdate',
         component: FxCopUpdate,
-        meta: {title: 'SW Test Forum - FxCop 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/list',
         name: 'FxCopExampleList',
         component: FxCopExampleList,
-        meta: {title: 'SW Test Forum - FxCop 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/list/:fxCopIdx',
         name: 'FxCopExampleListByFxCopIdx',
         component: FxCopExampleList,
-        meta: {title: 'SW Test Forum - FxCop 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/write/:fxCopIdx',
         name: 'FxCopExampleWrite',
         component: FxCopExampleWrite,
-        meta: {title: 'SW Test Forum - FxCop 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/read/:idx',
         name: 'FxCopExampleRead',
         component: FxCopExampleRead,
-        meta: {title: 'SW Test Forum - FxCop 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/read/from-rule-list/:idx',
         name: 'FxCopExampleReadFromRuleList',
         component: FxCopExampleRead,
-        meta: {title: 'SW Test Forum - FxCop 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/fx-cop-example/update/:idx',
         name: 'FxCopExampleUpdate',
         component: FxCopExampleUpdate,
-        meta: {title: 'SW Test Forum - FxCop 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/list',
         name: 'FxCopGuidelineList',
         component: FxCopGuidelineList,
-        meta: {title: 'SW Test Forum - FxCop 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/list/:fxCopIdx',
         name: 'FxCopGuidelineListByFxCopIdx',
         component: FxCopGuidelineList,
-        meta: {title: 'SW Test Forum - FxCop 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/write/:fxCopIdx',
         name: 'FxCopGuidelineWrite',
         component: FxCopGuidelineWrite,
-        meta: {title: 'SW Test Forum - FxCop 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/read/:idx',
         name: 'FxCopGuidelineRead',
         component: FxCopGuidelineRead,
-        meta: {title: 'SW Test Forum - FxCop 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/read/from-rule-list/:idx',
         name: 'FxCopGuidelineReadFromRuleList',
         component: FxCopGuidelineRead,
-        meta: {title: 'SW Test Forum - FxCop 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/fx-cop-guideline/update/:idx',
         name: 'FxCopGuidelineUpdate',
         component: FxCopGuidelineUpdate,
-        meta: {title: 'SW Test Forum - FxCop 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/metric/list',
@@ -986,7 +1208,7 @@ router.beforeEach(async function (to, from, next) {
         }
         // 권한이 없는 경우, Error401
         else {
-            if(from.href !== "/login") {
+            if (from.href !== "/login") {
                 await error.fire({
                     text: "로그인이 필요합니다.",
                 });

@@ -40,7 +40,7 @@
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>위배 빈도<span class="required-field">*</span></th>
+            <th>위배 빈도</th>
             <td>
               <Frequency pageInformation="read" :frequency="metric.frequency"></Frequency>
             </td>
@@ -78,7 +78,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">메트릭 가이드라인 사례</th>
+            <th colspan="2" class="sub-item-title">메트릭 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

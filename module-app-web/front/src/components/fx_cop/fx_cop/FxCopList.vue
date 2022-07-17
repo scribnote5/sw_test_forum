@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="FxCop 규칙" :paths="['FxCop', 'FxCop 규칙 리스트']" title=""/>
+    <Breadcrumb page=".NET Framework Design Guideline 규칙" :paths="['.NET Framework Design Guideline', '.NET Framework Design Guideline 규칙 리스트']" title=""/>
 
     <div class="container-fluid">
       <div class="page-search">

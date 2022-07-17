@@ -27,7 +27,7 @@ public class MetricGuidelineLikeListener {
                 .lastModifiedByIdx(metricGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(metricGuidelineLike.getIdx())
-                .auditBoard("메트릭 좋아요")
+                .auditBoard("메트릭 가이드라인 좋아요")
                 .auditType(AuditType.LIKE)
                 .message(AuditMessageUtil.getLikeAuditMessage(metricGuidelineLike.getMetricGuidelineIdx()))
                 .build());
@@ -42,7 +42,7 @@ public class MetricGuidelineLikeListener {
                 .lastModifiedByIdx(metricGuidelineLike.getLastModifiedByIdx())
                 .activeStatus(ActiveStatus.ACTIVE)
                 .auditIdx(metricGuidelineLike.getIdx())
-                .auditBoard("메트릭 좋아요")
+                .auditBoard("메트릭 가이드라인 좋아요")
                 .auditType(AuditType.CANCEL_LIKE)
                 .message(AuditMessageUtil.getCancelLikeAuditMessage(metricGuidelineLike.getMetricGuidelineIdx()))
                 .build());

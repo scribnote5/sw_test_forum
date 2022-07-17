@@ -38,48 +38,48 @@
           </thead>
           <tbody>
           <!-- misraCGuidelineList -->
-          <tr v-for="(styleCopGuideline, i) in misraCGuidelineList.content" :key="i">
+          <tr v-for="(misraC, i) in misraCGuidelineList.content" :key="i">
             <!-- Desktop 번호 -->
             <td class="d-none d-lg-table-cell text-center">{{ misraCGuidelineList.totalElements - misraCGuidelineList.pageable.offset - i }}</td>
             <td>
               <!-- Mobile -->
               <span class="d-inline d-lg-none mobile-number">{{ misraCGuidelineList.totalElements - misraCGuidelineList.pageable.offset - i }}. </span>
               <!-- 공통 -->
-              <router-link :to= "misraCIdx === 0 ? ('/misra-c-guideline/read/' + styleCopGuideline.idx) : ('/misra-c-guideline/read/from-rule-list/' + styleCopGuideline.idx)">
-                <span v-if="misraCIdx === 0">{{ styleCopGuideline.misraCRule }} - </span>{{ styleCopGuideline.title }}
+              <router-link :to= "misraCIdx === 0 ? ('/misra-c-guideline/read/' + misraC.idx) : ('/misra-c-guideline/read/from-rule-list/' + misraC.idx)">
+                <span v-if="misraCIdx === 0">{{ misraC.misraCRule }} - </span>{{ misraC.title }}
               </router-link>
-              <span class="comment-count">{{ styleCopGuideline.commentDtoCount }}</span>
-              <span v-if="styleCopGuideline.likeCountInList > 0"><img :src="require(`@/assets/images/red-heart.svg`)" class="like-icon"><span class="like-count">{{ styleCopGuideline.likeCountInList }}</span></span>
-              <img v-if="styleCopGuideline.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
+              <span class="comment-count">{{ misraC.commentDtoCount }}</span>
+              <span v-if="misraC.likeCountInList > 0"><img :src="require(`@/assets/images/red-heart.svg`)" class="like-icon"><span class="like-count">{{ misraC.likeCountInList }}</span></span>
+              <img v-if="misraC.newIcon" :src="require(`@/assets/images/new_post.svg`)" class="new-icon"/>
               <!-- Mobile -->
               <div class="d-inline d-lg-none">
                 <div>
-                  <span class="mobile-content">{{ styleCopGuideline.createdByUser.department }} {{ styleCopGuideline.createdByUser.name }} </span> <br>
-                  <span class="mobile-content">{{ styleCopGuideline.createdDate }}</span> &nbsp;
-                  <span class="mobile-content"> 조회수: {{ styleCopGuideline.views }}</span> &nbsp;
-                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="styleCopGuideline.hashTags"></HashTags></span> &nbsp;
-                  <span class="mobile-content" v-if="styleCopGuideline.guidelineResult == 'COMPLETED'">완료</span>
-                  <span class="mobile-content" v-if="styleCopGuideline.guidelineResult == 'EXCLUDE'">사전 제외</span>
-                  <span class="mobile-content" v-if="styleCopGuideline.guidelineResult == 'EXCEPTION'">예외 처리</span>
-                  <span class="mobile-content" v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM'">도구 오탐</span>
-                  <span class="mobile-content" v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐 패치 완료</span>
+                  <span class="mobile-content">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }} </span> <br>
+                  <span class="mobile-content">{{ misraC.createdDate }}</span> &nbsp;
+                  <span class="mobile-content"> 조회수: {{ misraC.views }}</span> &nbsp;
+                  <span class="mobile-content"><HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags></span> &nbsp;
+                  <span class="mobile-content" v-if="misraC.guidelineResult == 'COMPLETED'">완료</span>
+                  <span class="mobile-content" v-if="misraC.guidelineResult == 'EXCLUDE'">사전 제외</span>
+                  <span class="mobile-content" v-if="misraC.guidelineResult == 'EXCEPTION'">예외 처리</span>
+                  <span class="mobile-content" v-if="misraC.guidelineResult == 'FALSE_ALARM'">도구 오탐</span>
+                  <span class="mobile-content" v-if="misraC.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐 패치 완료</span>
                 </div>
               </div>
             </td>
             <!-- Desktop -->
-            <td class="d-none d-lg-table-cell">{{ styleCopGuideline.createdByUser.department }} {{ styleCopGuideline.createdByUser.name }}</td>
+            <td class="d-none d-lg-table-cell">{{ misraC.createdByUser.department }} {{ misraC.createdByUser.name }}</td>
             <td class="d-none d-lg-table-cell text-start">
-              <HashTags pageInformation="list" :hash-tags="styleCopGuideline.hashTags"></HashTags>
+              <HashTags pageInformation="list" :hash-tags="misraC.hashTags"></HashTags>
             </td>
             <td class="d-none d-lg-table-cell text-center">
-              <span v-if="styleCopGuideline.guidelineResult == 'COMPLETED'">완료</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'EXCLUDE'">사전 제외</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'EXCEPTION'">예외 처리</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM'">도구 오탐</span>
-              <span v-if="styleCopGuideline.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐 패치 완료</span>
+              <span v-if="misraC.guidelineResult == 'COMPLETED'">완료</span>
+              <span v-if="misraC.guidelineResult == 'EXCLUDE'">사전 제외</span>
+              <span v-if="misraC.guidelineResult == 'EXCEPTION'">예외 처리</span>
+              <span v-if="misraC.guidelineResult == 'FALSE_ALARM'">도구 오탐</span>
+              <span v-if="misraC.guidelineResult == 'FALSE_ALARM_PATCHED'">도구 오탐 패치 완료</span>
             </td>
-            <td class="d-none d-lg-table-cell text-center">{{ styleCopGuideline.createdDate }}</td>
-            <td class="d-none d-lg-table-cell text-center">{{ styleCopGuideline.views }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraC.createdDate }}</td>
+            <td class="d-none d-lg-table-cell text-center">{{ misraC.views }}</td>
           </tr>
 
           <tr v-if="misraCGuidelineList.content.length === 0">
@@ -226,8 +226,8 @@ export default {
             endNumber.value = (misraCGuidelineList.value.totalPages > startNumber.value + 9) ? startNumber.value + 9 : (misraCGuidelineList.value.totalPages == 0 ? 1 : misraCGuidelineList.value.totalPages);
 
             // dayjs
-            for (const styleCopGuideline of misraCGuidelineList.value.content) {
-              styleCopGuideline.createdDate = dayjs(styleCopGuideline.createdDate).format("YYYY.MM.DD.");
+            for (const misraC of misraCGuidelineList.value.content) {
+              misraC.createdDate = dayjs(misraC.createdDate).format("YYYY.MM.DD.");
             }
           })
           .catch((error) => {

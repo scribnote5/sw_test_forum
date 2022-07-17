@@ -3,7 +3,6 @@ package com.suresoft.sw_test_forum.cwe.cwe.domain;
 import com.suresoft.sw_test_forum.common.domain.CommonAudit;
 import com.suresoft.sw_test_forum.common.domain.enums.ActiveStatus;
 import com.suresoft.sw_test_forum.common.domain.enums.Frequency;
-import com.suresoft.sw_test_forum.cwe.cwe.domain.enums.CweLanguage;
 import com.suresoft.sw_test_forum.cwe.cwe.listener.CweListener;
 import lombok.*;
 
@@ -20,15 +19,14 @@ import java.time.LocalDateTime;
 public class Cwe extends CommonAudit {
     private String title;
 
+    private String originalTitle;
+
     private long priority;
 
     @Enumerated(EnumType.STRING)
     private Frequency frequency;
 
     private long hashTagsIdx;
-
-    @Enumerated(EnumType.STRING)
-    private CweLanguage language;
 
     private String staticTitle;
 
@@ -39,10 +37,10 @@ public class Cwe extends CommonAudit {
     @Builder
     public Cwe(long idx, LocalDateTime createdDate, LocalDateTime lastModifiedDate, long createdByIdx, long lastModifiedByIdx, ActiveStatus activeStatus,
                String title,
+               String originalTitle,
                long priority,
                Frequency frequency,
                long hashTagsIdx,
-               CweLanguage language,
                String staticTitle,
                String codeSonarTitle,
                String content) {
@@ -53,10 +51,10 @@ public class Cwe extends CommonAudit {
         setLastModifiedByIdx(lastModifiedByIdx);
         setActiveStatus(activeStatus);
         this.title = title;
+        this.originalTitle = originalTitle;
         this.priority = priority;
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
-        this.language = language;
         this.staticTitle = staticTitle;
         this.codeSonarTitle = codeSonarTitle;
         this.content = content;
@@ -65,10 +63,10 @@ public class Cwe extends CommonAudit {
     public void update(Cwe cwe) {
         setActiveStatus(cwe.getActiveStatus());
         this.title = cwe.getTitle();
+        this.originalTitle = cwe.getOriginalTitle();
         this.priority = cwe.getPriority();
         this.frequency = cwe.getFrequency();
         this.hashTagsIdx = cwe.getHashTagsIdx();
-        this.language = cwe.getLanguage();
         this.staticTitle = cwe.getStaticTitle();
         this.codeSonarTitle = cwe.getCodeSonarTitle();
         this.content = cwe.getContent();

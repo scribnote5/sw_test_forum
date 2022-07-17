@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="FxCop 가이드라인" :subPage="fxCopRule" :paths="['FxCop', 'FxCop 가이드라인 작성']" title=""/>
+    <Breadcrumb page=".NET Framework Design Guideline 가이드라인" :subPage="fxCopRule" :paths="['.NET Framework Design Guideline', '.NET Framework Design Guideline 가이드라인 작성']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">FxCop 가이드라인 정보</th>
+            <th colspan="2" class="sub-item-title">.NET Framework Design Guideline 가이드라인 정보</th>
           </tr>
           <tr>
             <th>제목<span class="required-field">*</span></th>
@@ -25,7 +25,7 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="write"></HashTags>
             </td>
@@ -54,7 +54,7 @@
             </td>
           </tr>
           <tr>
-            <th>도구 정보<span class="recommended-field">*</span></th>
+            <th>도구 정보<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <input type="text" name="toolName" v-model="toolName" class="form-control" placeholder="STATIC 4.4.2">
               <p id="toolNameErrorMessage" class="error-message"></p>
@@ -64,7 +64,7 @@
             </td>
           </tr>
           <tr>
-            <th>컴파일러<span class="recommended-field">*</span></th>
+            <th>컴파일러<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <input type="text" name="compilerName" v-model="compilerName" class="form-control" placeholder=".NET Framework 4.7.2(Visual Studio 2017)">
               <p id="compilerNameErrorMessage" class="error-message"></p>

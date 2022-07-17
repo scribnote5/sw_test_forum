@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="StyleCop 규칙" :paths="['StyleCop', 'StyleCop 규칙 수정']" title=""/>
+    <Breadcrumb page="C# Coding Convention 규칙" :paths="['C# Coding Convention', 'C# Coding Convention 규칙 수정']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">StyleCop 규칙 정보</th>
+            <th colspan="2" class="sub-item-title">C# Coding Convention 규칙 정보</th>
           </tr>
           <tr>
             <th>제목<span class="required-field">*</span></th>
@@ -24,6 +24,13 @@
                 <input type="text" name="title" v-model="title" class="form-control" placeholder="[SA0001] XML 주석 분석 비활성화">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <th>원제<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[SA0001] XML comment analysis disabled">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
           <tr>
@@ -39,13 +46,13 @@
             </td>
           </tr>
           <tr>
-            <th>해시태그<span class="recommended-field">*</span></th>
+            <th>해시태그<span class="recommended-field">*</span><span class="auto-completed-field">*</span></th>
             <td style="overflow: visible">
               <HashTags pageInformation="update" :hash-tags="hashTags"></HashTags>
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">StyleCop 가이드라인 표기 방식</th>
+            <th colspan="2" class="sub-item-title">C# Coding Convention 표기 방식</th>
           </tr>
           <tr>
             <th>Category<span class="recommended-field">*</span></th>
@@ -168,6 +175,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     let title = ref("");
+    let originalTitle = ref("");
     let priority = ref(0);
     let frequency = ref("");
     let hashTags = ref("");
@@ -190,6 +198,7 @@ export default {
       )
           .then((response) => {
             title.value = response.data.title;
+            originalTitle.value = response.data.originalTitle;
             priority.value = response.data.priority;
             frequency.value = response.data.frequency;
             hashTags.value = response.data.hashTags;
@@ -251,6 +260,7 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value)
           && validateLength("hashTags", hashTags.value)
           && validateLength("category", category.value)
       )) {
@@ -260,6 +270,7 @@ export default {
       axios.put(process.env.VUE_APP_MODULE_APP_API_URL + "/api/style-cop/" + idx,
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -370,7 +381,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, category,
+      title, originalTitle, priority, frequency, hashTags, category,
       priorityArray,
 
       // function

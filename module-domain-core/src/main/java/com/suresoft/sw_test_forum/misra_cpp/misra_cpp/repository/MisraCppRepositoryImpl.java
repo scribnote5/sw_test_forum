@@ -169,6 +169,7 @@ public class MisraCppRepositoryImpl extends QuerydslRepositorySupport {
                                 misraCpp.views,
 
                                 misraCpp.title,
+                                misraCpp.originalTitle,
                                 misraCpp.priority,
                                 misraCpp.frequency,
                                 hashTags.content.as("hashTags"),

@@ -247,13 +247,17 @@ input::placeholder {
 
   .mobile-title {
     font-weight: $strong-font-weight;
-    line-height: 1.75;
+    line-height: 1.5;
+  }
+
+  .mobile-original-title {
+    font-weight: $strong-font-weight;
+    line-height: 1.35;
   }
 
   .mobile-only-visible {
     line-height: 1.875;
   }
-
 }
 
 .sub-item-title {
@@ -273,8 +277,8 @@ input::placeholder {
 .comment {
   height: 175px;
   resize: none;
-  word-break: break-word;
-  white-space: pre;
+  word-break: normal;
+  white-space: break-spaces;
 }
 
 /*

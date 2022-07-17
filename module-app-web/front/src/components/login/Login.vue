@@ -10,7 +10,7 @@
             <div class="col-sm-0 col-md-2 card-side"></div>
             <div class="col-sm-12 col-md-10 card-body">
               <div class="brand-wrapper">
-                <img :src="require(`@/assets/images/logo.png`)" class="logo"/>
+                <img :src="require(`@/assets/images/logo.svg`)" class="logo"/>
               </div>
               <p class="login-card-description">Software Test Forum</p>
               <div class="mb-4">
@@ -227,10 +227,10 @@ section {
 }
 
 .brand-wrapper {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 
   .logo {
-    height: 70px;
+    height: 60px;
 
     @media (max-width: 767px) {
       height: 50px;
@@ -257,7 +257,7 @@ section {
   }
 
   .card-side {
-    background-color: $main-blue;
+    background-color: rgb(243, 115, 33);
   }
 
   .card-body {

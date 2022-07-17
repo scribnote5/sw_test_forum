@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="FxCop 규칙" :paths="['FxCop 규칙', 'FxCop 규칙 보기']" :title="fxCop.title"/>
+    <Breadcrumb page=".NET Framework Design Guideline 규칙" :paths="['.NET Framework Design Guideline 규칙', '.NET Framework Design Guideline 규칙 보기']" :title="fxCop.title"/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -17,6 +17,7 @@
           <tr>
             <td colspan="2">
               <h2 class="mobile-title">{{ fxCop.title }}</h2>
+              <h5 class="mobile-original-title">{{ fxCop.originalTitle }}</h5>
             </td>
           </tr>
           <tr>
@@ -40,7 +41,7 @@
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>위배 빈도<span class="required-field">*</span></th>
+            <th>위배 빈도</th>
             <td>
               <Frequency pageInformation="read" :frequency="fxCop.frequency"></Frequency>
             </td>
@@ -72,6 +73,7 @@
             <td>
               <span v-if="fxCop.breakingChange == 'NON_BREAKING'">Non Breaking</span>
               <span v-if="fxCop.breakingChange == 'BREAKING'">Breaking</span>
+              <span v-if="fxCop.breakingChange == 'CHANGEABLE'">상황에 따라 변경됨</span>
             </td>
           </tr>
 
@@ -97,6 +99,7 @@
               <strong>Breaking Change: </strong>
               <span v-if="fxCop.breakingChange == 'NON_BREAKING'">Non Breaking</span>
               <span v-if="fxCop.breakingChange == 'BREAKING'">Breaking</span>
+              <span v-if="fxCop.breakingChange == 'CHANGEABLE'">상황에 따라 변경됨</span>
             </td>
           </tr>
 
@@ -116,7 +119,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">FxCop 가이드라인 사례</th>
+            <th colspan="2" class="sub-item-title">FxCop 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

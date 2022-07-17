@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="StyleCop 규칙" :paths="['StyleCop 규칙', 'StyleCop 규칙 보기']" :title="styleCop.title"/>
+    <Breadcrumb page="C# Coding Convention 규칙" :paths="['C# Coding Convention 규칙', 'C# Coding Convention 규칙 보기']" :title="styleCop.title"/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -17,6 +17,7 @@
           <tr>
             <td colspan="2">
               <h2 class="mobile-title">{{ styleCop.title }}</h2>
+              <h5 class="mobile-original-title">{{ styleCop.originalTitle }}</h5>
             </td>
           </tr>
           <tr>
@@ -40,7 +41,7 @@
             </td>
           </tr>
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
-            <th>위배 빈도<span class="required-field">*</span></th>
+            <th>위배 빈도</th>
             <td>
               <Frequency pageInformation="read" :frequency="styleCop.frequency"></Frequency>
             </td>
@@ -100,7 +101,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">StyleCop 가이드라인 사례</th>
+            <th colspan="2" class="sub-item-title">StyleCop 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

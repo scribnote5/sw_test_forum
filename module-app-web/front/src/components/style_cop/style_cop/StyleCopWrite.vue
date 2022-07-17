@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="StyleCop 규칙" :paths="['StyleCop', 'StyleCop 규칙 작성']" title=""/>
+    <Breadcrumb page="C# Coding Convention 규칙" :paths="['C# Coding Convention', 'C# Coding Convention 규칙 작성']" title=""/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <th colspan="2" class="sub-item-title">StyleCop 규칙 정보</th>
+            <th colspan="2" class="sub-item-title">C# Coding Convention 규칙 정보</th>
           </tr>
           <tr>
             <th>제목<span class="required-field">*</span><span class="auto-completed-field">*</span></th>
@@ -24,6 +24,13 @@
                 <input type="text" name="title" id="title" v-model="title" class="form-control" placeholder="[SA0001] XML 주석 분석 비활성화">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <th>원제<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[SA0001] XML comment analysis disabled">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
           <tr>
@@ -45,7 +52,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">StyleCop 가이드라인 표기 방식</th>
+            <th colspan="2" class="sub-item-title">C# Coding Convention 표기 방식</th>
           </tr>
           <tr>
             <th>Category<span class="recommended-field">*</span></th>
@@ -143,6 +150,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     const title = ref("");
+    const originalTitle = ref("");
     const priority = ref(6);
     const frequency = ref("AVERAGE");
     const hashTags = ref("");
@@ -209,6 +217,7 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value)
           && validateLength("hashTags", hashTags.value)
           && validateLength("category", category.value)
       )) {
@@ -218,6 +227,7 @@ export default {
       isExit = await axios.post(process.env.VUE_APP_MODULE_APP_API_URL + "/api/style-cop",
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -283,7 +293,7 @@ export default {
     return {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
-      title, priority, frequency, hashTags, category, activeStatus,
+      title, originalTitle, priority, frequency, hashTags, category, activeStatus,
       priorityArray,
 
       // function

@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 가이드라인" :subPage="cweRule" :paths="['CWE', 'CWE 가이드라인 보기']" :title="cweGuideline.title"/>
+    <Breadcrumb page="CWE C/C++ 가이드라인" :subPage="cweRule" :paths="['CWE C/C++', 'CWE C/C++ 가이드라인 보기']" :title="cweGuideline.title"/>
 
     <div class="container-fluid">
       <div class="page-content">
@@ -74,7 +74,7 @@
           <!-- Mobile -->
           <tr class="mobile-only-visible d-md-table-row d-lg-none">
             <td colspan="2">
-              <strong>CWE 규칙: </strong> {{ cweRule }} <br>
+              <strong>CWE C/C++ 규칙: </strong> {{ cweRule }} <br>
               <strong>프로젝트 정보: </strong> {{ cweGuideline.projectName }}<br>
               <strong>가이드라인 결과: </strong>
               <span v-if="cweGuideline.guidelineResult == 'COMPLETED'">완료</span>
@@ -190,7 +190,7 @@ export default {
     onBeforeMount(async () => {
       fireSuccessToast("cwe-guideline");
 
-      await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/cwe-guidelines/read/" + idx,
+      await axios.get(process.env.VUE_APP_MODULE_APP_API_URL + "/api/cwe-guidelines/read/" + Number(idx),
           {},
       )
           .then((response) => {

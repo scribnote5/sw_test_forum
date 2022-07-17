@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 예제 코드" :subPage="cweRule" :paths="['CWE', 'CWE 예제 코드 리스트']" title=""/>
+    <Breadcrumb page="CWE C/C++ 예제 코드" :subPage="cweRule" :paths="['CWE C/C++', 'CWE C/C++ 예제 코드 리스트']" title=""/>
 
     <div class="container-fluid">
       <div class="page-search">
@@ -160,7 +160,7 @@ export default {
             .then(() => {
             });
       } else {
-        cweRule.value = "CWE 규칙 페이지에서만 예제 코드를 등록할 수 있습니다.";
+        cweRule.value = "CWE C/C++ 규칙 페이지에서만 예제 코드를 등록할 수 있습니다.";
       }
 
       // 검색 정보 불러오기

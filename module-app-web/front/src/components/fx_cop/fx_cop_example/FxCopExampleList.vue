@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="FxCop 예제 코드" :subPage="fxCopRule" :paths="['FxCop', 'FxCop 예제 코드 리스트']" title=""/>
+    <Breadcrumb page=".NET Framework Design Guideline 예제 코드" :subPage="fxCopRule" :paths="['.NET Framework Design Guideline', '.NET Framework Design Guideline 예제 코드 리스트']" title=""/>
 
     <div class="container-fluid">
       <div class="page-search">
@@ -159,7 +159,7 @@ export default {
             .then(() => {
             });
       } else {
-        fxCopRule.value = "FxCop 규칙 페이지에서만 예제 코드를 등록할 수 있습니다.";
+        fxCopRule.value = ".NET Framework Design Guideline 규칙 페이지에서만 예제 코드를 등록할 수 있습니다.";
       }
 
       // 검색 정보 불러오기

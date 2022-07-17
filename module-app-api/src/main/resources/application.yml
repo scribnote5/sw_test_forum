@@ -185,7 +185,7 @@ spring:
         cacheResultSetMetadata: true
         cacheServerConfiguration: true
         elideSetAutoCommits: true
-        maintainTimeStats: false
+        maintainTim3`eStats: false
 server:
   port: 8082
 localhost:

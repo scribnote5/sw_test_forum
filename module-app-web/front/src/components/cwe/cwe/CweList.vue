@@ -4,7 +4,7 @@
     <Loading></Loading>
 
     <!-- Breadcrumb -->
-    <Breadcrumb page="CWE 규칙" :paths="['CWE', 'CWE 규칙 리스트']" title=""/>
+    <Breadcrumb page="CWE C/C++ 규칙" :paths="['CWE C/C++', 'CWE C/C++ 규칙 리스트']" title=""/>
 
     <div class="container-fluid">
       <div class="page-search">
