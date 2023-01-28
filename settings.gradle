@@ -1,0 +1,6 @@
+rootProject.name = 'sw-test-forum'
+include 'module-system-common'
+include 'module-web-core'
+include 'module-domain-core'
+include 'module-app-web'
+include 'module-app-api'

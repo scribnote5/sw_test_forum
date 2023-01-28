@@ -1,0 +1,546 @@
+body {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif' !important;
+  font-weight: $regular-font-weight !important;
+  font-size: $regular-font-size !important;
+  color: $darkest-main-black !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+p {
+  margin-bottom: .75rem !important;
+}
+
+label {
+  font-weight: $strong-font-weight;
+  word-break: break-all;
+  white-space: normal;
+}
+
+table {
+  width: 100% !important;
+}
+
+// npm 버전 업데이트 이후 변경된 레이아웃 원복을 위해 추가된 css
+.table > thead {
+  border-bottom: 1px;
+}
+
+// npm 버전 업데이트 이후 변경된 레이아웃 원복을 위해 추가된 css
+.table > :not(:first-child) {
+  border-top: none !important;
+}
+
+table tbody {
+  border-top: 1px solid;
+}
+
+table th {
+  font-weight: $strong-font-weight;
+  word-wrap: break-word;
+}
+
+table td {
+  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 0;
+  color: $the-darkest-main-grey;
+}
+
+table a {
+  color: $light-main-blue !important;
+}
+
+table a:hover {
+  color: $lightest-main-blue !important;
+}
+
+.nav-link {
+  color: $light-main-black !important;
+}
+
+.nav-link:hover {
+  color: $lightest-main-black !important;
+}
+
+.nav-link.active {
+  color: $main-blue !important;
+}
+
+.nav-tabs .nav-link {
+  border: var(--bs-nav-tabs-border-width) solid rgba(40, 40, 40, 0.1) !important;
+  font-size: $small-font-size
+}
+
+select option:disabled {
+  background-color: $select-disabled-main-grey;
+  color: $darkest-main-grey;
+}
+
+input::placeholder {
+  color: rgba(82, 82, 82, 0.6) !important;
+  transition: all 0.3s ease;
+}
+
+
+.form-select {
+  font-size: $small-font-size;
+}
+
+/*
+ * Tooltip
+ *
+ * https://www.w3schools.com/howto/howto_css_tooltip.asp
+ */
+.custom-tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted red;
+  cursor: pointer;
+}
+
+.custom-tooltip .tooltip-text {
+  visibility: hidden;
+
+  width: fit-content;
+  white-space: nowrap;
+  word-break: break-word;
+
+  background-color: #555;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 3px 10px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: absolute;
+  top: -2px;
+  left: 150%;
+}
+
+.custom-tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
+}
+
+.custom-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*
+ * Table list
+ */
+.page-search {
+  padding-right: 15px;
+  padding-left: 15px;
+
+  select {
+    @media (max-width: 767px) {
+      font-size: $small-font-size;
+    }
+
+    @media (max-width: 575px) {
+      font-size: $smaller-font-size;
+    }
+  }
+
+  input {
+    @media (max-width: 767px) {
+      font-size: $small-font-size;
+    }
+
+    @media (max-width: 575px) {
+      font-size: $smaller-font-size;
+    }
+  }
+}
+
+.custom-search-input {
+  border: none;
+  border-bottom: 2px solid #757575;
+  outline: none;
+  padding-bottom: 5px;
+  width: 250px;
+  background: transparent;
+
+  @media (max-width: 991px) {
+    width: 225px;
+  }
+
+  @media (max-width: 767px) {
+    width: 175px;
+  }
+
+  @media (max-width: 575px) {
+    width: 125px;
+  }
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.comment-count {
+  margin-left: 6px;
+  padding: 0px 4px;
+  font-size: $smallest-font-size;
+  color: $main-white;
+  background-color: $lightest-main-orange;
+  border-radius: 3px;
+}
+
+.question-answer-test-type {
+  padding: 0px 4px !important;
+  font-size: $smaller-font-size;
+  color: $main-white;
+  background-color: $lightest-main-blue !important;
+  border-radius: 3px;
+}
+
+.question-answer-tool-type {
+  padding: 0px 4px !important;
+  font-size: $smaller-font-size;
+  color: $main-white;
+  background-color: $lightest-main-grey !important;
+  border-radius: 3px;
+}
+
+.question-answer-etc-type {
+  padding: 0px 4px !important;
+  font-size: $smaller-font-size;
+  color: $main-white;
+  background-color: $lighter-main-dark-cyan !important;
+  border-radius: 3px;
+}
+
+.question-answer-answer-type {
+  padding: 0px 4px !important;
+  font-size: $smaller-font-size;
+  color: $main-white;
+  background-color: $lighter-main-orange !important;
+  border-radius: 3px;
+}
+
+.question-answer-complete-type {
+  padding: 0px 4px !important;
+  font-size: $smaller-font-size;
+  color: $main-white;
+  background-color: $light-custom-orange !important;
+  border-radius: 3px;
+}
+
+.like-count {
+  font-size: $smaller-font-size;
+}
+
+.speaker-icon {
+  margin-right: 6px;
+  height: 16px;
+}
+
+.new-icon {
+  margin-left: 6px;
+  height: 16px;
+}
+
+.answer-icon {
+  margin-right: 6px;
+  height: 16px;
+}
+
+.like-icon {
+  margin-left: 6px;
+  margin-right: 1px;
+  height: 16px;
+  width: 16px;
+}
+
+/*
+ * Table Read
+ */
+.additional-information-title {
+  font-size: $small-font-size;
+}
+
+.additional-information-content {
+  font-size: $small-font-size;
+  color: $the-darkest-main-grey;
+}
+
+// Mobile table
+.mobile-table-list {
+  .mobile-number {
+    color: $the-darkest-main-grey;
+  }
+
+  .mobile-content {
+    font-size: $small-font-size;
+    color: $darkest-main-grey;
+  }
+}
+
+.no-posts-table {
+  text-align: center;
+  vertical-align: middle !important;
+  height: 5rem !important;
+  color: $light-main-black;
+  font-size: $larger-font-size;
+}
+
+.no-posts-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  color: $light-main-black;
+  font-size: $larger-font-size;
+}
+
+.no-posts-div:hover {
+  background-color: rgb(225, 225, 225);
+}
+
+/*
+ * Table read
+ */
+// Mobile table
+.mobile-table-read {
+  // Mobile table tr td new line
+  tr td {
+    white-space: normal;
+  }
+
+  .mobile-title {
+    font-weight: $strong-font-weight;
+    line-height: 1.5;
+  }
+
+  .mobile-original-title {
+    font-weight: $strong-font-weight;
+    line-height: 1.35;
+  }
+
+  .mobile-only-visible {
+    line-height: 1.875;
+  }
+}
+
+.sub-item-title {
+  font-weight: $strong-font-weight;
+  font-size: $larger-font-size;
+  text-align: center;
+}
+
+.content {
+  min-height: 400px;
+}
+
+.login-content {
+  min-height: 200px;
+}
+
+.comment {
+  height: 175px;
+  resize: none;
+  word-break: normal;
+  white-space: break-spaces;
+}
+
+/*
+ * Table form
+ */
+.mobile-table-form tr td {
+  white-space: normal;
+}
+
+.required-field {
+  margin-left: .25rem;
+  color: $lightest-main-red;
+  font-weight: $strong-font-weight;
+}
+
+.recommended-field {
+  margin-left: .25rem;
+  color: $lightest-main-blue;
+  font-weight: $strong-font-weight;
+}
+
+.auto-completed-field {
+  margin-left: .25rem;
+  color: $light-main-green;
+  font-weight: $strong-font-weight;
+}
+
+.mention-field {
+  color: $lightest-main-black;
+  opacity: 0.8;
+  font-weight: $medium-font-weight;
+}
+
+.error-message {
+  margin-top: .3rem;
+  margin-bottom: 0;
+  color: $lightest-main-red;
+  font-weight: $medium-font-weight;
+}
+
+/*
+ * Button
+ */
+.btn-main-blue {
+  color: white !important;
+  background-color: $main-blue !important;
+}
+
+.btn-main-blue:hover {
+  background-color: $lighter-main-blue !important;
+}
+
+.btn-dark-main-blue {
+  color: white !important;
+  background-color: $dark-main-blue !important;
+}
+
+.btn-dark-main-blue:hover {
+  background-color: $light-main-blue !important;
+}
+
+.btn-outline-main-blue {
+  color: $main-blue !important;
+  background-color: white !important;
+  border-color: $main-blue !important;
+}
+
+.btn-outline-main-blue:hover {
+  color: $lighter-main-blue !important;
+  background-color: white !important;
+}
+
+.btn-main-red {
+  color: white !important;
+  background-color: $main-red !important;
+}
+
+.btn-main-red:hover {
+  background-color: $lighter-main-red !important;
+}
+
+.btn-outline-main-red {
+  color: $main-red !important;
+  background-color: white !important;
+  border-color: $main-red !important;
+}
+
+.btn-outline-main-red:hover {
+  color: $lighter-main-red !important;
+  background-color: white !important;
+}
+
+.btn-main-grey {
+  color: white !important;
+  background-color: $main-grey !important;
+}
+
+.btn-main-grey:hover {
+  background-color: $lighter-main-grey !important;
+}
+
+.btn-main-green {
+  color: white !important;
+  background-color: $main-green !important;
+}
+
+.btn-main-green:hover {
+  background-color: $lighter-main-green !important;
+}
+
+.btn-main-orange {
+  color: white !important;
+  background-color: $main-orange !important;
+}
+
+.btn-main-orange:hover {
+  background-color: $lighter-main-orange !important;
+}
+
+.btn-main-navy {
+  color: white !important;
+  background-color: $main-navy !important;
+}
+
+.btn-main-navy:hover {
+  background-color: $lighter-main-navy !important;
+}
+
+.btn-main-dark-cyan {
+  color: white !important;
+  background-color: $main-dark-cyan !important;
+}
+
+.btn-main-dark-cyan:hover {
+  background-color: $lighter-main-dark-cyan !important;
+}
+
+.btn-main-light-ultra-marine {
+  color: white !important;
+  background-color: $main-light-ultra-marine !important;
+}
+
+.btn-main-light-ultra-marine:hover {
+  background-color: $lighter-main-light-ultra-marine !important;
+}
+
+.btn-bad-case {
+  font-size: 12px !important;
+  color: white !important;
+  background-color: $darker-bad-case !important;
+}
+
+.btn-bad-case:hover {
+  background-color: $dark-bad-case !important;
+}
+
+.btn-good-case {
+  font-size: 12px !important;
+  color: white !important;
+  background-color: $darker-good-case !important;
+}
+
+.btn-good-case:hover {
+  background-color: $dark-good-case !important;
+}
+
+.btn-delete-case {
+  font-size: 12px !important;
+  color: white !important;
+  background-color: $darker-delete-case !important;
+}
+
+.btn-delete-case:hover {
+  background-color: $delete-case !important;
+}
+
+/* width */
+.w100-150px {
+  width: calc(100% - 150px) !important;
+}
+
+.w100-100px {
+  width: calc(100% - 100px) !important;
+}
+
+.w100-80px {
+  width: calc(100% - 80px) !important;
+}

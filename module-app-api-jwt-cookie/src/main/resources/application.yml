@@ -1,0 +1,138 @@
+spring:
+  jpa:
+    open-in-view: false
+  devtools:
+    # 프론트 수정 사항을 자동 반영
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  # 페이징 크기
+  data:
+    web:
+      pageable:
+        default-page-size: 15
+  servlet:
+    multipart:
+      # 한개의 파일의 최대 크기
+      max-file-size: 200MB
+      # form-data 요청에 따른 모든 파일의 최대 크기
+      max-request-size: 200MB
+      enabled: true
+server:
+  tomcat:
+    max-swallow-size: -1
+# jwt
+jwt:
+  header: Authorization
+  # HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용
+  # echo 'Project Test. com.suresoft.test developed by scribnote5 start date is 2021.06.16. this is secret key'|base64
+  secret: UHJvamVjdCBUZXN0LiBjb20uc3VyZXNvZnQudGVzdCBkZXZlbG9wZWQgYnkgc2NyaWJub3RlNSBzdGFydCBkYXRlIGlzIDIwMjEuMDYuMTYuIHRoaXMgaXMgc2VjcmV0IGtleQo=
+  # 하루: 60 * 60 * 24
+  token-validity-in-seconds: 86400
+# 변수
+title: sw-test-forum
+module:
+  name: module-app-api
+email:
+  sender: eslab533
+  password: eslabeslab533
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  jpa:
+    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        # sql 문을 가독성 좋게 출력한다.
+        format_sql: true
+        show_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    # test는 DB 이름으로서 생성한 DB 이름으로 변경 필요, 메인 메모리를 저장 장소로 사용한다.(휘발성)
+    url: jdbc:h2:mem:test;MODE=mysql;
+    # test는 DB 이름으로서 생성한 DB 이름으로 변경 필요, File을 저장 장소로 사용한다.(비휘발성)
+    # url: jdbc:h2:file:~/data/h2/testdb;MODE=MySQL
+    # 개인 아이디로 변경 필요하다.
+    username: scribnote5
+    # 개인 비밀번호로 변경 필요하다.
+    password: 123123123
+    driver-class-name: org.h2.Driver
+    # spring boot 2.x에서는 connection pool로 HikariCP를 사용한다.
+    # HikariCP 설정은 default value 값을 사용하였으며, HikariCP에서 추천하는 mysql 설정을 다음과 같이 적용하였다.
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+server:
+  port: 8082
+module-app-web:
+  url: http://localhost:8080
+module-app-api:
+  url: http://localhost:8081
+module-app-admin:
+  url: http://localhost:8082
+---
+# sql 문의 조건을 출력한다.
+#logging:
+  #level:
+    #org:
+      #hibernate:
+        #type:
+          #descriptor:
+            #sql: trace
+spring:
+  config:
+    activate:
+      on-profile: local
+  #jpa:
+    # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
+    #database-platform: org.hibernate.dialect.MariaDB103Dialect
+    #properties:
+      #hibernate:
+        # sql 문을 가독성 좋게 출력한다.
+        #format_sql: true
+        #show_sql: true
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum
+    username: scribnote5
+    password: 123123123
+    driver-class-name: org.mariadb.jdbc.Driver
+    # spring boot 2.x에서는 connection pool로 HikariCP를 사용
+    # HikariCP 설정은 default value 값을 사용하며, HikariCP에서 추천하는 mysql 설정 적용
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+server:
+  port: 8082
+module-app-web:
+  url: http://localhost:8080
+module-app-admin:
+  url: http://localhost:8081
+module-app-api:
+  url: http://localhost:8082

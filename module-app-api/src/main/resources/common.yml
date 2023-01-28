@@ -1,0 +1,39 @@
+spring:
+  jpa:
+    open-in-view: false
+  devtools:
+    # 프론트 수정 사항을 자동 반영
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  # 페이징 크기
+  data:
+    web:
+      pageable:
+        default-page-size: 15
+  servlet:
+    multipart:
+      # 한개의 파일의 최대 크기
+      max-file-size: 200MB
+      # form-data 요청에 따른 모든 파일의 최대 크기
+      max-request-size: 200MB
+      enabled: true
+server:
+  tomcat:
+    max-swallow-size: -1
+# jwt
+jwt:
+  header: Authorization
+  # HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용
+  # echo 'Project Test. com.suresoft.test developed by scribnote5 start date is 2021.06.16. this is secret key'|base64
+  secret: UHJvamVjdCBUZXN0LiBjb20uc3VyZXNvZnQudGVzdCBkZXZlbG9wZWQgYnkgc2NyaWJub3RlNSBzdGFydCBkYXRlIGlzIDIwMjEuMDYuMTYuIHRoaXMgaXMgc2VjcmV0IGtleQo=
+  # 3일: 60 * 60 * 24 * 3
+  token-validity-in-seconds: 259200
+# 변수
+title: sw-test-forum
+module:
+  name: module-app-api
+email:
+  sender: eslab533
+  password: eslabeslab533

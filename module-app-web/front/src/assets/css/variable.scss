@@ -1,0 +1,124 @@
+/* font-weight */
+$strong-font-weight: 700;
+$medium-font-weight: 500;
+$regular-font-weight: 400;
+$light-font-weight: 300;
+$thin-font-weight: 100;
+
+/* font-size */
+$largest-font-size: 24px;
+$larger-font-size: 20px;
+$large-font-size: 16px;
+$regular-font-size: 15px;
+$small-font-size: 14px;
+$smaller-font-size: 12px;
+$smallest-font-size: 10px;
+
+/* Color: https://www.colorhexa.com */
+/* Black */
+$darkest-main-black: rgb(10, 10, 10);
+$darker-main-black: rgb(20, 20, 20);
+$dark-main-black: rgb(30, 30, 30);
+$main-black: rgb(40, 40, 40);
+$light-main-black: rgb(50, 50, 50);
+$lighter-main-black: rgb(60, 60, 60);
+$lightest-main-black: rgb(70, 70, 70);
+
+/* Grey */
+$darker-custom-grey: rgb(52, 58, 64);
+$dark-custom-grey: rgb(66, 74, 78);
+
+$the-darkest-main-grey: rgb(70, 78, 84);
+$darkest-main-grey: rgb(82, 90, 98);
+$darker-main-grey: rgb(94, 103, 112);
+$dark-main-grey: rgb(105, 116, 126);
+$main-grey: rgb(117, 129, 140);
+$light-main-grey: rgb(131, 141, 151);
+$lighter-main-grey: rgb(145, 154, 163);
+$lightest-main-grey: rgb(159, 167, 175);
+
+/* Bad case, Good case delete */
+$darker-delete-case: rgb(167, 167, 167);
+$dark-delete-case: rgb(177, 177, 177);
+$delete-case: rgb(187, 187, 187);
+
+/* Disable */
+$select-disabled-main-grey: rgb(180, 180, 180);
+
+/* Navy */
+$darker-main-navy: rgb(44, 57, 75);
+$dark-main-navy: rgb(52, 67, 88);
+$main-navy: rgb(59, 76, 100);
+$light-main-navy: rgb(66, 85, 112);
+$lighter-main-navy: rgb(74, 95, 125);
+
+/* Dark Cyan */
+$darker-main-dark-cyan: rgb(71, 108, 120);
+$dark-main-dark-cyan: rgb(81, 123, 136);
+$main-dark-cyan: rgb(90, 137, 152);
+$light-main-dark-cyan: rgb(90, 137, 152);
+$lighter-main-dark-cyan: rgb(119, 161, 174);
+
+/* Ultramarine */
+$darker-main-light-ultra-marine: rgb(72, 74, 102);
+$dark-main-light-ultra-marine: rgb(80, 83, 113);
+$main-light-ultra-marine: rgb(88, 91, 125);
+$light-main-light-ultra-marine: rgb(96, 99, 137);
+$lighter-main-light-ultra-marine: rgb(104, 108, 148);
+
+/* Blue */
+$light-custom-blue: rgb(248, 249, 252);
+
+$darkest-main-blue: rgb(6, 44, 78);
+$darker-main-blue: rgb(8, 57, 102);
+$dark-main-blue: rgb(10, 71, 125);
+$main-blue: rgb(12, 84, 149);
+$light-main-blue: rgb(14, 97, 173);
+$lighter-main-blue: rgb(16, 111, 196);
+$lightest-main-blue: rgb(18, 124, 220);
+
+/* Red */
+$darkest-main-red: rgb(83, 37, 47);
+$darker-main-red: rgb(108, 37, 47);
+$dark-main-red: rgb(133, 37, 47);
+$main-red: rgb(158, 37, 41);
+$light-main-red: rgb(183, 37, 47);
+$lighter-main-red: rgb(208, 37, 47);
+$lightest-main-red: rgb(233, 37, 47);
+
+/* Orange */
+$darker-main-orange: rgb(255, 83, 20);
+$dark-main-orange: rgb(255, 98, 39);
+$main-orange: rgb(255, 112, 59);
+$light-main-orange: rgb(255, 126, 78);
+$lighter-main-orange: rgb(255, 141, 98);
+$lightest-main-orange: rgb(255, 155, 118);
+
+$light-custom-orange: rgb(255, 179, 39);
+
+/* bad case red */
+$darker-bad-case: rgb(255, 108, 106);
+$dark-bad-case: rgb(255, 146, 145);
+$bad-case: rgb(255, 185, 184); /* bad case */
+
+/* Green */
+$darker-main-green: rgb(0, 109, 0);
+$dark-main-green: rgb(0, 160, 0);
+$main-green: rgb(0, 135, 0);
+$light-main-green: rgb(0, 186, 0);
+$lighter-main-green: rgb(0, 211, 0);
+
+/* good case green */
+$darker-good-case: rgb(142, 223, 168);
+$dark-good-case: rgb(173, 231, 192);
+$good-case: rgb(203, 240, 215); /* good case */
+
+/* white */
+$darker-custom-white: rgb(200, 200, 200);
+$dark-custom-white: rgb(210, 210, 210);
+
+$darkest-main-white: rgb(237.5, 237.5, 237.5);
+$darker-main-white: rgb(242.5, 242.5, 242.5);
+$dark-main-white: rgb(247.5, 247.5, 247.5);
+$main-white: rgb(252.5, 252.5, 252.5);
+

@@ -1,0 +1,54 @@
+# sql 문의 조건을 출력한다.
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        type:
+#          descriptor:
+#            sql: trace
+spring:
+  config:
+    activate:
+      on-profile: local_master
+  jpa:
+  # DBMS 종류 및 버전의 문법에 해당되는 SQL 문을 생성한다.
+  #  database-platform: org.hibernate.dialect.MariaDB103Dialect
+  #    properties:
+  #      hibernate:
+  #        # sql 문을 가독성 좋게 출력한다.
+  #        format_sql: true
+  #        # sql 문에 색상을 입힌다.
+  #        highlight_sql: true
+  #        # sql 문을 보여준다.
+  #        show_sql: true
+  #        # sql 문 추가 주석을 보여준다.
+  #        use_sql_comment: true
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/sw_test_forum_local_master
+    username: scribnote5
+    password: 123123123
+    driver-class-name: org.mariadb.jdbc.Driver
+    # spring boot 2.x에서는 connection pool로 HikariCP를 사용
+    # HikariCP 설정은 default value 값을 사용하며, HikariCP에서 추천하는 mysql 설정 적용
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+server:
+  port: 8587
+localhost:
+  url: http://localhost:8585
+module-app-web:
+  url: http://localhost:8585
+module-app-admin:
+  url: http://localhost:8586
+module-app-api:
+  url: http://localhost:8587

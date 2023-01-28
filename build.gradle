@@ -1,0 +1,136 @@
+// 프로젝트 플러그인 의존성 라이브러리 관리 설정, subprojects 내에서 플러그인이 적용 가능하도록 의존성 라이브러리를 추가
+buildscript {
+    ext {
+        // Spring Boot 버전 지정
+        springBootVersion = "2.7.0"
+
+        // 의존성 라이브러리를 다운받는 원격 저장소 설정
+        repositories {
+            google()
+            mavenCentral()
+        }
+
+        // 의존성 라이브러리 선언
+        dependencies {
+            // Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that can you can "just run".
+            // We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss.
+            // Most Spring Boot applications need very little Spring configuration.
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+            // A Gradle plugin that provides Maven-like dependency management functionality
+            classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
+        }
+    }
+}
+
+// 모든 프로젝트 적용
+allprojects {
+    group 'kr.suresoft.forum'
+    version '1.0-SNAPSHOT'
+}
+
+// 하위 프로젝트 적용
+subprojects {
+    // Spring Boot 사용을 위한 플러그인 설정
+    apply plugin: "java"
+    apply plugin: "eclipse"
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: "idea"
+
+    // Java version
+    sourceCompatibility = 17
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    // 공통 의존성 라이브러리를 선언
+    dependencies {
+        // Spring Boot
+        implementation "org.springframework.boot:spring-boot-starter-web"
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+        implementation "org.springframework.boot:spring-boot-starter-security"
+        implementation "org.springframework.boot:spring-boot-starter-validation"
+        runtimeOnly "org.springframework.boot:spring-boot-devtools"
+
+        // Mapstruct
+        implementation "org.mapstruct:mapstruct:1.5.3.Final"
+        annotationProcessor "org.mapstruct:mapstruct-processor:1.5.3.Final"
+
+        // lombok
+        implementation "org.projectlombok:lombok"
+        implementation "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+        annotationProcessor "org.projectlombok:lombok"
+        annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+
+        // DB
+        runtimeOnly "com.h2database:h2"
+        runtimeOnly "org.mariadb.jdbc:mariadb-java-client"
+
+        // Test
+        testImplementation "org.springframework.boot:spring-boot-starter-test"
+    }
+}
+
+// 모듈 별 의존성 라이브러리 선언
+project(":module-system-common") {
+    dependencies {
+        implementation "javax.mail:javax.mail-api:1.6.2"
+    }
+}
+
+project(":module-domain-core") {
+    dependencies {
+        implementation project(":module-system-common")
+
+        implementation "org.apache.tika:tika-parsers:1.28.3"
+        implementation "com.querydsl:querydsl-core:5.0.0"
+        implementation "com.querydsl:querydsl-jpa:5.0.0"
+        implementation "com.maxmind.geoip2:geoip2:3.0.1"
+    }
+}
+
+project("module-web-core") {
+    dependencies {
+        implementation project(":module-system-common")
+        implementation project(":module-domain-core")
+    }
+}
+
+project(":module-app-web") {
+    dependencies {
+
+    }
+}
+
+project("module-app-api") {
+    dependencies {
+        implementation project(":module-system-common")
+        implementation project(":module-domain-core")
+        implementation project(":module-web-core")
+
+        implementation "org.apache.commons:commons-text:1.9"
+
+        implementation "io.jsonwebtoken:jjwt-api:0.11.5"
+        runtimeOnly "io.jsonwebtoken:jjwt-impl:0.11.5"
+        runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.5"
+    }
+}
+
+def queryDslProjects = [project(":module-domain-core")]
+configure(queryDslProjects) {
+    dependencies {
+        annotationProcessor("com.querydsl:querydsl-apt:${dependencyManagement.importedProperties["querydsl.version"]}:jpa")
+        // querydsl JPAAnnotationProcessor 사용 지정
+        annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+        // java.lang.NoClassDefFoundError(javax.annotation.Entity) 발생 대응
+        annotationProcessor("jakarta.annotation:jakarta.annotation-api")
+        // java.lang.NoClassDefFoundError (javax.annotation.Generated) 발생 대응
+    }
+
+    // clean 태스크 실행시 QClass 삭제
+    clean {
+        delete file("src/main/generated") // intelliJ Annotation processor Q객체 생성 위치
+    }
+}
