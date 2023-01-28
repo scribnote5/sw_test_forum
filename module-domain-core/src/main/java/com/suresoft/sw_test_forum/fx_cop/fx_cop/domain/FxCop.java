@@ -21,6 +21,8 @@ import java.time.LocalDateTime;
 public class FxCop extends CommonAudit {
     private String title;
 
+    private String originalTitle;
+
     private long priority;
 
     @Enumerated(EnumType.STRING)
@@ -39,6 +41,7 @@ public class FxCop extends CommonAudit {
     @Builder
     public FxCop(long idx, LocalDateTime createdDate, LocalDateTime lastModifiedDate, long createdByIdx, long lastModifiedByIdx, ActiveStatus activeStatus,
                     String title,
+                    String originalTitle,
                     long priority,
                     Frequency frequency,
                     long hashTagsIdx,
@@ -52,6 +55,7 @@ public class FxCop extends CommonAudit {
         setLastModifiedByIdx(lastModifiedByIdx);
         setActiveStatus(activeStatus);
         this.title = title;
+        this.originalTitle = originalTitle;
         this.priority = priority;
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
@@ -63,6 +67,7 @@ public class FxCop extends CommonAudit {
     public void update(FxCop fxCop) {
         setActiveStatus(fxCop.getActiveStatus());
         this.title = fxCop.getTitle();
+        this.originalTitle = fxCop.getOriginalTitle();
         this.priority = fxCop.getPriority();
         this.frequency = fxCop.getFrequency();
         this.hashTagsIdx = fxCop.getHashTagsIdx();

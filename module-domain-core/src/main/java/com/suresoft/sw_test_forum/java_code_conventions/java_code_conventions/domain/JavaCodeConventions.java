@@ -19,6 +19,8 @@ import java.time.LocalDateTime;
 public class JavaCodeConventions extends CommonAudit {
     private String title;
 
+    private String originalTitle;
+
     private long priority;
 
     @Enumerated(EnumType.STRING)
@@ -35,6 +37,7 @@ public class JavaCodeConventions extends CommonAudit {
     @Builder
     public JavaCodeConventions(long idx, LocalDateTime createdDate, LocalDateTime lastModifiedDate, long createdByIdx, long lastModifiedByIdx, ActiveStatus activeStatus,
                                String title,
+                               String originalTitle,
                                long priority,
                                Frequency frequency,
                                long hashTagsIdx,
@@ -48,6 +51,7 @@ public class JavaCodeConventions extends CommonAudit {
         setLastModifiedByIdx(lastModifiedByIdx);
         setActiveStatus(activeStatus);
         this.title = title;
+        this.originalTitle = originalTitle;
         this.priority = priority;
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
@@ -59,6 +63,7 @@ public class JavaCodeConventions extends CommonAudit {
     public void update(JavaCodeConventions javaCodeConventions) {
         setActiveStatus(javaCodeConventions.getActiveStatus());
         this.title = javaCodeConventions.getTitle();
+        this.originalTitle = javaCodeConventions.getOriginalTitle();
         this.priority = javaCodeConventions.getPriority();
         this.frequency = javaCodeConventions.getFrequency();
         this.hashTagsIdx = javaCodeConventions.getHashTagsIdx();

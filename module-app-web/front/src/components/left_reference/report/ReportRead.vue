@@ -42,8 +42,6 @@
           <tr class="d-none d-sm-none d-md-none d-lg-table-row">
             <th>유형</th>
             <td>
-              <span v-if="report.category == 'PROPOSAL'">제안서</span>
-              <span v-if="report.category == 'BUSINESS_REPORT'">사업 계획서</span>
               <span v-if="report.category == 'RELIABILITY_TEST_REPORT'">신뢰성시험 보고서</span>
               <span v-if="report.category == 'CONFERENCE'">회의 자료</span>
               <span v-if="report.category == 'ETC'">기타 자료</span>
@@ -55,8 +53,6 @@
             <td colspan="2">
               <Priority pageInformation="read" :priority="report.priority" :maxPriority=Number(6)></Priority>
               <strong>유형: </strong>
-              <span v-if="report.category == 'PROPOSAL'">제안서</span>
-              <span v-if="report.category == 'BUSINESS_REPORT'">사업 계획서</span>
               <span v-if="report.category == 'RELIABILITY_TEST_REPORT'">신뢰성시험 보고서</span>
               <span v-if="report.category == 'CONFERENCE'">회의 자료</span>
               <span v-if="report.category == 'ETC'">기타 자료</span>

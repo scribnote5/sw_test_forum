@@ -19,6 +19,8 @@ import java.time.LocalDateTime;
 public class CweJava extends CommonAudit {
     private String title;
 
+    private String originalTitle;
+
     private long priority;
 
     @Enumerated(EnumType.STRING)
@@ -35,6 +37,7 @@ public class CweJava extends CommonAudit {
     @Builder
     public CweJava(long idx, LocalDateTime createdDate, LocalDateTime lastModifiedDate, long createdByIdx, long lastModifiedByIdx, ActiveStatus activeStatus,
                    String title,
+                   String originalTitle,
                    long priority,
                    Frequency frequency,
                    long hashTagsIdx,
@@ -48,6 +51,7 @@ public class CweJava extends CommonAudit {
         setLastModifiedByIdx(lastModifiedByIdx);
         setActiveStatus(activeStatus);
         this.title = title;
+        this.originalTitle = originalTitle;
         this.priority = priority;
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
@@ -59,6 +63,7 @@ public class CweJava extends CommonAudit {
     public void update(CweJava cweJava) {
         setActiveStatus(cweJava.getActiveStatus());
         this.title = cweJava.getTitle();
+        this.originalTitle = cweJava.getOriginalTitle();
         this.priority = cweJava.getPriority();
         this.frequency = cweJava.getFrequency();
         this.hashTagsIdx = cweJava.getHashTagsIdx();

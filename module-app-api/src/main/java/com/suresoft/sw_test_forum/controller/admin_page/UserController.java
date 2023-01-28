@@ -145,7 +145,7 @@ public class UserController {
      */
     @GetMapping("/login/validation/username/{username}")
     public ResponseEntity<?> checkDuplicateUsernameWhenLogin(@PathVariable("username") String username) {
-        return new ResponseEntity<>(userService.isDuplicationUserByUsername(username), HttpStatus.OK);
+        return new ResponseEntity<>(userService.isDuplicationUserByUsername(username), HttpStatus.BAD_REQUEST);
     }
 
     /**

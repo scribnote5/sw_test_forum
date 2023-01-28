@@ -18,12 +18,19 @@
             <th colspan="2" class="sub-item-title">CWE Java 규칙 정보</th>
           </tr>
           <tr>
-            <th>규칙<span class="required-field">*</span></th>
+            <th>규칙명<span class="required-field">*</span></th>
             <td style="overflow: visible">
               <div class="autoComplete_wrapper">
                 <input type="text" name="title" v-model="title" class="form-control" placeholder="[111] 안전하지 않은 JNI 직접 사용">
                 <p id="titleErrorMessage" class="error-message"></p>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <th>영어 규칙명<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[111] Direct Use of Unsafe JNI">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
             </td>
           </tr>
           <tr>
@@ -166,6 +173,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     let title = ref("");
+    let originalTitle = ref("");
     let priority = ref(0);
     let frequency = ref("");
     let hashTags = ref("");
@@ -189,6 +197,7 @@ export default {
       )
           .then((response) => {
             title.value = response.data.title;
+            originalTitle.value = response.data.originalTitle;
             priority.value = response.data.priority;
             frequency.value = response.data.frequency;
             hashTags.value = response.data.hashTags;
@@ -251,6 +260,7 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value, 255)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value, 255)
           && validateLength("hashTags", hashTags.value, 255)
           && validateLength("staticTitle", staticTitle.value, 255)
           && validateLength("sparrowTitle", sparrowTitle.value, 255)
@@ -261,6 +271,7 @@ export default {
       axios.put(process.env.VUE_APP_MODULE_APP_API_URL + "/api/cwe-java/" + idx,
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -372,7 +383,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, staticTitle, sparrowTitle,
+      title, originalTitle, priority, frequency, hashTags, staticTitle, sparrowTitle,
       priorityArray,
 
       // function

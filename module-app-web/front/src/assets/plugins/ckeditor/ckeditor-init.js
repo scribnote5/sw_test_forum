@@ -59,33 +59,15 @@ const editorGeneralData = '';
 
 const editorRuleData =
     '<h5>' +
-    '    [규칙 요약(위배 원인 -> 수정 방법)]' +
+    '    [규칙 요약]' +
     '</h5>' +
     '<p>' +
     '   예제) Unreachable code는 불필요한 메모리 사용 및 명확한 개발 의도를 전달 할 수 없음' +
     '</p>' +
     '<p>' +
-    '   -> 프로그램 문법적으로 도달할 수 없는 코드는 개발 의도를 재확인하고 제거' +
+    '   -> 프로그램 문법적으로 도달할 수 없는 코드는 개발 의도를 재확인하고, 제거' +
     '</p>' +
     '<hr>' +
-    '<h5>' +
-    '    [위험 요인]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [예외 사항]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
     '<h5>' +
     '    [상세 설명]' +
     '</h5>' +
@@ -94,45 +76,11 @@ const editorRuleData =
     '</p>' +
     '<p>' +
     '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [비고]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [원문]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
     '</p>';
 
 let editorExampleData =
     '<h5>' +
-    '    [예제 요약(위배 원인 -> 수정 방법)]' +
-    '</h5>' +
-    '<p>' +
-    '   예제) 함수에서 사용하지 않는 매개변수 선언' +
-    '</p>' +
-    '<p>' +
-    '   -> 함수에서 사용하지 않는 매개변수 제거' +
-    '</p>' +
-    '<hr>' +
-    '<h5>' +
     '    [상세 설명]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
-    '</p>' +
-    '<p>' +
-    '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [비고]' +
     '</h5>' +
     '<p>' +
     '    -' +
@@ -140,16 +88,6 @@ let editorExampleData =
 
 let editorGuidelineData =
     '<h5>' +
-    '    [가이드라인 요약(위배 원인 -> 수정 방법)]' +
-    '</h5>' +
-    '<p>' +
-    '   예제) 함수에서 사용하지 않는 매개변수 선언' +
-    '</p>' +
-    '<p>' +
-    '   -> 함수에서 사용하지 않는 매개변수 제거' +
-    '</p>' +
-    '<hr>' +
-    '<h5>' +
     '    [상세 설명]' +
     '</h5>' +
     '<p>' +
@@ -157,12 +95,6 @@ let editorGuidelineData =
     '</p>' +
     '<p>' +
     '    &nbsp;' +
-    '</p>' +
-    '<h5>' +
-    '    [비고]' +
-    '</h5>' +
-    '<p>' +
-    '    -' +
     '</p>';
 
 let editorToolConfigurationData =
@@ -176,7 +108,7 @@ let editorToolConfigurationData =
     '    &nbsp;' +
     '</p>' +
     '<h5>' +
-    '    [관련 트러블슈팅]' +
+    '    [연관 트러블슈팅]' +
     '</h5>' +
     '<p>' +
     '    예제) tool-trouble-shooting/read/2' +
@@ -704,16 +636,6 @@ let editorConfig = {
             'editorResize'
         ],
         shouldNotGroupWhenFull: true
-    },
-
-    codeBlock: {
-        languages: [
-            {language: 'plaintext', label: 'Plain text', class: ''},
-            {language: 'c', label: 'C'},
-            {language: 'cpp', label: 'C++'},
-            {language: 'java', label: 'Java'},
-            {language: 'cs', label: 'C#'},
-        ]
     },
 
     heading: {

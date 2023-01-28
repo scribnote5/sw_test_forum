@@ -172,6 +172,7 @@ public class JavaCodeConventionsRepositoryImpl extends QuerydslRepositorySupport
                                 javaCodeConventions.views,
 
                                 javaCodeConventions.title,
+                                javaCodeConventions.originalTitle,
                                 javaCodeConventions.priority,
                                 javaCodeConventions.frequency,
                                 hashTags.content.as("hashTags"),

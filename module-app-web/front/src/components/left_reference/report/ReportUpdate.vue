@@ -33,8 +33,6 @@
             <th>유형<span class="required-field">*</span></th>
             <td>
               <select v-model="category" class="form-select">
-                <option value="PROPOSAL">제안서</option>
-                <option value="BUSINESS_REPORT">사업 계획서</option>
                 <option value="RELIABILITY_TEST_REPORT">신뢰성시험 보고서</option>
                 <option value="CONFERENCE">회의 자료</option>
                 <option value="ETC">기타 자료</option>

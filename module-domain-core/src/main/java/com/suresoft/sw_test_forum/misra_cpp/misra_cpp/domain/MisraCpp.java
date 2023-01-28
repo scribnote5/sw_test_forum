@@ -20,6 +20,8 @@ import java.time.LocalDateTime;
 public class MisraCpp extends CommonAudit {
     private String title;
 
+    private String originalTitle;
+
     private long priority;
 
     @Enumerated(EnumType.STRING)
@@ -37,6 +39,7 @@ public class MisraCpp extends CommonAudit {
     @Builder
     public MisraCpp(long idx, LocalDateTime createdDate, LocalDateTime lastModifiedDate, long createdByIdx, long lastModifiedByIdx, ActiveStatus activeStatus,
                     String title,
+                    String originalTitle,
                     long priority,
                     Frequency frequency,
                     long hashTagsIdx,
@@ -50,6 +53,7 @@ public class MisraCpp extends CommonAudit {
         setLastModifiedByIdx(lastModifiedByIdx);
         setActiveStatus(activeStatus);
         this.title = title;
+        this.originalTitle = originalTitle;
         this.priority = priority;
         this.frequency = frequency;
         this.hashTagsIdx = hashTagsIdx;
@@ -61,6 +65,7 @@ public class MisraCpp extends CommonAudit {
     public void update(MisraCpp misraCpp) {
         setActiveStatus(misraCpp.getActiveStatus());
         this.title = misraCpp.getTitle();
+        this.originalTitle = misraCpp.getOriginalTitle();
         this.priority = misraCpp.getPriority();
         this.frequency = misraCpp.getFrequency();
         this.hashTagsIdx = misraCpp.getHashTagsIdx();

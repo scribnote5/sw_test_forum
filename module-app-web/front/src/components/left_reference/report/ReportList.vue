@@ -16,11 +16,8 @@
             <option value="CREATED_BY">작성자</option>
           </select>
 
-
           <input v-if="searchType !== 'CATEGORY'" v-on:keyup.enter="searchList" v-model="searchKeyword" name="inputSearchKeyword" type="search" class="custom-search-input mx-2" placeholder="검색어">
           <select v-if="searchType === 'CATEGORY'" v-on:keyup.enter="searchList" v-model="searchKeyword" name="selectSearchKeyword" class="form-select form-select-sm mx-2" style="width: auto">
-            <option value="PROPOSAL">제안서</option>
-            <option value="BUSINESS_REPORT">사업 계획서</option>
             <option value="RELIABILITY_TEST_REPORT">신뢰성시험 보고서</option>
             <option value="CONFERENCE">회의 자료</option>
             <option value="ETC">기타 자료</option>
@@ -73,8 +70,6 @@
             </td>
             <!-- Desktop -->
             <td class="d-none d-lg-table-cell text-center">
-              <span v-if="report.category == 'PROPOSAL'">제안서</span>
-              <span v-if="report.category == 'BUSINESS_REPORT'">사업 계획서</span>
               <span v-if="report.category == 'RELIABILITY_TEST_REPORT'">신뢰성시험 보고서</span>
               <span v-if="report.category == 'CONFERENCE'">회의 자료</span>
               <span v-if="report.category == 'ETC'">기타 자료</span>
@@ -106,8 +101,6 @@
             </td>
             <!-- Desktop -->
             <td class="d-none d-lg-table-cell text-center">
-              <span v-if="report.category == 'PROPOSAL'">제안서</span>
-              <span v-if="report.category == 'BUSINESS_REPORT'">사업 계획서</span>
               <span v-if="report.category == 'RELIABILITY_TEST_REPORT'">신뢰성시험 보고서</span>
               <span v-if="report.category == 'CONFERENCE'">회의 자료</span>
               <span v-if="report.category == 'ETC'">기타 자료</span>

@@ -196,1044 +196,1044 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: Login,
-        meta: {title: 'SW Test Forum - 로그인', layoutView: false, authRequired: false}
+        meta: {title: 'SWITCH - 로그인', layoutView: false, authRequired: false}
     },
     {
         path: '/dashboard',
         name: 'Dashboard',
         component: Dashboard,
-        meta: {title: 'SW Test Forum - 대시보드', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 대시보드', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c/list',
         name: 'MisraCList',
         component: MisraCList,
-        meta: {title: 'SW Test Forum - MISRA C 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c/write',
         name: 'MisraCWrite',
         component: MisraCWrite,
-        meta: {title: 'SW Test Forum - MISRA C 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c/read/:idx',
         name: 'MisraCRead',
         component: MisraCRead,
-        meta: {title: 'SW Test Forum - MISRA C 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c/update/:idx',
         name: 'MisraCUpdate',
         component: MisraCUpdate,
-        meta: {title: 'SW Test Forum - MISRA C 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-example/list',
         name: 'MisraCExampleList',
         component: MisraCExampleList,
-        meta: {title: 'SW Test Forum - MISRA C 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-example/list/:misraCIdx',
         name: 'MisraCExampleListByMisraCIdx',
         component: MisraCExampleList,
-        meta: {title: 'SW Test Forum - MISRA C 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-example/write/:misraCIdx',
         name: 'MisraCExampleWrite',
         component: MisraCExampleWrite,
-        meta: {title: 'SW Test Forum - MISRA C 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-example/read/:idx',
         name: 'MisraCExampleRead',
         component: MisraCExampleRead,
-        meta: {title: 'SW Test Forum - MISRA C 예제 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 예제 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-example/read/from-rule-list/:idx',
         name: 'MisraCExampleReadFromRuleList',
         component: MisraCExampleRead,
-        meta: {title: 'SW Test Forum - MISRA C 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - MISRA C 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/misra-c-example/update/:idx',
         name: 'MisraCExampleUpdate',
         component: MisraCExampleUpdate,
-        meta: {title: 'SW Test Forum - MISRA C 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-guideline/list',
         name: 'MisraCGuidelineList',
         component: MisraCGuidelineList,
-        meta: {title: 'SW Test Forum - MISRA C 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-guideline/list/:misraCIdx',
         name: 'MisraCGuidelineListByMisraCIdx',
         component: MisraCGuidelineList,
-        meta: {title: 'SW Test Forum - MISRA C 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-guideline/write/:misraCIdx',
         name: 'MisraCGuidelineWrite',
         component: MisraCGuidelineWrite,
-        meta: {title: 'SW Test Forum - MISRA C 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-guideline/read/:idx',
         name: 'MisraCGuidelineRead',
         component: MisraCGuidelineRead,
-        meta: {title: 'SW Test Forum - MISRA C 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-c-guideline/read/from-rule-list/:idx',
         name: 'MisraCGuidelineReadFromRuleList',
         component: MisraCGuidelineRead,
-        meta: {title: 'SW Test Forum - MISRA C 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - MISRA C 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/misra-c-guideline/update/:idx',
         name: 'MisraCGuidelineUpdate',
         component: MisraCGuidelineUpdate,
-        meta: {title: 'SW Test Forum - MISRA C 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp/list',
         name: 'MisraCppList',
         component: MisraCppList,
-        meta: {title: 'SW Test Forum - MISRA C++ 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp/write',
         name: 'MisraCppWrite',
         component: MisraCppWrite,
-        meta: {title: 'SW Test Forum - MISRA C++ 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp/read/:idx',
         name: 'MisraCppRead',
         component: MisraCppRead,
-        meta: {title: 'SW Test Forum - MISRA C++ 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp/update/:idx',
         name: 'MisraCppUpdate',
         component: MisraCppUpdate,
-        meta: {title: 'SW Test Forum - MISRA C++ 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-example/list',
         name: 'MisraCppExampleList',
         component: MisraCppExampleList,
-        meta: {title: 'SW Test Forum - MISRA C++ 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-example/list/:misraCppIdx',
         name: 'MisraCppExampleListByMisraCppIdx',
         component: MisraCppExampleList,
-        meta: {title: 'SW Test Forum - MISRA C++ 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-example/write/:misraCppIdx',
         name: 'MisraCppExampleWrite',
         component: MisraCppExampleWrite,
-        meta: {title: 'SW Test Forum - MISRA C++ 예제 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 예제 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-example/read/:idx',
         name: 'MisraCppExampleRead',
         component: MisraCppExampleRead,
-        meta: {title: 'SW Test Forum - MISRA C++ 예제 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 예제 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-example/read/from-rule-list/:idx',
         name: 'MisraCppExampleReadFromRuleList',
         component: MisraCppExampleRead,
-        meta: {title: 'SW Test Forum - MISRA C++ 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - MISRA C++ 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/misra-cpp-example/update/:idx',
         name: 'MisraCppExampleUpdate',
         component: MisraCppExampleUpdate,
-        meta: {title: 'SW Test Forum - MISRA C++ 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/list',
         name: 'MisraCppGuidelineList',
         component: MisraCppGuidelineList,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/list/:misraCppIdx',
         name: 'MisraCppGuidelineListByMisraCppIdx',
         component: MisraCppGuidelineList,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/write/:misraCppIdx',
         name: 'MisraCppGuidelineWrite',
         component: MisraCppGuidelineWrite,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/read/:idx',
         name: 'MisraCppGuidelineRead',
         component: MisraCppGuidelineRead,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/misra-cpp-guideline/read/from-rule-list/:idx',
         name: 'MisraCppGuidelineReadFromRuleList',
         component: MisraCppGuidelineRead,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - MISRA C++ 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/misra-cpp-guideline/update/:idx',
         name: 'MisraCppGuidelineUpdate',
         component: MisraCppGuidelineUpdate,
-        meta: {title: 'SW Test Forum - MISRA C++ 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - MISRA C++ 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions/list',
         name: 'JavaCodeConventionsList',
         component: JavaCodeConventionsList,
-        meta: {title: 'SW Test Forum - Java Code Conventions 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions/write',
         name: 'JavaCodeConventionsWrite',
         component: JavaCodeConventionsWrite,
-        meta: {title: 'SW Test Forum - Java Code Conventions 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions/read/:idx',
         name: 'JavaCodeConventionsRead',
         component: JavaCodeConventionsRead,
-        meta: {title: 'SW Test Forum - Java Code Conventions 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions/update/:idx',
         name: 'JavaCodeConventionsUpdate',
         component: JavaCodeConventionsUpdate,
-        meta: {title: 'SW Test Forum - Java Code Conventions 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-example/list',
         name: 'JavaCodeConventionsExampleList',
         component: JavaCodeConventionsExampleList,
-        meta: {title: 'SW Test Forum - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-example/list/:javaCodeConventionsIdx',
         name: 'JavaCodeConventionsExampleListByJavaCodeConventionsIdx',
         component: JavaCodeConventionsExampleList,
-        meta: {title: 'SW Test Forum - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-example/write/:javaCodeConventionsIdx',
         name: 'JavaCodeConventionsExampleWrite',
         component: JavaCodeConventionsExampleWrite,
-        meta: {title: 'SW Test Forum - Java Code Conventions 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-example/read/:idx',
         name: 'JavaCodeConventionsExampleRead',
         component: JavaCodeConventionsExampleRead,
-        meta: {title: 'SW Test Forum - Java Code Conventions 예제 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 예제 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-example/read/from-rule-list/:idx',
         name: 'JavaCodeConventionsExampleReadFromRuleList',
         component: JavaCodeConventionsExampleRead,
-        meta: {title: 'SW Test Forum - Java Code Conventions 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - Java Code Conventions 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/java-code-conventions-example/update/:idx',
         name: 'JavaCodeConventionsExampleUpdate',
         component: JavaCodeConventionsExampleUpdate,
-        meta: {title: 'SW Test Forum - Java Code Conventions 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-guideline/list',
         name: 'JavaCodeConventionsGuidelineList',
         component: JavaCodeConventionsGuidelineList,
-        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-guideline/list/:javaCodeConventionsIdx',
         name: 'JavaCodeConventionsGuidelineListByJavaCodeConventionsIdx',
         component: JavaCodeConventionsGuidelineList,
-        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-guideline/write/:javaCodeConventionsIdx',
         name: 'JavaCodeConventionsGuidelineWrite',
         component: JavaCodeConventionsGuidelineWrite,
-        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-guideline/read/:idx',
         name: 'JavaCodeConventionsGuidelineRead',
         component: JavaCodeConventionsGuidelineRead,
-        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/java-code-conventions-guideline/read/from-rule-list/:idx',
         name: 'JavaCodeConventionsGuidelineReadFromRuleList',
         component: JavaCodeConventionsGuidelineRead,
-        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - Java Code Conventions 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/java-code-conventions-guideline/update/:idx',
         name: 'JavaCodeConventionsGuidelineUpdate',
         component: JavaCodeConventionsGuidelineUpdate,
-        meta: {title: 'SW Test Forum - Java Code Conventions 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - Java Code Conventions 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe/list',
         name: 'CweList',
         component: CweList,
-        meta: {title: 'SW Test Forum - CWE 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe/write',
         name: 'CweWrite',
         component: CweWrite,
-        meta: {title: 'SW Test Forum - CWE 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe/read/:idx',
         name: 'CweRead',
         component: CweRead,
-        meta: {title: 'SW Test Forum - CWE 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe/update/:idx',
         name: 'CweUpdate',
         component: CweUpdate,
-        meta: {title: 'SW Test Forum - CWE 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-example/list',
         name: 'CweExampleList',
         component: CweExampleList,
-        meta: {title: 'SW Test Forum - CWE 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-example/list/:cweIdx',
         name: 'CweExampleListByCweIdx',
         component: CweExampleList,
-        meta: {title: 'SW Test Forum - CWE 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-example/write/:cweIdx',
         name: 'CweExampleWrite',
         component: CweExampleWrite,
-        meta: {title: 'SW Test Forum - CWE 예제 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 예제 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-example/read/:idx',
         name: 'CweExampleRead',
         component: CweExampleRead,
-        meta: {title: 'SW Test Forum - CWE 예제 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 예제 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-example/read/from-rule-list/:idx',
         name: 'CweExampleReadFromRuleList',
         component: CweExampleRead,
-        meta: {title: 'SW Test Forum - CWE 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - CWE 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/cwe-example/update/:idx',
         name: 'CweExampleUpdate',
         component: CweExampleUpdate,
-        meta: {title: 'SW Test Forum - CWE 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-guideline/list',
         name: 'CweGuidelineList',
         component: CweGuidelineList,
-        meta: {title: 'SW Test Forum - CWE 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-guideline/list/:cweIdx',
         name: 'CweGuidelineListByCweIdx',
         component: CweGuidelineList,
-        meta: {title: 'SW Test Forum - CWE 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-guideline/write/:cweIdx',
         name: 'CweGuidelineWrite',
         component: CweGuidelineWrite,
-        meta: {title: 'SW Test Forum - CWE 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-guideline/read/:idx',
         name: 'CweGuidelineRead',
         component: CweGuidelineRead,
-        meta: {title: 'SW Test Forum - CWE 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-guideline/read/from-rule-list/:idx',
         name: 'CweGuidelineReadFromRuleList',
         component: CweGuidelineRead,
-        meta: {title: 'SW Test Forum - CWE 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - CWE 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/cwe-guideline/update/:idx',
         name: 'CweGuidelineUpdate',
         component: CweGuidelineUpdate,
-        meta: {title: 'SW Test Forum - CWE 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java/list',
         name: 'CweJavaList',
         component: CweJavaList,
-        meta: {title: 'SW Test Forum - CWE Java 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java/write',
         name: 'CweJavaWrite',
         component: CweJavaWrite,
-        meta: {title: 'SW Test Forum - CWE Java 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java/read/:idx',
         name: 'CweJavaRead',
         component: CweJavaRead,
-        meta: {title: 'SW Test Forum - CWE Java 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java/update/:idx',
         name: 'CweJavaUpdate',
         component: CweJavaUpdate,
-        meta: {title: 'SW Test Forum - CWE Java 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-example/list',
         name: 'CweJavaExampleList',
         component: CweJavaExampleList,
-        meta: {title: 'SW Test Forum - CWE Java 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-example/list/:cweJavaIdx',
         name: 'CweJavaExampleListByCweJavaIdx',
         component: CweJavaExampleList,
-        meta: {title: 'SW Test Forum - CWE Java 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-example/write/:cweJavaIdx',
         name: 'CweJavaExampleWrite',
         component: CweJavaExampleWrite,
-        meta: {title: 'SW Test Forum - CWE Java 예제 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 예제 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-example/read/:idx',
         name: 'CweJavaExampleRead',
         component: CweJavaExampleRead,
-        meta: {title: 'SW Test Forum - CWE Java 예제 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 예제 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-example/read/from-rule-list/:idx',
         name: 'CweJavaExampleReadFromRuleList',
         component: CweJavaExampleRead,
-        meta: {title: 'SW Test Forum - CWE Java 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - CWE Java 예제 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/cwe-java-example/update/:idx',
         name: 'CweJavaExampleUpdate',
         component: CweJavaExampleUpdate,
-        meta: {title: 'SW Test Forum - CWE Java 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-guideline/list',
         name: 'CweJavaGuidelineList',
         component: CweJavaGuidelineList,
-        meta: {title: 'SW Test Forum - CWE Java 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-guideline/list/:cweJavaIdx',
         name: 'CweJavaGuidelineListByCweJavaIdx',
         component: CweJavaGuidelineList,
-        meta: {title: 'SW Test Forum - CWE Java 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-guideline/write/:cweJavaIdx',
         name: 'CweJavaGuidelineWrite',
         component: CweJavaGuidelineWrite,
-        meta: {title: 'SW Test Forum - CWE Java 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-guideline/read/:idx',
         name: 'CweJavaGuidelineRead',
         component: CweJavaGuidelineRead,
-        meta: {title: 'SW Test Forum - CWE Java 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/cwe-java-guideline/read/from-rule-list/:idx',
         name: 'CweJavaGuidelineReadFromRuleList',
         component: CweJavaGuidelineRead,
-        meta: {title: 'SW Test Forum - CWE Java 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - CWE Java 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/cwe-java-guideline/update/:idx',
         name: 'CweJavaGuidelineUpdate',
         component: CweJavaGuidelineUpdate,
-        meta: {title: 'SW Test Forum - CWE Java 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - CWE Java 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop/list',
         name: 'StyleCopList',
         component: StyleCopList,
-        meta: {title: 'SW Test Forum - C# Coding Convention 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop/write',
         name: 'StyleCopWrite',
         component: StyleCopWrite,
-        meta: {title: 'SW Test Forum - C# Coding Convention 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop/read/:idx',
         name: 'StyleCopRead',
         component: StyleCopRead,
-        meta: {title: 'SW Test Forum - C# Coding Convention 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop/update/:idx',
         name: 'StyleCopUpdate',
         component: StyleCopUpdate,
-        meta: {title: 'SW Test Forum - C# Coding Convention 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/list',
         name: 'StyleCopExampleList',
         component: StyleCopExampleList,
-        meta: {title: 'SW Test Forum - C# Coding Convention 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/list/:styleCopIdx',
         name: 'StyleCopExampleListByStyleCopIdx',
         component: StyleCopExampleList,
-        meta: {title: 'SW Test Forum - C# Coding Convention 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/write/:styleCopIdx',
         name: 'StyleCopExampleWrite',
         component: StyleCopExampleWrite,
-        meta: {title: 'SW Test Forum - C# Coding Convention 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/read/:idx',
         name: 'StyleCopExampleRead',
         component: StyleCopExampleRead,
-        meta: {title: 'SW Test Forum - C# Coding Convention 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-example/read/from-rule-list/:idx',
         name: 'StyleCopExampleReadFromRuleList',
         component: StyleCopExampleRead,
-        meta: {title: 'SW Test Forum - C# Coding Convention 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - C# Coding Convention 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/style-cop-example/update/:idx',
         name: 'StyleCopExampleUpdate',
         component: StyleCopExampleUpdate,
-        meta: {title: 'SW Test Forum - C# Coding Convention 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/list',
         name: 'StyleCopGuidelineList',
         component: StyleCopGuidelineList,
-        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/list/:styleCopIdx',
         name: 'StyleCopGuidelineListByStyleCopIdx',
         component: StyleCopGuidelineList,
-        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/write/:styleCopIdx',
         name: 'StyleCopGuidelineWrite',
         component: StyleCopGuidelineWrite,
-        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/read/:idx',
         name: 'StyleCopGuidelineRead',
         component: StyleCopGuidelineRead,
-        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/style-cop-guideline/read/from-rule-list/:idx',
         name: 'StyleCopGuidelineReadFromRuleList',
         component: StyleCopGuidelineRead,
-        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - C# Coding Convention 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/style-cop-guideline/update/:idx',
         name: 'StyleCopGuidelineUpdate',
         component: StyleCopGuidelineUpdate,
-        meta: {title: 'SW Test Forum - C# Coding Convention 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - C# Coding Convention 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/list',
         name: 'FxCopList',
         component: FxCopList,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/write',
         name: 'FxCopWrite',
         component: FxCopWrite,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/read/:idx',
         name: 'FxCopRead',
         component: FxCopRead,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop/update/:idx',
         name: 'FxCopUpdate',
         component: FxCopUpdate,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/list',
         name: 'FxCopExampleList',
         component: FxCopExampleList,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/list/:fxCopIdx',
         name: 'FxCopExampleListByFxCopIdx',
         component: FxCopExampleList,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/write/:fxCopIdx',
         name: 'FxCopExampleWrite',
         component: FxCopExampleWrite,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/read/:idx',
         name: 'FxCopExampleRead',
         component: FxCopExampleRead,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-example/read/from-rule-list/:idx',
         name: 'FxCopExampleReadFromRuleList',
         component: FxCopExampleRead,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/fx-cop-example/update/:idx',
         name: 'FxCopExampleUpdate',
         component: FxCopExampleUpdate,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/list',
         name: 'FxCopGuidelineList',
         component: FxCopGuidelineList,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/list/:fxCopIdx',
         name: 'FxCopGuidelineListByFxCopIdx',
         component: FxCopGuidelineList,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/write/:fxCopIdx',
         name: 'FxCopGuidelineWrite',
         component: FxCopGuidelineWrite,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/read/:idx',
         name: 'FxCopGuidelineRead',
         component: FxCopGuidelineRead,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/fx-cop-guideline/read/from-rule-list/:idx',
         name: 'FxCopGuidelineReadFromRuleList',
         component: FxCopGuidelineRead,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/fx-cop-guideline/update/:idx',
         name: 'FxCopGuidelineUpdate',
         component: FxCopGuidelineUpdate,
-        meta: {title: 'SW Test Forum - .NET Framework Design Guideline 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - .NET Framework Design Guideline 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/metric/list',
         name: 'MetricList',
         component: MetricList,
-        meta: {title: 'SW Test Forum - 메트릭 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/metric/write',
         name: 'MetricWrite',
         component: MetricWrite,
-        meta: {title: 'SW Test Forum - 메트릭 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/metric/read/:idx',
         name: 'MetricRead',
         component: MetricRead,
-        meta: {title: 'SW Test Forum - 메트릭 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/metric/update/:idx',
         name: 'MetricUpdate',
         component: MetricUpdate,
-        meta: {title: 'SW Test Forum - 메트릭 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-example/list',
         name: 'MetricExampleList',
         component: MetricExampleList,
-        meta: {title: 'SW Test Forum - 메트릭 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-example/list/:metricIdx',
         name: 'MetricExampleListByMetricIdx',
         component: MetricExampleList,
-        meta: {title: 'SW Test Forum - 메트릭 예제 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 예제 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-example/write/:metricIdx',
         name: 'MetricExampleWrite',
         component: MetricExampleWrite,
-        meta: {title: 'SW Test Forum - 메트릭 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-example/read/:idx',
         name: 'MetricExampleRead',
         component: MetricExampleRead,
-        meta: {title: 'SW Test Forum - 메트릭 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-example/read/from-rule-list/:idx',
         name: 'MetricExampleReadFromRuleList',
         component: MetricExampleRead,
-        meta: {title: 'SW Test Forum - 메트릭 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - 메트릭 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/metric-example/update/:idx',
         name: 'MetricExampleUpdate',
         component: MetricExampleUpdate,
-        meta: {title: 'SW Test Forum - 메트릭 예제 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 메트릭 예제 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-guideline/list',
         name: 'MetricGuidelineList',
         component: MetricGuidelineList,
-        meta: {title: 'SW Test Forum - 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-guideline/list/:metricIdx',
         name: 'MetricGuidelineListByMetricIdx',
         component: MetricGuidelineList,
-        meta: {title: 'SW Test Forum - 가이드라인 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 가이드라인 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-guideline/write/:metricIdx',
         name: 'MetricGuidelineWrite',
         component: MetricGuidelineWrite,
-        meta: {title: 'SW Test Forum - 가이드라인 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 가이드라인 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-guideline/read/:idx',
         name: 'MetricGuidelineRead',
         component: MetricGuidelineRead,
-        meta: {title: 'SW Test Forum - 가이드라인 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 가이드라인 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/metric-guideline/read/from-rule-list/:idx',
         name: 'MetricGuidelineReadFromRuleList',
         component: MetricGuidelineRead,
-        meta: {title: 'SW Test Forum - 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
+        meta: {title: 'SWITCH - 가이드라인 보기', layoutView: true, authRequired: true, fromRuleList: true}
     },
     {
         path: '/metric-guideline/update/:idx',
         name: 'MetricGuidelineUpdate',
         component: MetricGuidelineUpdate,
-        meta: {title: 'SW Test Forum - 가이드라인 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 가이드라인 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-configuration/list',
         name: 'ToolConfigurationList',
         component: ToolConfigurationList,
-        meta: {title: 'SW Test Forum - 도구 환경 설정 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 환경 설정 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-configuration/write',
         name: 'ToolConfigurationWrite',
         component: ToolConfigurationWrite,
-        meta: {title: 'SW Test Forum - 도구 환경 설정 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 환경 설정 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-configuration/read/:idx',
         name: 'ToolConfigurationRead',
         component: ToolConfigurationRead,
-        meta: {title: 'SW Test Forum - 도구 환경 설정 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 환경 설정 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-configuration/update/:idx',
         name: 'ToolConfigurationUpdate',
         component: ToolConfigurationUpdate,
-        meta: {title: 'SW Test Forum - 도구 환경 설정 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 환경 설정 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-trouble-shooting/list',
         name: 'ToolTroubleShootingList',
         component: ToolTroubleShootingList,
-        meta: {title: 'SW Test Forum - 도구 트러블 슈팅 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 트러블 슈팅 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-trouble-shooting/write',
         name: 'ToolTroubleShootingWrite',
         component: ToolTroubleShootingWrite,
-        meta: {title: 'SW Test Forum - 도구 트러블 슈팅 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 트러블 슈팅 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-trouble-shooting/read/:idx',
         name: 'ToolTroubleShootingRead',
         component: ToolTroubleShootingRead,
-        meta: {title: 'SW Test Forum - 도구 트러블 슈팅 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 트러블 슈팅 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-trouble-shooting/update/:idx',
         name: 'ToolTroubleShootingUpdate',
         component: ToolTroubleShootingUpdate,
-        meta: {title: 'SW Test Forum - 도구 트러블 슈팅 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 트러블 슈팅 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-usage-method/list',
         name: 'ToolUsageMethodList',
         component: ToolUsageMethodList,
-        meta: {title: 'SW Test Forum - 도구 사용 방법 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 사용 방법 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-usage-method/write',
         name: 'ToolUsageMethodWrite',
         component: ToolUsageMethodWrite,
-        meta: {title: 'SW Test Forum - 도구 사용 방법 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 사용 방법 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-usage-method/read/:idx',
         name: 'ToolUsageMethodRead',
         component: ToolUsageMethodRead,
-        meta: {title: 'SW Test Forum - 도구 사용 방법 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 사용 방법 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/tool-usage-method/update/:idx',
         name: 'ToolUsageMethodUpdate',
         component: ToolUsageMethodUpdate,
-        meta: {title: 'SW Test Forum - 도구 사용 방법 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 도구 사용 방법 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/notice/list',
         name: 'NoticeList',
         component: NoticeList,
-        meta: {title: 'SW Test Forum - 공지사항 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 공지사항 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/notice/write',
         name: 'NoticeWrite',
         component: NoticeWrite,
-        meta: {title: 'SW Test Forum - 공지사항 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 공지사항 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/notice/read/:idx',
         name: 'NoticeRead',
         component: NoticeRead,
-        meta: {title: 'SW Test Forum - 공지사항 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 공지사항 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/notice/update/:idx',
         name: 'NoticeUpdate',
         component: NoticeUpdate,
-        meta: {title: 'SW Test Forum - 공지사항 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 공지사항 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/user/list',
         name: 'userList',
         component: UserList,
-        meta: {title: 'SW Test Forum - 사용자 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 사용자 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/user/write',
         name: 'userWrite',
         component: UserWrite,
-        meta: {title: 'SW Test Forum - 사용자 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 사용자 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/user/read/:idx',
         name: 'userRead',
         component: UserRead,
-        meta: {title: 'SW Test Forum - 사용자 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 사용자 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/user/update/:idx',
         name: 'userUpdate',
         component: UserUpdate,
-        meta: {title: 'SW Test Forum - 사용자 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 사용자 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/login-history/list',
         name: 'loginHistoryList',
         component: LoginHistoryList,
-        meta: {title: 'SW Test Forum - 로그인 기록 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 로그인 기록 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/login-history/read/:idx',
         name: 'loginHistoryRead',
         component: LoginHistoryRead,
-        meta: {title: 'SW Test Forum - 로그인 기록 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 로그인 기록 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/data-history/list',
         name: 'dataHistoryList',
         component: DataHistoryList,
-        meta: {title: 'SW Test Forum - 데이터 기록 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 데이터 기록 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/data-history/read/:idx',
         name: 'dataHistoryRead',
         component: DataHistoryRead,
-        meta: {title: 'SW Test Forum - 데이터 기록 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 데이터 기록 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/dynamic-test/list',
         name: 'dynamicTestList',
         component: dynamicTestList,
-        meta: {title: 'SW Test Forum - 동적시험 미달성 코드 분석 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 동적시험 미달성 코드 분석 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/dynamic-test/write',
         name: 'dynamicTestWrite',
         component: dynamicTestWrite,
-        meta: {title: 'SW Test Forum - 동적시험 미달성 코드 분석 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 동적시험 미달성 코드 분석 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/dynamic-test/read/:idx',
         name: 'dynamicTestRead',
         component: dynamicTestRead,
-        meta: {title: 'SW Test Forum - 동적시험 미달성 코드 분석 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 동적시험 미달성 코드 분석 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/dynamic-test/update/:idx',
         name: 'dynamicTestUpdate',
         component: dynamicTestUpdate,
-        meta: {title: 'SW Test Forum - 동적시험 미달성 코드 분석 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 동적시험 미달성 코드 분석 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/report/list',
         name: 'ReportList',
         component: ReportList,
-        meta: {title: 'SW Test Forum - 보고서 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 보고서 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/report/write',
         name: 'ReportWrite',
         component: ReportWrite,
-        meta: {title: 'SW Test Forum - 보고서 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 보고서 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/report/read/:idx',
         name: 'ReportRead',
         component: ReportRead,
-        meta: {title: 'SW Test Forum - 보고서 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 보고서 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/report/update/:idx',
         name: 'ReportUpdate',
         component: ReportUpdate,
-        meta: {title: 'SW Test Forum - 보고서 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 보고서 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/storage/list',
         name: 'StorageList',
         component: StorageList,
-        meta: {title: 'SW Test Forum - 지식 저장소 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 지식 저장소 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/storage/write',
         name: 'StorageWrite',
         component: StorageWrite,
-        meta: {title: 'SW Test Forum - 지식 저장소 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 지식 저장소 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/storage/read/:idx',
         name: 'StorageRead',
         component: StorageRead,
-        meta: {title: 'SW Test Forum - 지식 저장소 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 지식 저장소 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/storage/update/:idx',
         name: 'StorageUpdate',
         component: StorageUpdate,
-        meta: {title: 'SW Test Forum - 지식 저장소 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 지식 저장소 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/question-answer/list',
         name: 'QuestionAnswerList',
         component: QuestionAnswerList,
-        meta: {title: 'SW Test Forum - 질문 답변 리스트', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 질문 답변 리스트', layoutView: true, authRequired: true}
     },
     {
         path: '/question-answer/question/write',
         name: 'QuestionWrite',
         component: QuestionWrite,
-        meta: {title: 'SW Test Forum - 질문 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 질문 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/question-answer/answer/write/:groupIdx',
         name: 'AnswerWrite',
         component: AnswerWrite,
-        meta: {title: 'SW Test Forum - 답변 작성', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 답변 작성', layoutView: true, authRequired: true}
     },
     {
         path: '/question-answer/read/:idx',
         name: 'QuestionAnswerRead',
         component: QuestionAnswerRead,
-        meta: {title: 'SW Test Forum - 질문 답변 보기', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 질문 답변 보기', layoutView: true, authRequired: true}
     },
     {
         path: '/question-answer/question/update/:idx',
         name: 'QuestionUpdate',
         component: QuestionUpdate,
-        meta: {title: 'SW Test Forum - 질문 질문 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 질문 질문 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/question-answer/answer/update/:idx',
         name: 'AnswerUpdate',
         component: AnswerUpdate,
-        meta: {title: 'SW Test Forum - 질문 답변 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 질문 답변 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/setting/update',
         name: 'SettingUpdate',
         component: SettingUpdate,
-        meta: {title: 'SW Test Forum - 설정 수정', layoutView: true, authRequired: true}
+        meta: {title: 'SWITCH - 설정 수정', layoutView: true, authRequired: true}
     },
     {
         path: '/:pathMatch(.*)',
         name: 'Error404',
-        meta: {title: 'SW Test Forum - 에러 페이지', layoutView: false, authRequired: false}
+        meta: {title: 'SWITCH - 에러 페이지', layoutView: false, authRequired: false}
     }
 ]
 

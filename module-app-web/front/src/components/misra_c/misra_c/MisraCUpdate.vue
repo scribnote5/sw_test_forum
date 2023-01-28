@@ -27,6 +27,13 @@
             </td>
           </tr>
           <tr>
+            <th>영어 규칙명<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[02_01] A project shall not contain unreachable code">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
             <th>우선순위<span class="required-field">*</span></th>
             <td>
               <Priority pageInformation="update" :priority=Number(priority) :maxPriority=Number(6) :priorityArray=priorityArray></Priority>
@@ -202,6 +209,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     let title = ref("");
+    let originalTitle = ref("");
     let priority = ref(0);
     let frequency = ref("");
     let hashTags = ref("");
@@ -232,6 +240,7 @@ export default {
       )
           .then((response) => {
             title.value = response.data.title;
+            originalTitle.value = response.data.originalTitle;
             priority.value = response.data.priority;
             frequency.value = response.data.frequency;
             hashTags.value = response.data.hashTags;
@@ -312,11 +321,12 @@ export default {
 
       // appliesTo 값 초기화
       appliesTo.value = [];
-      if (!isEmpty(appliesToC90.value[0])) appliesTo.value.push(appliesToC90.value[0]);
-      if (!isEmpty(appliesToC99.value[0])) appliesTo.value.push(appliesToC99.value[0]);
-      if (!isEmpty(appliesToC11.value[0])) appliesTo.value.push(appliesToC11.value[0]);
+      if(!isEmpty(appliesToC90.value[0])) appliesTo.value.push(appliesToC90.value[0]);
+      if(!isEmpty(appliesToC99.value[0])) appliesTo.value.push(appliesToC99.value[0]);
+      if(!isEmpty(appliesToC11.value[0])) appliesTo.value.push(appliesToC11.value[0]);
 
       if (!(validateLengthAndIsEmpty("title", title.value, 255)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value, 255)
           && validateLength("hashTags", hashTags.value, 255)
           && validateLength("category", category.value, 255)
           && validateLength("scope", scope.value, 255)
@@ -329,6 +339,7 @@ export default {
       axios.put(process.env.VUE_APP_MODULE_APP_API_URL + "/api/misra-c/" + idx,
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -443,7 +454,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, category, scope, decidability, appliesTo, qacTitle,
+      title, originalTitle, priority, frequency, hashTags, category, scope, decidability, appliesTo, qacTitle,
       appliesToC90, appliesToC99, appliesToC11,
       priorityArray,
 

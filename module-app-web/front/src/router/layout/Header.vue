@@ -4,7 +4,7 @@
     <div class="container-fluid d-flex justify-content-between ">
       <div class="d-flex align-items-center">
         <div class="logo-wrapper border-end d-flex">
-          <router-link to="/dashboard"><img :src="require(`@/assets/images/logo.png`)" class="logo"/></router-link>
+          <router-link to="/dashboard"><img :src="require(`@/assets/images/logo.svg`)" class="logo"/></router-link>
         </div>
         <div class="d-flex align-items-center ms-1">
           <div id="showSidebar" class="icon-wrapper ms-2 d-sm-flex d-md-none">

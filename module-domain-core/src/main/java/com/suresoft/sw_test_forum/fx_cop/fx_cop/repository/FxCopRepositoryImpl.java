@@ -166,6 +166,7 @@ public class FxCopRepositoryImpl extends QuerydslRepositorySupport {
                                 fxCop.views,
 
                                 fxCop.title,
+                                fxCop.originalTitle,
                                 fxCop.priority,
                                 fxCop.frequency,
                                 hashTags.content.as("hashTags"),

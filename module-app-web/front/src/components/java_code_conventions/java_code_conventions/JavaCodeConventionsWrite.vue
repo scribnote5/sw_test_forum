@@ -27,6 +27,13 @@
             </td>
           </tr>
           <tr>
+            <th>영어 규칙명<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="Method declaration must be separated">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
             <th>우선순위<span class="required-field">*</span></th>
             <td>
               <Priority pageInformation="write" :priority=Number(priority) :maxPriority=Number(6) :priorityArray=priorityArray></Priority>
@@ -141,6 +148,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     const title = ref("");
+    const originalTitle = ref("");
     const priority = ref(6);
     const frequency = ref("AVERAGE");
     const hashTags = ref("");
@@ -208,6 +216,7 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value, 255)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value, 255)
           && validateLength("hashTags", hashTags.value, 255)
           && validateLength("staticTitle", staticTitle.value, 255)
           && validateLength("sparrowTitle", sparrowTitle.value, 255)
@@ -218,6 +227,7 @@ export default {
       isExit = await axios.post(process.env.VUE_APP_MODULE_APP_API_URL + "/api/java-code-conventions",
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -284,7 +294,7 @@ export default {
     return {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
-      title, priority, frequency, hashTags, staticTitle, sparrowTitle, activeStatus,
+      title, originalTitle, priority, frequency, hashTags, staticTitle, sparrowTitle, activeStatus,
       priorityArray,
 
       // function

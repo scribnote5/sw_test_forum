@@ -17,6 +17,7 @@
           <tr>
             <td colspan="2">
               <h2 class="mobile-title">{{ fxCop.title }}</h2>
+              <h5 class="mobile-original-title">{{ fxCop.originalTitle }}</h5>
             </td>
           </tr>
           <tr>
@@ -135,7 +136,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="2" class="sub-item-title">.NET Framework Design Guideline 가이드라인</th>
+            <th colspan="2" class="sub-item-title">.NET Framework Design Guideline 규칙 가이드라인</th>
           </tr>
           <tr>
             <td colspan="2">

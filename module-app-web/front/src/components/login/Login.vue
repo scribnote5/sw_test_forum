@@ -10,10 +10,11 @@
             <div class="col-sm-0 col-md-2 card-side"></div>
             <div class="col-sm-12 col-md-10 card-body">
               <div class="brand-wrapper">
-                <img :src="require(`@/assets/images/logo.png`)" class="logo"/>
+                <img :src="require(`@/assets/images/logo.svg`)" class="logo"/>
               </div>
               <p class="login-card-description">
-<!--                SW Test Forum-->
+                <span style="color:red">SW</span> reliability <span style="color:red">I</span>nforma<span style="color:red">T</span>ion <span style="color:red">CH</span>annel<br>
+                : SWITCH
               </p>
               <div class="mb-4">
                 <input type="text" v-model="loginUsername" id="loginUsername" class="form-control" placeholder="ID">
@@ -22,12 +23,15 @@
               <div class="mb-4 text-center">
                 <button @click="login()" class="btn btn-block login-btn">로그인</button>
               </div>
-              <div class="mb-2 mb-md-3">
+              <div class="mb-1 mb-md-2">
                 <span data-bs-toggle="modal" data-bs-target="#inquireModal" class="forgot-password-link cursor-pointer">계정 관련 문의</span>
               </div>
-              <div class="mb-2 mb-md-3">
+              <div class="mb-1 mb-md-2">
                 <span class="login-card-register-question-text">계정이 없다면?</span> &nbsp;
                 <span data-bs-toggle="modal" data-bs-target="#joinModal" class="login-card-register-text cursor-pointer">회원 가입</span>
+              </div>
+              <div class="mb-1 mb-md-2">
+                <span class="alert-message">* 크로미엄 기반 브라우저(크롬, 엣지)를 사용해주세요.</span>
               </div>
             </div>
           </div>
@@ -49,7 +53,7 @@
                 {{ managerUser.department }} {{ managerUser.name }}
                 <span v-if="managerUser.position == 'A_EXECUTIVES'">임원</span>
                 <span v-if="managerUser.position == 'B_PRINCIPAL_RESEARCH_ENGINEER'">수석연구원</span>
-                <span v-if="managerUser.position == 'C_SENIOR_RESEARCH_ENGINEER'">책임연구원</span>
+                <span v-if="managerUser.position == 'C_SENIOR_RESEARCH_ENGINEER'">전문연구원</span>
                 <span v-if="managerUser.position == 'D_RESEARCH_ENGINEER'">선임연구원</span>
                 <span v-if="managerUser.position == 'E_ASSOCIATE_RESEARCH_ENGINEER'">연구원</span>
                 <span v-if="managerUser.position == 'F_GENERAL_MANAGER'">부장</span>
@@ -65,6 +69,7 @@
                     <img :src="require(`@/assets/images/mail-main-blue.svg`)" class="me-1"/>
                   </a>
                 </span>
+
               </div>
 
               <div class="d-flex justify-content-end mx-4 mt-4">
@@ -102,7 +107,10 @@
                     <th colspan="2" class="sub-item-title">사용자 정보</th>
                   </tr>
                   <tr>
-                    <th>아이디<span class="required-field">*</span></th>
+                    <th>
+                      아이디<span class="required-field">*</span><br>
+                      <span class="mention-field">Circle 아이디로 가입 부탁드립니다.</span>
+                    </th>
                     <td>
                       <input type="text" name="username" v-model="username" class="form-control" @change="validateUsername('username', username)">
                       <p id="usernameErrorMessage" class="error-message"></p>
@@ -141,7 +149,7 @@
                       <select v-model="position" class="form-select">
                         <option value="A_EXECUTIVES">임원</option>
                         <option value="B_PRINCIPAL_RESEARCH_ENGINEER">수석연구원</option>
-                        <option value="C_SENIOR_RESEARCH_ENGINEER">책임연구원</option>
+                        <option value="C_SENIOR_RESEARCH_ENGINEER">전문연구원</option>
                         <option value="D_RESEARCH_ENGINEER">선임연구원</option>
                         <option value="E_ASSOCIATE_RESEARCH_ENGINEER">연구원</option>
                         <option value="F_GENERAL_MANAGER">부장</option>
@@ -262,7 +270,7 @@ section {
   }
 
   .card-side {
-    background-color: $main-blue;
+    background-color: rgb(243, 115, 33);
   }
 
   .card-body {
@@ -360,7 +368,19 @@ import {fileUpload} from "@/assets/plugins/file-upload/file-upload";
 import {convertFileSize} from "@/utils/converter-util";
 import {isEmpty} from "@/utils/empty-util";
 // utils
-import {deleteArrayIndexIsEmpty, parseLoginErrorMsg, parseApiErrorMsg, validateContact, onEditorReady, validateEditor, validateEmail, validateLength, validateLengthAndIsEmpty, validatePassword, validateUsername} from "@/utils/validation-util";
+import {
+  deleteArrayIndexIsEmpty,
+  parseLoginErrorMsg,
+  parseApiErrorMsg,
+  validateContact,
+  onEditorReady,
+  validateEditor,
+  validateEmail,
+  validateLength,
+  validateLengthAndIsEmpty,
+  validatePassword,
+  validateUsername
+} from "@/utils/validation-util";
 import {createAutoComplete} from "@/assets/plugins/auto-complete/auto-complete";
 import {fireSuccessToast} from "@/assets/plugins/sweetalert2/sweetalert2";
 

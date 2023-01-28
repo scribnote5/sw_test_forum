@@ -17,6 +17,7 @@
           <tr>
             <td colspan="2">
               <h2 class="mobile-title">{{ styleCop.title }}</h2>
+              <h5 class="mobile-original-title">{{ styleCop.originalTitle }}</h5>
             </td>
           </tr>
           <tr>

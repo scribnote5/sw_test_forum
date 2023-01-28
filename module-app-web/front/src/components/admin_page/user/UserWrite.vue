@@ -18,7 +18,10 @@
             <th colspan="2" class="sub-item-title">사용자 정보</th>
           </tr>
           <tr>
-            <th>아이디<span class="required-field">*</span></th>
+            <th>
+              아이디<span class="required-field">*</span><br>
+              <span class="mention-field">Circle 아이디로 가입 부탁드립니다.</span>
+            </th>
             <td>
               <input type="text" name="username" v-model="username" class="form-control" @change="validateUsername('username', username)">
               <p id="usernameErrorMessage" class="error-message"></p>
@@ -57,7 +60,7 @@
               <select v-model="position" class="form-select">
                 <option value="A_EXECUTIVES">임원</option>
                 <option value="B_PRINCIPAL_RESEARCH_ENGINEER">수석연구원</option>
-                <option value="C_SENIOR_RESEARCH_ENGINEER">책임연구원</option>
+                <option value="C_SENIOR_RESEARCH_ENGINEER">전문연구원</option>
                 <option value="D_RESEARCH_ENGINEER">선임연구원</option>
                 <option value="E_ASSOCIATE_RESEARCH_ENGINEER">연구원</option>
                 <option value="F_GENERAL_MANAGER">부장</option>

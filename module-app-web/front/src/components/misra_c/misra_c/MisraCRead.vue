@@ -17,6 +17,7 @@
           <tr>
             <td colspan="2">
               <h2 class="mobile-title">{{ misraC.title }}</h2>
+              <h5 class="mobile-original-title">{{ misraC.originalTitle }}</h5>
             </td>
           </tr>
           <tr>

@@ -172,6 +172,7 @@ public class CweJavaRepositoryImpl extends QuerydslRepositorySupport {
                                 cweJava.views,
 
                                 cweJava.title,
+                                cweJava.originalTitle,
                                 cweJava.priority,
                                 cweJava.frequency,
                                 hashTags.content.as("hashTags"),

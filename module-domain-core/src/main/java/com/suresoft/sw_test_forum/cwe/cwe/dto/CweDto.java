@@ -27,6 +27,10 @@ public class CweDto extends CommonDto {
     @Size(max = 255, message = "'규칙명'의 길이는 255 보다 작아야 합니다.")
     private String title;
 
+    @NotBlank(message = "'영어 규칙명'는 공란이 될 수 없습니다.")
+    @Size(max = 255, message = "'영어 규칙명'의 길이는 255 보다 작아야 합니다.")
+    private String originalTitle;
+
     @Max(value = 6, message = "'우선순위'는 6 보다 작아야 합니다.")
     @Min(value = 1, message = "'우선순위'는 1 보다 커야 합니다.")
     private long priority;

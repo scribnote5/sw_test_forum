@@ -4,7 +4,7 @@ public enum Position {
     // 앞에 있는 알파뱃은 사용자 페이지에서 정렬 순서를 의미한다.
     A_EXECUTIVES("임원"),
     B_PRINCIPAL_RESEARCH_ENGINEER("수석연구원"),
-    C_SENIOR_RESEARCH_ENGINEER("책임연구원"),
+    C_SENIOR_RESEARCH_ENGINEER("전문연구원"),
     D_RESEARCH_ENGINEER("선임연구원"),
     E_ASSOCIATE_RESEARCH_ENGINEER("연구원"),
     F_GENERAL_MANAGER("부장"),

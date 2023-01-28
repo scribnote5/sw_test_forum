@@ -12,6 +12,7 @@ CREATE TABLE misra_c
     views                bigint default 0,
 
     title                varchar(255)  null,
+    original_title       varchar(255)  null,
     priority             bigint default 0,
     frequency            varchar(255)  null,
     hash_tags_idx        bigint default 0,

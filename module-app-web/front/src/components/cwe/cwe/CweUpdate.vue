@@ -27,6 +27,13 @@
             </td>
           </tr>
           <tr>
+            <th>영어 규칙명<span class="required-field">*</span></th>
+            <td>
+              <input type="text" name="originalTitle" v-model="originalTitle" class="form-control" placeholder="[14] Compiler Removal of Code to Clear Buffers">
+              <p id="originalTitleErrorMessage" class="error-message"></p>
+            </td>
+          </tr>
+          <tr>
             <th>우선순위<span class="required-field">*</span></th>
             <td>
               <Priority pageInformation="update" :priority=Number(priority) :maxPriority=Number(6) :priorityArray=priorityArray></Priority>
@@ -166,6 +173,7 @@ export default {
     const vueEditorConfig = editorConfig;
     // variable
     let title = ref("");
+    let originalTitle = ref("");
     let priority = ref(0);
     let frequency = ref("");
     let hashTags = ref("");
@@ -189,6 +197,7 @@ export default {
       )
           .then((response) => {
             title.value = response.data.title;
+            originalTitle.value = response.data.originalTitle;
             priority.value = response.data.priority;
             frequency.value = response.data.frequency;
             hashTags.value = response.data.hashTags;
@@ -251,6 +260,7 @@ export default {
       hashTags.value = updateHashTagsValue();
 
       if (!(validateLengthAndIsEmpty("title", title.value, 255)
+          && validateLengthAndIsEmpty("originalTitle", originalTitle.value, 255)
           && validateLength("hashTags", hashTags.value, 255)
           && validateLength("staticTitle", staticTitle.value, 255)
           && validateLength("codeSonarTitle", codeSonarTitle.value, 255)
@@ -261,6 +271,7 @@ export default {
       axios.put(process.env.VUE_APP_MODULE_APP_API_URL + "/api/cwe/" + idx,
           {
             title: title.value,
+            originalTitle: originalTitle.value,
             priority: priority.value,
             frequency: frequency.value,
             hashTags: hashTags.value,
@@ -372,7 +383,7 @@ export default {
       // variable
       vueEditor, vueEditorData, vueEditorConfig,
       createdByUser, createdDate, lastModifiedByUser, lastModifiedDate, activeStatus, uploadedAttachedFileList,
-      title, priority, frequency, hashTags, staticTitle, codeSonarTitle,
+      title, originalTitle, priority, frequency, hashTags, staticTitle, codeSonarTitle,
       priorityArray,
 
       // function

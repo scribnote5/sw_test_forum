@@ -31,9 +31,9 @@ jwt:
   # 3일: 60 * 60 * 24 * 3
   token-validity-in-seconds: 259200
 # 변수
-title: sw-test-forum
+title: SWITCH
 module:
   name: module-app-api
 email:
-  sender: eslab533
-  password: eslabeslab533
+  sender: id
+  password: password

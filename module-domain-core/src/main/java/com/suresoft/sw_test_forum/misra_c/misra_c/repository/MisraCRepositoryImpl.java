@@ -198,6 +198,7 @@ public class MisraCRepositoryImpl extends QuerydslRepositorySupport {
                                 misraC.views,
 
                                 misraC.title,
+                                misraC.originalTitle,
                                 misraC.priority,
                                 misraC.frequency,
                                 hashTags.content.as("hashTags"),

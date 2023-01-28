@@ -50,7 +50,7 @@
                     {{ user.department }}
                     <span v-if="user.position == 'A_EXECUTIVES'">임원</span>
                     <span v-if="user.position == 'B_PRINCIPAL_RESEARCH_ENGINEER'">수석연구원</span>
-                    <span v-if="user.position == 'C_SENIOR_RESEARCH_ENGINEER'">책임연구원</span>
+                    <span v-if="user.position == 'C_SENIOR_RESEARCH_ENGINEER'">전문연구원</span>
                     <span v-if="user.position == 'D_RESEARCH_ENGINEER'">선임연구원</span>
                     <span v-if="user.position == 'E_ASSOCIATE_RESEARCH_ENGINEER'">연구원</span>
                     <span v-if="user.position == 'F_GENERAL_MANAGER'">부장</span>
@@ -76,7 +76,7 @@
             <td class="d-none d-lg-table-cell">
               <span v-if="user.position == 'A_EXECUTIVES'">임원</span>
               <span v-if="user.position == 'B_PRINCIPAL_RESEARCH_ENGINEER'">수석연구원</span>
-              <span v-if="user.position == 'C_SENIOR_RESEARCH_ENGINEER'">책임연구원</span>
+              <span v-if="user.position == 'C_SENIOR_RESEARCH_ENGINEER'">전문연구원</span>
               <span v-if="user.position == 'D_RESEARCH_ENGINEER'">선임연구원</span>
               <span v-if="user.position == 'E_ASSOCIATE_RESEARCH_ENGINEER'">연구원</span>
               <span v-if="user.position == 'F_GENERAL_MANAGER'">부장</span>

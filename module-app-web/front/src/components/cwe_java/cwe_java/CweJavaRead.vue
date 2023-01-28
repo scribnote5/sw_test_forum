@@ -17,6 +17,7 @@
           <tr>
             <td colspan="2">
               <h2 class="mobile-title">{{ cweJava.title }}</h2>
+              <h5 class="mobile-original-title">{{ cweJava.originalTitle }}</h5>
             </td>
           </tr>
           <tr>
